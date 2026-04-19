@@ -1,0 +1,9 @@
+.page-shell {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+.menu-root {
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+}
