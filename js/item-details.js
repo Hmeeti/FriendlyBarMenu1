@@ -474,4 +474,10 @@ window.ITEM_DETAILS = {
     "img": "image/chizeby.JPG",
     "desc": ""
   }
+  "100" {
+        "name": "Сет Сакура",
+        "price": 15000,
+        "img": "image/sakura.JPG"
+        "desc": ""
+  }
 };
