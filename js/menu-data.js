@@ -786,7 +786,7 @@ window.MENU_SECTIONS = [
         "weight": "3000 гр",
         "price": 15000,
         "priceDisplay": "15000тг",
-        "img": "image/sakura.jpg"
+        "img": "image/sakura.JPG"
       },
       {
         "id": 101,
