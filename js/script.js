@@ -251,7 +251,7 @@ function openModal(itemId) {
     imgEl.src = imgSrcForPage(item.img);
     imgEl.alt = item.name;
     document.getElementById('modalName').textContent = item.name;
-    document.getElementById('modalDescription').textContent = item.desc || 'Состав уточняйте у персонала.';
+    //document.getElementById('modalDescription').textContent = item.desc || 'Состав уточняйте у персонала.';
     document.getElementById('modalPrice').textContent = item.price + 'тг';
 
     document.getElementById('modal').classList.add('active');
