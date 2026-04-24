@@ -3172,7 +3172,7 @@ window.MENU_ITEMS = {
   "101": {
     "name": "Сет Самурай",
     "price": 10000,
-    "img": "image/nono.png",
+    "img": "image/sakura.jpg",
     "desc": ""
   },
   "102": {
