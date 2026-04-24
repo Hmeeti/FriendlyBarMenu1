@@ -132,6 +132,12 @@ window.ITEM_DETAILS = {
     "img": "image/cezarslososem.jpg",
     "desc": "Семга,айсберг,перепилинное яйцо, черри, сухари, соус цезарь"
   },
+  "34": {
+    "name": "Тевзи мефурат",
+    "price": 3000,
+    "img": "image/nono.png",
+    "decs": ""
+  },
   "35": {
     "name": "Бозбаш",
     "price": 4200,
