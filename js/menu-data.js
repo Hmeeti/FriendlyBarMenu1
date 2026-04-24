@@ -185,14 +185,6 @@ window.MENU_SECTIONS = [
         "img": "image/nono.png"
       },
       {
-        "id": 23,
-        "name": "Салат Тифлис",
-        "weight": "600 гр",
-        "price": 2800,
-        "priceDisplay": "2800тг",
-        "img": "image/tiflis.JPG"
-      },
-      {
         "id": 24,
         "name": "Салат Friendly",
         "weight": "450 гр",
@@ -435,14 +427,6 @@ window.MENU_SECTIONS = [
         "price": 4300,
         "priceDisplay": "4300тг",
         "img": "image/chkmeruli.jpg"
-      },
-      {
-        "id": 55,
-        "name": "Тевзи мефурат",
-        "weight": "500 гр",
-        "price": 5200,
-        "priceDisplay": "5200тг",
-        "img": "image/nono.png"
       }
     ]
   },
