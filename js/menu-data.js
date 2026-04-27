@@ -1325,7 +1325,7 @@ window.MENU_SECTIONS = [
         "name": "Маракуйя-Апельсин 1л",
         "weight": "",
         "price": 260,
-        "priceDisplay": "260тг",
+        "priceDisplay": "2600тг",
         "img": null
       },
       {
