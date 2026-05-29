@@ -333,7 +333,7 @@ window.ITEM_DETAILS = {
   "71": {
     "name": "Русская закуска",
     "price": 3200,
-    "img": "image/nono.png",
+    "img": "image/kWPBa.jpg",
     "desc": "Селедка,картофель,квашенная капуста,бородинский хлеб"
   },
   "72": {
