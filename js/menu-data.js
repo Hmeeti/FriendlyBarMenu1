@@ -50,7 +50,7 @@ window.MENU_SECTIONS = [
         "weight": "660 гр",
         "price": 3200,
         "priceDisplay": "3200тг",
-        "img": "image/nono.png"
+        "img": "image/kWPBA.jpg"
       }
     ]
   },
