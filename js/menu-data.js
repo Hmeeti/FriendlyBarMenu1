@@ -1509,7 +1509,7 @@ window.MENU_SECTIONS = [
         "name": "Red Bull 0,25лl",
         "weight": "",
         "price": 800,
-        "priceDisplay": "800тг",
+        "priceDisplay": "1800тг",
         "img": null
       },
       {
