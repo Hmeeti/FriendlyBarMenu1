@@ -601,7 +601,7 @@ window.MENU_SECTIONS = [
       {
         "id": 84,
         "name": "Форель запеченная целиком",
-        "weight": "1000 гр",
+        "weight": "300 гр",
         "price": 4700,
         "priceDisplay": "4700тг",
         "img": "image/forel.jpg"
