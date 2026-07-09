@@ -1,0 +1,23 @@
+.page-shell {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(255, 244, 230, 0.7), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(143, 102, 50, 0.1), transparent 36%);
+}
+
+.menu-root {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: clamp(16px, 3vw, 28px);
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
+}
+
+@media (max-width: 640px) {
+    .menu-root {
+        padding: 12px 12px 24px;
+    }
+}
