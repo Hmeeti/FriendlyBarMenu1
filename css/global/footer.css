@@ -1,0 +1,76 @@
+.site-footer {
+    background-color: #1a1a1a; /* Темный элегантный фон */
+    color: #ffffff;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    padding: 30px 20px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-alert {
+    background-color: rgba(255, 193, 7, 0.1); /* Легкий золотистый фон для привлечения внимания */
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    display: inline-block;
+    border-radius: 4px;
+    margin: 0;
+    color: #e0e0e0;
+}
+
+.footer-alert strong {
+    color: #ffc107; /* Выделение цифр золотым цветом */
+}
+
+.alert-icon, .shield-icon {
+    margin-right: 8px;
+}
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #333;
+    margin: 20px 0;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #888888;
+    font-size: 13px;
+}
+
+.footer-protection {
+    display: flex;
+    align-items: center;
+    color: #4caf50; /* Зеленый цвет для индикации защиты */
+}
+
+/* Адаптивность для мобильных телефонов */
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .footer-alert {
+        display: block;
+        text-align: left;
+    }
+}
+
+.footer__creator {
+    align-items: center;
+    text-align: center;
+    color: gray;
+}
