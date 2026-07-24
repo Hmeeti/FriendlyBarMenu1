@@ -816,27 +816,62 @@ body.admin-login-open {
 
 @media (max-width: 640px) {
     .header {
-        padding: 10px 12px 8px;
+        padding: 10px max(12px, env(safe-area-inset-right)) 8px max(12px, env(safe-area-inset-left));
+        overflow-x: clip;
+    }
+
+    .header-brand-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
     }
 
     .logo {
-        font-size: 1.65rem;
+        font-size: 1.55rem;
         min-height: 0;
+        line-height: 1.1;
+    }
+
+    .header-tools {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 6px;
+        flex-wrap: nowrap;
+        box-sizing: border-box;
+    }
+
+    .lang-switch {
+        flex: 0 1 auto;
+        min-width: 0;
+        margin-right: auto;
+        padding: 2px;
+    }
+
+    .lang-switch__btn {
+        padding: 6px 7px;
+        font-size: 0.64rem;
     }
 
     .header-admin-btn {
         display: inline-flex;
-        height: 34px;
-        padding: 0 9px;
+        height: 36px;
+        padding: 0 10px;
         font-size: 0.62rem;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.04em;
+        flex: 0 0 auto;
     }
 
     .cart-btn {
-        height: 34px;
-        padding: 0 11px;
+        height: 36px;
+        padding: 0 12px;
         font-size: 12px;
         gap: 5px;
+        flex: 0 0 auto;
+        max-width: none;
     }
 
     .cart-count {
@@ -1697,6 +1732,63 @@ body {
 
 .cart-btn:hover {
     filter: brightness(1.05);
+}
+
+/* Mobile: keep Admin + Order fully on-screen (must follow desktop cart-btn rules) */
+@media (max-width: 640px) {
+    .header-brand-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .header-tools {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        justify-content: flex-start;
+        gap: 6px;
+        flex-wrap: nowrap;
+    }
+
+    .lang-switch {
+        margin-right: auto;
+        flex: 0 1 auto;
+        min-width: 0;
+    }
+
+    .header-admin-btn {
+        height: 36px;
+        padding: 0 10px;
+        font-size: 0.62rem;
+        flex: 0 0 auto;
+    }
+
+    .cart-btn {
+        height: 36px;
+        padding: 0 12px;
+        font-size: 12px;
+        gap: 5px;
+        flex: 0 0 auto;
+    }
+}
+
+@media (max-width: 380px) {
+    .lang-switch__btn {
+        padding: 6px 5px;
+        font-size: 0.6rem;
+        letter-spacing: 0.03em;
+    }
+
+    .header-admin-btn {
+        padding: 0 8px;
+        font-size: 0.58rem;
+    }
+
+    .cart-btn {
+        padding: 0 10px;
+        font-size: 11px;
+    }
 }
 
 /* Floating controls — keep out of the way */
