@@ -804,6 +804,48 @@ body.admin-login-open {
     flex-shrink: 0;
 }
 
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border, rgba(107, 29, 40, 0.12));
+    background: color-mix(in srgb, var(--color-card, #fff) 88%, transparent);
+}
+
+.lang-switch__btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--color-muted, #6a5b52);
+    font-family: var(--font-sans, 'Montserrat', system-ui, sans-serif);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 7px 9px;
+    border-radius: 999px;
+    cursor: pointer;
+    line-height: 1;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-switch__btn:hover {
+    color: var(--color-text, #1c1412);
+}
+
+.lang-switch__btn.is-active {
+    background: var(--color-accent, #6b1d28);
+    color: var(--color-on-accent, #fff8ef);
+}
+
+@media (max-width: 640px) {
+    .lang-switch__btn {
+        padding: 7px 8px;
+        font-size: 0.68rem;
+    }
+}
+
 .header-top .search {
     width: 100%;
     min-width: 0;

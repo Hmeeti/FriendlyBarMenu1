@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./image/favicon.png">
     <title>Friendly — Меню</title>
-    <link rel="stylesheet" href="style.css?v=nav3">
+    <link rel="stylesheet" href="style.css?v=i18n1">
 </head>
 
 <body>
@@ -25,41 +25,46 @@
                 <div class="header-brand-row">
                     <div class="logo">Friendly</div>
                     <div class="header-tools">
-                        <a href="admin.html" class="header-admin-btn" title="Админ-панель">Admin</a>
-                        <button type="button" class="cart-btn" onclick="toggleCart()" aria-label="Список заказа">
-                            Заказ
+                        <div class="lang-switch" role="group" aria-label="Language">
+                            <button type="button" class="lang-switch__btn is-active" data-lang="ru" aria-pressed="true">RU</button>
+                            <button type="button" class="lang-switch__btn" data-lang="kk" aria-pressed="false">KZ</button>
+                            <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false">EN</button>
+                        </div>
+                        <a href="admin.html" class="header-admin-btn" data-i18n-title="admin.title" title="Админ-панель">Admin</a>
+                        <button type="button" class="cart-btn" onclick="toggleCart()" data-i18n-aria="cart.aria" aria-label="Список заказа">
+                            <span data-i18n="cart.btn">Заказ</span>
                             <span class="cart-count">0</span>
                         </button>
                     </div>
                 </div>
                 <div class="search">
-                    <input type="search" class="search-input" placeholder="Поиск блюда…" aria-label="Поиск по меню" enterkeyhint="search" autocomplete="off">
+                    <input type="search" class="search-input" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.aria" placeholder="Поиск блюда…" aria-label="Поиск по меню" enterkeyhint="search" autocomplete="off">
                 </div>
             </div>
-            <nav class="categories" aria-label="Категории меню">
-                <a href="#" class="category active">Все</a>
-                <a href="#menu-gruziya" class="category">Меню Грузия</a>
-                <a href="#main-courses" class="category">Основные блюда</a>
-                <a href="#salaty-gruziya" class="category">Салаты Грузия</a>
-                <a href="#soup" class="category">Супы</a>
-                <a href="#khachapuri" class="category">Хачапури</a>
-                <a href="#goryachie-zakuski" class="category">Горячие закуски</a>
-                <a href="#holodnye-zakuski" class="category">Холодные закуски</a>
-                <a href="#menu-evropa" class="category">Меню Европа</a>
-                <a href="#salaty-evropa" class="category">Салаты Европа</a>
-                <a href="#beef" class="category">Стейки</a>
-                <a href="#fisheat" class="category">Блюда из рыбы</a>
-                <a href="#chikenaet" class="category">Блюда из курицы</a>
-                <a href="#alleat" class="category">Блюда на компанию</a>
-                <a href="#pasties" class="category">Пасты</a>
-                <a href="#rolls" class="category">Роллы</a>
-                <a href="#sets" class="category">Сеты</a>
-                <a href="#pizza" class="category">Пиццы</a>
-                <a href="#meat" class="category">Шашлыки</a>
-                <a href="#garnirs" class="category">Гарниры</a>
-                <a href="#souls" class="category">Соусы</a>
-                <a href="#candy" class="category">Десерты</a>
-                <a href="#bar" class="category">Барное меню</a>
+            <nav class="categories" data-i18n-aria="nav.aria" aria-label="Категории меню">
+                <a href="#" class="category active" data-i18n="nav.all">Все</a>
+                <a href="#menu-gruziya" class="category" data-i18n-section="Меню Грузия">Меню Грузия</a>
+                <a href="#main-courses" class="category" data-i18n-section="Основные блюда">Основные блюда</a>
+                <a href="#salaty-gruziya" class="category" data-i18n-section="Салаты Грузия">Салаты Грузия</a>
+                <a href="#soup" class="category" data-i18n-section="Супы">Супы</a>
+                <a href="#khachapuri" class="category" data-i18n-section="Хачапури">Хачапури</a>
+                <a href="#goryachie-zakuski" class="category" data-i18n-section="Горячие закуски">Горячие закуски</a>
+                <a href="#holodnye-zakuski" class="category" data-i18n-section="Холодные закуски">Холодные закуски</a>
+                <a href="#menu-evropa" class="category" data-i18n-section="Меню Европа">Меню Европа</a>
+                <a href="#salaty-evropa" class="category" data-i18n-section="Салаты Европа">Салаты Европа</a>
+                <a href="#beef" class="category" data-i18n-section="Стейки">Стейки</a>
+                <a href="#fisheat" class="category" data-i18n-section="Блюда из рыбы">Блюда из рыбы</a>
+                <a href="#chikenaet" class="category" data-i18n-section="Блюда из курицы">Блюда из курицы</a>
+                <a href="#alleat" class="category" data-i18n-section="Блюда на компанию">Блюда на компанию</a>
+                <a href="#pasties" class="category" data-i18n-section="Пасты">Пасты</a>
+                <a href="#rolls" class="category" data-i18n-section="Роллы">Роллы</a>
+                <a href="#sets" class="category" data-i18n-section="Сеты">Сеты</a>
+                <a href="#pizza" class="category" data-i18n-section="Пиццы">Пиццы</a>
+                <a href="#meat" class="category" data-i18n-section="Шашлыки">Шашлыки</a>
+                <a href="#garnirs" class="category" data-i18n-section="Гарниры">Гарниры</a>
+                <a href="#souls" class="category" data-i18n-section="Соусы">Соусы</a>
+                <a href="#candy" class="category" data-i18n-section="Десерты">Десерты</a>
+                <a href="#bar" class="category" data-i18n-section="Барное меню">Барное меню</a>
             </nav>
         </header>
 
@@ -67,15 +72,15 @@
 
         <div class="cart-panel" id="cartPanel">
             <div class="cart-header">
-                <div class="cart-title">Ваш заказ</div>
-                <button type="button" class="close-cart" onclick="hideCart()" aria-label="Закрыть корзину">×</button>
+                <div class="cart-title" data-i18n="cart.title">Ваш заказ</div>
+                <button type="button" class="close-cart" onclick="hideCart()" data-i18n-aria="cart.close" aria-label="Закрыть корзину">×</button>
             </div>
             <div class="cart-items" id="cartItems"></div>
             <div class="cart-summary">
-                <div class="cart-row"><span>Сумма позиций</span><span id="subtotalPrice">0 тг</span></div>
-                <div class="cart-row cart-row--muted"><span>Обслуживание 15%</span><span id="servicePrice">0 тг</span>
+                <div class="cart-row"><span data-i18n="cart.subtotal">Сумма позиций</span><span id="subtotalPrice">0 тг</span></div>
+                <div class="cart-row cart-row--muted"><span data-i18n="cart.service">Обслуживание 15%</span><span id="servicePrice">0 тг</span>
                 </div>
-                <div class="cart-total"><span>Итого к оплате</span><span id="totalPrice">0 тг</span></div>
+                <div class="cart-total"><span data-i18n="cart.total">Итого к оплате</span><span id="totalPrice">0 тг</span></div>
             </div>
         </div>
 
@@ -84,82 +89,79 @@
                 <img src="https://placehold.co/176x140" alt="" class="modal-image" id="modalImage">
                 <div class="modal-body">
                     <div class="modal-name" id="modalName">Маргарита</div>
-                    <div class="modal-description" id="modalDescription">Классическая итальянская пицца с моцареллой,
-                        томатами и базиликом</div>
+                    <div class="modal-description" id="modalDescription"></div>
                     <div class="modal-price" id="modalPrice">490тг</div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="close-modal-btn" onclick="closeModal()">Закрыть</button>
+                    <button type="button" class="close-modal-btn" onclick="closeModal()" data-i18n="modal.close">Закрыть</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="float-controls" aria-label="Быстрые действия">
+    <div class="float-controls" aria-label="Quick actions">
         <button type="button" class="theme-fab" id="themeFab" aria-label="Переключить на тёмную тему"
             title="Тема оформления">
             <span class="theme-fab__icon theme-fab__icon--moon" aria-hidden="true">☾</span>
             <span class="theme-fab__icon theme-fab__icon--sun" aria-hidden="true">☀</span>
         </button>
-        <button type="button" id="toTopRight" class="to-top to-top--right hidden" aria-label="Наверх меню" title="Наверх">↑</button>
+        <button type="button" id="toTopRight" class="to-top to-top--right hidden" data-i18n-aria="top" data-i18n-title="top" aria-label="Наверх" title="Наверх">↑</button>
     </div>
 
     <div id="welcome-screen" class="popup-overlay">
     <div class="popup-box">
         <div class="popup-brand">
-            <p class="popup-eyebrow">Friendly Bar</p>
-            <h2>Добро пожаловать</h2>
+            <p class="popup-eyebrow" data-i18n="welcome.eyebrow">Friendly Bar</p>
+            <h2 data-i18n="welcome.title">Добро пожаловать</h2>
         </div>
         
         <div class="popup-info-card">
-            <p>Обслуживание в заведении — <strong>15%</strong>.</p>
-            <p>Караоке — <strong>1 000 тг</strong> с гостя.</p>
+            <p data-i18n="welcome.service" data-i18n-html>Обслуживание в заведении — <strong>15%</strong>.</p>
+            <p data-i18n="welcome.karaoke" data-i18n-html>Караоке — <strong>1 000 тг</strong> с гостя.</p>
         </div>
 
-        <p class="popup-subtitle">Выберите меню</p>
+        <p class="popup-subtitle" data-i18n="welcome.subtitle">Выберите меню</p>
         
         <div class="menu-selection-box">
             <button class="menu-choice-btn kitchen-theme" onclick="closePopup('kitchen')">
                 <div class="btn-text">
-                    <span class="btn-title">Кухня и бар</span>
-                    <span class="btn-desc">Блюда, напитки, десерты</span>
+                    <span class="btn-title" data-i18n="welcome.kitchen">Кухня и бар</span>
+                    <span class="btn-desc" data-i18n="welcome.kitchenDesc">Блюда, напитки, десерты</span>
                 </div>
             </button>
         </div>
         
-        <p class="popup-bottom-notice">Продолжая, вы принимаете правила заведения.</p>
+        <p class="popup-bottom-notice" data-i18n="welcome.notice">Продолжая, вы принимаете правила заведения.</p>
     </div>
 </div> 
 
-    <script src="config.js?v=nav3"></script>
-    <script src="data.js?v=nav3"></script>
-    <script src="app.js?v=nav3"></script>
+    <script src="config.js?v=i18n1"></script>
+    <script src="i18n.js?v=i18n1"></script>
+    <script src="i18n-menu.js?v=i18n1"></script>
+    <script src="data.js?v=i18n1"></script>
+    <script src="app.js?v=i18n1"></script>
 <footer class="site-footer">
     <div class="footer-container">
-        
-        <!-- Блок с информацией об обслуживании и караоке -->
         <div class="footer-info">
             <p class="footer-alert">
-                <span class="alert-icon">⚠️</span> 
-                Обращаем ваше внимание: обслуживание — <strong>15%</strong>. 
-                Стоимость караоке — <strong>1 000 тг</strong> с человека.
+                <span class="alert-icon">⚠️</span>
+                <span data-i18n="footer.alert" data-i18n-html>Обращаем ваше внимание: обслуживание — <strong>15%</strong>. Стоимость караоке — <strong>1 000 тг</strong> с человека.</span>
             </p>
         </div>
 
         <hr class="footer-divider">
 
-        <!-- Блок защиты и авторских прав -->
         <div class="footer-bottom">
             <p class="footer-protection">
-                <span class="shield-icon">🛡️</span> Сайт полностью защищен безопасным соединением.
+                <span class="shield-icon">🛡️</span>
+                <span data-i18n="footer.protect">Сайт полностью защищен безопасным соединением.</span>
             </p>
             <p class="footer__creator">made by hmeeti</p>
-            <p class="footer-copyright">
+            <p class="footer-copyright" data-i18n="footer.copy">
                 &copy; 2026 Все права защищены. Копирование материалов запрещено.
             </p>
             <a href="admin.html" class="footer-admin-link" title="Админ">·</a>
         </div>
-
     </div>
 </footer>
 

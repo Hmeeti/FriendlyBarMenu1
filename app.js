@@ -120,6 +120,32 @@ function getSectionId(section) {
     return title.toLowerCase().replace(/[^а-яa-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
+function i18n() {
+    return window.FriendlyI18n || null;
+}
+
+function tr(key, fallback) {
+    const api = i18n();
+    if (!api) return fallback || key;
+    const val = api.t(key);
+    return val && val !== key ? val : (fallback || key);
+}
+
+function trSection(title) {
+    const api = i18n();
+    return api ? api.translateSection(title) : title;
+}
+
+function trItemName(id, fallback) {
+    const api = i18n();
+    return api ? api.translateItemName(id, fallback) : fallback;
+}
+
+function trItemDesc(id, fallback) {
+    const api = i18n();
+    return api ? api.translateItemDesc(id, fallback) : fallback;
+}
+
 function renderMenu() {
     const root = document.getElementById('menu-root');
     if (!root || !window.MENU_SECTIONS) return;
@@ -127,13 +153,14 @@ function renderMenu() {
     const html = window.MENU_SECTIONS.map((section) => {
         const sectionId = getSectionId(section);
         const idAttr = sectionId ? ` id="${escapeHtml(sectionId)}"` : '';
-        const title = escapeHtml(section.title);
-        const titleClass = section.title === 'Меню Грузия' || section.title === 'Меню Европа' ? 'title__menu title__menu--hero' : 'title__menu';
+        const titleRu = section.title;
+        const title = escapeHtml(trSection(titleRu));
+        const titleClass = titleRu === 'Меню Грузия' || titleRu === 'Меню Европа' ? 'title__menu title__menu--hero' : 'title__menu';
         if (!section.items || section.items.length === 0) {
-            return `<h2 class="${titleClass}"${idAttr}>${title}</h2>`;
+            return `<h2 class="${titleClass}"${idAttr} data-i18n-section="${escapeHtml(titleRu)}">${title}</h2>`;
         }
         const itemsHtml = section.items.map(renderMenuItemCard).join('');
-        return `<h2 class="${titleClass}"${idAttr}>${title}</h2><div class="menu-grid">${itemsHtml}</div>`;
+        return `<h2 class="${titleClass}"${idAttr} data-i18n-section="${escapeHtml(titleRu)}">${title}</h2><div class="menu-grid">${itemsHtml}</div>`;
     }).join('');
 
     root.innerHTML = html;
@@ -141,11 +168,13 @@ function renderMenu() {
     initCategoryNav();
     applySearchFilter();
     syncHeaderOffset();
+    if (i18n()) i18n().applyStatic();
 }
 
 function renderMenuItemCard(it) {
     const id = it.id;
-    const name = escapeHtml(it.name);
+    const nameRu = it.name || '';
+    const name = escapeHtml(trItemName(id, nameRu));
     const priceDisp = escapeHtml(it.priceDisplay || '');
     const out = it.availability === 'OUT_OF_STOCK';
     const imgPath = it.img ? imgSrcForPage(it.img) : '';
@@ -154,10 +183,10 @@ function renderMenuItemCard(it) {
         : '';
     const itemClass = (imgPath ? 'menu-item' : 'menu-item menu-item--no-image') + (out ? ' menu-item--oos' : '');
     const addBtn = out
-        ? `<span class="badge badge--oos">нет в наличии</span>`
-        : `<button type="button" class="add-btn" data-add="${id}" aria-label="Добавить в заказ">+</button>`;
+        ? `<span class="badge badge--oos">${escapeHtml(tr('oos', 'нет в наличии'))}</span>`
+        : `<button type="button" class="add-btn" data-add="${id}" aria-label="${escapeHtml(tr('add', 'Добавить в заказ'))}">+</button>`;
     return `
-        <div class="${itemClass}" data-item-id="${id}" role="button" tabindex="0">
+        <div class="${itemClass}" data-item-id="${id}" data-name-ru="${escapeHtml(nameRu)}" role="button" tabindex="0">
             ${imgBlock}
             <div class="item-content">
                 <div class="item-name">${name}</div>
@@ -244,15 +273,16 @@ function updateCart() {
     let count = 0;
 
     if (cart.length === 0) {
-        cartItems.innerHTML = '<p class="cart-empty">Добавьте блюда кнопкой «+»</p>';
+        cartItems.innerHTML = `<p class="cart-empty">${escapeHtml(tr('cart.empty', 'Добавьте блюда кнопкой «+»'))}</p>`;
     } else {
         cart.forEach((item) => {
             subtotal += item.price * item.quantity;
             count += item.quantity;
+            const shownName = trItemName(item.id, item.name);
 
             cartItems.innerHTML += `
                 <div class="cart-item">
-                    <div class="cart-item-name">${escapeHtml(item.name)}</div>
+                    <div class="cart-item-name">${escapeHtml(shownName)}</div>
                     <div class="cart-item-controls">
                         <button type="button" class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
                         <span class="qty">${item.quantity}</span>
@@ -293,9 +323,10 @@ function openModal(itemId) {
 
     const imgEl = document.getElementById('modalImage');
     imgEl.src = imgSrcForPage(item.img);
-    imgEl.alt = item.name;
-    document.getElementById('modalName').textContent = item.name;
-    document.getElementById('modalDescription').textContent = item.desc || 'Состав уточняйте у персонала.';
+    imgEl.alt = trItemName(id, item.name);
+    document.getElementById('modalName').textContent = trItemName(id, item.name);
+    document.getElementById('modalDescription').textContent =
+        trItemDesc(id, item.desc || '') || tr('modal.fallbackDesc', 'Состав уточняйте у персонала.');
     document.getElementById('modalPrice').textContent = item.price + 'тг';
 
     document.getElementById('modal').classList.add('active');
@@ -431,11 +462,11 @@ function applySearchFilter() {
     document.querySelectorAll('.menu-item').forEach((item) => {
         const nameEl = item.querySelector('.item-name');
         const name = nameEl ? nameEl.textContent.toLowerCase() : '';
-        const match = !query || name.includes(query);
+        const nameRu = String(item.getAttribute('data-name-ru') || '').toLowerCase();
+        const match = !query || name.includes(query) || nameRu.includes(query);
         item.style.display = match ? '' : 'none';
     });
 
-    // Hide empty section grids / keep titles visible only if they have matches
     document.querySelectorAll('.menu-grid').forEach((grid) => {
         const visible = Array.from(grid.querySelectorAll('.menu-item')).some(
             (item) => item.style.display !== 'none'
@@ -518,8 +549,27 @@ function initThemeToggle() {
     });
 }
 
+function initLangSwitch() {
+    const api = i18n();
+    if (!api) return;
+    api.applyStatic();
+    document.querySelectorAll('.lang-switch__btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            api.setLang(btn.getAttribute('data-lang'));
+            api.applyStatic();
+            renderMenu();
+            updateCart();
+            syncHeaderOffset();
+        });
+    });
+    window.addEventListener('friendly:lang', () => {
+        api.applyStatic();
+    });
+}
+
 function init() {
     items = buildItemsCatalog();
+    initLangSwitch();
     renderMenu();
 
     const menuRoot = document.getElementById('menu-root');
