@@ -1,17 +1,7 @@
 # Friendly Menu
 
-```text
-/
-├── index.html / admin.html / style.css / data.js / app.js / admin.js
-├── image/
-├── server.js          # API
-├── package.json
-├── prisma/            # схема БД + seed
-├── data/              # сид меню
-├── uploads/
-└── node_modules/      # одна папка зависимостей (не в git)
-```
 
+<<<<<<< HEAD
 ## Запуск
 
 ```bash
@@ -27,4 +17,13 @@ npm run dev
 Меню: Live Server → `index.html`  
 Админка: `admin.html`
 
-> `.env` и `prisma/*.db` не в Git — это нормально, они поднимаются автоматически.
+API (Render): `https://friendlybarmenu1admin.onrender.com`  
+(задаётся в `config.js`)
+
+На Render в Environment добавьте:
+- `CLIENT_ORIGIN` = URL вашего GitHub Pages (и localhost при необходимости)
+- `COOKIE_SECURE=true`
+- `JWT_SECRET` = длинная случайная строка
+- `ADMIN_USERNAME` / `ADMIN_PASSWORD`
+=======
+>>>>>>> 09f00c50eaedeb2dac85e3c8d811db4d87d8dc90

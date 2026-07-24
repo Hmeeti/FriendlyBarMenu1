@@ -79,7 +79,14 @@ async function ensureDatabaseAndAdmin() {
 }
 
 const allow = (o) =>
-  !o || origins.includes('*') || origins.includes(o) || /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(o);
+  !o ||
+  !origins.length ||
+  origins.includes('*') ||
+  origins.includes(o) ||
+  /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(o) ||
+  /^https:\/\/([\w-]+\.)?github\.io$/i.test(o) ||
+  /^https:\/\/friendlybarmenu1admin\.onrender\.com$/i.test(o);
+
 
 const corsOpts = {
   origin: (o, cb) => (allow(o) ? cb(null, true) : cb(new Error(`CORS blocked for origin: ${o}`))),
