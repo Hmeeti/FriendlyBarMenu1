@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./image/favicon.png">
     <title>Friendly — Меню</title>
-    <link rel="stylesheet" href="style.css?v=premium1">
+    <link rel="stylesheet" href="style.css?v=nav2">
 </head>
 
 <body>
@@ -94,15 +94,14 @@
         </div>
     </div>
 
-    <button type="button" class="theme-fab" id="themeFab" aria-label="Переключить на тёмную тему"
-        title="Тема оформления">
-        <span class="theme-fab__icon theme-fab__icon--moon" aria-hidden="true">☾</span>
-        <span class="theme-fab__icon theme-fab__icon--sun" aria-hidden="true">☀</span>
-    </button>
-
-    <!-- To-top buttons: left and right -->
-    <button id="toTopLeft" class="to-top to-top--left" aria-label="Наверх меню" title="Наверх меню">↑</button>
-    <button id="toTopRight" class="to-top to-top--right" aria-label="Наверх меню" title="Наверх меню">↑</button>
+    <div class="float-controls" aria-label="Быстрые действия">
+        <button type="button" class="theme-fab" id="themeFab" aria-label="Переключить на тёмную тему"
+            title="Тема оформления">
+            <span class="theme-fab__icon theme-fab__icon--moon" aria-hidden="true">☾</span>
+            <span class="theme-fab__icon theme-fab__icon--sun" aria-hidden="true">☀</span>
+        </button>
+        <button type="button" id="toTopRight" class="to-top to-top--right hidden" aria-label="Наверх меню" title="Наверх">↑</button>
+    </div>
 
     <div id="welcome-screen" class="popup-overlay">
     <div class="popup-box">
@@ -131,9 +130,9 @@
     </div>
 </div> 
 
-    <script src="config.js?v=premium1"></script>
-    <script src="data.js?v=premium1"></script>
-    <script src="app.js?v=premium1"></script>
+    <script src="config.js?v=nav2"></script>
+    <script src="data.js?v=nav2"></script>
+    <script src="app.js?v=nav2"></script>
 <footer class="site-footer">
     <div class="footer-container">
         

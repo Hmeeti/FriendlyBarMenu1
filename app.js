@@ -324,13 +324,38 @@ function setActiveCategory(hash) {
     if (!links.length) return;
 
     const normalized = hash && hash !== '#' ? hash.replace(/^#/, '') : '';
+    let activeLink = null;
     links.forEach((link) => {
         const href = link.getAttribute('href') || '';
         const linkHash = href.replace(/^#/, '');
         const isActive = normalized ? linkHash === normalized : href === '#' || href === '';
         link.classList.toggle('active', isActive);
         link.setAttribute('aria-current', isActive ? 'page' : 'false');
+        if (isActive) activeLink = link;
     });
+
+    scrollCategoryIntoNav(activeLink);
+}
+
+function scrollCategoryIntoNav(activeLink) {
+    const nav = document.querySelector('.categories');
+    if (!nav || !activeLink) return;
+
+    const navRect = nav.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+    const linkCenter = linkRect.left + linkRect.width / 2;
+    const navCenter = navRect.left + navRect.width / 2;
+    const delta = linkCenter - navCenter;
+
+    if (Math.abs(delta) < 8) return;
+
+    const maxScroll = nav.scrollWidth - nav.clientWidth;
+    const nextLeft = Math.max(0, Math.min(maxScroll, nav.scrollLeft + delta));
+    if (typeof nav.scrollTo === 'function') {
+        nav.scrollTo({ left: nextLeft, behavior: 'smooth' });
+    } else {
+        nav.scrollLeft = nextLeft;
+    }
 }
 
 function initCategoryNav() {
@@ -388,8 +413,9 @@ function initCategoryNav() {
                     }
                 }
             }, {
-                rootMargin: '-35% 0px -45% 0px',
-                threshold: [0.1, 0.3, 0.5, 0.7]
+                // Keep sticky header out of the "active section" zone
+                rootMargin: '-120px 0px -55% 0px',
+                threshold: [0.08, 0.2, 0.4, 0.6]
             });
 
             headings.forEach((heading) => observer.observe(heading));
@@ -416,28 +442,20 @@ function initSearch() {
 
 function initToTopButtons() {
     const btnR = document.getElementById('toTopRight');
-    const btnL = document.getElementById('toTopLeft');
-    const menuRoot = document.getElementById('menu-root');
-    if (!btnR && !btnL) return;
+    if (!btnR) return;
 
     function goTop() {
-        if (menuRoot) {
-            menuRoot.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         setActiveCategory('#');
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
     }
 
-    if (btnR) btnR.addEventListener('click', goTop);
-    if (btnL) btnL.addEventListener('click', goTop);
+    btnR.addEventListener('click', goTop);
 
     function onScroll() {
-        const show = window.scrollY > 120;
-        [btnR, btnL].forEach((b) => {
-            if (!b) return;
-            b.classList.toggle('hidden', !show);
-        });
+        btnR.classList.toggle('hidden', window.scrollY <= 220);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
