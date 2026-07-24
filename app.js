@@ -1,29 +1,6 @@
-/**
- * Runtime config for guest menu + admin.html
- * For production, set API URL to your deployed backend, e.g.:
- *   window.FRIENDLY_API_BASE = 'https://your-api.onrender.com';
- * Leave empty to auto-use same hostname on port 4000 (local Live Server).
- */
-window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
-  apiBase: 'https://friendlybarmenu1admin.onrender.com',
-  adminUrl: '',
-};
-
-(function applyFriendlyConfig() {
-  const cfg = window.FRIENDLY_CONFIG || {};
-  if (cfg.apiBase) {
-    window.FRIENDLY_API_BASE = String(cfg.apiBase).replace(/\/$/, '');
-  } else if (!window.FRIENDLY_API_BASE) {
-    window.FRIENDLY_API_BASE = 'https://friendlybarmenu1admin.onrender.com';
-  }
-  if (cfg.adminUrl) {
-    window.FRIENDLY_ADMIN_URL = String(cfg.adminUrl).replace(/\/$/, '');
-  }
-})();
-
-
 const SERVICE_RATE = 0.15;
 const THEME_KEY = 'friendly-menu-theme';
+const MENU_CACHE_KEY = 'fm_menu_cache_v1';
 
 let cart = [];
 let currentModalItem = null;
@@ -52,6 +29,8 @@ function normalizeMenuImagePath(path) {
     p = p.replace(/\\/g, '/');
     while (p.includes('/./')) p = p.replace('/./', '/');
     p = p.replace(/\/{2,}/g, '/');
+    if (/^https?:\/\//i.test(p)) return p;
+    if (p.startsWith('/uploads/')) return p;
     p = p.replace(/^image\/image\//i, 'image/');
     if (!/^image\//i.test(p)) {
         p = 'image/' + p.replace(/^\/+/, '');
@@ -81,6 +60,10 @@ function buildItemsCatalog() {
 function imgSrcForPage(path) {
     const normalized = normalizeMenuImagePath(path);
     if (/^https?:\/\//i.test(normalized)) return normalized;
+    if (normalized.startsWith('/uploads/')) {
+        const base = String(window.FRIENDLY_API_BASE || '').replace(/\/$/, '');
+        return base ? base + normalized : normalized;
+    }
     if (normalized.startsWith('./')) return normalized;
     return './' + normalized.replace(/^\//, '');
 }
@@ -216,7 +199,7 @@ function renderMenu() {
         if (!section.items || section.items.length === 0) {
             return `<h2 class="${titleClass}"${idAttr} data-i18n-section="${escapeHtml(titleRu)}">${title}</h2>`;
         }
-        const itemsHtml = section.items.map(renderMenuItemCard).join('');
+        const itemsHtml = section.items.map((it, idx) => renderMenuItemCard(it, idx)).join('');
         return `<h2 class="${titleClass}"${idAttr} data-i18n-section="${escapeHtml(titleRu)}">${title}</h2><div class="menu-grid">${itemsHtml}</div>`;
     }).join('');
 
@@ -228,7 +211,7 @@ function renderMenu() {
     if (i18n()) i18n().applyStatic();
 }
 
-function renderMenuItemCard(it) {
+function renderMenuItemCard(it, idx) {
     const id = it.id;
     const nameRu = it.name || '';
     const name = escapeHtml(trItemName(id, nameRu));
@@ -238,12 +221,16 @@ function renderMenuItemCard(it) {
     const imgBlock = imgPath
         ? `<div class="item-image-wrap"><img src="${escapeAttr(imgPath)}" alt="" class="item-image" loading="lazy" width="400" height="280" decoding="async"></div>`
         : '';
-    const itemClass = (imgPath ? 'menu-item' : 'menu-item menu-item--no-image') + (out ? ' menu-item--oos' : '');
+    const delay = Math.min(12, Number(idx) || 0) * 28;
+    const itemClass =
+        (imgPath ? 'menu-item' : 'menu-item menu-item--no-image') +
+        (out ? ' menu-item--oos' : '') +
+        ' menu-item--enter';
     const addBtn = out
         ? `<span class="badge badge--oos">${escapeHtml(tr('oos', 'нет в наличии'))}</span>`
         : `<button type="button" class="add-btn" data-add="${id}" aria-label="${escapeHtml(tr('add', 'Добавить в заказ'))}">+</button>`;
     return `
-        <div class="${itemClass}" data-item-id="${id}" data-name-ru="${escapeHtml(nameRu)}" role="button" tabindex="0">
+        <div class="${itemClass}" data-item-id="${id}" data-name-ru="${escapeHtml(nameRu)}" role="button" tabindex="0" style="--enter-delay:${delay}ms">
             ${imgBlock}
             <div class="item-content">
                 <div class="item-name">${name}</div>
@@ -587,6 +574,7 @@ function initCategoryNav() {
             const href = link.getAttribute('href') || '';
             if (!href || href === '#') {
                 event.preventDefault();
+                clearSearchQuiet();
                 setActiveCategory('#');
                 smoothScrollY(0);
                 if (window.history && window.history.replaceState) {
@@ -606,6 +594,7 @@ function initCategoryNav() {
             }
 
             event.preventDefault();
+            clearSearchQuiet();
             setActiveCategory(href);
             scrollToSection(target);
             if (window.history && window.history.replaceState) {
@@ -637,14 +626,16 @@ function initCategoryNav() {
             const visibleEntry = entries
                 .filter((entry) => entry.isIntersecting)
                 .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-            if (!visibleEntry) return;
+            if (!visibleEntry || !visibleEntry.target.id) return;
             const id = visibleEntry.target.id;
-            if (!id) return;
-            setActiveCategory(`#${id}`);
-            if (window.history && window.history.replaceState) {
-                window.history.replaceState(null, '', `#${id}`);
-            }
+            clearTimeout(categoryObserver._debounce);
+            categoryObserver._debounce = setTimeout(() => {
+                if (Date.now() < categoryNavLockUntil) return;
+                setActiveCategory(`#${id}`);
+                if (window.history && window.history.replaceState) {
+                    window.history.replaceState(null, '', `#${id}`);
+                }
+            }, 90);
         },
         {
             rootMargin: '-120px 0px -55% 0px',
@@ -655,25 +646,36 @@ function initCategoryNav() {
     headings.forEach((heading) => categoryObserver.observe(heading));
 }
 
+function clearSearchQuiet() {
+    const input = document.querySelector('.search-input');
+    if (!input || !input.value) return;
+    input.value = '';
+    applySearchFilter();
+}
+
 function applySearchFilter() {
     const input = document.querySelector('.search-input');
     const query = String(input && input.value ? input.value : '').trim().toLowerCase();
-    document.querySelectorAll('.menu-item').forEach((item) => {
+    const itemsEls = document.querySelectorAll('.menu-item');
+    itemsEls.forEach((item) => {
         const nameEl = item.querySelector('.item-name');
         const name = nameEl ? nameEl.textContent.toLowerCase() : '';
         const nameRu = String(item.getAttribute('data-name-ru') || '').toLowerCase();
         const match = !query || name.includes(query) || nameRu.includes(query);
-        item.style.display = match ? '' : 'none';
+        item.classList.toggle('is-filtered-out', !match);
+        item.setAttribute('aria-hidden', match ? 'false' : 'true');
+        if (!match && document.activeElement === item) item.blur();
     });
 
     document.querySelectorAll('.menu-grid').forEach((grid) => {
         const visible = Array.from(grid.querySelectorAll('.menu-item')).some(
-            (item) => item.style.display !== 'none'
+            (item) => !item.classList.contains('is-filtered-out')
         );
-        grid.style.display = visible || !query ? '' : 'none';
+        const show = visible || !query;
+        grid.classList.toggle('is-filtered-out', !show);
         const title = grid.previousElementSibling;
         if (title && title.classList.contains('title__menu')) {
-            title.style.display = visible || !query ? '' : 'none';
+            title.classList.toggle('is-filtered-out', !show);
         }
     });
 }
@@ -795,9 +797,8 @@ window.FriendlyMenu = {
         const itemCount = sections
             ? sections.reduce((n, s) => n + ((s && s.items && s.items.length) || 0), 0)
             : 0;
-        // Empty API DB must not wipe the static menu baked into data.js
         if (sections && itemCount === 0) {
-            console.warn('[friendly-live] API menu empty — keeping static menu');
+            console.warn('[friendly-live] API menu empty — keeping current menu');
             return;
         }
         if (sections) window.MENU_SECTIONS = sections;
@@ -806,6 +807,12 @@ window.FriendlyMenu = {
         items = buildItemsCatalog();
         renderMenu();
         updateCart();
+        try {
+            localStorage.setItem(
+                MENU_CACHE_KEY,
+                JSON.stringify({ at: Date.now(), payload: { sections: window.MENU_SECTIONS, items: window.MENU_ITEMS, details: window.ITEM_DETAILS, updatedAt: payload.updatedAt || null } })
+            );
+        } catch (_) {}
     },
     reload() {
         items = buildItemsCatalog();
@@ -815,48 +822,105 @@ window.FriendlyMenu = {
 
 function closePopup(choice) {
     const screen = document.getElementById('welcome-screen');
+    if (!screen) return;
     screen.style.opacity = '0';
-
     setTimeout(() => {
         screen.style.display = 'none';
         document.body.classList.remove('lock-scroll');
-
-        if (choice === 'hookah') {
-            window.location.href = 'hookah.html';
-        }
+        if (choice === 'hookah') window.location.href = 'hookah.html';
     }, 400);
 }
 
-
 /**
- * Live menu bridge: loads menu from API and applies Socket.io updates.
- * Falls back to static js/menu-data.js if the API is unreachable.
- *
- * Config (optional, before this script):
- *   window.FRIENDLY_API_BASE = 'http://localhost:4000';
+ * Live menu bridge with wake-loader, retries, and offline cache.
  */
 (function () {
-  const BASE = (
+  const BASE = String(
     window.FRIENDLY_API_BASE ||
-    (typeof location !== 'undefined'
-      ? location.protocol + '//' + location.hostname + ':4000'
-      : 'http://127.0.0.1:4000')
+      (typeof location !== 'undefined'
+        ? location.protocol + '//' + location.hostname + ':4000'
+        : 'http://127.0.0.1:4000')
   ).replace(/\/$/, '');
-  let socketScriptLoading = null;
 
-  async function fetchMenu() {
-    const res = await fetch(`${BASE}/api/menu`, { cache: 'no-store' });
-    if (!res.ok) throw new Error('menu fetch failed');
-    return res.json();
+  let socketScriptLoading = null;
+  let wakeTimer = null;
+
+  function showWake(show) {
+    const el = document.getElementById('apiWakeOverlay');
+    if (!el) return;
+    if (show) el.removeAttribute('hidden');
+    else el.setAttribute('hidden', '');
+  }
+
+  function scheduleWake() {
+    clearTimeout(wakeTimer);
+    wakeTimer = setTimeout(() => showWake(true), 700);
+  }
+
+  function hideWake() {
+    clearTimeout(wakeTimer);
+    showWake(false);
+  }
+
+  function toast(msg) {
+    const host = document.getElementById('toastHost');
+    if (!host || !msg) return;
+    const node = document.createElement('div');
+    node.className = 'toast';
+    node.textContent = msg;
+    host.appendChild(node);
+    requestAnimationFrame(() => node.classList.add('is-in'));
+    setTimeout(() => {
+      node.classList.remove('is-in');
+      setTimeout(() => node.remove(), 400);
+    }, 4200);
+  }
+
+  function readCache() {
+    try {
+      const raw = localStorage.getItem(MENU_CACHE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      const sections = parsed && parsed.payload && parsed.payload.sections;
+      if (!Array.isArray(sections) || !sections.length) return null;
+      const age = Date.now() - (parsed.at || 0);
+      if (age > 14 * 864e5) return null;
+      return parsed.payload;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  async function fetchJson(url, timeoutMs) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+    try {
+      const res = await fetch(url, { cache: 'no-store', signal: ctrl.signal });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return await res.json();
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  async function fetchMenuWithRetry() {
+    let lastErr = null;
+    for (let i = 0; i < 5; i++) {
+      try {
+        // First tries are shorter; later allow Render cold start (~50s)
+        const timeout = i === 0 ? 12000 : i < 3 ? 25000 : 55000;
+        return await fetchJson(`${BASE}/api/menu`, timeout);
+      } catch (e) {
+        lastErr = e;
+        await new Promise((r) => setTimeout(r, Math.min(10000, 700 * Math.pow(2, i))));
+      }
+    }
+    throw lastErr || new Error('menu fetch failed');
   }
 
   function apply(payload) {
     if (window.FriendlyMenu && typeof window.FriendlyMenu.applyLiveMenu === 'function') {
       window.FriendlyMenu.applyLiveMenu(payload);
-    } else {
-      if (payload.sections) window.MENU_SECTIONS = payload.sections;
-      if (payload.items) window.MENU_ITEMS = payload.items;
-      if (payload.details) window.ITEM_DETAILS = Object.assign({}, window.ITEM_DETAILS || {}, payload.details);
     }
   }
 
@@ -868,7 +932,7 @@ function closePopup(choice) {
       s.src = `${BASE}/socket.io/socket.io.js`;
       s.async = true;
       s.onload = () => resolve();
-      s.onerror = reject;
+      s.onerror = () => reject(new Error('socket.io load failed'));
       document.head.appendChild(s);
     });
     return socketScriptLoading;
@@ -877,10 +941,15 @@ function closePopup(choice) {
   function connectRealtime() {
     loadSocketIo()
       .then(() => {
-        const socket = window.io(BASE, { transports: ['websocket', 'polling'] });
+        const socket = window.io(BASE, {
+          transports: ['websocket', 'polling'],
+          reconnection: true,
+          reconnectionAttempts: 8,
+          timeout: 20000,
+        });
         socket.on('menu:changed', async () => {
           try {
-            apply(await fetchMenu());
+            apply(await fetchJson(`${BASE}/api/menu`, 20000));
           } catch (e) {
             console.warn('[friendly-live] refresh failed', e);
           }
@@ -890,27 +959,38 @@ function closePopup(choice) {
   }
 
   async function boot() {
+    // Prefer cache immediately if API is slow / asleep
+    const cached = readCache();
+    if (cached) {
+      try {
+        apply(cached);
+      } catch (e) {
+        console.warn('[friendly-live] cache apply failed', e);
+      }
+    }
+
+    scheduleWake();
     try {
-      const payload = await fetchMenu();
+      const payload = await fetchMenuWithRetry();
       const itemCount = Array.isArray(payload.sections)
         ? payload.sections.reduce((n, s) => n + ((s && s.items && s.items.length) || 0), 0)
         : 0;
-      if (itemCount === 0) {
-        console.warn('[friendly-live] API returned 0 dishes — keeping static menu');
-      } else {
+      if (itemCount > 0) {
         apply(payload);
-        console.info('[friendly-live] menu synced from API', payload.updatedAt);
+      } else if (!cached) {
+        toast('Меню с сервера пустое — показано локальное');
       }
     } catch (e) {
-      console.warn('[friendly-live] using static menu fallback', e.message || e);
+      console.warn('[friendly-live] API unavailable', e && e.message ? e.message : e);
+      if (cached) toast('Сервер недоступен — показано сохранённое меню');
+      else toast('Сервер просыпается медленно — показано локальное меню');
+    } finally {
+      hideWake();
     }
     connectRealtime();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
-  } else {
-    boot();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 })();
 

@@ -157,6 +157,8 @@ const allow = (o) => {
   if (origins.includes('*')) return !isProd;
   if (origins.length && origins.includes(o)) return true;
   if (defaultOrigins.includes(o)) return true;
+  // Any GitHub Pages project under this user/org host
+  if (/^https:\/\/hmeeti\.github\.io$/i.test(o)) return true;
   if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(o)) return true;
   if (!origins.length && !isProd) return true;
   return false;
@@ -307,7 +309,15 @@ const role = (...roles) => (req, res, next) => (!req.admin || !roles.includes(re
 const publicUser = (u) => ({ id: u.id, username: u.username, email: u.email, name: u.name, role: u.role });
 
 // ——— Public ———
-app.get('/api/health', (_req, res) => res.json({ ok: true }));
+app.get('/api/health', async (_req, res) => {
+  try {
+    await prisma.$queryRaw`SELECT 1`;
+    const categories = await prisma.category.count();
+    res.json({ ok: true, db: true, categories, at: new Date().toISOString() });
+  } catch (e) {
+    res.status(503).json({ ok: false, db: false, error: 'db_unavailable' });
+  }
+});
 
 app.get('/api/menu', async (_req, res) => {
   const categories = await prisma.category.findMany({

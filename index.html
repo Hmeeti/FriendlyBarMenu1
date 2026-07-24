@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./image/favicon.png">
     <title>Friendly — Меню</title>
-    <link rel="stylesheet" href="style.css?v=smooth2">
+    <link rel="stylesheet" href="style.css?v=audit1">
 </head>
 
 <body>
@@ -127,11 +127,11 @@
     </div>
 </div> 
 
-    <script src="config.js?v=smooth2"></script>
-    <script src="i18n.js?v=smooth2"></script>
-    <script src="i18n-menu.js?v=smooth2"></script>
-    <script src="data.js?v=smooth2"></script>
-    <script src="app.js?v=smooth2"></script>
+    <script src="config.js?v=audit1"></script>
+    <script src="i18n.js?v=audit1"></script>
+    <script src="i18n-menu.js?v=audit1"></script>
+    <script src="data.js?v=audit1"></script>
+    <script src="app.js?v=audit1"></script>
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-info">
@@ -157,27 +157,14 @@
     </div>
 </footer>
 
-    <div class="admin-login-modal" id="adminLoginModal" hidden>
-        <div class="admin-login-modal__backdrop" data-admin-close></div>
-        <div class="admin-login-modal__panel" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
-            <button type="button" class="admin-login-modal__close" data-admin-close aria-label="Закрыть">×</button>
-            <h2 id="adminLoginTitle" class="admin-login-modal__title">Вход</h2>
-            <p class="admin-login-modal__hint">Доступ только для администраторов</p>
-            <form id="adminLoginForm" class="admin-login-form" autocomplete="on">
-                <label class="admin-login-form__label">
-                    Логин
-                    <input class="admin-login-form__input" name="login" type="text" required autocomplete="username" />
-                </label>
-                <label class="admin-login-form__label">
-                    Пароль
-                    <input class="admin-login-form__input" name="password" type="password" required autocomplete="current-password" />
-                </label>
-                <p class="admin-login-form__error" id="adminLoginError" hidden></p>
-                <button class="admin-login-form__submit" type="submit">Войти</button>
-            </form>
+    <div id="apiWakeOverlay" class="api-wake" hidden>
+        <div class="api-wake__card">
+            <div class="api-wake__spinner" aria-hidden="true"></div>
+            <p class="api-wake__title">Подключаем меню…</p>
+            <p class="api-wake__hint">Сервер просыпается (обычно 20–40 сек)</p>
         </div>
     </div>
-
+    <div id="toastHost" class="toast-host" aria-live="polite"></div>
 </body>
 
 </html>
