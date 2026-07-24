@@ -41,7 +41,7 @@
       'footer.developer': 'Разработчик сайта — hmeeti',
       'footer.copy': '© 2026 Все права защищены. Копирование материалов запрещено.',
       'footer.rulesTitle': 'Правила посещения заведения',
-      'footer.rules': 'В заведении запрещено курение и распитие принесённых с собой напитков. Алкогольная и табачная продукция, а также обслуживание в баре не предоставляются гостям младше <strong>21 года</strong>. Администрация вправе отказать в обслуживании гостям в состоянии сильного алкогольного опьянения или при нарушении общественного порядка. Просим уважать покой других гостей и персонала. Книга жалоб и предложений предоставляется по первому требованию. Заведение не несёт ответственности за личные вещи, оставленные без присмотра.',
+      'footer.rules': 'В заведении запрещено курение и распитие принесённых с собой напитков. Алкогольная и табачная продукция, а также обслуживание в баре не предоставляются гостям младше <strong>21 года</strong>. Администрация вправе отказать в обслуживании гостям в состоянии сильного алкогольного опьянения или при нарушении общественного порядка. Просим уважать покой других гостей и персонала. Заведение не несёт ответственности за личные вещи, оставленные без присмотра.',
       'lang.label': 'Язык',
     },
     kk: {
@@ -79,7 +79,7 @@
       'footer.developer': 'Сайт әзірлеушісі — hmeeti',
       'footer.copy': '© 2026 Барлық құқықтар қорғалған. Материалдарды көшіруге тыйым салынады.',
       'footer.rulesTitle': 'Мекемеге келу ережелері',
-      'footer.rules': 'Мекемеде темекі шегуге және өзімен алып келген сусындарды ішуге тыйым салынады. Алкоголь мен темекі өнімдері, сондай-ақ барда қызмет көрсету <strong>21 жасқа</strong> толмаған қонақтарға берілмейді. Әкімшілік қатты мас күйдегі немесе қоғамдық тәртіпті бұзған қонақтарға қызмет көрсетуден бас тарту құқығын өзінде қалдырады. Басқа қонақтар мен қызметкерлердің тыныштығын құрметтеуіңізді сұраймыз. Шағымдар мен ұсыныстар кітабы бірінші талап бойынша беріледі. Мекеме қараусыз қалдырылған жеке заттар үшін жауапкершілік көтермейді.',
+      'footer.rules': 'Мекемеде темекі шегуге және өзімен алып келген сусындарды ішуге тыйым салынады. Алкоголь мен темекі өнімдері, сондай-ақ барда қызмет көрсету <strong>21 жасқа</strong> толмаған қонақтарға берілмейді. Әкімшілік қатты мас күйдегі немесе қоғамдық тәртіпті бұзған қонақтарға қызмет көрсетуден бас тарту құқығын өзінде қалдырады. Басқа қонақтар мен қызметкерлердің тыныштығын құрметтеуіңізді сұраймыз. Мекеме қараусыз қалдырылған жеке заттар үшін жауапкершілік көтермейді.',
       'lang.label': 'Тіл',
     },
     en: {
@@ -117,7 +117,7 @@
       'footer.developer': 'Website developer — hmeeti',
       'footer.copy': '© 2026 All rights reserved. Copying materials is prohibited.',
       'footer.rulesTitle': 'House rules',
-      'footer.rules': 'Smoking and consuming your own beverages on the premises is prohibited. Alcohol, tobacco products and bar service are not provided to guests under <strong>21 years old</strong>. Management reserves the right to refuse service to guests who are heavily intoxicated or disrupt public order. Please respect the peace of other guests and staff. A complaints and suggestions book is provided upon request. The venue is not responsible for personal belongings left unattended.',
+      'footer.rules': 'Smoking and consuming your own beverages on the premises is prohibited. Alcohol, tobacco products and bar service are not provided to guests under <strong>21 years old</strong>. Management reserves the right to refuse service to guests who are heavily intoxicated or disrupt public order. Please respect the peace of other guests and staff. The venue is not responsible for personal belongings left unattended.',
       'lang.label': 'Language',
     },
   };
