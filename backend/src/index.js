@@ -58,7 +58,7 @@ app.options(/.*/, cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json({ limit: '2mb' }));
 app.use('/uploads', express.static(path.resolve(__dirname, '../uploads')));
-app.use('/image', express.static(path.resolve(__dirname, '../../frontend/image')));
+app.use('/image', express.static(path.resolve(__dirname, '../../image')));
 
 app.use('/api', publicRoutes);
 app.use('/api/auth', authRoutes);

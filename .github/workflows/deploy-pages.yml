@@ -1,4 +1,4 @@
-name: Deploy frontend to GitHub Pages
+﻿name: Deploy frontend to GitHub Pages
 
 on:
   push:
@@ -22,18 +22,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/configure-pages@v5
-
       - name: Prepare publish folder
         run: |
           mkdir -p _site
-          cp -r frontend/* _site/
+          cp index.html admin.html _site/
+          cp -r css js image _site/
           mkdir -p _site/uploads
-
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
-
       - id: deployment
         uses: actions/deploy-pages@v4

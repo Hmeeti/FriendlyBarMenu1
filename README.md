@@ -1,4 +1,4 @@
-# Friendly Menu
+﻿# Friendly Menu
 
 Электронное меню ресторана с админ-панелью, REST API, real-time синхронизацией и аудитом изменений.
 
@@ -9,17 +9,11 @@ friendly-menu/
 ├── .github/
 │   └── workflows/
 │       └── deploy-pages.yml      # GitHub Pages (frontend)
-├── frontend/                     # Гостевое меню + лёгкая админка
-│   ├── index.html                # Электронное меню
-│   ├── admin.html                # Админ-панель (категории / блюда)
-│   ├── css/
-│   ├── js/
-│   │   ├── config.js             # URL API для продакшена
-│   │   ├── script.js
-│   │   ├── menu-live.js
-│   │   └── admin-panel.js
-│   └── image/                    # Фото блюд (public assets)
-├── backend/                      # Node.js API + БД
+├── index.html                    # Электронное меню (корень = GitHub Pages)
+├── admin.html                    # Админ-панель
+├── css/
+├── js/                           # config.js, script.js, admin-panel.js…
+├── image/                        # Фото блюд├── backend/                      # Node.js API + БД
 │   ├── src/
 │   │   ├── index.js              # Express + Socket.io
 │   │   ├── routes/
@@ -80,7 +74,7 @@ npm run dev:api
 
 ### 2. Frontend (электронное меню)
 
-Откройте папку `frontend/` через **Live Server** (VS Code / Cursor):
+Откройте **корень проекта** через **Live Server** (VS Code / Cursor):
 
 - Меню: `http://127.0.0.1:5501/index.html` (порт может быть 5500/5501)
 - Админка: `http://127.0.0.1:5501/admin.html`
@@ -88,13 +82,13 @@ npm run dev:api
 Либо из корня:
 
 ```bash
-npx --yes serve frontend -p 5501
+npx --yes serve . -p 5501
 ```
 
 ### 3. Вход в админ-панель
 
 1. На странице меню нажмите кнопку **Admin** (в шапке)  
-   или откройте `frontend/admin.html`
+   или откройте `admin.html`
 2. Логин / пароль по умолчанию:
 
 | Поле | Значение |
@@ -132,7 +126,7 @@ ADMIN_PASSWORD="9987650"
 
 ## Конфиг frontend → API
 
-Файл `frontend/js/config.js`:
+Файл `js/config.js`:
 
 ```js
 window.FRIENDLY_CONFIG = {
@@ -153,7 +147,7 @@ git push -u origin main
 
 1. **GitHub Pages** (frontend): Settings → Pages → Source: **GitHub Actions**
 2. **Backend**: Render / Railway / Fly — Root Directory = `backend`
-3. В `frontend/js/config.js` укажите `apiBase` на URL вашего API
+3. В `js/config.js` укажите `apiBase` на URL вашего API
 4. В `CLIENT_ORIGIN` добавьте URL GitHub Pages
 
 ## Основные API-эндпоинты
@@ -177,3 +171,4 @@ git push -u origin main
 ## Лицензия
 
 Private — все права защищены.
+
