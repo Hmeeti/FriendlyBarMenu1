@@ -61,18 +61,22 @@ async function ensureDatabaseAndAdmin() {
         data: { username: u, email: e, name, passwordHash, role, isActive: true },
       });
       console.log(`[setup] Created admin: ${u} (${role})`);
-    } else if (process.env.RESET_ADMIN_PASSWORD === '1') {
-      await prisma.adminUser.update({
-        where: { id: existing.id },
-        data: { username: u, email: e, name, passwordHash, role, isActive: true },
-      });
-      console.log(`[setup] Reset password for admin: ${u}`);
     } else {
-      // Never overwrite password on boot — only refresh profile flags
+      // Env is source of truth for bootstrap admins — keeps Render logins working after SQLite wipes.
+      // Set RESET_ADMIN_PASSWORD=0 to keep DB password and only refresh profile fields.
+      const syncPass = process.env.RESET_ADMIN_PASSWORD !== '0';
       await prisma.adminUser.update({
         where: { id: existing.id },
-        data: { username: u, email: e, name, role, isActive: true },
+        data: {
+          username: u,
+          email: e,
+          name,
+          role,
+          isActive: true,
+          ...(syncPass ? { passwordHash } : {}),
+        },
       });
+      if (syncPass) console.log(`[setup] Synced admin from env: ${u}`);
     }
   };
 
@@ -139,19 +143,34 @@ async function seedMenuFromDataJs() {
       const it = sec.items[j];
       const d = details[String(it.id)] || {};
       const legacyId = Number(it.id);
-      await prisma.menuItem.create({
-        data: {
-          legacyId: Number.isFinite(legacyId) ? legacyId : undefined,
-          categoryId: cat.id,
-          name: it.name || d.name || `Item ${it.id}`,
-          description: d.desc || it.desc || '',
-          weight: it.weight || '',
-          price: Number(it.price ?? d.price) || 0,
-          imageUrl: it.img || d.img || 'image/nono.png',
-          sortOrder: j,
-          isActive: true,
-        },
-      });
+      try {
+        await prisma.menuItem.create({
+          data: {
+            legacyId: Number.isFinite(legacyId) ? legacyId : undefined,
+            categoryId: cat.id,
+            name: it.name || d.name || `Item ${it.id}`,
+            description: d.desc || it.desc || '',
+            weight: it.weight || '',
+            price: Number(it.price ?? d.price) || 0,
+            imageUrl: it.img || d.img || 'image/nono.png',
+            sortOrder: j,
+            isActive: true,
+          },
+        });
+      } catch {
+        await prisma.menuItem.create({
+          data: {
+            categoryId: cat.id,
+            name: it.name || d.name || `Item ${it.id}`,
+            description: d.desc || it.desc || '',
+            weight: it.weight || '',
+            price: Number(it.price ?? d.price) || 0,
+            imageUrl: it.img || d.img || 'image/nono.png',
+            sortOrder: j,
+            isActive: true,
+          },
+        });
+      }
       items++;
     }
   }

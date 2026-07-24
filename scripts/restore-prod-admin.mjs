@@ -42,6 +42,8 @@ function loadMenu() {
   };
 }
 
+const FORCE = process.env.FORCE_RESEED === '1';
+
 async function main() {
   console.log('API:', API);
   const login = await api(null, 'POST', '/api/auth/login', {
@@ -67,10 +69,16 @@ async function main() {
     console.log(`Admin ${OWNER_USER} already exists`);
   }
 
-  const cats = await api(token, 'GET', '/api/admin/categories');
+  let cats = await api(token, 'GET', '/api/admin/categories');
   if ((cats.categories || []).length > 0) {
-    console.log(`Menu already has ${cats.categories.length} categories — skip seed`);
-    return;
+    if (!FORCE) {
+      console.log(`Menu already has ${cats.categories.length} categories — skip seed (set FORCE_RESEED=1 to wipe)`);
+      return;
+    }
+    console.log(`FORCE_RESEED: deleting ${cats.categories.length} categories…`);
+    for (const c of cats.categories) {
+      await api(token, 'DELETE', `/api/admin/categories/${c.id}`);
+    }
   }
 
   const { sections, details } = loadMenu();
@@ -80,7 +88,7 @@ async function main() {
     const title = sec.title || `Section ${i + 1}`;
     const created = await api(token, 'POST', '/api/admin/categories', {
       title,
-      slug: `${sec.anchor || 'cat'}-${i}`,
+      slug: `${sec.anchor || 'cat'}-${i}-${Date.now().toString(36)}`,
       sortOrder: i,
       isActive: true,
     });
@@ -88,9 +96,8 @@ async function main() {
     for (let j = 0; j < (sec.items || []).length; j++) {
       const it = sec.items[j];
       const d = details[String(it.id)] || {};
-      await api(token, 'POST', '/api/admin/items', {
+      const payload = {
         categoryId,
-        legacyId: Number(it.id),
         name: it.name || d.name || `Item ${it.id}`,
         description: d.desc || it.desc || '',
         weight: it.weight || '',
@@ -98,7 +105,15 @@ async function main() {
         imageUrl: it.img || d.img || 'image/nono.png',
         sortOrder: j,
         isActive: true,
-      });
+      };
+      const legacyId = Number(it.id);
+      if (Number.isFinite(legacyId)) payload.legacyId = legacyId;
+      try {
+        await api(token, 'POST', '/api/admin/items', payload);
+      } catch {
+        delete payload.legacyId;
+        await api(token, 'POST', '/api/admin/items', payload);
+      }
       items++;
     }
     console.log(`  + ${title} (${(sec.items || []).length})`);
