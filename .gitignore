@@ -1,8 +1,5 @@
-# Dependencies
 node_modules/
 **/node_modules/
-
-# Environment & secrets
 .env
 .env.*
 !.env.example
@@ -10,35 +7,16 @@ node_modules/
 **/.env
 !**/.env.example
 !**/.env.production.example
-
-# Databases & local uploads
 backend/prisma/*.db
 backend/prisma/*.db-journal
 backend/uploads/*
 !backend/uploads/.gitkeep
-server/prisma/*.db
-server/uploads/*
-
-# Build outputs
 dist/
 **/dist/
-build/
-coverage/
-
-# Logs & OS
 *.log
-npm-debug.log*
-yarn-error.log*
 .DS_Store
 Thumbs.db
-
-# IDE
 .idea/
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-
-# Caches
+.vscode/
 .cache/
 *.tmp
-.turbo/
