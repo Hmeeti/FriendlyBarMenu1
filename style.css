@@ -878,14 +878,18 @@ body.admin-login-open {
     }
 
     .header-admin-btn {
-        display: none;
+        display: inline-flex;
+        height: 34px;
+        padding: 0 9px;
+        font-size: 0.62rem;
+        letter-spacing: 0.05em;
     }
 
     .cart-btn {
-        height: 40px;
-        padding: 0 12px;
-        font-size: 13px;
-        gap: 6px;
+        height: 34px;
+        padding: 0 11px;
+        font-size: 12px;
+        gap: 5px;
     }
 
     .cart-count {
@@ -930,12 +934,6 @@ body.admin-login-open {
     border-color: var(--color-accent);
     color: var(--color-on-accent);
     outline: none;
-}
-
-@media (max-width: 640px) {
-    .header-admin-btn {
-        display: none;
-    }
 }
 
 .item-image-wrap {
