@@ -8,30 +8,34 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="admin-body">
+  <div class="admin-ambient" aria-hidden="true"></div>
+
   <!-- Login gate -->
   <div id="adminGate" class="admin-gate">
     <form id="adminGateForm" class="admin-gate__card" autocomplete="on">
-      <h1 class="admin-gate__title">Admin</h1>
-      <p class="admin-gate__hint">Вход в панель управления меню</p>
+      <p class="admin-eyebrow">Friendly Bar</p>
+      <h1 class="admin-gate__title">Панель меню</h1>
+      <p class="admin-gate__hint">Войдите, чтобы править блюда, цены и наличие</p>
       <label class="admin-field">
         <span>Логин</span>
-        <input name="login" type="text" required autocomplete="username" placeholder="логин" />
+        <input name="login" type="text" required autocomplete="username" placeholder="Ваш логин" />
       </label>
       <label class="admin-field">
         <span>Пароль</span>
-        <input name="password" type="password" required autocomplete="current-password" placeholder="пароль" />
+        <input name="password" type="password" required autocomplete="current-password" placeholder="••••••••" />
       </label>
       <p id="adminGateError" class="admin-error" hidden></p>
       <button type="submit" class="admin-btn admin-btn--primary">Войти</button>
-      <a class="admin-gate__back" href="index.html">← К меню</a>
+      <a class="admin-gate__back" href="index.html">← К гостевому меню</a>
     </form>
   </div>
 
   <!-- Panel -->
   <div id="adminApp" class="admin-app" hidden>
     <header class="admin-top">
-      <div>
-        <div class="admin-top__brand">Friendly Admin</div>
+      <div class="admin-top__brand-wrap">
+        <p class="admin-eyebrow">Friendly</p>
+        <div class="admin-top__brand">Admin</div>
         <div class="admin-top__sub" id="adminUserLabel">Редактирование меню</div>
       </div>
       <div class="admin-top__actions">
@@ -40,7 +44,7 @@
           <button type="button" class="admin-tab" data-tab="logs" id="adminLogsTab" hidden>Логи</button>
         </nav>
         <span id="adminLiveStatus" class="admin-pill">API</span>
-        <a class="admin-btn admin-btn--ghost" href="index.html">Меню сайта</a>
+        <a class="admin-btn admin-btn--ghost" href="index.html">Сайт</a>
         <button type="button" id="adminLogoutBtn" class="admin-btn admin-btn--ghost">Выйти</button>
       </div>
     </header>
@@ -49,7 +53,7 @@
       <aside class="admin-cats card-panel">
         <div class="admin-cats__head">
           <h2>Категории</h2>
-          <input id="catSearch" class="admin-input" type="search" placeholder="Поиск категории…" />
+          <input id="catSearch" class="admin-input" type="search" placeholder="Найти категорию…" />
         </div>
         <button type="button" class="admin-cat is-active" data-cat-id="">Все блюда</button>
         <div id="categoryList" class="admin-cat-list"></div>
@@ -59,7 +63,7 @@
         <div class="admin-main__toolbar card-panel">
           <h2 id="currentCatTitle">Все блюда</h2>
           <div class="admin-main__tools">
-            <input id="itemSearch" class="admin-input" type="search" placeholder="Поиск блюда…" />
+            <input id="itemSearch" class="admin-input" type="search" placeholder="Найти блюдо…" />
             <span id="itemCount" class="admin-muted"></span>
           </div>
         </div>
@@ -84,16 +88,19 @@
 
     <div id="adminLogsView" class="admin-logs" hidden>
       <div class="admin-main__toolbar card-panel">
-        <h2>Журнал действий</h2>
+        <div>
+          <p class="admin-eyebrow">Журнал</p>
+          <h2>Действия в админке</h2>
+        </div>
         <div class="admin-main__tools">
           <input id="logSearch" class="admin-input" type="search" placeholder="Поиск по логам…" />
           <select id="logActionFilter" class="admin-input">
             <option value="">Все действия</option>
-            <option value="LOGIN">LOGIN</option>
-            <option value="LOGOUT">LOGOUT</option>
-            <option value="CREATE">CREATE</option>
-            <option value="UPDATE">UPDATE</option>
-            <option value="DELETE">DELETE</option>
+            <option value="LOGIN">Вход</option>
+            <option value="LOGOUT">Выход</option>
+            <option value="CREATE">Создание</option>
+            <option value="UPDATE">Изменение</option>
+            <option value="DELETE">Удаление</option>
           </select>
           <button type="button" id="logRefreshBtn" class="admin-btn admin-btn--ghost">Обновить</button>
           <span id="logCount" class="admin-muted"></span>
@@ -122,7 +129,8 @@
     <div class="admin-modal__backdrop" data-close-edit></div>
     <form id="editForm" class="admin-modal__panel" autocomplete="off">
       <button type="button" class="admin-modal__close" data-close-edit aria-label="Закрыть">×</button>
-      <h2 id="editTitle">Редактировать блюдо</h2>
+      <p class="admin-eyebrow">Редактирование</p>
+      <h2 id="editTitle">Блюдо</h2>
 
       <input type="hidden" name="id" />
 
