@@ -840,7 +840,60 @@ function closePopup(choice) {
         screen.style.display = 'none';
         document.body.classList.remove('lock-scroll');
         if (choice === 'hookah') window.location.href = 'hookah.html';
+        else startMenuVisit(choice || 'kitchen');
     }, 400);
+}
+
+/** Fire-and-forget guest session: count visits + time on menu. */
+function startMenuVisit(choice) {
+    const VISIT_KEY = 'fm_visit_id';
+    const T0_KEY = 'fm_visit_t0';
+    if (sessionStorage.getItem(VISIT_KEY)) return;
+
+    const base = String(window.FRIENDLY_API_BASE || '').replace(/\/$/, '');
+    if (!base) return;
+
+    const t0 = Date.now();
+    sessionStorage.setItem(T0_KEY, String(t0));
+
+    fetch(`${base}/api/visits/start`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: location.pathname || '/', choice: choice || 'kitchen' }),
+        keepalive: true,
+    })
+        .then((r) => r.json())
+        .then((data) => {
+            if (!data?.id) return;
+            sessionStorage.setItem(VISIT_KEY, data.id);
+
+            const ping = () => {
+                const id = sessionStorage.getItem(VISIT_KEY);
+                if (!id) return;
+                const durationSec = Math.max(0, Math.floor((Date.now() - t0) / 1000));
+                const body = JSON.stringify({ id, durationSec });
+                if (navigator.sendBeacon) {
+                    navigator.sendBeacon(
+                        `${base}/api/visits/ping`,
+                        new Blob([body], { type: 'application/json' })
+                    );
+                } else {
+                    fetch(`${base}/api/visits/ping`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body,
+                        keepalive: true,
+                    }).catch(() => {});
+                }
+            };
+
+            setInterval(ping, 30000);
+            window.addEventListener('pagehide', ping);
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'hidden') ping();
+            });
+        })
+        .catch(() => {});
 }
 
 /**

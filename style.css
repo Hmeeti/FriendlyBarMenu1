@@ -2334,10 +2334,17 @@ body {
   gap: 14px;
 }
 
+.admin-analytics {
+  display: grid;
+  gap: 14px;
+}
+
 #adminMenuView[hidden],
 #adminLogsView[hidden],
+#adminAnalyticsView[hidden],
 .admin-layout[hidden],
-.admin-logs[hidden] {
+.admin-logs[hidden],
+.admin-analytics[hidden] {
   display: none !important;
 }
 
@@ -2348,9 +2355,89 @@ body {
   align-items: start;
 }
 
-#adminLogsView:not([hidden]) {
+#adminLogsView:not([hidden]),
+#adminAnalyticsView:not([hidden]) {
   display: grid;
   gap: 14px;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.admin-stat {
+  display: grid;
+  gap: 4px;
+  padding: 16px 18px;
+}
+
+.admin-stat__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--admin-muted);
+}
+
+.admin-stat__value {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--admin-linen);
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-stat__hint {
+  font-size: 0.78rem;
+  color: color-mix(in srgb, var(--admin-muted) 85%, transparent);
+}
+
+.admin-analytics__chart-title {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--admin-linen);
+}
+
+.admin-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  min-height: 160px;
+  padding: 8px 4px 0;
+  overflow-x: auto;
+}
+
+.admin-chart__col {
+  flex: 1 1 0;
+  min-width: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  height: 160px;
+}
+
+.admin-chart__bar {
+  width: 100%;
+  max-width: 36px;
+  min-height: 2px;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, var(--admin-brass), var(--admin-brass-deep));
+  transition: height 0.35s ease;
+}
+
+.admin-chart__n {
+  font-size: 0.7rem;
+  color: var(--admin-linen);
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-chart__day {
+  font-size: 0.65rem;
+  color: var(--admin-muted);
+  white-space: nowrap;
 }
 
 .admin-table--logs td {

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="./image/favicon.png" />
   <title>Admin — Friendly Menu</title>
-  <link rel="stylesheet" href="style.css?v=audit3" />
+  <link rel="stylesheet" href="style.css?v=audit5" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -44,6 +44,7 @@
       <div class="admin-top__actions">
         <nav class="admin-tabs" aria-label="Разделы админки">
           <button type="button" class="admin-tab is-active" data-tab="menu">Меню</button>
+          <button type="button" class="admin-tab" data-tab="analytics" id="adminAnalyticsTab" hidden>Аналитика</button>
           <button type="button" class="admin-tab" data-tab="logs" id="adminLogsTab" hidden>Логи</button>
         </nav>
         <span id="adminLiveStatus" class="admin-pill">API</span>
@@ -125,6 +126,30 @@
         <p id="logsEmpty" class="admin-empty" hidden>Пока нет записей.</p>
       </div>
     </div>
+
+    <div id="adminAnalyticsView" class="admin-analytics" hidden>
+      <div class="admin-main__toolbar card-panel">
+        <div>
+          <p class="admin-eyebrow">Гости</p>
+          <h2>Аналитика меню</h2>
+        </div>
+        <div class="admin-main__tools">
+          <select id="analyticsDays" class="admin-input">
+            <option value="7">7 дней</option>
+            <option value="14">14 дней</option>
+            <option value="30" selected>30 дней</option>
+            <option value="90">90 дней</option>
+          </select>
+          <button type="button" id="analyticsRefreshBtn" class="admin-btn admin-btn--ghost">Обновить</button>
+        </div>
+      </div>
+      <div class="admin-stats" id="analyticsStats"></div>
+      <div class="card-panel">
+        <h3 class="admin-analytics__chart-title">Заходы по дням</h3>
+        <div id="analyticsChart" class="admin-chart" aria-label="График заходов"></div>
+        <p id="analyticsEmpty" class="admin-empty" hidden>Пока нет данных. Откройте гостевое меню — сессии появятся здесь.</p>
+      </div>
+    </div>
   </div>
 
   <!-- Edit modal -->
@@ -198,7 +223,7 @@
     </form>
   </div>
 
-  <script src="config.js?v=audit1"></script>
-  <script src="admin.js?v=audit1"></script>
+  <script src="config.js?v=audit5"></script>
+  <script src="admin.js?v=audit5"></script>
 </body>
 </html>

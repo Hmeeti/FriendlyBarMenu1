@@ -97,6 +97,13 @@ async function ensureDatabaseAndAdmin() {
     throw new Error('JWT_SECRET must be set to a strong value (24+ chars). See .env.example.');
   }
 
+  try {
+    await prisma.visit.findFirst({ take: 1 });
+  } catch {
+    console.log('[setup] Visit table missing — running prisma db push…');
+    execSync('npx prisma db push --skip-generate', { stdio: 'inherit', cwd: __dirname });
+  }
+
   // Fresh Render/SQLite often has zero dishes — keep guest menu alive from data.js
   const catCount = await prisma.category.count();
   if (catCount === 0 && process.env.AUTO_SEED !== '0') {
@@ -626,6 +633,114 @@ app.delete('/api/admin/audit', auth, role('SUPER_ADMIN'), async (req, res) => {
   if (!days || days < 30) return res.status(400).json({ error: 'olderThanDays must be >= 30' });
   const result = await prisma.auditLog.deleteMany({ where: { createdAt: { lt: new Date(Date.now() - days * 864e5) } } });
   res.json({ deleted: result.count });
+});
+
+// ——— Guest visit analytics ———
+const visitHits = new Map();
+function allowVisitWrite(ip) {
+  const now = Date.now();
+  let row = visitHits.get(ip);
+  if (!row || now > row.reset) row = { n: 0, reset: now + 60e3 };
+  row.n += 1;
+  visitHits.set(ip, row);
+  return row.n <= 40;
+}
+
+app.post('/api/visits/start', async (req, res) => {
+  const ip = String(req.ip || req.headers['x-forwarded-for'] || 'unknown');
+  if (!allowVisitWrite(ip)) return res.status(429).json({ error: 'Too many requests' });
+  const path = String(req.body?.path || '/').slice(0, 120);
+  const choice = req.body?.choice != null ? String(req.body.choice).slice(0, 40) : null;
+  const visit = await prisma.visit.create({
+    data: {
+      path,
+      choice,
+      userAgent: String(req.headers['user-agent'] || '').slice(0, 240) || null,
+    },
+  });
+  res.status(201).json({ id: visit.id });
+});
+
+app.post('/api/visits/ping', async (req, res) => {
+  const ip = String(req.ip || req.headers['x-forwarded-for'] || 'unknown');
+  if (!allowVisitWrite(ip)) return res.status(429).json({ error: 'Too many requests' });
+  const id = String(req.body?.id || '');
+  if (!id || id.length > 40) return res.status(400).json({ error: 'Invalid id' });
+  const durationSec = Math.max(0, Math.min(86400, Math.floor(Number(req.body?.durationSec) || 0)));
+  try {
+    await prisma.visit.update({
+      where: { id },
+      data: { durationSec, lastSeenAt: new Date() },
+    });
+    res.json({ ok: true });
+  } catch {
+    res.status(404).json({ error: 'Not found' });
+  }
+});
+
+app.get('/api/admin/analytics', auth, role('SUPER_ADMIN'), async (req, res) => {
+  const days = Math.min(90, Math.max(1, Number(req.query.days) || 7));
+  const since = new Date(Date.now() - days * 864e5);
+  const dayStart = new Date();
+  dayStart.setHours(0, 0, 0, 0);
+
+  const [visits, todayCount, allTime] = await Promise.all([
+    prisma.visit.findMany({
+      where: { startedAt: { gte: since } },
+      select: { startedAt: true, durationSec: true, choice: true },
+      orderBy: { startedAt: 'asc' },
+    }),
+    prisma.visit.count({ where: { startedAt: { gte: dayStart } } }),
+    prisma.visit.count(),
+  ]);
+
+  const byDayMap = new Map();
+  for (let i = days - 1; i >= 0; i--) {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() - i);
+    byDayMap.set(d.toISOString().slice(0, 10), { day: d.toISOString().slice(0, 10), visits: 0, totalSec: 0 });
+  }
+
+  let totalSec = 0;
+  let engaged = 0;
+  let engagedSec = 0;
+  const byChoice = {};
+
+  for (const v of visits) {
+    const key = v.startedAt.toISOString().slice(0, 10);
+    const row = byDayMap.get(key);
+    if (row) {
+      row.visits += 1;
+      row.totalSec += v.durationSec || 0;
+    }
+    totalSec += v.durationSec || 0;
+    if ((v.durationSec || 0) >= 10) {
+      engaged += 1;
+      engagedSec += v.durationSec;
+    }
+    const c = v.choice || 'unknown';
+    byChoice[c] = (byChoice[c] || 0) + 1;
+  }
+
+  const count = visits.length;
+  res.json({
+    days,
+    today: todayCount,
+    period: {
+      visits: count,
+      avgSec: count ? Math.round(totalSec / count) : 0,
+      avgEngagedSec: engaged ? Math.round(engagedSec / engaged) : 0,
+      engaged,
+    },
+    allTime,
+    byDay: Array.from(byDayMap.values()).map((r) => ({
+      day: r.day,
+      visits: r.visits,
+      avgSec: r.visits ? Math.round(r.totalSec / r.visits) : 0,
+    })),
+    byChoice,
+  });
 });
 
 app.use((err, _req, res, _next) => {

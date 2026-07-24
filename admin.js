@@ -54,7 +54,9 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     userLabel: document.getElementById('adminUserLabel'),
     menuView: document.getElementById('adminMenuView'),
     logsView: document.getElementById('adminLogsView'),
+    analyticsView: document.getElementById('adminAnalyticsView'),
     logsTab: document.getElementById('adminLogsTab'),
+    analyticsTab: document.getElementById('adminAnalyticsTab'),
     categoryList: document.getElementById('categoryList'),
     catSearch: document.getElementById('catSearch'),
     itemSearch: document.getElementById('itemSearch'),
@@ -76,13 +78,28 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     logActionFilter: document.getElementById('logActionFilter'),
     logRefreshBtn: document.getElementById('logRefreshBtn'),
     logCount: document.getElementById('logCount'),
+    analyticsDays: document.getElementById('analyticsDays'),
+    analyticsRefreshBtn: document.getElementById('analyticsRefreshBtn'),
+    analyticsStats: document.getElementById('analyticsStats'),
+    analyticsChart: document.getElementById('analyticsChart'),
+    analyticsEmpty: document.getElementById('analyticsEmpty'),
   };
 
   function canViewLogs() {
-    // Full-access admins (Hmeeti / SUPER_ADMIN) see the journal
+    // Full-access admins (Hmeeti / SUPER_ADMIN) see the journal + analytics
     if (!state.user) return false;
     const u = String(state.user.username || '').toLowerCase();
     return u === 'hmeeti' || state.user.role === 'SUPER_ADMIN';
+  }
+
+  function formatDuration(sec) {
+    const n = Math.max(0, Math.round(Number(sec) || 0));
+    if (n < 60) return `${n} сек`;
+    const m = Math.floor(n / 60);
+    const s = n % 60;
+    if (m < 60) return s ? `${m} мин ${s} сек` : `${m} мин`;
+    const h = Math.floor(m / 60);
+    return `${h} ч ${m % 60} мин`;
   }
 
   function imgSrc(path) {
@@ -148,15 +165,25 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
         ? `${u.name || u.username} · ${u.role === 'SUPER_ADMIN' ? 'полный доступ' : 'менеджер'}`
         : 'Редактирование меню';
     }
+    const showExtras = canViewLogs();
     if (els.logsTab) {
-      if (canViewLogs()) els.logsTab.removeAttribute('hidden');
+      if (showExtras) els.logsTab.removeAttribute('hidden');
       else els.logsTab.setAttribute('hidden', '');
     }
-    if (!canViewLogs() && state.tab === 'logs') setTab('menu');
+    if (els.analyticsTab) {
+      if (showExtras) els.analyticsTab.removeAttribute('hidden');
+      else els.analyticsTab.setAttribute('hidden', '');
+    }
+    if (!showExtras && (state.tab === 'logs' || state.tab === 'analytics')) setTab('menu');
   }
 
   function setTab(tab) {
-    state.tab = tab === 'logs' && canViewLogs() ? 'logs' : 'menu';
+    const allowed = new Set(['menu']);
+    if (canViewLogs()) {
+      allowed.add('logs');
+      allowed.add('analytics');
+    }
+    state.tab = allowed.has(tab) ? tab : 'menu';
     document.querySelectorAll('.admin-tab').forEach((btn) => {
       btn.classList.toggle('is-active', btn.getAttribute('data-tab') === state.tab);
     });
@@ -167,6 +194,10 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     if (els.logsView) {
       if (state.tab === 'logs') els.logsView.removeAttribute('hidden');
       else els.logsView.setAttribute('hidden', '');
+    }
+    if (els.analyticsView) {
+      if (state.tab === 'analytics') els.analyticsView.removeAttribute('hidden');
+      else els.analyticsView.setAttribute('hidden', '');
     }
     if (state.tab === 'logs') {
       if (els.logsEmpty) {
@@ -180,6 +211,16 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
           els.logsEmpty.textContent = e.message || 'Не удалось загрузить логи';
         }
         if (els.logCount) els.logCount.textContent = 'ошибка';
+      });
+    }
+    if (state.tab === 'analytics') {
+      loadAnalytics().catch((e) => {
+        if (els.analyticsEmpty) {
+          els.analyticsEmpty.hidden = false;
+          els.analyticsEmpty.textContent = e.message || 'Не удалось загрузить аналитику';
+        }
+        if (els.analyticsStats) els.analyticsStats.innerHTML = '';
+        if (els.analyticsChart) els.analyticsChart.innerHTML = '';
       });
     }
   }
@@ -315,6 +356,39 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
       els.logsEmpty.hidden = false;
       els.logsEmpty.textContent = 'Пока нет записей в журнале.';
     }
+  }
+
+  async function loadAnalytics() {
+    if (!canViewLogs()) throw new Error('Нет доступа к аналитике. Войдите как Hmeeti.');
+    const days = Number(els.analyticsDays?.value || 30);
+    const data = await api(`/api/admin/analytics?days=${days}`);
+    const p = data.period || {};
+    els.analyticsStats.innerHTML = `
+      <div class="admin-stat card-panel"><span class="admin-stat__label">Сегодня</span><strong class="admin-stat__value">${data.today ?? 0}</strong><span class="admin-stat__hint">заходов</span></div>
+      <div class="admin-stat card-panel"><span class="admin-stat__label">За ${days} дн.</span><strong class="admin-stat__value">${p.visits ?? 0}</strong><span class="admin-stat__hint">заходов</span></div>
+      <div class="admin-stat card-panel"><span class="admin-stat__label">Среднее время</span><strong class="admin-stat__value">${escapeHtml(formatDuration(p.avgSec))}</strong><span class="admin-stat__hint">на сессию</span></div>
+      <div class="admin-stat card-panel"><span class="admin-stat__label">Активные</span><strong class="admin-stat__value">${escapeHtml(formatDuration(p.avgEngagedSec))}</strong><span class="admin-stat__hint">≥10 сек · ${p.engaged ?? 0} сессий</span></div>
+      <div class="admin-stat card-panel"><span class="admin-stat__label">Всего</span><strong class="admin-stat__value">${data.allTime ?? 0}</strong><span class="admin-stat__hint">за всё время</span></div>
+    `;
+
+    const byDay = data.byDay || [];
+    const max = Math.max(1, ...byDay.map((d) => d.visits || 0));
+    const hasAny = byDay.some((d) => d.visits > 0);
+    if (els.analyticsEmpty) {
+      els.analyticsEmpty.hidden = hasAny;
+      if (!hasAny) els.analyticsEmpty.textContent = 'Пока нет данных. Откройте гостевое меню — сессии появятся здесь.';
+    }
+    els.analyticsChart.innerHTML = byDay
+      .map((d) => {
+        const h = Math.round(((d.visits || 0) / max) * 100);
+        const label = String(d.day || '').slice(5);
+        return `<div class="admin-chart__col" title="${escapeHtml(d.day)}: ${d.visits} · ср. ${formatDuration(d.avgSec)}">
+          <div class="admin-chart__bar" style="height:${h}%"></div>
+          <span class="admin-chart__n">${d.visits || 0}</span>
+          <span class="admin-chart__day">${escapeHtml(label)}</span>
+        </div>`;
+      })
+      .join('');
   }
 
   function fillCategorySelect() {
@@ -486,6 +560,15 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
   });
   els.logRefreshBtn?.addEventListener('click', () => {
     loadLogs().catch((err) => alert(err.message || 'Ошибка'));
+  });
+
+  els.analyticsRefreshBtn?.addEventListener('click', () => {
+    loadAnalytics().catch((err) => alert(err.message || 'Ошибка'));
+  });
+  els.analyticsDays?.addEventListener('change', () => {
+    if (state.tab === 'analytics') {
+      loadAnalytics().catch((err) => console.warn(err));
+    }
   });
 
   els.itemsBody.addEventListener('click', async (e) => {

@@ -131,3 +131,16 @@ model AuditLog {
   @@index([entityType, entityId])
   @@index([adminId])
 }
+
+/// Guest menu sessions: one row per browser tab/session, duration updated via ping.
+model Visit {
+  id          String   @id @default(cuid())
+  startedAt   DateTime @default(now())
+  lastSeenAt  DateTime @default(now())
+  durationSec Int      @default(0)
+  path        String   @default("/")
+  choice      String?
+  userAgent   String?
+
+  @@index([startedAt])
+}
