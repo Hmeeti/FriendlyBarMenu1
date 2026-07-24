@@ -1202,7 +1202,7 @@ body.admin-login-open {
     hyphens: none;
     word-break: normal;
     overflow-wrap: anywhere;
-    scroll-margin-top: 140px;
+    scroll-margin-top: calc(var(--header-offset, 148px) + 8px);
 }
 
 .title__menu::before,

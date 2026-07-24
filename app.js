@@ -111,17 +111,70 @@ function initModalImageFallback() {
     });
 }
 
+const SECTION_NAV_IDS = {
+    'Меню Грузия': 'menu-gruziya',
+    'Основные блюда': 'main-courses',
+    'Салаты Грузия': 'salaty-gruziya',
+    'Супы': 'soup',
+    'Хачапури': 'khachapuri',
+    'Горячие закуски': 'goryachie-zakuski',
+    'Холодные закуски': 'holodnye-zakuski',
+    'Меню Европа': 'menu-evropa',
+    'Салаты Европа': 'salaty-evropa',
+    'Стейки': 'beef',
+    'Блюда из рыбы': 'fisheat',
+    'Блюда из курицы': 'chikenaet',
+    'Блюда на компанию': 'alleat',
+    'Пасты': 'pasties',
+    'Роллы': 'rolls',
+    'Сеты': 'sets',
+    'Пиццы': 'pizza',
+    'Шашлыки': 'meat',
+    'Гарниры': 'garnirs',
+    'Соусы': 'souls',
+    'Десерты': 'candy',
+    'К чаю': 'bar',
+    'Барное меню': 'bar'
+};
+
+const KNOWN_SECTION_IDS = new Set(Object.values(SECTION_NAV_IDS));
+
 function getSectionId(section) {
-    if (section && section.anchor) return section.anchor;
     const title = String(section && section.title ? section.title : '').trim();
-    const aliasMap = {
-        'Меню Грузия': 'menu-gruziya',
-        'Меню Европа': 'menu-evropa',
-        'Горячие закуски': 'goryachie-zakuski',
-        'Холодные закуски': 'holodnye-zakuski'
-    };
-    if (aliasMap[title]) return aliasMap[title];
-    return title.toLowerCase().replace(/[^а-яa-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    if (SECTION_NAV_IDS[title]) return SECTION_NAV_IDS[title];
+
+    const raw = section && section.anchor ? String(section.anchor).trim() : '';
+    if (raw) {
+        // API seed often produces "soup-3", "main-courses-1" — strip numeric suffixes
+        const stripped = raw.replace(/(-\d+)+$/g, '');
+        if (KNOWN_SECTION_IDS.has(stripped)) return stripped;
+        if (KNOWN_SECTION_IDS.has(raw)) return raw;
+        return stripped || raw;
+    }
+
+    return title
+        .toLowerCase()
+        .replace(/[^а-яa-z0-9]+/gi, '-')
+        .replace(/(^-|-$)/g, '');
+}
+
+function findSectionHeading(targetId, sectionTitle) {
+    if (targetId) {
+        const byId = document.getElementById(targetId);
+        if (byId) return byId;
+    }
+    if (sectionTitle) {
+        const byTitle = document.querySelector(
+            `.title__menu[data-i18n-section="${CSS.escape(sectionTitle)}"]`
+        );
+        if (byTitle) return byTitle;
+        // Nav label "Барное меню" maps to section "К чаю"
+        if (sectionTitle === 'Барное меню') {
+            const tea = document.querySelector('.title__menu[data-i18n-section="К чаю"]');
+            if (tea) return tea;
+        }
+    }
+    return null;
 }
 
 function i18n() {
@@ -356,6 +409,10 @@ function addFromModal() {
     }
 }
 
+let categoryNavBound = false;
+let categoryObserver = null;
+let categoryNavLockUntil = 0;
+
 function setActiveCategory(hash) {
     const links = Array.from(document.querySelectorAll('.category'));
     if (!links.length) return;
@@ -395,15 +452,29 @@ function scrollCategoryIntoNav(activeLink) {
     }
 }
 
-function initCategoryNav() {
-    const links = Array.from(document.querySelectorAll('.category'));
-    if (!links.length) return;
+function scrollToSection(target) {
+    if (!target) return;
+    syncHeaderOffset();
+    const header = document.querySelector('.header');
+    const offset = header ? Math.ceil(header.getBoundingClientRect().height) + 8 : 120;
+    const top = window.scrollY + target.getBoundingClientRect().top - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+}
 
-    links.forEach((link) => {
-        link.addEventListener('click', function (event) {
+function initCategoryNav() {
+    const nav = document.querySelector('.categories');
+    if (!nav) return;
+
+    if (!categoryNavBound) {
+        categoryNavBound = true;
+        nav.addEventListener('click', function (event) {
+            const link = event.target.closest('a.category');
+            if (!link || !nav.contains(link)) return;
+
             const href = link.getAttribute('href') || '';
             if (!href || href === '#') {
                 event.preventDefault();
+                categoryNavLockUntil = Date.now() + 900;
                 setActiveCategory('#');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 if (window.history && window.history.replaceState) {
@@ -415,49 +486,62 @@ function initCategoryNav() {
             if (!href.startsWith('#')) return;
 
             const targetId = href.slice(1);
-            const target = document.getElementById(targetId);
-            if (!target) return;
+            const sectionTitle = link.getAttribute('data-i18n-section') || '';
+            const target = findSectionHeading(targetId, sectionTitle);
+            if (!target) {
+                event.preventDefault();
+                return;
+            }
 
             event.preventDefault();
+            categoryNavLockUntil = Date.now() + 1200;
             setActiveCategory(href);
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            scrollToSection(target);
             if (window.history && window.history.replaceState) {
                 window.history.replaceState(null, '', href);
             }
         });
-    });
+
+        window.addEventListener('hashchange', function () {
+            setActiveCategory(window.location.hash || '#');
+        });
+    }
 
     const initialHash = window.location.hash || '#';
     setActiveCategory(initialHash);
 
-    window.addEventListener('hashchange', function () {
-        setActiveCategory(window.location.hash || '#');
-    });
-
-    if ('IntersectionObserver' in window) {
-        const headings = Array.from(document.querySelectorAll('.title__menu[id]'));
-        if (headings.length) {
-            const observer = new IntersectionObserver((entries) => {
-                const visibleEntry = entries
-                    .filter((entry) => entry.isIntersecting)
-                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-                if (visibleEntry) {
-                    const id = visibleEntry.target.id;
-                    setActiveCategory(`#${id}`);
-                    if (window.history && window.history.replaceState) {
-                        window.history.replaceState(null, '', `#${id}`);
-                    }
-                }
-            }, {
-                // Keep sticky header out of the "active section" zone
-                rootMargin: '-120px 0px -55% 0px',
-                threshold: [0.08, 0.2, 0.4, 0.6]
-            });
-
-            headings.forEach((heading) => observer.observe(heading));
-        }
+    if (categoryObserver) {
+        categoryObserver.disconnect();
+        categoryObserver = null;
     }
+
+    if (!('IntersectionObserver' in window)) return;
+
+    const headings = Array.from(document.querySelectorAll('.title__menu[id]'));
+    if (!headings.length) return;
+
+    categoryObserver = new IntersectionObserver(
+        (entries) => {
+            if (Date.now() < categoryNavLockUntil) return;
+            const visibleEntry = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+            if (!visibleEntry) return;
+            const id = visibleEntry.target.id;
+            if (!id) return;
+            setActiveCategory(`#${id}`);
+            if (window.history && window.history.replaceState) {
+                window.history.replaceState(null, '', `#${id}`);
+            }
+        },
+        {
+            rootMargin: '-120px 0px -55% 0px',
+            threshold: [0.08, 0.2, 0.4, 0.6]
+        }
+    );
+
+    headings.forEach((heading) => categoryObserver.observe(heading));
 }
 
 function applySearchFilter() {
