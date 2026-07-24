@@ -105,9 +105,13 @@ async function ensureDatabaseAndAdmin() {
   }
 
   // Fresh Render/SQLite often has zero dishes — keep guest menu alive from data.js
-  const catCount = await prisma.category.count();
-  if (catCount === 0 && process.env.AUTO_SEED !== '0') {
-    await seedMenuFromDataJs();
+  try {
+    const catCount = await prisma.category.count();
+    if (catCount === 0 && process.env.AUTO_SEED !== '0') {
+      await seedMenuFromDataJs();
+    }
+  } catch (err) {
+    console.error('[setup] Auto-seed failed:', err?.message || err);
   }
 }
 
@@ -444,6 +448,27 @@ app.post('/api/auth/admins', auth, role('SUPER_ADMIN'), async (req, res) => {
   res.status(201).json({ user: publicUser(created) });
 });
 
+app.post('/api/auth/admins/:id/password', auth, role('SUPER_ADMIN'), async (req, res) => {
+  const password = String(req.body?.password || '');
+  if (password.length < 7) return res.status(400).json({ error: 'Password must be 7+ chars' });
+  const target = await prisma.adminUser.findUnique({ where: { id: req.params.id } });
+  if (!target) return res.status(404).json({ error: 'Not found' });
+  const updated = await prisma.adminUser.update({
+    where: { id: target.id },
+    data: { passwordHash: await bcrypt.hash(password, 12), isActive: true },
+  });
+  await audit({
+    admin: req.admin,
+    action: 'UPDATE',
+    entityType: 'AdminUser',
+    entityId: updated.id,
+    entityLabel: updated.username,
+    summary: `${req.admin.name} reset password for ${updated.username}`,
+    req,
+  });
+  res.json({ ok: true, user: publicUser(updated) });
+});
+
 // ——— Admin menu ———
 app.get('/api/admin/categories', auth, async (_req, res) => {
   res.json({
@@ -633,6 +658,33 @@ app.delete('/api/admin/audit', auth, role('SUPER_ADMIN'), async (req, res) => {
   if (!days || days < 30) return res.status(400).json({ error: 'olderThanDays must be >= 30' });
   const result = await prisma.auditLog.deleteMany({ where: { createdAt: { lt: new Date(Date.now() - days * 864e5) } } });
   res.json({ deleted: result.count });
+});
+
+/** Restore menu from data.js when Render SQLite was wiped (only if empty, unless force=1). */
+app.post('/api/admin/reseed', auth, role('SUPER_ADMIN'), async (req, res) => {
+  const force = req.query.force === '1' || req.body?.force === true;
+  const catCount = await prisma.category.count();
+  if (catCount > 0 && !force) {
+    return res.status(409).json({ error: 'Menu not empty', categories: catCount, hint: 'Pass force=1 to wipe & reseed' });
+  }
+  if (force && catCount > 0) {
+    await prisma.menuItem.deleteMany({});
+    await prisma.category.deleteMany({});
+  }
+  await seedMenuFromDataJs();
+  const categories = await prisma.category.count();
+  const items = await prisma.menuItem.count();
+  await audit({
+    admin: req.admin,
+    action: 'CREATE',
+    entityType: 'Menu',
+    entityLabel: 'reseed',
+    summary: `${req.admin.name} reseeded menu (${categories} cats / ${items} dishes)`,
+    after: { categories, items, force },
+    req,
+  });
+  bump('menu.reseeded', { categories, items });
+  res.json({ ok: true, categories, items });
 });
 
 // ——— Guest visit analytics ———

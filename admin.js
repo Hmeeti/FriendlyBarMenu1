@@ -341,6 +341,11 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     renderAll();
     els.liveStatus.textContent = 'API online';
     els.liveStatus.classList.remove('is-off');
+    if (!state.categories.length && !state.items.length && els.itemsEmpty) {
+      els.itemsEmpty.hidden = false;
+      els.itemsEmpty.textContent =
+        'База на сервере пуста (частый сброс Render). Откройте вкладку ещё раз после Manual Deploy или попросите reseed.';
+    }
   }
 
   async function loadLogs() {
