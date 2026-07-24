@@ -139,6 +139,8 @@ function renderMenu() {
     root.innerHTML = html;
     bindMenuImageFallbacks();
     initCategoryNav();
+    applySearchFilter();
+    syncHeaderOffset();
 }
 
 function renderMenuItemCard(it) {
