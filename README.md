@@ -1,27 +1,24 @@
 ﻿# Friendly Menu
 
-Электронное меню + админ-панель + API.
-
-## Структура
-
 ```text
 /
-├── index.html      # меню
-├── admin.html      # админка
-├── style.css       # все стили
-├── data.js         # данные меню
-├── app.js          # логика меню
-├── admin.js        # логика админки
-├── image/          # фото
-├── backend/        # API (Express + Prisma)
-├── package.json
-└── README.md
+├── index.html   # меню
+├── admin.html   # админка
+├── style.css
+├── data.js      # данные блюд
+├── app.js       # логика меню + realtime
+├── admin.js     # логика админки
+├── image/
+└── backend/
+    ├── server.js          # весь API в одном файле
+    ├── prisma/
+    ├── data/menu-export.json
+    └── uploads/
 ```
 
-## Запуск
+## Run
 
 ```bash
-# API
 cd backend
 cp .env.example .env
 npm install
@@ -30,5 +27,5 @@ npm run db:seed
 npm run dev
 ```
 
-Меню: откройте `index.html` через Live Server.  
-Админка: `admin.html` — логин `ilnur000` / пароль `9987650`.
+Меню: Live Server → `index.html`  
+Админка: `admin.html` → `ilnur000` / `9987650`

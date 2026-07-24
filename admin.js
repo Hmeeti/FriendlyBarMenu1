@@ -1,6 +1,3 @@
-/* Admin panel */
-
-/* ===== js/config.js ===== */
 /**
  * Runtime config for guest menu + admin.html
  * For production, set API URL to your deployed backend, e.g.:
@@ -36,7 +33,6 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
 })();
 
 
-/* ===== js/admin-panel.js ===== */
 /**
  * Standalone admin panel (admin.html)
  * Hardcoded gate: ilnur000 / 9987650

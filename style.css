@@ -1,8 +1,6 @@
 /* Friendly Menu — single stylesheet */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap');
 
-
-/* ===== css/global/reboot.css ===== */
 html {
     scroll-behavior: smooth;
     width: 100%;
@@ -33,8 +31,6 @@ video {
     height: auto;
 }
 
-
-/* ===== css/blocks/page-shell.css ===== */
 .page-shell {
     position: relative;
     z-index: 1;
@@ -63,8 +59,6 @@ video {
     }
 }
 
-
-/* ===== css/global/footer.css ===== */
 .site-footer {
     background-color: #1a1a1a; /* Темный элегантный фон */
     color: #ffffff;
@@ -287,8 +281,6 @@ body.admin-login-open {
     color: #a39d95;
 }
 
-
-/* ===== css/blocks/food-bg.css ===== */
 .food-bg {
     position: fixed;
     inset: 0;
@@ -382,8 +374,6 @@ body.admin-login-open {
     }
 }
 
-
-/* ===== css/blocks/theme-fab.css ===== */
 .theme-fab {
     position: fixed;
     /* right: max(14px, env(safe-area-inset-right)); */
@@ -442,8 +432,6 @@ body.admin-login-open {
     }
 }
 
-
-/* ===== css/blocks/add-btn.css ===== */
 .add-btn {
     display: flex;
     align-items: center;
@@ -491,8 +479,6 @@ body.admin-login-open {
     cursor: pointer;
 }
 
-
-/* ===== css/blocks/badge.css ===== */
 .badge {
     position: absolute;
     top: 8px;
@@ -510,7 +496,6 @@ body.admin-login-open {
     color: #000;
 }
 
-/* ===== css/blocks/cart-btn.css ===== */
 .cart-btn {
     position: relative;
     background: var(--color-accent, #000);
@@ -540,8 +525,6 @@ body.admin-login-open {
     border: 2px solid var(--color-card, #fff);
 }
 
-
-/* ===== css/blocks/cart-panel.css ===== */
 .cart-panel {
     position: fixed;
     bottom: 0;
@@ -674,8 +657,6 @@ body.admin-login-open {
     font-weight: 700;
 }
 
-
-/* ===== css/blocks/categories.css ===== */
 .categories {
     display: flex;
     gap: 8px;
@@ -751,8 +732,6 @@ body.admin-login-open {
     }
 }
 
-
-/* ===== css/blocks/header.css ===== */
 .header {
     position: sticky;
     top: 0;
@@ -838,8 +817,6 @@ body.admin-login-open {
     }
 }
 
-
-/* ===== css/blocks/admin-entry.css ===== */
 /* Visible admin entry on main menu */
 .header-admin-btn {
     display: inline-flex;
@@ -874,8 +851,6 @@ body.admin-login-open {
     }
 }
 
-
-/* ===== css/blocks/item-image.css ===== */
 .item-image-wrap {
     position: relative;
     overflow: hidden;
@@ -943,8 +918,6 @@ body.admin-login-open {
     font-weight: 700;
 }
 
-
-/* ===== css/blocks/menu-grid.css ===== */
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1011,8 +984,6 @@ body.admin-login-open {
   padding: 0.25rem 0.55rem;
 }
 
-
-/* ===== css/blocks/modal.css ===== */
 .modal {
     position: fixed;
     top: 0;
@@ -1096,7 +1067,6 @@ body.admin-login-open {
     cursor: pointer;
 }
 
-/* ===== css/blocks/qty.css ===== */
 .qty-btn {
     width: 28px;
     height: 28px;
@@ -1117,7 +1087,6 @@ body.admin-login-open {
     text-align: center;
 }
 
-/* ===== css/blocks/search.css ===== */
 .search {
     position: relative;
 }
@@ -1141,7 +1110,6 @@ body.admin-login-open {
     opacity: 0.5;
 }
 
-/* ===== css/blocks/title__menu.css ===== */
 .title__menu {
     font-family: var(--font-script);
     font-size: clamp(2rem, 7vw, 4rem);
@@ -1209,8 +1177,6 @@ body.admin-login-open {
     }
 }
 
-
-/* ===== css/blocks/popup.css ===== */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -1351,7 +1317,6 @@ body.lock-scroll {
     overflow: hidden;
 }
 
-/* ===== css/blocks/theme.css ===== */
 :root {
     --font-base: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     --font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
@@ -1627,9 +1592,6 @@ body {
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
 }
 
-
-
-/* ===== css/blocks/admin-panel.css ===== */
 .admin-body {
   margin: 0;
   min-height: 100vh;

@@ -1,6 +1,3 @@
-/* Menu data bundle */
-
-/* ===== js/item-details.js ===== */
 /* Описания и уточнения картинок (из прежнего script.js) */
 window.ITEM_DETAILS = {
   "12": {
@@ -498,7 +495,6 @@ window.ITEM_DETAILS = {
 };
 
 
-/* ===== js/menu-data.js ===== */
 /* Авто-сгенерировано tools/extract-menu.mjs — не править руками */
 window.MENU_SECTIONS = [
   {

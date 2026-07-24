@@ -1,6 +1,3 @@
-/* Guest menu app */
-
-/* ===== js/config.js ===== */
 /**
  * Runtime config for guest menu + admin.html
  * For production, set API URL to your deployed backend, e.g.:
@@ -36,7 +33,6 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
 })();
 
 
-/* ===== js/script.js ===== */
 const SERVICE_RATE = 0.15;
 const THEME_KEY = 'friendly-menu-theme';
 
@@ -551,7 +547,6 @@ function closePopup(choice) {
 }
 
 
-/* ===== js/menu-live.js ===== */
 /**
  * Live menu bridge: loads menu from API and applies Socket.io updates.
  * Falls back to static js/menu-data.js if the API is unreachable.
