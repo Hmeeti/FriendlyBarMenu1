@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./image/favicon.png">
     <title>Friendly — Меню</title>
-    <link rel="stylesheet" href="style.css?v=audit1">
+    <link rel="stylesheet" href="style.css?v=audit2">
 </head>
 
 <body>
@@ -127,11 +127,11 @@
     </div>
 </div> 
 
-    <script src="config.js?v=audit1"></script>
-    <script src="i18n.js?v=audit1"></script>
-    <script src="i18n-menu.js?v=audit1"></script>
-    <script src="data.js?v=audit1"></script>
-    <script src="app.js?v=audit1"></script>
+    <script src="config.js?v=audit2"></script>
+    <script src="i18n.js?v=audit2"></script>
+    <script src="i18n-menu.js?v=audit2"></script>
+    <script src="data.js?v=audit2"></script>
+    <script src="app.js?v=audit2"></script>
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-info">
@@ -148,11 +148,20 @@
                 <span class="shield-icon">🛡️</span>
                 <span data-i18n="footer.protect">Сайт полностью защищен безопасным соединением.</span>
             </p>
-            <p class="footer__creator">made by hmeeti</p>
+            <p class="footer__creator" data-i18n="footer.developer">Разработчик сайта — hmeeti</p>
             <p class="footer-copyright" data-i18n="footer.copy">
                 &copy; 2026 Все права защищены. Копирование материалов запрещено.
             </p>
             <a href="admin.html" class="footer-admin-link" title="Админ" target="_blank" rel="noopener noreferrer">·</a>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-rules">
+            <p class="footer-rules__title" data-i18n="footer.rulesTitle">Правила посещения заведения</p>
+            <p class="footer-rules__text" data-i18n="footer.rules" data-i18n-html>
+                В заведении запрещено курение и распитие принесённых с собой напитков. Алкогольная и табачная продукция, а также обслуживание в баре не предоставляются гостям младше <strong>21 года</strong>. Администрация вправе отказать в обслуживании гостям в состоянии сильного алкогольного опьянения или при нарушении общественного порядка. Просим уважать покой других гостей и персонала. Книга жалоб и предложений предоставляется по первому требованию. Заведение не несёт ответственности за личные вещи, оставленные без присмотра.
+            </p>
         </div>
     </div>
 </footer>

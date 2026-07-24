@@ -172,6 +172,39 @@ video {
     outline: none;
 }
 
+.footer-rules {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    color: #7d7d7d;
+}
+
+.footer-rules__title {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #a88a4a;
+}
+
+.footer-rules__text {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #7d7d7d;
+}
+
+.footer-rules__text strong {
+    color: #c9a05a;
+}
+
+@media (max-width: 640px) {
+    .footer-rules {
+        text-align: left;
+    }
+}
+
 .admin-login-modal[hidden] {
     display: none !important;
 }
@@ -2673,14 +2706,22 @@ body {
 }
 
 /* —— Performance + wake UI —— */
+/* NOTE: never set a literal `transform` here — .cart-panel / .to-top / .category
+   already animate their own `transform` for open/close + hover states, and a
+   same-specificity `transform: translateZ(0)` declared later in the cascade
+   would silently win and permanently cancel their hidden/closed position. */
 .menu-item,
 .category,
 .modal-content,
 .to-top,
 .cart-panel {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.menu-item {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 .menu-item--enter {
