@@ -1392,14 +1392,18 @@ body.admin-login-open {
 }
 
 .kitchen-theme {
-    background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); 
+    background: linear-gradient(135deg, #6b1d28, #4a121a);
 }
-.kitchen-theme:active { background: #1b5e20; }
+
+.kitchen-theme:active {
+    filter: brightness(0.94);
+}
 
 .popup-bottom-notice {
-    font-size: 11px;
-    color: #666666;
+    font-size: 0.72rem;
+    color: #8a7d74;
     margin: 0;
+    line-height: 1.4;
 }
 
 /* Ð‘Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²ÐºÐ° Ñ„Ð¾Ð½Ð° */
