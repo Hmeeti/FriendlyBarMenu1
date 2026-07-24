@@ -423,21 +423,42 @@ function initCategoryNav() {
     }
 }
 
+function applySearchFilter() {
+    const input = document.querySelector('.search-input');
+    const query = String(input && input.value ? input.value : '').trim().toLowerCase();
+    document.querySelectorAll('.menu-item').forEach((item) => {
+        const nameEl = item.querySelector('.item-name');
+        const name = nameEl ? nameEl.textContent.toLowerCase() : '';
+        const match = !query || name.includes(query);
+        item.style.display = match ? '' : 'none';
+    });
+
+    // Hide empty section grids / keep titles visible only if they have matches
+    document.querySelectorAll('.menu-grid').forEach((grid) => {
+        const visible = Array.from(grid.querySelectorAll('.menu-item')).some(
+            (item) => item.style.display !== 'none'
+        );
+        grid.style.display = visible || !query ? '' : 'none';
+        const title = grid.previousElementSibling;
+        if (title && title.classList.contains('title__menu')) {
+            title.style.display = visible || !query ? '' : 'none';
+        }
+    });
+}
+
 function initSearch() {
     const input = document.querySelector('.search-input');
-    if (!input) return;
-    input.addEventListener('input', function (e) {
-        const query = e.target.value.toLowerCase();
-        document.querySelectorAll('.menu-item').forEach((item) => {
-            const nameEl = item.querySelector('.item-name');
-            const name = nameEl ? nameEl.textContent.toLowerCase() : '';
-            if (name.includes(query)) {
-                item.style.removeProperty('display');
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    });
+    if (!input || input.dataset.bound === '1') return;
+    input.dataset.bound = '1';
+    input.addEventListener('input', applySearchFilter);
+    input.addEventListener('search', applySearchFilter);
+}
+
+function syncHeaderOffset() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+    const h = Math.ceil(header.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--header-offset', `${h}px`);
 }
 
 function initToTopButtons() {
@@ -506,6 +527,15 @@ function init() {
     }
 
     initSearch();
+    syncHeaderOffset();
+    window.addEventListener('resize', syncHeaderOffset, { passive: true });
+    if (window.ResizeObserver) {
+        const header = document.querySelector('.header');
+        if (header) {
+            const ro = new ResizeObserver(() => syncHeaderOffset());
+            ro.observe(header);
+        }
+    }
     initToTopButtons();
     initThemeToggle();
     initModalImageFallback();

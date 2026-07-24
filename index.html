@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./image/favicon.png">
     <title>Friendly — Меню</title>
-    <link rel="stylesheet" href="style.css?v=nav2">
+    <link rel="stylesheet" href="style.css?v=nav3">
 </head>
 
 <body>
@@ -22,17 +22,18 @@
     <div class="page-shell">
         <header class="header">
             <div class="header-top">
-                <div class="logo">Friendly</div>
-                <div class="header-actions">
-                    <div class="search">
-                        <input type="text" class="search-input" placeholder="Поиск" aria-label="Поиск по меню">
-                        <span class="search-icon" aria-hidden="true">🔍</span>
+                <div class="header-brand-row">
+                    <div class="logo">Friendly</div>
+                    <div class="header-tools">
+                        <a href="admin.html" class="header-admin-btn" title="Админ-панель">Admin</a>
+                        <button type="button" class="cart-btn" onclick="toggleCart()" aria-label="Список заказа">
+                            Заказ
+                            <span class="cart-count">0</span>
+                        </button>
                     </div>
-                    <a href="admin.html" class="header-admin-btn" title="Админ-панель">Admin</a>
-                    <button type="button" class="cart-btn" onclick="toggleCart()" aria-label="Список заказа">
-                        Заказ
-                        <span class="cart-count">0</span>
-                    </button>
+                </div>
+                <div class="search">
+                    <input type="search" class="search-input" placeholder="Поиск блюда…" aria-label="Поиск по меню" enterkeyhint="search" autocomplete="off">
                 </div>
             </div>
             <nav class="categories" aria-label="Категории меню">
@@ -130,9 +131,9 @@
     </div>
 </div> 
 
-    <script src="config.js?v=nav2"></script>
-    <script src="data.js?v=nav2"></script>
-    <script src="app.js?v=nav2"></script>
+    <script src="config.js?v=nav3"></script>
+    <script src="data.js?v=nav3"></script>
+    <script src="app.js?v=nav3"></script>
 <footer class="site-footer">
     <div class="footer-container">
         

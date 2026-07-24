@@ -5,7 +5,8 @@ html {
     scroll-behavior: smooth;
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    /* clip does not break position:sticky the way overflow-x:hidden does */
+    overflow-x: clip;
 }
 
 * {
@@ -20,7 +21,7 @@ body {
     text-rendering: optimizeLegibility;
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
 }
 
@@ -31,14 +32,31 @@ video {
     height: auto;
 }
 
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    background: color-mix(in srgb, var(--color-bg, #fffaf4) 94%, transparent);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--color-border, #eee);
+    padding: 12px 16px 10px;
+    box-shadow: 0 12px 36px rgba(29, 19, 9, 0.08);
+}
+
 .page-shell {
     position: relative;
     z-index: 1;
     min-height: 100vh;
     width: 100%;
     max-width: 100%;
+    padding-top: var(--header-offset, 148px);
     padding-bottom: 2rem;
-    /* overflow-x stays off here so sticky header keeps working; clip on html/body + .menu-root */
     background:
         radial-gradient(circle at top left, rgba(255, 244, 230, 0.7), transparent 30%),
         radial-gradient(circle at bottom right, rgba(143, 102, 50, 0.1), transparent 36%);
@@ -745,47 +763,50 @@ body.admin-login-open {
 }
 
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1100;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    background: color-mix(in srgb, var(--color-bg, #fffaf4) 92%, transparent);
+    background: color-mix(in srgb, var(--color-bg, #fffaf4) 94%, transparent);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border-bottom: 1px solid var(--color-border, #eee);
-    padding: 14px 18px 10px;
+    padding: 12px 16px 10px;
     box-shadow: 0 12px 36px rgba(29, 19, 9, 0.08);
 }
 
 .header-top {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
 }
 
-.header-actions {
+.header-brand-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    flex: 1 1 auto;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
     min-width: 0;
-    max-width: 100%;
-    box-sizing: border-box;
 }
 
-.header-actions .search {
-    flex: 1 1 180px;
+.header-tools {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.header-top .search {
+    width: 100%;
     min-width: 0;
-    max-width: 100%;
 }
 
 .logo {
@@ -806,44 +827,20 @@ body.admin-login-open {
 
 @media (max-width: 640px) {
     .header {
-        padding: 12px 12px 0;
+        padding: 10px 12px 8px;
     }
 
-    .header-top {
-        gap: 10px;
-        align-items: center;
-        flex-wrap: nowrap;
+    .logo {
+        font-size: 1.65rem;
+        min-height: 0;
     }
 
-    .header-actions {
-        width: auto;
-        flex: 1 1 auto;
-        justify-content: flex-end;
-        align-items: center;
-        flex-wrap: nowrap;
-        gap: 8px;
-        margin-top: 0;
-        min-width: 0;
-    }
-
-    .header-actions .search {
-        flex: 1 1 auto;
-        min-width: 0;
-        max-width: none;
-    }
-
-    .header-admin-btn,
-    .cart-btn {
-        height: 40px;
-        flex-shrink: 0;
-    }
-
-    .search-input {
-        height: 40px;
-        font-size: 14px;
+    .header-admin-btn {
+        display: none;
     }
 
     .cart-btn {
+        height: 40px;
         padding: 0 12px;
         font-size: 13px;
         gap: 6px;
@@ -856,9 +853,10 @@ body.admin-login-open {
         padding: 0 5px;
     }
 
-    .logo {
-        font-size: 1.7rem;
-        min-height: 40px;
+    .search-input {
+        height: 44px;
+        font-size: 16px;
+        width: 100%;
     }
 }
 
@@ -894,9 +892,7 @@ body.admin-login-open {
 
 @media (max-width: 640px) {
     .header-admin-btn {
-        padding: 0 10px;
-        font-size: 0.72rem;
-        height: 40px;
+        display: none;
     }
 }
 
@@ -1153,9 +1149,9 @@ body.admin-login-open {
 .search-input {
     width: 100%;
     height: 42px;
-    padding: 0 36px 0 12px;
+    padding: 0 16px;
     background: #f5f5f5;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 999px;
     font-size: 15px;
     outline: none;
@@ -1463,7 +1459,7 @@ body {
     color: var(--color-text);
     font-family: var(--font-base);
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 .header {
@@ -1522,11 +1518,12 @@ body {
 }
 
 .search-input {
-    background: rgba(255, 255, 255, 0.94);
+    background: color-mix(in srgb, var(--color-card) 92%, transparent);
     color: var(--color-text);
-    border: 1px solid rgba(148, 112, 60, 0.12);
+    border: 1px solid var(--color-border);
     border-radius: 999px;
-    padding: 14px 18px;
+    padding: 0 16px;
+    height: 42px;
     font-family: var(--font-sans);
     font-size: 0.96rem;
 }
