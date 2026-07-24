@@ -2187,10 +2187,9 @@ body {
 
 .admin-cats {
   padding: 16px;
-  position: sticky;
-  top: 14px;
-  max-height: calc(100vh - 28px);
-  overflow: auto;
+  position: static;
+  max-height: none;
+  overflow: visible;
 }
 
 .admin-cats__head {
@@ -2308,9 +2307,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--admin-muted);
-  position: sticky;
-  top: 0;
-  z-index: 1;
+  position: static;
 }
 
 .admin-dish {
