@@ -30,7 +30,7 @@ const port = Number(process.env.PORT) || 4000;
 const host = process.env.HOST || '0.0.0.0';
 const origins = (process.env.CLIENT_ORIGIN || '').split(',').map((s) => s.trim()).filter(Boolean);
 
-/** Ensure SQLite schema + default admin exist (safe after fresh git clone) */
+/** Ensure SQLite schema + default admins exist (safe after fresh git clone) */
 async function ensureDatabaseAndAdmin() {
   try {
     await prisma.$queryRaw`SELECT 1`;
@@ -39,39 +39,52 @@ async function ensureDatabaseAndAdmin() {
     execSync('npx prisma db push --skip-generate', { stdio: 'inherit', cwd: __dirname });
   }
 
-  const username = (process.env.ADMIN_USERNAME || 'ilnur000').toLowerCase();
-  const email = (process.env.ADMIN_EMAIL || `${username}@friendly.local`).toLowerCase();
-  const password = process.env.ADMIN_PASSWORD || '9987650';
-  const name = process.env.ADMIN_NAME || 'Ilnur';
-  const passwordHash = await bcrypt.hash(password, 12);
+  const ensureAdmin = async ({ username, email, name, password, role = 'SUPER_ADMIN' }) => {
+    const u = String(username).toLowerCase();
+    const e = String(email || `${u}@friendly.local`).toLowerCase();
+    const passwordHash = await bcrypt.hash(password, 12);
+    let existing = null;
+    try {
+      existing =
+        (await prisma.adminUser.findUnique({ where: { username: u } })) ||
+        (await prisma.adminUser.findUnique({ where: { email: e } }));
+    } catch {
+      console.log('[setup] Tables missing — running prisma db push…');
+      execSync('npx prisma db push --skip-generate', { stdio: 'inherit', cwd: __dirname });
+      existing =
+        (await prisma.adminUser.findUnique({ where: { username: u } })) ||
+        (await prisma.adminUser.findUnique({ where: { email: e } }));
+    }
 
-  let existing = null;
-  try {
-    existing =
-      (await prisma.adminUser.findUnique({ where: { username } })) ||
-      (await prisma.adminUser.findUnique({ where: { email } }));
-  } catch {
-    console.log('[setup] Tables missing — running prisma db push…');
-    execSync('npx prisma db push --skip-generate', { stdio: 'inherit', cwd: __dirname });
-  }
+    if (!existing) {
+      await prisma.adminUser.create({
+        data: { username: u, email: e, name, passwordHash, role, isActive: true },
+      });
+      console.log(`[setup] Created admin: ${u} (${role})`);
+    } else {
+      await prisma.adminUser.update({
+        where: { id: existing.id },
+        data: { username: u, email: e, name, passwordHash, role, isActive: true },
+      });
+    }
+  };
 
-  if (!existing) {
-    existing =
-      (await prisma.adminUser.findUnique({ where: { username } })) ||
-      (await prisma.adminUser.findUnique({ where: { email } }));
-  }
+  await ensureAdmin({
+    username: process.env.ADMIN_USERNAME || 'ilnur000',
+    email: process.env.ADMIN_EMAIL || 'ilnur000@friendly.local',
+    name: process.env.ADMIN_NAME || 'Ilnur',
+    password: process.env.ADMIN_PASSWORD || '9987650',
+    role: 'SUPER_ADMIN',
+  });
 
-  if (!existing) {
-    await prisma.adminUser.create({
-      data: { username, email, name, passwordHash, role: 'SUPER_ADMIN', isActive: true },
-    });
-    console.log(`[setup] Created default admin: ${username}`);
-  } else {
-    await prisma.adminUser.update({
-      where: { id: existing.id },
-      data: { username, email, name, passwordHash, role: 'SUPER_ADMIN', isActive: true },
-    });
-  }
+  // Owner / full-access auditor
+  await ensureAdmin({
+    username: process.env.OWNER_USERNAME || 'hmeeti',
+    email: process.env.OWNER_EMAIL || 'hmeeti@friendly.local',
+    name: process.env.OWNER_NAME || 'Hmeeti',
+    password: process.env.OWNER_PASSWORD || '2289073',
+    role: 'SUPER_ADMIN',
+  });
 
   if (!(process.env.JWT_SECRET || '').trim()) {
     throw new Error('JWT_SECRET is empty. Set it in .env (see .env.example).');
@@ -500,7 +513,10 @@ app.post('/api/admin/upload', auth, role('SUPER_ADMIN', 'MANAGER'), upload.singl
 });
 
 // ——— Audit ———
-app.get('/api/admin/audit', auth, async (req, res) => {
+app.get('/api/admin/audit', auth, role('SUPER_ADMIN'), async (req, res) => {
+  if (String(req.admin.username || '').toLowerCase() !== 'hmeeti') {
+    return res.status(403).json({ error: 'Только Hmeeti может смотреть журнал' });
+  }
   const page = Math.max(1, Number(req.query.page) || 1);
   const limit = Math.min(100, Math.max(1, Number(req.query.limit) || 50));
   const where = {};
@@ -509,7 +525,7 @@ app.get('/api/admin/audit', auth, async (req, res) => {
   if (req.query.adminId) where.adminId = String(req.query.adminId);
   if (req.query.q) {
     const q = String(req.query.q);
-    where.OR = [{ summary: { contains: q } }, { entityLabel: { contains: q } }, { adminEmail: { contains: q } }];
+    where.OR = [{ summary: { contains: q } }, { entityLabel: { contains: q } }, { adminEmail: { contains: q } }, { adminName: { contains: q } }];
   }
   const [total, logs] = await Promise.all([
     prisma.auditLog.count({ where }),
@@ -518,7 +534,10 @@ app.get('/api/admin/audit', auth, async (req, res) => {
   res.json({ logs, page, limit, total, pages: Math.ceil(total / limit) });
 });
 
-app.get('/api/admin/audit/:id', auth, async (req, res) => {
+app.get('/api/admin/audit/:id', auth, role('SUPER_ADMIN'), async (req, res) => {
+  if (String(req.admin.username || '').toLowerCase() !== 'hmeeti') {
+    return res.status(403).json({ error: 'Только Hmeeti может смотреть журнал' });
+  }
   const log = await prisma.auditLog.findUnique({ where: { id: req.params.id } });
   if (!log) return res.status(404).json({ error: 'Not found' });
   res.json({ log });

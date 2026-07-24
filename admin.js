@@ -1,8 +1,6 @@
 /**
- * Runtime config for guest menu + admin.html
- * For production, set API URL to your deployed backend, e.g.:
- *   window.FRIENDLY_API_BASE = 'https://your-api.onrender.com';
- * Leave empty to auto-use same hostname on port 4000 (local Live Server).
+ * Standalone admin panel (admin.html)
+ * Data + saves go through the Friendly Menu API.
  */
 window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
   apiBase: 'https://friendlybarmenu1admin.onrender.com',
@@ -21,12 +19,6 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
   }
 })();
 
-
-/**
- * Standalone admin panel (admin.html)
- * Hardcoded gate: ilnur000 / 9987650
- * Data + saves go through the Friendly Menu API.
- */
 (function () {
   const API = (
     window.FRIENDLY_API_BASE ||
@@ -34,18 +26,22 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
       ? location.protocol + '//' + location.hostname + ':4000'
       : 'http://127.0.0.1:4000')
   ).replace(/\/$/, '');
-  const HARDCODED_LOGIN = 'ilnur000';
-  const HARDCODED_PASSWORD = '9987650';
   const TOKEN_KEY = 'fm_admin_token';
   const AUTH_FLAG = 'fm_admin_ok';
 
   const state = {
     token: null,
+    user: null,
+    tab: 'menu',
     categories: [],
     items: [],
     categoryId: '',
     catQuery: '',
     itemQuery: '',
+    logs: [],
+    logQuery: '',
+    logAction: '',
+    logTotal: 0,
   };
 
   const els = {
@@ -55,6 +51,10 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     app: document.getElementById('adminApp'),
     logoutBtn: document.getElementById('adminLogoutBtn'),
     liveStatus: document.getElementById('adminLiveStatus'),
+    userLabel: document.getElementById('adminUserLabel'),
+    menuView: document.getElementById('adminMenuView'),
+    logsView: document.getElementById('adminLogsView'),
+    logsTab: document.getElementById('adminLogsTab'),
     categoryList: document.getElementById('categoryList'),
     catSearch: document.getElementById('catSearch'),
     itemSearch: document.getElementById('itemSearch'),
@@ -70,7 +70,17 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     editPreview: document.getElementById('editPreview'),
     editUpload: document.getElementById('editUpload'),
     editCategorySelect: document.getElementById('editCategorySelect'),
+    logsBody: document.getElementById('logsBody'),
+    logsEmpty: document.getElementById('logsEmpty'),
+    logSearch: document.getElementById('logSearch'),
+    logActionFilter: document.getElementById('logActionFilter'),
+    logRefreshBtn: document.getElementById('logRefreshBtn'),
+    logCount: document.getElementById('logCount'),
   };
+
+  function isOwner() {
+    return String(state.user?.username || '').toLowerCase() === 'hmeeti';
+  }
 
   function imgSrc(path) {
     if (!path) return 'image/nono.png';
@@ -91,6 +101,7 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
       sessionStorage.removeItem(AUTH_FLAG);
       sessionStorage.removeItem(TOKEN_KEY);
       state.token = null;
+      state.user = null;
     }
   }
 
@@ -122,8 +133,30 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
       body: { login, password },
     });
     state.token = data.token || null;
+    state.user = data.user || null;
     if (state.token) sessionStorage.setItem(TOKEN_KEY, state.token);
     return data;
+  }
+
+  function applyUserChrome() {
+    const u = state.user;
+    if (els.userLabel) {
+      els.userLabel.textContent = u
+        ? `${u.name || u.username} · ${u.role === 'SUPER_ADMIN' ? 'полный доступ' : 'менеджер'}`
+        : 'Редактирование меню';
+    }
+    if (els.logsTab) els.logsTab.hidden = !isOwner();
+    if (!isOwner() && state.tab === 'logs') setTab('menu');
+  }
+
+  function setTab(tab) {
+    state.tab = tab === 'logs' && isOwner() ? 'logs' : 'menu';
+    document.querySelectorAll('.admin-tab').forEach((btn) => {
+      btn.classList.toggle('is-active', btn.getAttribute('data-tab') === state.tab);
+    });
+    if (els.menuView) els.menuView.hidden = state.tab !== 'menu';
+    if (els.logsView) els.logsView.hidden = state.tab !== 'logs';
+    if (state.tab === 'logs') loadLogs().catch((e) => alert(e.message || 'Не удалось загрузить логи'));
   }
 
   function filteredCategories() {
@@ -160,7 +193,6 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
       })
       .join('');
 
-    // sync "all" button
     document.querySelectorAll('.admin-cats > .admin-cat[data-cat-id=""]').forEach((btn) => {
       btn.classList.toggle('is-active', !state.categoryId);
     });
@@ -195,6 +227,38 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
       .join('');
   }
 
+  function formatTime(iso) {
+    try {
+      return new Date(iso).toLocaleString('ru-RU', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      });
+    } catch {
+      return iso || '';
+    }
+  }
+
+  function renderLogs() {
+    const logs = state.logs || [];
+    els.logCount.textContent = `${state.logTotal || logs.length} записей`;
+    els.logsEmpty.hidden = logs.length > 0;
+    els.logsBody.innerHTML = logs
+      .map(
+        (log) => `<tr>
+          <td class="admin-log-time">${escapeHtml(formatTime(log.createdAt))}</td>
+          <td>${escapeHtml(log.adminName || log.adminEmail || '—')}</td>
+          <td><span class="admin-badge admin-badge--log">${escapeHtml(log.action)}</span></td>
+          <td>${escapeHtml([log.entityType, log.entityLabel].filter(Boolean).join(' · ') || '—')}</td>
+          <td class="admin-log-summary">${escapeHtml(log.summary || '')}</td>
+        </tr>`
+      )
+      .join('');
+  }
+
   function renderAll() {
     renderCategories();
     renderItems();
@@ -211,6 +275,17 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     renderAll();
     els.liveStatus.textContent = 'API online';
     els.liveStatus.classList.remove('is-off');
+  }
+
+  async function loadLogs() {
+    if (!isOwner()) return;
+    const params = new URLSearchParams({ limit: '100', page: '1' });
+    if (state.logQuery.trim()) params.set('q', state.logQuery.trim());
+    if (state.logAction) params.set('action', state.logAction);
+    const data = await api(`/api/admin/audit?${params}`);
+    state.logs = data.logs || [];
+    state.logTotal = data.total || state.logs.length;
+    renderLogs();
   }
 
   function fillCategorySelect() {
@@ -306,7 +381,6 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     return escapeHtml(s).replace(/'/g, '&#39;');
   }
 
-  // ——— events ———
   els.gateForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     showGateError('');
@@ -317,20 +391,19 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     if (submitBtn) submitBtn.disabled = true;
 
     try {
-      // Prefer real API auth (DB user). Hardcoded pair is the known default after bootstrap.
       await loginToApi(login, password);
       setAuthed(true);
+      applyUserChrome();
+      setTab('menu');
       els.liveStatus.textContent = 'API online';
       els.liveStatus.classList.remove('is-off');
       await loadData();
     } catch (err) {
       const msg = String(err.message || err);
       if (/failed to fetch|networkerror|load failed/i.test(msg)) {
-        showGateError('API не запущен. В корне проекта выполните: npm run dev (порт 4000)');
-      } else if (login === HARDCODED_LOGIN && password === HARDCODED_PASSWORD) {
-        showGateError('API отклонил вход. Перезапустите: npm run dev (админ создаётся автоматически)');
+        showGateError('API не запущен или недоступен (Render / npm run dev)');
       } else {
-        showGateError(msg === 'Failed to fetch' ? 'API недоступен (npm run dev)' : (msg || 'Неверный логин или пароль'));
+        showGateError(msg === 'Failed to fetch' ? 'API недоступен' : (msg || 'Неверный логин или пароль'));
       }
       setAuthed(false);
     } finally {
@@ -344,6 +417,10 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     } catch (_) {}
     setAuthed(false);
     els.gateForm.reset();
+  });
+
+  document.querySelectorAll('.admin-tab').forEach((btn) => {
+    btn.addEventListener('click', () => setTab(btn.getAttribute('data-tab')));
   });
 
   document.querySelector('.admin-cats').addEventListener('click', (e) => {
@@ -361,6 +438,25 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
   els.itemSearch.addEventListener('input', () => {
     state.itemQuery = els.itemSearch.value;
     renderItems();
+  });
+
+  let logTimer = null;
+  function scheduleLogs() {
+    clearTimeout(logTimer);
+    logTimer = setTimeout(() => {
+      loadLogs().catch((err) => console.warn(err));
+    }, 250);
+  }
+  els.logSearch?.addEventListener('input', () => {
+    state.logQuery = els.logSearch.value;
+    scheduleLogs();
+  });
+  els.logActionFilter?.addEventListener('change', () => {
+    state.logAction = els.logActionFilter.value;
+    scheduleLogs();
+  });
+  els.logRefreshBtn?.addEventListener('click', () => {
+    loadLogs().catch((err) => alert(err.message || 'Ошибка'));
   });
 
   els.itemsBody.addEventListener('click', async (e) => {
@@ -396,7 +492,6 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     els.editPreview.src = imgSrc(els.editForm.imageUrl.value);
   });
 
-  // restore session
   async function boot() {
     state.token = sessionStorage.getItem(TOKEN_KEY);
     const flagged = sessionStorage.getItem(AUTH_FLAG) === '1';
@@ -405,8 +500,11 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
       return;
     }
     try {
-      await api('/api/auth/me');
+      const me = await api('/api/auth/me');
+      state.user = me.user || null;
       setAuthed(true);
+      applyUserChrome();
+      setTab('menu');
       await loadData();
     } catch {
       setAuthed(false);
@@ -415,4 +513,3 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
 
   boot();
 })();
-

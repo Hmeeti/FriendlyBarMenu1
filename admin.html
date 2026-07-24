@@ -15,11 +15,11 @@
       <p class="admin-gate__hint">Вход в панель управления меню</p>
       <label class="admin-field">
         <span>Логин</span>
-        <input name="login" type="text" required autocomplete="username" value="ilnur000" />
+        <input name="login" type="text" required autocomplete="username" placeholder="логин" />
       </label>
       <label class="admin-field">
         <span>Пароль</span>
-        <input name="password" type="password" required autocomplete="current-password" value="9987650" />
+        <input name="password" type="password" required autocomplete="current-password" placeholder="пароль" />
       </label>
       <p id="adminGateError" class="admin-error" hidden></p>
       <button type="submit" class="admin-btn admin-btn--primary">Войти</button>
@@ -32,16 +32,20 @@
     <header class="admin-top">
       <div>
         <div class="admin-top__brand">Friendly Admin</div>
-        <div class="admin-top__sub">Редактирование меню</div>
+        <div class="admin-top__sub" id="adminUserLabel">Редактирование меню</div>
       </div>
       <div class="admin-top__actions">
+        <nav class="admin-tabs" aria-label="Разделы админки">
+          <button type="button" class="admin-tab is-active" data-tab="menu">Меню</button>
+          <button type="button" class="admin-tab" data-tab="logs" id="adminLogsTab" hidden>Логи</button>
+        </nav>
         <span id="adminLiveStatus" class="admin-pill">API</span>
-        <a class="admin-btn admin-btn--ghost" href="index.html">Меню</a>
+        <a class="admin-btn admin-btn--ghost" href="index.html">Меню сайта</a>
         <button type="button" id="adminLogoutBtn" class="admin-btn admin-btn--ghost">Выйти</button>
       </div>
     </header>
 
-    <div class="admin-layout">
+    <div id="adminMenuView" class="admin-layout">
       <aside class="admin-cats card-panel">
         <div class="admin-cats__head">
           <h2>Категории</h2>
@@ -76,6 +80,40 @@
           <p id="itemsEmpty" class="admin-empty" hidden>В этой категории нет блюд.</p>
         </div>
       </section>
+    </div>
+
+    <div id="adminLogsView" class="admin-logs" hidden>
+      <div class="admin-main__toolbar card-panel">
+        <h2>Журнал действий</h2>
+        <div class="admin-main__tools">
+          <input id="logSearch" class="admin-input" type="search" placeholder="Поиск по логам…" />
+          <select id="logActionFilter" class="admin-input">
+            <option value="">Все действия</option>
+            <option value="LOGIN">LOGIN</option>
+            <option value="LOGOUT">LOGOUT</option>
+            <option value="CREATE">CREATE</option>
+            <option value="UPDATE">UPDATE</option>
+            <option value="DELETE">DELETE</option>
+          </select>
+          <button type="button" id="logRefreshBtn" class="admin-btn admin-btn--ghost">Обновить</button>
+          <span id="logCount" class="admin-muted"></span>
+        </div>
+      </div>
+      <div class="card-panel admin-table-wrap">
+        <table class="admin-table admin-table--logs">
+          <thead>
+            <tr>
+              <th>Время</th>
+              <th>Кто</th>
+              <th>Действие</th>
+              <th>Что</th>
+              <th>Описание</th>
+            </tr>
+          </thead>
+          <tbody id="logsBody"></tbody>
+        </table>
+        <p id="logsEmpty" class="admin-empty" hidden>Пока нет записей.</p>
+      </div>
     </div>
   </div>
 
