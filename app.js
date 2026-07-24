@@ -508,8 +508,17 @@ document.addEventListener('DOMContentLoaded', function() {
 window.FriendlyMenu = {
     applyLiveMenu(payload) {
         if (!payload) return;
-        if (payload.sections) window.MENU_SECTIONS = payload.sections;
-        if (payload.items) window.MENU_ITEMS = payload.items;
+        const sections = Array.isArray(payload.sections) ? payload.sections : null;
+        const itemCount = sections
+            ? sections.reduce((n, s) => n + ((s && s.items && s.items.length) || 0), 0)
+            : 0;
+        // Empty API DB must not wipe the static menu baked into data.js
+        if (sections && itemCount === 0) {
+            console.warn('[friendly-live] API menu empty — keeping static menu');
+            return;
+        }
+        if (sections) window.MENU_SECTIONS = sections;
+        if (payload.items && Object.keys(payload.items).length) window.MENU_ITEMS = payload.items;
         if (payload.details) window.ITEM_DETAILS = Object.assign({}, window.ITEM_DETAILS || {}, payload.details);
         items = buildItemsCatalog();
         renderMenu();
@@ -600,8 +609,15 @@ function closePopup(choice) {
   async function boot() {
     try {
       const payload = await fetchMenu();
-      apply(payload);
-      console.info('[friendly-live] menu synced from API', payload.updatedAt);
+      const itemCount = Array.isArray(payload.sections)
+        ? payload.sections.reduce((n, s) => n + ((s && s.items && s.items.length) || 0), 0)
+        : 0;
+      if (itemCount === 0) {
+        console.warn('[friendly-live] API returned 0 dishes — keeping static menu');
+      } else {
+        apply(payload);
+        console.info('[friendly-live] menu synced from API', payload.updatedAt);
+      }
     } catch (e) {
       console.warn('[friendly-live] using static menu fallback', e.message || e);
     }

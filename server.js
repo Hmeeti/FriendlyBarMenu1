@@ -76,6 +76,55 @@ async function ensureDatabaseAndAdmin() {
   if (!(process.env.JWT_SECRET || '').trim()) {
     throw new Error('JWT_SECRET is empty. Set it in .env (see .env.example).');
   }
+
+  // Fresh Render/SQLite often has zero dishes — keep guest menu alive from data.js
+  const catCount = await prisma.category.count();
+  if (catCount === 0 && process.env.AUTO_SEED !== '0') {
+    await seedMenuFromDataJs();
+  }
+}
+
+async function seedMenuFromDataJs() {
+  const dataPath = path.join(__dirname, 'data.js');
+  if (!fs.existsSync(dataPath)) {
+    console.warn('[setup] data.js missing — skip auto-seed');
+    return;
+  }
+  const { runInNewContext } = await import('vm');
+  const code = fs.readFileSync(dataPath, 'utf8');
+  const sandbox = { window: {}, console };
+  runInNewContext(code, sandbox, { timeout: 15000 });
+  const sections = sandbox.window.MENU_SECTIONS || [];
+  const details = sandbox.window.ITEM_DETAILS || {};
+  let items = 0;
+  for (let i = 0; i < sections.length; i++) {
+    const sec = sections[i];
+    const title = sec.title || `Section ${i + 1}`;
+    const baseSlug = sec.anchor || slugify(title);
+    const cat = await prisma.category.create({
+      data: { title, slug: `${baseSlug}-${i}`, sortOrder: i, isActive: true },
+    });
+    for (let j = 0; j < (sec.items || []).length; j++) {
+      const it = sec.items[j];
+      const d = details[String(it.id)] || {};
+      const legacyId = Number(it.id);
+      await prisma.menuItem.create({
+        data: {
+          legacyId: Number.isFinite(legacyId) ? legacyId : undefined,
+          categoryId: cat.id,
+          name: it.name || d.name || `Item ${it.id}`,
+          description: d.desc || it.desc || '',
+          weight: it.weight || '',
+          price: Number(it.price ?? d.price) || 0,
+          imageUrl: it.img || d.img || 'image/nono.png',
+          sortOrder: j,
+          isActive: true,
+        },
+      });
+      items++;
+    }
+  }
+  console.log(`[setup] Auto-seeded ${sections.length} categories / ${items} dishes from data.js`);
 }
 
 const allow = (o) =>
@@ -358,9 +407,13 @@ app.post('/api/admin/items', auth, role('SUPER_ADMIN', 'MANAGER'), async (req, r
   const { categoryId, name, price } = req.body || {};
   if (!categoryId || !name || price == null) return res.status(400).json({ error: 'categoryId, name, price required' });
   const agg = await prisma.menuItem.aggregate({ _max: { legacyId: true } });
+  const legacyId =
+    req.body.legacyId != null && Number.isFinite(Number(req.body.legacyId))
+      ? Number(req.body.legacyId)
+      : (agg._max.legacyId || 1000) + 1;
   const created = await prisma.menuItem.create({
     data: {
-      legacyId: (agg._max.legacyId || 1000) + 1,
+      legacyId,
       categoryId,
       name,
       description: req.body.description ?? '',
