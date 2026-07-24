@@ -1,8 +1,29 @@
-﻿{
+{
   "name": "friendly-menu",
+  "version": "1.0.0",
   "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
   "scripts": {
-    "dev:api": "npm run dev --prefix backend",
-    "setup": "npm install --prefix backend && npm run db:push --prefix backend && npm run db:seed --prefix backend"
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "node prisma/seed.js",
+    "setup": "npm install && npm run db:push && npm run db:seed"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.9.0",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.1",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "prisma": "^6.9.0"
   }
 }

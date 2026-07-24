@@ -1,31 +1,25 @@
-﻿# Friendly Menu
+# Friendly Menu
 
 ```text
 /
-├── index.html   # меню
-├── admin.html   # админка
-├── style.css
-├── data.js      # данные блюд
-├── app.js       # логика меню + realtime
-├── admin.js     # логика админки
+├── index.html / admin.html / style.css / data.js / app.js / admin.js
 ├── image/
-└── backend/
-    ├── server.js          # весь API в одном файле
-    ├── prisma/
-    ├── data/menu-export.json
-    └── uploads/
+├── server.js          # API
+├── package.json
+├── prisma/            # схема БД + seed
+├── data/              # сид меню
+├── uploads/
+└── node_modules/      # одна папка зависимостей (не в git)
 ```
 
-## Run
+## Запуск
 
 ```bash
-cd backend
-cp .env.example .env
-npm install
-npx prisma db push
-npm run db:seed
+npm run setup
 npm run dev
 ```
 
 Меню: Live Server → `index.html`  
 Админка: `admin.html` → `ilnur000` / `9987650`
+
+> `node_modules` появляется после `npm install` — это нормально. В GitHub она не попадает.

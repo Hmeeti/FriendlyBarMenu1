@@ -1,18 +1,12 @@
 node_modules/
-**/node_modules/
 .env
 .env.*
 !.env.example
-!.env.production.example
-**/.env
-!**/.env.example
-!**/.env.production.example
-backend/prisma/*.db
-backend/prisma/*.db-journal
-backend/uploads/*
-!backend/uploads/.gitkeep
+prisma/*.db
+prisma/*.db-journal
+uploads/*
+!uploads/.gitkeep
 dist/
-**/dist/
 *.log
 .DS_Store
 Thumbs.db
@@ -20,3 +14,4 @@ Thumbs.db
 .vscode/
 .cache/
 *.tmp
+backend/

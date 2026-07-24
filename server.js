@@ -38,7 +38,7 @@ app.options(/.*/, cors(corsOpts));
 app.use(cookieParser());
 app.use(express.json({ limit: '2mb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/image', express.static(path.join(__dirname, '..', 'image')));
+app.use('/image', express.static(path.join(__dirname, 'image')));
 
 const uploadDir = path.join(__dirname, 'uploads');
 fs.mkdirSync(uploadDir, { recursive: true });
