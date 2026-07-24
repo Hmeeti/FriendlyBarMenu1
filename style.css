@@ -57,9 +57,7 @@ video {
     max-width: 100%;
     padding-top: var(--header-offset, 148px);
     padding-bottom: 2rem;
-    background:
-        radial-gradient(circle at top left, rgba(255, 244, 230, 0.7), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(143, 102, 50, 0.1), transparent 36%);
+    background: transparent;
 }
 
 .menu-root {
@@ -299,96 +297,65 @@ body.admin-login-open {
     color: #a39d95;
 }
 
-.food-bg {
+.scene-bg {
     position: fixed;
     inset: 0;
     z-index: 0;
     overflow: hidden;
     pointer-events: none;
+    background: #0c0a0b;
 }
 
-.food-bg__piece {
+.scene-bg__wash {
     position: absolute;
-    width: min(46vw, 220px);
-    height: min(46vw, 220px);
-    border-radius: 30% 70% 65% 35% / 40% 45% 55% 60%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.14;
-    filter: saturate(1.15) blur(0.2px);
-    animation: foodDrift 32s ease-in-out infinite;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 70% 55% at 50% 18%, rgba(212, 168, 90, 0.07), transparent 62%),
+        radial-gradient(ellipse 55% 45% at 80% 85%, rgba(90, 70, 50, 0.08), transparent 70%),
+        linear-gradient(180deg, #100e0f 0%, #0c0a0b 48%, #0a0909 100%);
 }
 
-[data-theme='dark'] .food-bg__piece {
-    opacity: 0.09;
+.scene-bg__grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    mix-blend-mode: soft-light;
 }
 
-.food-bg__piece--1 {
-    top: 8%;
-    left: -6%;
-    animation-delay: 0s;
-    animation-duration: 34s;
+.scene-bg__mark {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    width: max-content;
+    max-width: 92vw;
+    font-family: var(--font-script, 'Great Vibes', cursive);
+    font-size: clamp(3.6rem, 14vw, 9.5rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    white-space: nowrap;
+    color: rgba(232, 214, 186, 0.11);
+    text-shadow: 0 0 40px rgba(212, 168, 90, 0.06);
+    user-select: none;
 }
 
-.food-bg__piece--2 {
-    top: 42%;
-    right: -8%;
-    animation-delay: -6s;
-    animation-duration: 38s;
-}
-
-.food-bg__piece--3 {
-    bottom: 18%;
-    left: 10%;
-    animation-delay: -12s;
-    animation-duration: 30s;
-}
-
-.food-bg__piece--4 {
-    top: 22%;
-    right: 18%;
-    animation-delay: -4s;
-    animation-duration: 36s;
-    width: min(38vw, 160px);
-    height: min(38vw, 160px);
-}
-
-.food-bg__piece--5 {
-    bottom: 8%;
-    right: 4%;
-    animation-delay: -18s;
-    animation-duration: 40s;
-}
-
-.food-bg__piece--6 {
-    top: 58%;
-    left: -4%;
-    animation-delay: -10s;
-    animation-duration: 33s;
-    width: min(40vw, 180px);
-    height: min(40vw, 180px);
-}
-
-@keyframes foodDrift {
-    0%,
-    100% {
-        transform: translate(0, 0) rotate(0deg) scale(1);
-    }
-    20% {
-        transform: translate(8vw, -6vh) rotate(18deg) scale(1.05);
-    }
-    45% {
-        transform: translate(-4vw, 4vh) rotate(-10deg) scale(0.95);
-    }
-    70% {
-        transform: translate(10vw, 8vh) rotate(12deg) scale(1.02);
+@media (max-width: 640px) {
+    .scene-bg__mark {
+        white-space: normal;
+        text-align: center;
+        line-height: 1.05;
+        font-size: clamp(3.2rem, 18vw, 5.5rem);
+        max-width: 88vw;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .food-bg__piece {
-        animation: none;
-        opacity: 0.08;
+    .scene-bg__mark {
+        text-shadow: none;
     }
 }
 
@@ -1458,44 +1425,44 @@ body.lock-scroll {
     --font-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
     --font-script: 'Great Vibes', 'Dancing Script', cursive;
 
-    /* Dark-only elite lobby */
-    --color-bg: #120e0f;
-    --color-bg-soft: rgba(22, 16, 17, 0.92);
+    /* Dark minimal lobby */
+    --color-bg: #0c0a0b;
+    --color-bg-soft: rgba(14, 12, 13, 0.88);
     --color-bg-gradient:
-        radial-gradient(900px 480px at 0% 0%, rgba(184, 149, 74, 0.12), transparent 55%),
-        linear-gradient(180deg, #120e0f 0%, #171113 45%, #1b1416 100%);
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212, 168, 90, 0.06), transparent 55%),
+        linear-gradient(180deg, #100e0f 0%, #0c0a0b 50%, #0a0909 100%);
     --color-text: #f6eee4;
     --color-muted: #b3a59a;
     --color-muted-2: #97897e;
     --color-border: rgba(246, 238, 228, 0.1);
-    --color-card: rgba(28, 20, 22, 0.94);
-    --color-shadow: rgba(0, 0, 0, 0.45);
+    --color-card: rgba(22, 18, 19, 0.92);
+    --color-shadow: rgba(0, 0, 0, 0.5);
     --color-accent: #d4a85a;
     --color-accent-soft: #e0bc78;
     --color-gold: #d4a85a;
     --color-on-accent: #1a1210;
     --color-modal-backdrop: rgba(0, 0, 0, 0.78);
-    --color-elevated: rgba(24, 18, 19, 0.96);
+    --color-elevated: rgba(20, 16, 17, 0.96);
 }
 
 [data-theme='dark'] {
-    --color-bg: #120e0f;
-    --color-bg-soft: rgba(22, 16, 17, 0.92);
+    --color-bg: #0c0a0b;
+    --color-bg-soft: rgba(14, 12, 13, 0.88);
     --color-bg-gradient:
-        radial-gradient(900px 480px at 0% 0%, rgba(184, 149, 74, 0.12), transparent 55%),
-        linear-gradient(180deg, #120e0f 0%, #171113 45%, #1b1416 100%);
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(212, 168, 90, 0.06), transparent 55%),
+        linear-gradient(180deg, #100e0f 0%, #0c0a0b 50%, #0a0909 100%);
     --color-text: #f6eee4;
     --color-muted: #b3a59a;
     --color-muted-2: #97897e;
     --color-border: rgba(246, 238, 228, 0.1);
-    --color-card: rgba(28, 20, 22, 0.94);
-    --color-shadow: rgba(0, 0, 0, 0.45);
+    --color-card: rgba(22, 18, 19, 0.92);
+    --color-shadow: rgba(0, 0, 0, 0.5);
     --color-accent: #d4a85a;
     --color-accent-soft: #e0bc78;
     --color-gold: #d4a85a;
     --color-on-accent: #1a1210;
     --color-modal-backdrop: rgba(0, 0, 0, 0.78);
-    --color-elevated: rgba(24, 18, 19, 0.96);
+    --color-elevated: rgba(20, 16, 17, 0.96);
 }
 
 body {
@@ -1812,13 +1779,8 @@ body {
     border: none;
 }
 
-[data-theme='dark'] .food-bg__piece {
-    opacity: 0.08;
-}
-
 [data-theme='dark'] .theme-fab {
-    border-color: var(--color-border);
-    background: var(--color-elevated);
+    display: none !important;
 }
 
 [data-theme='dark'] .header {
