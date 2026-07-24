@@ -1086,7 +1086,7 @@ body.admin-login-open {
     right: 0;
     bottom: 0;
     background: var(--color-modal-backdrop, rgba(0, 0, 0, 0.5));
-    z-index: 200;
+    z-index: 1200;
     display: none;
     align-items: flex-end;
 }
