@@ -414,6 +414,7 @@ let categoryObserver = null;
 let categoryNavLockUntil = 0;
 let scrollAnimFrame = 0;
 let navScrollAnimFrame = 0;
+let scrollUserCancel = null;
 
 function prefersReducedMotion() {
     try {
@@ -423,37 +424,90 @@ function prefersReducedMotion() {
     }
 }
 
-function easeInOutCubic(t) {
-    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+/** Soft cinematic ease — slow start & long gentle landing */
+function easeInOutQuint(t) {
+    return t < 0.5
+        ? 16 * t * t * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 5) / 2;
 }
 
-function smoothScrollY(toY, baseDuration) {
-    const target = Math.max(0, toY);
+function getScrollY() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+}
+
+function setScrollY(y) {
+    const v = Math.max(0, y);
+    window.scrollTo(0, v);
+    document.documentElement.scrollTop = v;
+    if (document.body) document.body.scrollTop = v;
+}
+
+function clearScrollUserCancel() {
+    if (!scrollUserCancel) return;
+    window.removeEventListener('wheel', scrollUserCancel);
+    window.removeEventListener('touchstart', scrollUserCancel);
+    window.removeEventListener('keydown', scrollUserCancel);
+    scrollUserCancel = null;
+}
+
+function smoothScrollY(toY) {
+    const target = Math.max(0, Math.round(toY));
     if (prefersReducedMotion()) {
-        window.scrollTo(0, target);
+        setScrollY(target);
         return Promise.resolve();
     }
-    const startY = window.scrollY || window.pageYOffset || 0;
-    const delta = target - startY;
-    if (Math.abs(delta) < 2) return Promise.resolve();
 
+    const startY = getScrollY();
+    const delta = target - startY;
+    if (Math.abs(delta) < 1) return Promise.resolve();
+
+    // Long, noticeable glide: ~1s short hops → ~2.1s long jumps
     const dist = Math.abs(delta);
-    const duration = Math.min(1100, Math.max(520, (baseDuration || 700) * (0.55 + dist / 1400)));
+    const duration = Math.min(2100, Math.max(1000, 720 + dist * 0.55));
     const start = performance.now();
+
     cancelAnimationFrame(scrollAnimFrame);
+    clearScrollUserCancel();
 
     return new Promise((resolve) => {
+        let finished = false;
+        const finish = () => {
+            if (finished) return;
+            finished = true;
+            clearScrollUserCancel();
+            resolve();
+        };
+
+        scrollUserCancel = (e) => {
+            if (e.type === 'keydown') {
+                const k = e.key;
+                if (!['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ', 'Spacebar'].includes(k)) {
+                    return;
+                }
+            }
+            cancelAnimationFrame(scrollAnimFrame);
+            finish();
+        };
+        window.addEventListener('wheel', scrollUserCancel, { passive: true });
+        window.addEventListener('touchstart', scrollUserCancel, { passive: true });
+        window.addEventListener('keydown', scrollUserCancel);
+
         const step = (now) => {
             const t = Math.min(1, (now - start) / duration);
-            window.scrollTo(0, startY + delta * easeInOutCubic(t));
-            if (t < 1) scrollAnimFrame = requestAnimationFrame(step);
-            else resolve();
+            setScrollY(startY + delta * easeInOutQuint(t));
+            if (t < 1) {
+                scrollAnimFrame = requestAnimationFrame(step);
+            } else {
+                setScrollY(target);
+                finish();
+            }
         };
         scrollAnimFrame = requestAnimationFrame(step);
+        categoryNavLockUntil = Date.now() + duration + 180;
     });
 }
 
-function smoothScrollX(el, toX, duration = 480) {
+function smoothScrollX(el, toX) {
     if (!el) return;
     const target = Math.max(0, toX);
     if (prefersReducedMotion()) {
@@ -462,13 +516,16 @@ function smoothScrollX(el, toX, duration = 480) {
     }
     const startX = el.scrollLeft;
     const delta = target - startX;
-    if (Math.abs(delta) < 2) return;
+    if (Math.abs(delta) < 1) return;
+
+    const duration = Math.min(900, Math.max(520, 380 + Math.abs(delta) * 0.9));
     const start = performance.now();
     cancelAnimationFrame(navScrollAnimFrame);
     const step = (now) => {
         const t = Math.min(1, (now - start) / duration);
-        el.scrollLeft = startX + delta * easeInOutCubic(t);
+        el.scrollLeft = startX + delta * easeInOutQuint(t);
         if (t < 1) navScrollAnimFrame = requestAnimationFrame(step);
+        else el.scrollLeft = target;
     };
     navScrollAnimFrame = requestAnimationFrame(step);
 }
@@ -501,22 +558,20 @@ function scrollCategoryIntoNav(activeLink) {
     const navCenter = navRect.left + navRect.width / 2;
     const delta = linkCenter - navCenter;
 
-    if (Math.abs(delta) < 8) return;
+    if (Math.abs(delta) < 6) return;
 
     const maxScroll = nav.scrollWidth - nav.clientWidth;
     const nextLeft = Math.max(0, Math.min(maxScroll, nav.scrollLeft + delta));
-    smoothScrollX(nav, nextLeft, 520);
+    smoothScrollX(nav, nextLeft);
 }
 
 function scrollToSection(target) {
     if (!target) return;
     syncHeaderOffset();
     const header = document.querySelector('.header');
-    const offset = header ? Math.ceil(header.getBoundingClientRect().height) + 8 : 120;
-    const top = window.scrollY + target.getBoundingClientRect().top - offset;
-    const distance = Math.abs(top - window.scrollY);
-    categoryNavLockUntil = Date.now() + Math.min(1300, Math.max(700, distance * 0.55));
-    return smoothScrollY(top, 740);
+    const offset = header ? Math.ceil(header.getBoundingClientRect().height) + 10 : 120;
+    const top = getScrollY() + target.getBoundingClientRect().top - offset;
+    return smoothScrollY(top);
 }
 
 function initCategoryNav() {
@@ -533,8 +588,7 @@ function initCategoryNav() {
             if (!href || href === '#') {
                 event.preventDefault();
                 setActiveCategory('#');
-                categoryNavLockUntil = Date.now() + 1100;
-                smoothScrollY(0, 800);
+                smoothScrollY(0);
                 if (window.history && window.history.replaceState) {
                     window.history.replaceState(null, '', window.location.pathname + window.location.search);
                 }
@@ -644,9 +698,8 @@ function initToTopButtons() {
     if (!btnR) return;
 
     function goTop() {
-        categoryNavLockUntil = Date.now() + 1100;
         setActiveCategory('#');
-        smoothScrollY(0, 860);
+        smoothScrollY(0);
         if (window.history && window.history.replaceState) {
             window.history.replaceState(null, '', window.location.pathname + window.location.search);
         }
