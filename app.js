@@ -523,9 +523,9 @@ function applyTheme(theme) {
     if (fab) {
         fab.setAttribute(
             'aria-label',
-            isDark ? 'Переключить на светлую тему' : 'Переключить на тёмную тему'
+            isDark ? tr('theme.light', 'Светлая тема') : tr('theme.dark', 'Тёмная тема')
         );
-        fab.setAttribute('title', isDark ? 'Светлая тема' : 'Тёмная тема');
+        fab.setAttribute('title', isDark ? tr('theme.light', 'Светлая тема') : tr('theme.dark', 'Тёмная тема'));
         fab.classList.toggle('theme-fab--dark', isDark);
     }
     try {
