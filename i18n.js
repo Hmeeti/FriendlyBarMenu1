@@ -272,7 +272,9 @@
   function translateItemName(id, fallback) {
     const lang = getLang();
     if (lang === 'ru') return fallback;
-    const row = (window.FRIENDLY_MENU_I18N || {})[String(id)];
+    const table = window.FRIENDLY_MENU_I18N || {};
+    const byName = window.FRIENDLY_MENU_I18N_BY_NAME || {};
+    const row = table[String(id)] || (fallback ? byName[fallback] : null);
     if (!row) return fallback;
     return row[lang] || fallback;
   }
@@ -280,7 +282,9 @@
   function translateItemDesc(id, fallback) {
     const lang = getLang();
     if (lang === 'ru') return fallback;
-    const row = (window.FRIENDLY_MENU_I18N || {})[String(id)];
+    const table = window.FRIENDLY_MENU_I18N || {};
+    const byName = window.FRIENDLY_MENU_I18N_BY_NAME || {};
+    const row = table[String(id)] || (fallback ? byName[fallback] : null);
     if (!row) return fallback;
     const key = lang === 'en' ? 'enDesc' : 'kkDesc';
     return row[key] || fallback;
