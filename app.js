@@ -552,13 +552,25 @@ function scrollCategoryIntoNav(activeLink) {
     smoothScrollX(nav, nextLeft);
 }
 
+function pulseSectionArrival(target) {
+    if (!target || prefersReducedMotion()) return;
+    target.classList.remove('section-arrive');
+    void target.offsetWidth; // restart animation on repeated clicks
+    target.classList.add('section-arrive');
+    target.addEventListener(
+        'animationend',
+        () => target.classList.remove('section-arrive'),
+        { once: true }
+    );
+}
+
 function scrollToSection(target) {
     if (!target) return;
     syncHeaderOffset();
     const header = document.querySelector('.header');
     const offset = header ? Math.ceil(header.getBoundingClientRect().height) + 10 : 120;
     const top = getScrollY() + target.getBoundingClientRect().top - offset;
-    return smoothScrollY(top);
+    return smoothScrollY(top).then(() => pulseSectionArrival(target));
 }
 
 function initCategoryNav() {
