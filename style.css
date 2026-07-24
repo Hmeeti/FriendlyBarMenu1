@@ -673,7 +673,12 @@ body.admin-login-open {
     font-weight: 600;
     line-height: 1;
     cursor: pointer;
-    transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.24s ease, color 0.24s ease, border-color 0.24s ease;
+    transition:
+        transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.35s ease,
+        border-color 0.35s ease;
     text-decoration: none;
     box-shadow: 0 8px 24px rgba(29, 19, 9, 0.04);
     scroll-snap-align: start;
@@ -1546,7 +1551,12 @@ body {
     font-weight: 600;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+    transition:
+        transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+        background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.35s ease,
+        border-color 0.35s ease;
 }
 
 .category:hover {
@@ -1561,6 +1571,7 @@ body {
     color: var(--color-on-accent);
     border-color: transparent;
     box-shadow: 0 12px 28px color-mix(in srgb, var(--color-accent) 28%, transparent);
+    transform: translateY(0) scale(1.02);
 }
 
 .search-input {
@@ -1822,20 +1833,45 @@ body {
     border: none;
     font-size: 16px;
     cursor: pointer;
-    opacity: 0.55;
+    opacity: 0.72;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: translateY(0) scale(1);
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+        opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0.4s ease,
+        box-shadow 0.35s ease,
+        background 0.3s ease;
 }
 
 .to-top:hover,
 .to-top:focus-visible {
     opacity: 1;
     outline: none;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 12px 28px rgba(212, 168, 90, 0.28);
+}
+
+.to-top:active {
+    transform: translateY(0) scale(0.96);
 }
 
 .to-top.hidden {
-    display: none;
+    display: inline-flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10px) scale(0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .category,
+    .to-top {
+        transition: none;
+    }
 }
 
 @media (max-width: 640px) {

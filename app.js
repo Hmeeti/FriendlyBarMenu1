@@ -412,6 +412,66 @@ function addFromModal() {
 let categoryNavBound = false;
 let categoryObserver = null;
 let categoryNavLockUntil = 0;
+let scrollAnimFrame = 0;
+let navScrollAnimFrame = 0;
+
+function prefersReducedMotion() {
+    try {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch (_) {
+        return false;
+    }
+}
+
+function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+function smoothScrollY(toY, baseDuration) {
+    const target = Math.max(0, toY);
+    if (prefersReducedMotion()) {
+        window.scrollTo(0, target);
+        return Promise.resolve();
+    }
+    const startY = window.scrollY || window.pageYOffset || 0;
+    const delta = target - startY;
+    if (Math.abs(delta) < 2) return Promise.resolve();
+
+    const dist = Math.abs(delta);
+    const duration = Math.min(1100, Math.max(520, (baseDuration || 700) * (0.55 + dist / 1400)));
+    const start = performance.now();
+    cancelAnimationFrame(scrollAnimFrame);
+
+    return new Promise((resolve) => {
+        const step = (now) => {
+            const t = Math.min(1, (now - start) / duration);
+            window.scrollTo(0, startY + delta * easeInOutCubic(t));
+            if (t < 1) scrollAnimFrame = requestAnimationFrame(step);
+            else resolve();
+        };
+        scrollAnimFrame = requestAnimationFrame(step);
+    });
+}
+
+function smoothScrollX(el, toX, duration = 480) {
+    if (!el) return;
+    const target = Math.max(0, toX);
+    if (prefersReducedMotion()) {
+        el.scrollLeft = target;
+        return;
+    }
+    const startX = el.scrollLeft;
+    const delta = target - startX;
+    if (Math.abs(delta) < 2) return;
+    const start = performance.now();
+    cancelAnimationFrame(navScrollAnimFrame);
+    const step = (now) => {
+        const t = Math.min(1, (now - start) / duration);
+        el.scrollLeft = startX + delta * easeInOutCubic(t);
+        if (t < 1) navScrollAnimFrame = requestAnimationFrame(step);
+    };
+    navScrollAnimFrame = requestAnimationFrame(step);
+}
 
 function setActiveCategory(hash) {
     const links = Array.from(document.querySelectorAll('.category'));
@@ -445,11 +505,7 @@ function scrollCategoryIntoNav(activeLink) {
 
     const maxScroll = nav.scrollWidth - nav.clientWidth;
     const nextLeft = Math.max(0, Math.min(maxScroll, nav.scrollLeft + delta));
-    if (typeof nav.scrollTo === 'function') {
-        nav.scrollTo({ left: nextLeft, behavior: 'smooth' });
-    } else {
-        nav.scrollLeft = nextLeft;
-    }
+    smoothScrollX(nav, nextLeft, 520);
 }
 
 function scrollToSection(target) {
@@ -458,7 +514,9 @@ function scrollToSection(target) {
     const header = document.querySelector('.header');
     const offset = header ? Math.ceil(header.getBoundingClientRect().height) + 8 : 120;
     const top = window.scrollY + target.getBoundingClientRect().top - offset;
-    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    const distance = Math.abs(top - window.scrollY);
+    categoryNavLockUntil = Date.now() + Math.min(1300, Math.max(700, distance * 0.55));
+    return smoothScrollY(top, 740);
 }
 
 function initCategoryNav() {
@@ -474,9 +532,9 @@ function initCategoryNav() {
             const href = link.getAttribute('href') || '';
             if (!href || href === '#') {
                 event.preventDefault();
-                categoryNavLockUntil = Date.now() + 900;
                 setActiveCategory('#');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                categoryNavLockUntil = Date.now() + 1100;
+                smoothScrollY(0, 800);
                 if (window.history && window.history.replaceState) {
                     window.history.replaceState(null, '', window.location.pathname + window.location.search);
                 }
@@ -494,7 +552,6 @@ function initCategoryNav() {
             }
 
             event.preventDefault();
-            categoryNavLockUntil = Date.now() + 1200;
             setActiveCategory(href);
             scrollToSection(target);
             if (window.history && window.history.replaceState) {
@@ -587,8 +644,9 @@ function initToTopButtons() {
     if (!btnR) return;
 
     function goTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        categoryNavLockUntil = Date.now() + 1100;
         setActiveCategory('#');
+        smoothScrollY(0, 860);
         if (window.history && window.history.replaceState) {
             window.history.replaceState(null, '', window.location.pathname + window.location.search);
         }
@@ -596,8 +654,14 @@ function initToTopButtons() {
 
     btnR.addEventListener('click', goTop);
 
+    let ticking = false;
     function onScroll() {
-        btnR.classList.toggle('hidden', window.scrollY <= 220);
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            btnR.classList.toggle('hidden', window.scrollY <= 220);
+            ticking = false;
+        });
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
