@@ -514,9 +514,6 @@ app.post('/api/admin/upload', auth, role('SUPER_ADMIN', 'MANAGER'), upload.singl
 
 // ——— Audit ———
 app.get('/api/admin/audit', auth, role('SUPER_ADMIN'), async (req, res) => {
-  if (String(req.admin.username || '').toLowerCase() !== 'hmeeti') {
-    return res.status(403).json({ error: 'Только Hmeeti может смотреть журнал' });
-  }
   const page = Math.max(1, Number(req.query.page) || 1);
   const limit = Math.min(100, Math.max(1, Number(req.query.limit) || 50));
   const where = {};
@@ -535,9 +532,6 @@ app.get('/api/admin/audit', auth, role('SUPER_ADMIN'), async (req, res) => {
 });
 
 app.get('/api/admin/audit/:id', auth, role('SUPER_ADMIN'), async (req, res) => {
-  if (String(req.admin.username || '').toLowerCase() !== 'hmeeti') {
-    return res.status(403).json({ error: 'Только Hmeeti может смотреть журнал' });
-  }
   const log = await prisma.auditLog.findUnique({ where: { id: req.params.id } });
   if (!log) return res.status(404).json({ error: 'Not found' });
   res.json({ log });

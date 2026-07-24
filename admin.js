@@ -78,8 +78,11 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     logCount: document.getElementById('logCount'),
   };
 
-  function isOwner() {
-    return String(state.user?.username || '').toLowerCase() === 'hmeeti';
+  function canViewLogs() {
+    // Full-access admins (Hmeeti / SUPER_ADMIN) see the journal
+    if (!state.user) return false;
+    const u = String(state.user.username || '').toLowerCase();
+    return u === 'hmeeti' || state.user.role === 'SUPER_ADMIN';
   }
 
   function imgSrc(path) {
@@ -145,18 +148,40 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
         ? `${u.name || u.username} · ${u.role === 'SUPER_ADMIN' ? 'полный доступ' : 'менеджер'}`
         : 'Редактирование меню';
     }
-    if (els.logsTab) els.logsTab.hidden = !isOwner();
-    if (!isOwner() && state.tab === 'logs') setTab('menu');
+    if (els.logsTab) {
+      if (canViewLogs()) els.logsTab.removeAttribute('hidden');
+      else els.logsTab.setAttribute('hidden', '');
+    }
+    if (!canViewLogs() && state.tab === 'logs') setTab('menu');
   }
 
   function setTab(tab) {
-    state.tab = tab === 'logs' && isOwner() ? 'logs' : 'menu';
+    state.tab = tab === 'logs' && canViewLogs() ? 'logs' : 'menu';
     document.querySelectorAll('.admin-tab').forEach((btn) => {
       btn.classList.toggle('is-active', btn.getAttribute('data-tab') === state.tab);
     });
-    if (els.menuView) els.menuView.hidden = state.tab !== 'menu';
-    if (els.logsView) els.logsView.hidden = state.tab !== 'logs';
-    if (state.tab === 'logs') loadLogs().catch((e) => alert(e.message || 'Не удалось загрузить логи'));
+    if (els.menuView) {
+      if (state.tab === 'menu') els.menuView.removeAttribute('hidden');
+      else els.menuView.setAttribute('hidden', '');
+    }
+    if (els.logsView) {
+      if (state.tab === 'logs') els.logsView.removeAttribute('hidden');
+      else els.logsView.setAttribute('hidden', '');
+    }
+    if (state.tab === 'logs') {
+      if (els.logsEmpty) {
+        els.logsEmpty.hidden = false;
+        els.logsEmpty.textContent = 'Загрузка логов…';
+      }
+      if (els.logsBody) els.logsBody.innerHTML = '';
+      loadLogs().catch((e) => {
+        if (els.logsEmpty) {
+          els.logsEmpty.hidden = false;
+          els.logsEmpty.textContent = e.message || 'Не удалось загрузить логи';
+        }
+        if (els.logCount) els.logCount.textContent = 'ошибка';
+      });
+    }
   }
 
   function filteredCategories() {
@@ -278,7 +303,7 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
   }
 
   async function loadLogs() {
-    if (!isOwner()) return;
+    if (!canViewLogs()) throw new Error('Нет доступа к журналу. Войдите как Hmeeti.');
     const params = new URLSearchParams({ limit: '100', page: '1' });
     if (state.logQuery.trim()) params.set('q', state.logQuery.trim());
     if (state.logAction) params.set('action', state.logAction);
@@ -286,6 +311,10 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     state.logs = data.logs || [];
     state.logTotal = data.total || state.logs.length;
     renderLogs();
+    if (!state.logs.length && els.logsEmpty) {
+      els.logsEmpty.hidden = false;
+      els.logsEmpty.textContent = 'Пока нет записей в журнале.';
+    }
   }
 
   function fillCategorySelect() {

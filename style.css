@@ -1840,6 +1840,25 @@ body {
   gap: 12px;
 }
 
+#adminMenuView[hidden],
+#adminLogsView[hidden],
+.admin-layout[hidden],
+.admin-logs[hidden] {
+  display: none !important;
+}
+
+#adminMenuView:not([hidden]) {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+#adminLogsView:not([hidden]) {
+  display: grid;
+  gap: 12px;
+}
+
 .admin-table--logs td {
   vertical-align: top;
   font-size: 0.86rem;
