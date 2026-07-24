@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="./image/favicon.png" />
+  <title>Admin — Friendly Menu</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/blocks/admin-panel.css" />
+</head>
+<body class="admin-body">
+  <!-- Login gate -->
+  <div id="adminGate" class="admin-gate">
+    <form id="adminGateForm" class="admin-gate__card" autocomplete="on">
+      <h1 class="admin-gate__title">Admin</h1>
+      <p class="admin-gate__hint">Вход в панель управления меню</p>
+      <label class="admin-field">
+        <span>Логин</span>
+        <input name="login" type="text" required autocomplete="username" />
+      </label>
+      <label class="admin-field">
+        <span>Пароль</span>
+        <input name="password" type="password" required autocomplete="current-password" />
+      </label>
+      <p id="adminGateError" class="admin-error" hidden></p>
+      <button type="submit" class="admin-btn admin-btn--primary">Войти</button>
+      <a class="admin-gate__back" href="index.html">← К меню</a>
+    </form>
+  </div>
+
+  <!-- Panel -->
+  <div id="adminApp" class="admin-app" hidden>
+    <header class="admin-top">
+      <div>
+        <div class="admin-top__brand">Friendly Admin</div>
+        <div class="admin-top__sub">Редактирование меню</div>
+      </div>
+      <div class="admin-top__actions">
+        <span id="adminLiveStatus" class="admin-pill">API</span>
+        <a class="admin-btn admin-btn--ghost" href="index.html">Меню</a>
+        <button type="button" id="adminLogoutBtn" class="admin-btn admin-btn--ghost">Выйти</button>
+      </div>
+    </header>
+
+    <div class="admin-layout">
+      <aside class="admin-cats card-panel">
+        <div class="admin-cats__head">
+          <h2>Категории</h2>
+          <input id="catSearch" class="admin-input" type="search" placeholder="Поиск категории…" />
+        </div>
+        <button type="button" class="admin-cat is-active" data-cat-id="">Все блюда</button>
+        <div id="categoryList" class="admin-cat-list"></div>
+      </aside>
+
+      <section class="admin-main">
+        <div class="admin-main__toolbar card-panel">
+          <h2 id="currentCatTitle">Все блюда</h2>
+          <div class="admin-main__tools">
+            <input id="itemSearch" class="admin-input" type="search" placeholder="Поиск блюда…" />
+            <span id="itemCount" class="admin-muted"></span>
+          </div>
+        </div>
+
+        <div id="itemsTableWrap" class="card-panel admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Фото</th>
+                <th>Блюдо</th>
+                <th>Цена</th>
+                <th>Наличие</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="itemsBody"></tbody>
+          </table>
+          <p id="itemsEmpty" class="admin-empty" hidden>В этой категории нет блюд.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Edit modal -->
+  <div id="editModal" class="admin-modal" hidden>
+    <div class="admin-modal__backdrop" data-close-edit></div>
+    <form id="editForm" class="admin-modal__panel" autocomplete="off">
+      <button type="button" class="admin-modal__close" data-close-edit aria-label="Закрыть">×</button>
+      <h2 id="editTitle">Редактировать блюдо</h2>
+
+      <input type="hidden" name="id" />
+
+      <label class="admin-field">
+        <span>Название</span>
+        <input name="name" type="text" required />
+      </label>
+
+      <label class="admin-field">
+        <span>Категория</span>
+        <select name="categoryId" id="editCategorySelect" required></select>
+      </label>
+
+      <div class="admin-grid-2">
+        <label class="admin-field">
+          <span>Цена (тг)</span>
+          <input name="price" type="number" min="0" step="1" required />
+        </label>
+        <label class="admin-field">
+          <span>Вес</span>
+          <input name="weight" type="text" placeholder="например 350 г" />
+        </label>
+      </div>
+
+      <label class="admin-field">
+        <span>Описание</span>
+        <textarea name="description" rows="3"></textarea>
+      </label>
+
+      <div class="admin-grid-2">
+        <label class="admin-field">
+          <span>Наличие</span>
+          <select name="availability">
+            <option value="IN_STOCK">В наличии</option>
+            <option value="OUT_OF_STOCK">Нет в наличии</option>
+          </select>
+        </label>
+        <label class="admin-field admin-field--check">
+          <span>Показывать в меню</span>
+          <input name="isActive" type="checkbox" />
+        </label>
+      </div>
+
+      <label class="admin-field">
+        <span>Путь / URL изображения</span>
+        <input name="imageUrl" type="text" />
+      </label>
+
+      <div class="admin-image-row">
+        <img id="editPreview" class="admin-preview" alt="" />
+        <label class="admin-btn admin-btn--ghost admin-file">
+          Загрузить фото
+          <input id="editUpload" type="file" accept="image/*" hidden />
+        </label>
+      </div>
+
+      <p id="editError" class="admin-error" hidden></p>
+      <div class="admin-modal__actions">
+        <button type="button" class="admin-btn admin-btn--ghost" data-close-edit>Отмена</button>
+        <button type="submit" class="admin-btn admin-btn--primary" id="editSaveBtn">Сохранить</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin-panel.js"></script>
+</body>
+</html>

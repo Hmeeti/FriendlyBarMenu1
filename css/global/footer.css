@@ -1,0 +1,221 @@
+.site-footer {
+    background-color: #1a1a1a; /* Темный элегантный фон */
+    color: #ffffff;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    padding: 30px 20px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-alert {
+    background-color: rgba(255, 193, 7, 0.1); /* Легкий золотистый фон для привлечения внимания */
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    display: inline-block;
+    border-radius: 4px;
+    margin: 0;
+    color: #e0e0e0;
+}
+
+.footer-alert strong {
+    color: #ffc107; /* Выделение цифр золотым цветом */
+}
+
+.alert-icon, .shield-icon {
+    margin-right: 8px;
+}
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #333;
+    margin: 20px 0;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #888888;
+    font-size: 13px;
+}
+
+.footer-protection {
+    display: flex;
+    align-items: center;
+    color: #4caf50; /* Зеленый цвет для индикации защиты */
+}
+
+/* Адаптивность для мобильных телефонов */
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .footer-alert {
+        display: block;
+        text-align: left;
+    }
+}
+
+.footer__creator {
+    align-items: center;
+    text-align: center;
+    color: gray;
+}
+.footer-admin-link {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: #3a3a3a;
+    font-size: 11px;
+    line-height: 1;
+    padding: 4px 6px;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0.35;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.footer-admin-link:hover,
+.footer-admin-link:focus-visible {
+    opacity: 0.85;
+    color: #777;
+    outline: none;
+}
+
+.admin-login-modal[hidden] {
+    display: none !important;
+}
+
+.admin-login-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+}
+
+.admin-login-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 14, 8, 0.55);
+    backdrop-filter: blur(4px);
+}
+
+.admin-login-modal__panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 380px);
+    background: #fffdf8;
+    color: #1a1714;
+    border-radius: 16px;
+    padding: 28px 24px 22px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(148, 112, 60, 0.18);
+}
+
+.admin-login-modal__close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: 0;
+    background: transparent;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    color: #888;
+}
+
+.admin-login-modal__title {
+    margin: 0 0 4px;
+    font-size: 1.5rem;
+    font-family: var(--font-base, Georgia, serif);
+}
+
+.admin-login-modal__hint {
+    margin: 0 0 18px;
+    font-size: 0.85rem;
+    color: #6d5a4b;
+}
+
+.admin-login-form {
+    display: grid;
+    gap: 12px;
+}
+
+.admin-login-form__label {
+    display: grid;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #4a3f35;
+}
+
+.admin-login-form__input {
+    width: 100%;
+    border: 1px solid rgba(148, 112, 60, 0.25);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font: inherit;
+    background: #fff;
+}
+
+.admin-login-form__input:focus {
+    outline: 2px solid rgba(143, 102, 50, 0.35);
+    border-color: #8f6632;
+}
+
+.admin-login-form__error {
+    margin: 0;
+    color: #9a3412;
+    font-size: 0.85rem;
+}
+
+.admin-login-form__submit {
+    margin-top: 4px;
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 14px;
+    background: #8f6632;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-login-form__submit:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+body.admin-login-open {
+    overflow: hidden;
+}
+
+[data-theme='dark'] .admin-login-modal__panel {
+    background: #1a1816;
+    color: #f7efe4;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='dark'] .admin-login-form__input {
+    background: #12100f;
+    color: #f7efe4;
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme='dark'] .admin-login-form__label,
+[data-theme='dark'] .admin-login-modal__hint {
+    color: #a39d95;
+}

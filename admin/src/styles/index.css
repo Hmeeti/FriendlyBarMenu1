@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #1a1714;
+  --paper: #f7f3ec;
+  --panel: #fffdf8;
+  --line: #e4ddd2;
+  --accent: #2f6f4e;
+  --accent-soft: #e7f2eb;
+  --warn: #9a3412;
+  --muted: #6b645b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #e8f0ea 0%, transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, #f3ebe0 0%, transparent 50%),
+    var(--paper);
+  min-height: 100vh;
+}
+
+h1, h2, .brand {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 0.55rem;
+  padding: 0.55rem 0.95rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: #255a3f; }
+.btn-ghost { background: transparent; border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { background: white; }
+.btn-danger { background: #fff1ee; color: var(--warn); border-color: #f0d2c8; }
+
+.input, .select, .textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 0.55rem;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  color: inherit;
+}
+.input:focus, .select:focus, .textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent) 35%, white);
+  border-color: var(--accent);
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(26, 23, 20, 0.04);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badge-ok { background: var(--accent-soft); color: var(--accent); }
+.badge-off { background: #f4e7e2; color: var(--warn); }
+.badge-role { background: #eee8df; color: var(--muted); }

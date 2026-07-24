@@ -1,0 +1,11 @@
+{
+  "name": "friendly-menu",
+  "private": true,
+  "scripts": {
+    "db:up": "docker compose up -d",
+    "server": "npm --prefix server run dev",
+    "admin": "npm --prefix admin run dev",
+    "seed": "npm --prefix server run db:seed",
+    "setup": "npm --prefix server install && npm --prefix admin install && npm --prefix server exec prisma generate"
+  }
+}

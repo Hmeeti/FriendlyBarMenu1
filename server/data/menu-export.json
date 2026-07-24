@@ -1,0 +1,2793 @@
+{
+  "sections": [
+    {
+      "title": "Меню Грузия",
+      "anchor": null,
+      "items": []
+    },
+    {
+      "title": "Основные блюда",
+      "anchor": "main-courses",
+      "items": [
+        {
+          "id": 46,
+          "name": "Хинкали из говядины",
+          "price": 3500,
+          "priceDisplay": "3500тг",
+          "img": "image/hinkali.JPG"
+        },
+        {
+          "id": 47,
+          "name": "Хинкали с грибами",
+          "price": 3500,
+          "priceDisplay": "3500тг",
+          "img": "image/hinkali.JPG"
+        },
+        {
+          "id": 48,
+          "name": "Мимино",
+          "price": 4500,
+          "priceDisplay": "4500тг",
+          "img": "image/mimino.JPG"
+        },
+        {
+          "id": 50,
+          "name": "Оджахури",
+          "price": 4000,
+          "priceDisplay": "4000тг",
+          "img": "image/ojahuri.jpg"
+        },
+        {
+          "id": 51,
+          "name": "Ребра Батхани",
+          "price": 5300,
+          "priceDisplay": "5300тг",
+          "img": "image/rebrabathani.jpg"
+        },
+        {
+          "id": 52,
+          "name": "Чахохбили",
+          "price": 3300,
+          "priceDisplay": "3300тг",
+          "img": "image/chahohbili.png"
+        },
+        {
+          "id": 53,
+          "name": "Чашошули",
+          "price": 4500,
+          "priceDisplay": "4500тг",
+          "img": "image/chashahuli.jpg"
+        },
+        {
+          "id": 54,
+          "name": "Шкмерули",
+          "price": 4300,
+          "priceDisplay": "4300тг",
+          "img": "image/chkmeruli.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Салаты Грузия",
+      "anchor": "salaty-gruziya",
+      "items": [
+        {
+          "id": 22,
+          "name": "Салат Сулико",
+          "price": 3600,
+          "priceDisplay": "3600тг",
+          "img": "image/suliko.jpg"
+        },
+        {
+          "id": 19,
+          "name": "Салат по Имеретински",
+          "price": 2400,
+          "priceDisplay": "2400тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 20,
+          "name": "Глехури",
+          "price": 1900,
+          "priceDisplay": "1900тг",
+          "img": "image/glehuri.png"
+        },
+        {
+          "id": 21,
+          "name": "Грибной по грузинский",
+          "price": 3300,
+          "priceDisplay": "3300тг",
+          "img": "image/nono.png"
+        }
+      ]
+    },
+    {
+      "title": "Супы",
+      "anchor": "soup",
+      "items": [
+        {
+          "id": 35,
+          "name": "Бозбаш",
+          "price": 4200,
+          "priceDisplay": "4200тг",
+          "img": "image/bozbash.png"
+        },
+        {
+          "id": 36,
+          "name": "Солянка по грузинский",
+          "price": 3600,
+          "priceDisplay": "3600тг",
+          "img": "image/harcho.jpg"
+        },
+        {
+          "id": 37,
+          "name": "Харчо из говядины",
+          "price": 2700,
+          "priceDisplay": "2700тг",
+          "img": "image/harcho2.png"
+        },
+        {
+          "id": 38,
+          "name": "Харчо из курицы",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": "image/harchoinchiken.JPG"
+        },
+        {
+          "id": 39,
+          "name": "Том-ям",
+          "price": 4000,
+          "priceDisplay": "4000тг",
+          "img": "image/tomyam.JPG"
+        },
+        {
+          "id": 40,
+          "name": "Суп Чечевичный",
+          "price": 1500,
+          "priceDisplay": "1500тг",
+          "img": "image/cheche.jpg"
+        },
+        {
+          "id": 41,
+          "name": "Суп Лапша",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": "image/lapsha.jpg"
+        },
+        {
+          "id": 42,
+          "name": "Рамен кимчи с говядиной",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": "image/rameninmeat.JPG"
+        },
+        {
+          "id": 43,
+          "name": "Рамен кимчи с курицей",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": "image/rameninchicken.jpeg"
+        },
+        {
+          "id": 44,
+          "name": "Пельмени",
+          "price": 2100,
+          "priceDisplay": "2100тг",
+          "img": "image/pelmeni.webp"
+        },
+        {
+          "id": 45,
+          "name": "Шорпа",
+          "price": 2200,
+          "priceDisplay": "2200тг",
+          "img": "image/shorpa.JPG"
+        }
+      ]
+    },
+    {
+      "title": "Хачапури",
+      "anchor": "khachapuri",
+      "items": [
+        {
+          "id": 56,
+          "name": "Хачапури по мегрельски",
+          "price": 3500,
+          "priceDisplay": "3500тг",
+          "img": "image/megrelski.jpg"
+        },
+        {
+          "id": 57,
+          "name": "Хачапури по аджарски",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": "image/puriadjarski.jpg"
+        },
+        {
+          "id": 58,
+          "name": "Хачапури по имеретински",
+          "price": 3500,
+          "priceDisplay": "3500тг",
+          "img": "image/imeretinkski.png"
+        },
+        {
+          "id": 59,
+          "name": "Хачапури по королевски",
+          "price": 4000,
+          "priceDisplay": "4000тг",
+          "img": "image/king.JPG"
+        },
+        {
+          "id": 60,
+          "name": "Хычины с сыром",
+          "price": 1500,
+          "priceDisplay": "1500тг",
+          "img": "image/huchina.JPG"
+        },
+        {
+          "id": 61,
+          "name": "Хычины с сыром и зеленью",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": "image/huchina.JPG"
+        }
+      ]
+    },
+    {
+      "title": "Горячие закуски",
+      "anchor": null,
+      "items": [
+        {
+          "id": 14,
+          "name": "Бадриджани",
+          "price": 2200,
+          "priceDisplay": "2200тг",
+          "img": "image/badridjani.jpg"
+        },
+        {
+          "id": 15,
+          "name": "Баклажан мефурат",
+          "price": 2900,
+          "priceDisplay": "2900тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 16,
+          "name": "Грибы на кеци",
+          "price": 2900,
+          "priceDisplay": "2900тг",
+          "img": "image/gribinakeqi.jpg"
+        },
+        {
+          "id": 17,
+          "name": "Долма",
+          "price": 3400,
+          "priceDisplay": "3400тг",
+          "img": "image/dolma.jpg"
+        },
+        {
+          "id": 18,
+          "name": "Долма в перчике",
+          "price": 3600,
+          "priceDisplay": "3600тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 72,
+          "name": "Сырные палочки",
+          "price": 2300,
+          "priceDisplay": "2300тг",
+          "img": "image/cheasteks.jpg"
+        },
+        {
+          "id": 73,
+          "name": "Гарлики",
+          "price": 900,
+          "priceDisplay": "900тг",
+          "img": "image/Garliki2.png"
+        },
+        {
+          "id": 74,
+          "name": "Бараньи семечки",
+          "price": 2100,
+          "priceDisplay": "2100тг",
+          "img": "image/barniisemeshki.png"
+        },
+        {
+          "id": 75,
+          "name": "Пивные креветки",
+          "price": 3600,
+          "priceDisplay": "3600тг",
+          "img": "image/pivnyekrevetki.jpg"
+        },
+        {
+          "id": 76,
+          "name": "Крылышки Баффало",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": "image/kralishki.jpeg"
+        },
+        {
+          "id": 77,
+          "name": "Пивной сет",
+          "price": 13000,
+          "priceDisplay": "13000тг",
+          "img": "image/pivnoiset.JPG"
+        }
+      ]
+    },
+    {
+      "title": "Холодные закуски",
+      "anchor": null,
+      "items": [
+        {
+          "id": 12,
+          "name": "Кавказ",
+          "price": 4500,
+          "priceDisplay": "4500тг",
+          "img": "image/kavkaz.JPG"
+        },
+        {
+          "id": 13,
+          "name": "Соленья",
+          "price": 4500,
+          "priceDisplay": "4500тг",
+          "img": "image/solenia.JPG"
+        },
+        {
+          "id": 68,
+          "name": "Рыбное плато",
+          "price": 8800,
+          "priceDisplay": "8800тг",
+          "img": "image/rybnaya-narezka-foto-33.jpg"
+        },
+        {
+          "id": 69,
+          "name": "Сырное плато",
+          "price": 7000,
+          "priceDisplay": "7000тг",
+          "img": "image/cheasas.jpg"
+        },
+        {
+          "id": 70,
+          "name": "Мясное плато",
+          "price": 8000,
+          "priceDisplay": "8000тг",
+          "img": "image/meatas.jpeg"
+        },
+        {
+          "id": 71,
+          "name": "Русская закуска",
+          "price": 3200,
+          "priceDisplay": "3200тг",
+          "img": "image/russianzak.png"
+        }
+      ]
+    },
+    {
+      "title": "Меню Европа",
+      "anchor": null,
+      "items": []
+    },
+    {
+      "title": "Салаты Европа",
+      "anchor": "salaty-evropa",
+      "items": [
+        {
+          "id": 23,
+          "name": "Салат Тифлис",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": "image/tiflis.JPG"
+        },
+        {
+          "id": 24,
+          "name": "Салат Friendly",
+          "price": 3800,
+          "priceDisplay": "3800тг",
+          "img": "image/Friednly.JPG"
+        },
+        {
+          "id": 25,
+          "name": "Буратта",
+          "price": 3500,
+          "priceDisplay": "3500тг",
+          "img": "image/buratta.JPG"
+        },
+        {
+          "id": 26,
+          "name": "Салат Греческий",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": "image/grecheski.jpg"
+        },
+        {
+          "id": 27,
+          "name": "Острый гурман",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": "image/ostriigyrman.png"
+        },
+        {
+          "id": 28,
+          "name": "Руколла с креветками",
+          "price": 3600,
+          "priceDisplay": "3600тг",
+          "img": "image/rukola.png"
+        },
+        {
+          "id": 29,
+          "name": "Салат Фреш",
+          "price": 1500,
+          "priceDisplay": "1500тг",
+          "img": "image/fresh.jpg"
+        },
+        {
+          "id": 30,
+          "name": "Хрустящие баклажаны",
+          "price": 2400,
+          "priceDisplay": "2400тг",
+          "img": "image/hrustachie.JPG"
+        },
+        {
+          "id": 31,
+          "name": "Цезарь с креветками",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": "image/krevatkami.png"
+        },
+        {
+          "id": 32,
+          "name": "Цезарь с курицей",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": "image/cezar.png"
+        },
+        {
+          "id": 33,
+          "name": "Цезарь с семгой",
+          "price": 3200,
+          "priceDisplay": "3200тг",
+          "img": "image/cezarslososem.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Стейки",
+      "anchor": "beef",
+      "items": [
+        {
+          "id": 78,
+          "name": "Рибай",
+          "price": 6000,
+          "priceDisplay": "6000тг",
+          "img": "image/ribay.JPG"
+        },
+        {
+          "id": 79,
+          "name": "Тибон",
+          "price": 6500,
+          "priceDisplay": "6500тг",
+          "img": "image/tibon.png"
+        },
+        {
+          "id": 80,
+          "name": "Медальоны",
+          "price": 5900,
+          "priceDisplay": "5900тг",
+          "img": "image/meadlion.jpg"
+        },
+        {
+          "id": 81,
+          "name": "Оссобуко",
+          "price": 4300,
+          "priceDisplay": "4300тг",
+          "img": "image/ossobuko.webp"
+        },
+        {
+          "id": 82,
+          "name": "Стриплойн",
+          "price": 6000,
+          "priceDisplay": "6000тг",
+          "img": "image/striploin.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Блюда из рыбы",
+      "anchor": "fisheat",
+      "items": [
+        {
+          "id": 83,
+          "name": "Лосось по католонски",
+          "price": 5000,
+          "priceDisplay": "5000тг",
+          "img": "image/losos.png"
+        },
+        {
+          "id": 84,
+          "name": "Форель запеченная целиком",
+          "price": 4700,
+          "priceDisplay": "4700тг",
+          "img": "image/forel.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Блюда из курицы",
+      "anchor": "chikenaet",
+      "items": [
+        {
+          "id": 85,
+          "name": "Цыпленок терияки",
+          "price": 3200,
+          "priceDisplay": "3200тг",
+          "img": "image/Cyplenok.png"
+        },
+        {
+          "id": 86,
+          "name": "Кардон блю с микс салатом",
+          "price": 3600,
+          "priceDisplay": "3600тг",
+          "img": "image/cardonblu.JPG"
+        }
+      ]
+    },
+    {
+      "title": "Блюда на компанию",
+      "anchor": "alleat",
+      "items": [
+        {
+          "id": 87,
+          "name": "Стейк ассорти",
+          "price": 40000,
+          "priceDisplay": "40000тг",
+          "img": "image/steakas.jpg"
+        },
+        {
+          "id": 88,
+          "name": "Рыбное ассорти",
+          "price": 35000,
+          "priceDisplay": "35000тг",
+          "img": "image/rybnayassorti.JPG"
+        },
+        {
+          "id": 89,
+          "name": "Фирменное блюдо Friendly",
+          "price": 30000,
+          "priceDisplay": "30000тг",
+          "img": "image/nono.png"
+        }
+      ]
+    },
+    {
+      "title": "Пасты",
+      "anchor": "pasties",
+      "items": [
+        {
+          "id": 90,
+          "name": "Альфредо",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": "image/pasta.JPG"
+        },
+        {
+          "id": 91,
+          "name": "Болоньезе",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": "image/boloneszepasta.jpg"
+        },
+        {
+          "id": 92,
+          "name": "Спагетти с морепродуктами",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": "image/moreproducti.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Роллы",
+      "anchor": "rolls",
+      "items": [
+        {
+          "id": 93,
+          "name": "Филадельфия",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": "image/fila.jpg"
+        },
+        {
+          "id": 94,
+          "name": "Калифорния",
+          "price": 3100,
+          "priceDisplay": "3100тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 95,
+          "name": "Америка темпура",
+          "price": 3100,
+          "priceDisplay": "3100тг",
+          "img": "image/amerika.JPG"
+        },
+        {
+          "id": 96,
+          "name": "Лас-Вегас темпура",
+          "price": 3300,
+          "priceDisplay": "3300тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 108,
+          "name": "Цезарь темпура",
+          "price": 2700,
+          "priceDisplay": "2700тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 97,
+          "name": "Калифорния темпура",
+          "price": 3200,
+          "priceDisplay": "3200тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 98,
+          "name": "Бонито",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": "image/bonito.png"
+        },
+        {
+          "id": 99,
+          "name": "Чиз Эби",
+          "price": 2700,
+          "priceDisplay": "2700тг",
+          "img": "image/chizeby.JPG"
+        },
+        {
+          "id": 109,
+          "name": "Дракон",
+          "price": 3100,
+          "priceDisplay": "3100тг",
+          "img": "image/drakon.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Сеты",
+      "anchor": "sets",
+      "items": [
+        {
+          "id": 100,
+          "name": "Сет Сакура",
+          "price": 15000,
+          "priceDisplay": "15000тг",
+          "img": "image/sakura.jpg"
+        },
+        {
+          "id": 101,
+          "name": "Сет Самурай",
+          "price": 10000,
+          "priceDisplay": "10000тг",
+          "img": "image/nono.png"
+        }
+      ]
+    },
+    {
+      "title": "Пиццы",
+      "anchor": "pizza",
+      "items": [
+        {
+          "id": 60,
+          "name": "Хычины с сыром",
+          "price": 1500,
+          "priceDisplay": "1500тг",
+          "img": "image/huchina.JPG"
+        },
+        {
+          "id": 61,
+          "name": "Хычины с сыром и зеленью",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": "image/huchina.JPG"
+        },
+        {
+          "id": 62,
+          "name": "4 сезона",
+          "price": 3200,
+          "priceDisplay": "3200тг",
+          "img": "image/fourseasn.jpg"
+        },
+        {
+          "id": 63,
+          "name": "Болоньезе пицца",
+          "price": 2300,
+          "priceDisplay": "2300тг",
+          "img": "image/boloneze.JPG"
+        },
+        {
+          "id": 64,
+          "name": "Курица с грибами",
+          "price": 2700,
+          "priceDisplay": "2700тг",
+          "img": "image/julenpizza.JPG"
+        },
+        {
+          "id": 65,
+          "name": "Маргарита",
+          "price": 2300,
+          "priceDisplay": "2300тг",
+          "img": "image/margarita.JPG"
+        },
+        {
+          "id": 66,
+          "name": "Пеперони",
+          "price": 2700,
+          "priceDisplay": "2700тг",
+          "img": "image/peperoni.jpg"
+        },
+        {
+          "id": 67,
+          "name": "Пицца с лососем",
+          "price": 3400,
+          "priceDisplay": "3400тг",
+          "img": "image/pizzainfish.png"
+        }
+      ]
+    },
+    {
+      "title": "Шашлыки",
+      "anchor": "meat",
+      "items": [
+        {
+          "id": 116,
+          "name": "Мякоть баранины",
+          "price": 3500,
+          "priceDisplay": "3500тг",
+          "img": null
+        },
+        {
+          "id": 117,
+          "name": "Антрекот",
+          "price": 3900,
+          "priceDisplay": "3900тг",
+          "img": null
+        },
+        {
+          "id": 118,
+          "name": "Кавказский шашлык",
+          "price": 3900,
+          "priceDisplay": "3900тг",
+          "img": null
+        },
+        {
+          "id": 119,
+          "name": "Крылышки",
+          "price": 2400,
+          "priceDisplay": "2400тг",
+          "img": null
+        },
+        {
+          "id": 120,
+          "name": "Куринное филе",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 121,
+          "name": "Люля-кебаб",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 122,
+          "name": "Семечки",
+          "price": 2200,
+          "priceDisplay": "2200тг",
+          "img": null
+        },
+        {
+          "id": 123,
+          "name": "Овощи на гриле",
+          "price": 1900,
+          "priceDisplay": "1900тг",
+          "img": null
+        },
+        {
+          "id": 124,
+          "name": "Шампиньоны",
+          "price": 2200,
+          "priceDisplay": "2200тг",
+          "img": null
+        },
+        {
+          "id": 125,
+          "name": "Маленький сет",
+          "price": 18000,
+          "priceDisplay": "18000тг",
+          "img": null
+        },
+        {
+          "id": 126,
+          "name": "Большой сет",
+          "price": 25000,
+          "priceDisplay": "25000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Гарниры",
+      "anchor": "garnirs",
+      "items": [
+        {
+          "id": 102,
+          "name": "Картофельные дольки",
+          "price": 700,
+          "priceDisplay": "700тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 103,
+          "name": "Картофель по домашнему",
+          "price": 800,
+          "priceDisplay": "800тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 104,
+          "name": "Овощи на гриле",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 105,
+          "name": "Пюре",
+          "price": 500,
+          "priceDisplay": "500тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 106,
+          "name": "Рис",
+          "price": 450,
+          "priceDisplay": "450тг",
+          "img": "image/nono.png"
+        },
+        {
+          "id": 107,
+          "name": "Фри",
+          "price": 800,
+          "priceDisplay": "800тг",
+          "img": "image/nono.png"
+        }
+      ]
+    },
+    {
+      "title": "Соусы",
+      "anchor": "souls",
+      "items": [
+        {
+          "id": 109,
+          "name": "BBQ соус",
+          "price": 450,
+          "priceDisplay": "450тг",
+          "img": null
+        },
+        {
+          "id": 110,
+          "name": "Демигласс",
+          "price": 800,
+          "priceDisplay": "800тг",
+          "img": null
+        },
+        {
+          "id": 111,
+          "name": "Кетчуп",
+          "price": 400,
+          "priceDisplay": "400тг",
+          "img": null
+        },
+        {
+          "id": 112,
+          "name": "Сливочный",
+          "price": 700,
+          "priceDisplay": "700тг",
+          "img": null
+        },
+        {
+          "id": 113,
+          "name": "Сырный соус",
+          "price": 500,
+          "priceDisplay": "500тг",
+          "img": null
+        },
+        {
+          "id": 114,
+          "name": "Тар-Тар",
+          "price": 500,
+          "priceDisplay": "500тг",
+          "img": null
+        },
+        {
+          "id": 115,
+          "name": "Шашлычный соус",
+          "price": 500,
+          "priceDisplay": "500тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Десерты",
+      "anchor": "candy",
+      "items": [
+        {
+          "id": 127,
+          "name": "Испанский чизкейк",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 128,
+          "name": "Классический чизкейк",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": null
+        },
+        {
+          "id": 129,
+          "name": "Меренговый рулет",
+          "price": 2100,
+          "priceDisplay": "2100тг",
+          "img": null
+        },
+        {
+          "id": 130,
+          "name": "Молочная девочка",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 131,
+          "name": "Наполеон",
+          "price": 2300,
+          "priceDisplay": "2300тг",
+          "img": null
+        },
+        {
+          "id": 126,
+          "name": "Сникерс",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": null
+        },
+        {
+          "id": 127,
+          "name": "Фруктовое ассорти(мини)",
+          "price": 6000,
+          "priceDisplay": "6000тг",
+          "img": null
+        },
+        {
+          "id": 128,
+          "name": "Фруктовое ассорти(большое)",
+          "price": 11000,
+          "priceDisplay": "11000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "К чаю",
+      "anchor": "bar",
+      "items": [
+        {
+          "id": 129,
+          "name": "Лимон",
+          "price": 700,
+          "priceDisplay": "700тг",
+          "img": null
+        },
+        {
+          "id": 130,
+          "name": "Лайм",
+          "price": 600,
+          "priceDisplay": "600тг",
+          "img": null
+        },
+        {
+          "id": 131,
+          "name": "Мед",
+          "price": 600,
+          "priceDisplay": "600тг",
+          "img": null
+        },
+        {
+          "id": 132,
+          "name": "Молоко",
+          "price": 600,
+          "priceDisplay": "600тг",
+          "img": null
+        },
+        {
+          "id": 133,
+          "name": "Шоколад",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Ice coffee",
+      "anchor": null,
+      "items": [
+        {
+          "id": 146,
+          "name": "Ice Americano",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        },
+        {
+          "id": 147,
+          "name": "Ice Cappuccino",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Добавки к кофе",
+      "anchor": null,
+      "items": [
+        {
+          "id": 148,
+          "name": "Сироп Ваниль",
+          "price": 200,
+          "priceDisplay": "200тг",
+          "img": null
+        },
+        {
+          "id": 149,
+          "name": "Сироп Карамель",
+          "price": 200,
+          "priceDisplay": "200тг",
+          "img": null
+        },
+        {
+          "id": 150,
+          "name": "Сироп Шоколад",
+          "price": 200,
+          "priceDisplay": "200тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Лимонады",
+      "anchor": null,
+      "items": [
+        {
+          "id": 151,
+          "name": "Киви-Лайм 1л",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 152,
+          "name": "Классический 1л",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 153,
+          "name": "Манго-Ананас 1л",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 154,
+          "name": "Манго-Клубника 1л",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 155,
+          "name": "Манго-Маракуйя 1л",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 156,
+          "name": "Маракуйя-Апельсин 1л",
+          "price": 260,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 157,
+          "name": "Мохито 1л",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 158,
+          "name": "Ягодный 1л",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Молочные коктели",
+      "anchor": null,
+      "items": [
+        {
+          "id": 159,
+          "name": "Клубнично-Банановый",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 160,
+          "name": "Клубничный",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 161,
+          "name": "Сливочный",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 162,
+          "name": "Шоколадный",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 163,
+          "name": "Банановый",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Безалкогольные коктейли",
+      "anchor": null,
+      "items": [
+        {
+          "id": 164,
+          "name": "Florida коктель",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        },
+        {
+          "id": 165,
+          "name": "Клубничный мохито",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": null
+        },
+        {
+          "id": 166,
+          "name": "Мохито",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": null
+        },
+        {
+          "id": 167,
+          "name": "Aperol Spritz",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Фреш",
+      "anchor": null,
+      "items": [
+        {
+          "id": 168,
+          "name": "Апельсиновый 0,33",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        },
+        {
+          "id": 169,
+          "name": "Морковный 0,33",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        },
+        {
+          "id": 170,
+          "name": "Яблочный 0,33",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        },
+        {
+          "id": 171,
+          "name": "MIX 0,33",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Напитки",
+      "anchor": null,
+      "items": [
+        {
+          "id": 172,
+          "name": "Coca-Cola/ Fanta/Sprite 1л",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 173,
+          "name": "Coca-Cola/ Fanta/Sprite 0.25л (стекло)",
+          "price": 700,
+          "priceDisplay": "700тг",
+          "img": null
+        },
+        {
+          "id": 174,
+          "name": "Сок Ріко в асортименте Іл",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        },
+        {
+          "id": 175,
+          "name": "Минеральная вода Borjomi 0,5л(стекло)",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 176,
+          "name": "Red Bull 0,25лl",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 177,
+          "name": "Schweppes 0,35л",
+          "price": 900,
+          "priceDisplay": "900тг",
+          "img": null
+        },
+        {
+          "id": 178,
+          "name": "Turan вода (газ, негаз) 0,5л",
+          "price": 900,
+          "priceDisplay": "900тг",
+          "img": null
+        },
+        {
+          "id": 179,
+          "name": "Сок «rich» 02л",
+          "price": 1000,
+          "priceDisplay": "1000тг",
+          "img": null
+        },
+        {
+          "id": 180,
+          "name": "Тассай Excellent 0,75 л",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        },
+        {
+          "id": 181,
+          "name": "Тассай Emrald 0,75 л",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        },
+        {
+          "id": 182,
+          "name": "Тассай 1л",
+          "price": 900,
+          "priceDisplay": "900тг",
+          "img": null
+        },
+        {
+          "id": 183,
+          "name": "Тассай стекло 0,5л",
+          "price": 1000,
+          "priceDisplay": "1000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Пиво разливное",
+      "anchor": null,
+      "items": [
+        {
+          "id": 184,
+          "name": "Bud 0.5",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        },
+        {
+          "id": 185,
+          "name": "Line Brew 0.5",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        },
+        {
+          "id": 186,
+          "name": "Прага Южная 0.5",
+          "price": 900,
+          "priceDisplay": "900тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Пиво бутылочное",
+      "anchor": null,
+      "items": [
+        {
+          "id": 187,
+          "name": "Corona Extra 0.33",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": null
+        },
+        {
+          "id": 189,
+          "name": "Tsingtao 0",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        },
+        {
+          "id": 297,
+          "name": "Bud",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        },
+        {
+          "id": 190,
+          "name": "Guinness 0.44",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "К пиву",
+      "anchor": null,
+      "items": [
+        {
+          "id": 191,
+          "name": "Арахис",
+          "price": 800,
+          "priceDisplay": "800тг",
+          "img": null
+        },
+        {
+          "id": 192,
+          "name": "Курт",
+          "price": 700,
+          "priceDisplay": "700тг",
+          "img": null
+        },
+        {
+          "id": 193,
+          "name": "Фисташки",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        },
+        {
+          "id": 194,
+          "name": "Чечил",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 195,
+          "name": "Чипсы",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 196,
+          "name": "Чечил жаренный",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Водка",
+      "anchor": null,
+      "items": [
+        {
+          "id": 197,
+          "name": "Absolut Original 50мл",
+          "price": 1400,
+          "priceDisplay": "1400тг",
+          "img": null
+        },
+        {
+          "id": 198,
+          "name": "Gray Goose 50мл",
+          "price": 2200,
+          "priceDisplay": "2200тг",
+          "img": null
+        },
+        {
+          "id": 199,
+          "name": "Белуга 50мл",
+          "price": 2300,
+          "priceDisplay": "2300тг",
+          "img": null
+        },
+        {
+          "id": 200,
+          "name": "Финляндия 50мл",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 200,
+          "name": "Кызыл Жар 50мл",
+          "price": 700,
+          "priceDisplay": "700тг",
+          "img": null
+        },
+        {
+          "id": 200,
+          "name": "Архангельская 50мл",
+          "price": 700,
+          "priceDisplay": "700тг",
+          "img": null
+        },
+        {
+          "id": 200,
+          "name": "Хортица Ice 50мл",
+          "price": 700,
+          "priceDisplay": "700тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Односолодовый шотландский виски",
+      "anchor": null,
+      "items": [
+        {
+          "id": 201,
+          "name": "Macallan 12YO 50мл",
+          "price": 6500,
+          "priceDisplay": "6500тг",
+          "img": null
+        },
+        {
+          "id": 202,
+          "name": "Aberfeldy 12YO 50мл",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": null
+        },
+        {
+          "id": 203,
+          "name": "Glenmarange Original 50мл",
+          "price": 3600,
+          "priceDisplay": "3600тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Купажированный виски",
+      "anchor": null,
+      "items": [
+        {
+          "id": 204,
+          "name": "Chivas Regal 12YO 50 мл",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": null
+        },
+        {
+          "id": 205,
+          "name": "Dewars 12YO 50 мл",
+          "price": 2600,
+          "priceDisplay": "2600тг",
+          "img": null
+        },
+        {
+          "id": 206,
+          "name": "Dewars 18YO 50 мл",
+          "price": 4600,
+          "priceDisplay": "4600тг",
+          "img": null
+        },
+        {
+          "id": 207,
+          "name": "Dewars Caribbean 8YO 50 мл",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 208,
+          "name": "Dewars Japanese 8YO 50 мл",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 209,
+          "name": "Dewars Portuguese 8YO 50 мл",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 210,
+          "name": "Dewars White Label 50 мл",
+          "price": 1400,
+          "priceDisplay": "1400тг",
+          "img": null
+        },
+        {
+          "id": 211,
+          "name": "William Lawson`s Super Spiced 50 мл",
+          "price": 1300,
+          "priceDisplay": "1300тг",
+          "img": null
+        },
+        {
+          "id": 212,
+          "name": "William Lawson`s 50 мл",
+          "price": 1300,
+          "priceDisplay": "1300тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Ирландский виски",
+      "anchor": null,
+      "items": [
+        {
+          "id": 213,
+          "name": "Teeling Single Gran",
+          "price": 2800,
+          "priceDisplay": "2800тг",
+          "img": null
+        },
+        {
+          "id": 214,
+          "name": "Teeling Small Batch",
+          "price": 2300,
+          "priceDisplay": "2300тг",
+          "img": null
+        },
+        {
+          "id": 215,
+          "name": "Busmills Black Bush",
+          "price": 2200,
+          "priceDisplay": "2200тг",
+          "img": null
+        },
+        {
+          "id": 216,
+          "name": "Busmills Original",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        },
+        {
+          "id": 217,
+          "name": "Jameson Black Barell",
+          "price": 2400,
+          "priceDisplay": "2400тг",
+          "img": null
+        },
+        {
+          "id": 218,
+          "name": "Jameson Original",
+          "price": 2300,
+          "priceDisplay": "2300тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Французский коньяк",
+      "anchor": null,
+      "items": [
+        {
+          "id": 219,
+          "name": "Hennessy XO",
+          "price": 25000,
+          "priceDisplay": "25000тг",
+          "img": null
+        },
+        {
+          "id": 220,
+          "name": "Hennessy VSOP",
+          "price": 8000,
+          "priceDisplay": "8000тг",
+          "img": null
+        },
+        {
+          "id": 221,
+          "name": "Hennessy VS",
+          "price": 4000,
+          "priceDisplay": "4000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Армянский коньяк",
+      "anchor": null,
+      "items": [
+        {
+          "id": 222,
+          "name": "Арарат 7 лет",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 223,
+          "name": "Арарат 5 лет",
+          "price": 1500,
+          "priceDisplay": "1500тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Казахстанский бренди",
+      "anchor": null,
+      "items": [
+        {
+          "id": 224,
+          "name": "Global Wine Premium 50 мл",
+          "price": 800,
+          "priceDisplay": "800тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Глинтвейн",
+      "anchor": null,
+      "items": [
+        {
+          "id": 225,
+          "name": "Глинтвейн классический 0.33л",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Алкогольные коктейли",
+      "anchor": null,
+      "items": [
+        {
+          "id": 226,
+          "name": "Aperol Spritz",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": null
+        },
+        {
+          "id": 227,
+          "name": "Long Island",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": null
+        },
+        {
+          "id": 228,
+          "name": "PornStar Martini",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": null
+        },
+        {
+          "id": 229,
+          "name": "B-52",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": null
+        },
+        {
+          "id": 230,
+          "name": "B-53",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": null
+        },
+        {
+          "id": 231,
+          "name": "Whisky Sour",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": null
+        },
+        {
+          "id": 232,
+          "name": "Gin and Tonic",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": null
+        },
+        {
+          "id": 233,
+          "name": "Cuba Libre",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": null
+        },
+        {
+          "id": 234,
+          "name": "Bacardi Mojito",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": null
+        },
+        {
+          "id": 296,
+          "name": "Martini negroni",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Джин",
+      "anchor": null,
+      "items": [
+        {
+          "id": 235,
+          "name": "Bombay Sapphire 50мл",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Ликер",
+      "anchor": null,
+      "items": [
+        {
+          "id": 236,
+          "name": "Absinthe 50мл",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        },
+        {
+          "id": 237,
+          "name": "Aperol 50мл",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 238,
+          "name": "Baileys 50мл",
+          "price": 1700,
+          "priceDisplay": "1700тг",
+          "img": null
+        },
+        {
+          "id": 239,
+          "name": "Becherovka 50мл",
+          "price": 1700,
+          "priceDisplay": "1700тг",
+          "img": null
+        },
+        {
+          "id": 240,
+          "name": "Campari 50мл",
+          "price": 1700,
+          "priceDisplay": "1700тг",
+          "img": null
+        },
+        {
+          "id": 242,
+          "name": "Curacao Blue 50мл",
+          "price": 1700,
+          "priceDisplay": "1700тг",
+          "img": null
+        },
+        {
+          "id": 243,
+          "name": "Jagermeister 50мл",
+          "price": 1700,
+          "priceDisplay": "1700тг",
+          "img": null
+        },
+        {
+          "id": 244,
+          "name": "Kahlua 50мл",
+          "price": 1700,
+          "priceDisplay": "1700тг",
+          "img": null
+        },
+        {
+          "id": 245,
+          "name": "Limoncello 50мл",
+          "price": 1700,
+          "priceDisplay": "1700тг",
+          "img": null
+        },
+        {
+          "id": 246,
+          "name": "Malibu Coconut Rum 50мл",
+          "price": 1700,
+          "priceDisplay": "1700тг",
+          "img": null
+        },
+        {
+          "id": 247,
+          "name": "Sambuca 50мл",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Настойки",
+      "anchor": null,
+      "items": [
+        {
+          "id": 248,
+          "name": "Настойка Имбирная 40гр 50мл",
+          "price": 800,
+          "priceDisplay": "800тг",
+          "img": null
+        },
+        {
+          "id": 249,
+          "name": "Настойка Смородиновая 40 гр 50мл",
+          "price": 800,
+          "priceDisplay": "800тг",
+          "img": null
+        },
+        {
+          "id": 250,
+          "name": "Чача Виноградная 48гр 50 мл",
+          "price": 800,
+          "priceDisplay": "800тг",
+          "img": null
+        },
+        {
+          "id": 251,
+          "name": "Чача Дубовая 48-50гр 50 мл",
+          "price": 800,
+          "priceDisplay": "800тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Ром",
+      "anchor": null,
+      "items": [
+        {
+          "id": 252,
+          "name": "Bacardi Carta Blanca 50мл",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 253,
+          "name": "Bacardi Carta Negra 50мл",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 254,
+          "name": "Bacardi Reserva 8YO 50мл",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 255,
+          "name": "Bacardi Spiced 50мл",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        },
+        {
+          "id": 256,
+          "name": "Oakheart 50мл",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Американский бурбон",
+      "anchor": null,
+      "items": [
+        {
+          "id": 257,
+          "name": "Jack Daniels Tennessee 50мл",
+          "price": 2200,
+          "priceDisplay": "2200тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Текила",
+      "anchor": null,
+      "items": [
+        {
+          "id": 258,
+          "name": "Patron Anejo 50мл",
+          "price": 3000,
+          "priceDisplay": "3000тг",
+          "img": null
+        },
+        {
+          "id": 259,
+          "name": "Patron Silver 50мл",
+          "price": 2500,
+          "priceDisplay": "2500тг",
+          "img": null
+        },
+        {
+          "id": 260,
+          "name": "Olmeca Blanco 50мл",
+          "price": 1800,
+          "priceDisplay": "1800тг",
+          "img": null
+        },
+        {
+          "id": 261,
+          "name": "Olmeca Gold 50мл",
+          "price": 2000,
+          "priceDisplay": "2000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Вермуты",
+      "anchor": null,
+      "items": [
+        {
+          "id": 262,
+          "name": "Martini Blanco 100мл",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 263,
+          "name": "Martini Extra Dry 100мл",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 264,
+          "name": "Martini Fiero 100мл",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 265,
+          "name": "Martini Riserva Bitter 100мл",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        },
+        {
+          "id": 266,
+          "name": "Martini Rose 100мл",
+          "price": 1200,
+          "priceDisplay": "1200тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Игристые вина",
+      "anchor": null,
+      "items": [
+        {
+          "id": 267,
+          "name": "Martini Asti DOCG",
+          "price": 13000,
+          "priceDisplay": "13000тг",
+          "img": null
+        },
+        {
+          "id": 268,
+          "name": "Martini Brut",
+          "price": 13000,
+          "priceDisplay": "13000тг",
+          "img": null
+        },
+        {
+          "id": 269,
+          "name": "Martini Prosecco DOCG",
+          "price": 13000,
+          "priceDisplay": "13000тг",
+          "img": null
+        },
+        {
+          "id": 270,
+          "name": "Moet & Chandon",
+          "price": 80000,
+          "priceDisplay": "80000тг",
+          "img": null
+        },
+        {
+          "id": 271,
+          "name": "Абрау дюрсо",
+          "price": 8000,
+          "priceDisplay": "8000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Вино Италия",
+      "anchor": null,
+      "items": [
+        {
+          "id": 272,
+          "name": "Vila Antinori bianco",
+          "price": 26000,
+          "priceDisplay": "26000тг",
+          "img": null
+        },
+        {
+          "id": 273,
+          "name": "Vila Antinori rosso",
+          "price": 26000,
+          "priceDisplay": "26000тг",
+          "img": null
+        },
+        {
+          "id": 274,
+          "name": "Paladin Syrah rosso",
+          "price": 22000,
+          "priceDisplay": "22000тг",
+          "img": null
+        },
+        {
+          "id": 275,
+          "name": "Lambrusco dell`Emilla Rosato",
+          "price": 17000,
+          "priceDisplay": "17000тг",
+          "img": null
+        },
+        {
+          "id": 276,
+          "name": "Paladin Chardonnay",
+          "price": 17000,
+          "priceDisplay": "17000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Вино Испания",
+      "anchor": null,
+      "items": [
+        {
+          "id": 277,
+          "name": "San Valentin (Белое)",
+          "price": 13000,
+          "priceDisplay": "13000тг",
+          "img": null
+        },
+        {
+          "id": 278,
+          "name": "San Valentin (Красное)",
+          "price": 13000,
+          "priceDisplay": "13000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Вино Франция",
+      "anchor": null,
+      "items": [
+        {
+          "id": 279,
+          "name": "Chablis Premier Cru Simonnet Febvre Blanc",
+          "price": 48000,
+          "priceDisplay": "48000тг",
+          "img": null
+        },
+        {
+          "id": 280,
+          "name": "La Marina Colombard Sauvignon",
+          "price": 20000,
+          "priceDisplay": "20000тг",
+          "img": null
+        },
+        {
+          "id": 281,
+          "name": "La Marina Cuvee Rouge",
+          "price": 20000,
+          "priceDisplay": "20000тг",
+          "img": null
+        },
+        {
+          "id": 282,
+          "name": "Cuvee speciale (белое)",
+          "price": 20000,
+          "priceDisplay": "20000тг",
+          "img": null
+        },
+        {
+          "id": 283,
+          "name": "Cuvee speciale (красное)",
+          "price": 20000,
+          "priceDisplay": "20000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Вино грузия",
+      "anchor": null,
+      "items": [
+        {
+          "id": 284,
+          "name": "Алазанская долина NP (белое)",
+          "price": 7000,
+          "priceDisplay": "7000тг",
+          "img": null
+        },
+        {
+          "id": 285,
+          "name": "Алазанская долина NP (красное)",
+          "price": 7000,
+          "priceDisplay": "7000тг",
+          "img": null
+        },
+        {
+          "id": 286,
+          "name": "Саперави NP",
+          "price": 8000,
+          "priceDisplay": "8000тг",
+          "img": null
+        },
+        {
+          "id": 287,
+          "name": "Киндзмараули",
+          "price": 9000,
+          "priceDisplay": "9000тг",
+          "img": null
+        },
+        {
+          "id": 288,
+          "name": "Хванчкара",
+          "price": 15000,
+          "priceDisplay": "15000тг",
+          "img": null
+        },
+        {
+          "id": 289,
+          "name": "Цинандали NP",
+          "price": 8000,
+          "priceDisplay": "8000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Вино Чили",
+      "anchor": null,
+      "items": [
+        {
+          "id": 290,
+          "name": "Tocornal Cabernet Sauvignon (белое)",
+          "price": 11000,
+          "priceDisplay": "11000тг",
+          "img": null
+        },
+        {
+          "id": 291,
+          "name": "Tocornal Cabernet Sauvignon (красное)",
+          "price": 11000,
+          "priceDisplay": "11000тг",
+          "img": null
+        },
+        {
+          "id": 292,
+          "name": "Villa Andina Cabernet Sauvignon Carmenere",
+          "price": 11000,
+          "priceDisplay": "11000тг",
+          "img": null
+        },
+        {
+          "id": 293,
+          "name": "Villa Andina Chardonnay Sauvignon",
+          "price": 12000,
+          "priceDisplay": "12000тг",
+          "img": null
+        }
+      ]
+    },
+    {
+      "title": "Домашнее грузиснкое вино по бокалам",
+      "anchor": null,
+      "items": [
+        {
+          "id": 294,
+          "name": "Белое полусладкое 150мл",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        },
+        {
+          "id": 295,
+          "name": "Красное полусадкое 150мл",
+          "price": 1600,
+          "priceDisplay": "1600тг",
+          "img": null
+        }
+      ]
+    }
+  ],
+  "details": {
+    "12": {
+      "name": "Кавказ",
+      "price": 4500,
+      "img": "image/kavkaz.JPG",
+      "desc": "Помидоры,огурцы,болгарский перец,брынза,редиска,зелень,маслины"
+    },
+    "13": {
+      "name": "Соленья",
+      "price": 4500,
+      "img": "image/solenia.JPG",
+      "desc": "Мар.опята,квашенная капуста,почтаки кукурузы,карнишоны,маринованные черри,бочковые огурцы"
+    },
+    "14": {
+      "name": "Бадриджани",
+      "price": 2200,
+      "img": "image/badridjani.jpg",
+      "desc": "Жаренные баклажаны с ореховым соусом"
+    },
+    "15": {
+      "name": "Баклажан мефурат",
+      "price": 2900,
+      "img": "image/nono.png",
+      "desc": "говяжий фарш,баклажаны,помидоры,моцарелла,грузинские специи"
+    },
+    "16": {
+      "name": "Грибы на кеци",
+      "price": 2900,
+      "img": "image/gribinakeqi.jpg",
+      "desc": "Шампиньоны,сливочное масло,моцарелла"
+    },
+    "17": {
+      "name": "Долма",
+      "price": 3400,
+      "img": "image/dolma.jpg",
+      "desc": "Виноградные листья,фарш,соус сметана"
+    },
+    "18": {
+      "name": "Долма в перчике",
+      "price": 3600,
+      "img": "image/nono.png",
+      "desc": "Болгарский перец,говяжий фарш,рис,соус сметанковый"
+    },
+    "19": {
+      "name": "Салат по имеретински",
+      "price": 2400,
+      "img": "image/nono.png",
+      "desc": "Помидоры,огурцы,карсный лук,сметана,зелень,орехи"
+    },
+    "20": {
+      "name": "Салат Глехури",
+      "price": 1900,
+      "img": "image/glehuri.png",
+      "desc": "Помидоры,огурцы, красный лук,полугорький перец, зелен райхон, винный уксус"
+    },
+    "21": {
+      "name": "Салат грибной по грузински",
+      "price": 3300,
+      "img": "image/nono.png",
+      "desc": "Шампиньоны,брынза,помидоры черри"
+    },
+    "22": {
+      "name": "Салат Сулико",
+      "price": 3600,
+      "img": "image/suliko.jpg",
+      "desc": "Отварной язык, запеченное куринное филе, жаренные шампиньоны,гризинские специи,майонез"
+    },
+    "24": {
+      "name": "Салат friendly",
+      "price": 3800,
+      "img": "image/Friednly.JPG",
+      "desc": "Ростбиф,язык говяжий,свекла,соус медово апельсиновый, микс салата"
+    },
+    "25": {
+      "name": "Салат Буратта",
+      "price": 3500,
+      "img": "image/buratta.JPG",
+      "desc": "Сыр,микс салата, микс томата"
+    },
+    "26": {
+      "name": "Салат Греческий",
+      "price": 2600,
+      "img": "image/grecheski.jpg",
+      "desc": "Огурцы,помидоры,болг.перец,сыр фетта, греческий соус,"
+    },
+    "27": {
+      "name": "Салат Острый гурман",
+      "price": 2600,
+      "img": "image/ostriigyrman.png",
+      "desc": "Говядина,болг.перец, перец чили,полугорький перец,  патисоны"
+    },
+    "28": {
+      "name": "Салат Руколла с креветками",
+      "price": 3600,
+      "img": "image/rukola.png",
+      "desc": "Рукола,креветки,авакадо"
+    },
+    "29": {
+      "name": "Салат Фреш",
+      "price": 1500,
+      "img": "image/fresh.jpg",
+      "desc": "Огурцы,помидоры,полугорький перец,соус фламинго"
+    },
+    "30": {
+      "name": "Салат Хрустящие баклажаны",
+      "price": 2400,
+      "img": "image/hrustachie.JPG",
+      "desc": "Баклажаны,крем чиз,помидоры,соус сладкий чили"
+    },
+    "31": {
+      "name": "Салат Цезарь с креветками",
+      "price": 2800,
+      "img": "image/krevatkami.png",
+      "desc": "Креветки,айсберг,перепилинное яйцо, черри, сухари, соус цезарь"
+    },
+    "32": {
+      "name": "Салат Цезарь с курицей",
+      "price": 2500,
+      "img": "image/cezar.png",
+      "desc": "Курица,айсберг,перепилинное яйцо, черри, сухари, соус цезарь"
+    },
+    "33": {
+      "name": "Салат Цезарь с Семгой",
+      "price": 3200,
+      "img": "image/cezarslososem.jpg",
+      "desc": "Семга,айсберг,перепилинное яйцо, черри, сухари, соус цезарь"
+    },
+    "35": {
+      "name": "Бозбаш",
+      "price": 4200,
+      "img": "image/bozbash.png",
+      "desc": ",Баранья голень,нохат,овощи,грузинские специи"
+    },
+    "36": {
+      "name": "Солянка по грузинский",
+      "price": 3600,
+      "img": "image/harcho.jpg",
+      "desc": "Говяжье бон филе,грибы,полугорький перец,грузинские специи"
+    },
+    "37": {
+      "name": "Харчо из говядины",
+      "price": 2700,
+      "img": "image/harcho2.png",
+      "desc": "Говядина,овощи,рис,грузинские специи"
+    },
+    "38": {
+      "name": "Харчо из курицы",
+      "price": 2500,
+      "img": "image/harchoinchiken.JPG",
+      "desc": "Мясо цыпленка,овощи,рис,грузинские специи"
+    },
+    "39": {
+      "name": "Суп Том-ям",
+      "price": 4000,
+      "img": "image/tomyam.JPG",
+      "desc": "Морской коктель,том-ям паста,лемонграсс,имбирь,кокосовое молоко,рис"
+    },
+    "40": {
+      "name": "Суп чечевичный",
+      "price": 1500,
+      "img": "image/cheche.jpg",
+      "desc": "Чечевица,сухари,сливки"
+    },
+    "41": {
+      "name": "Суп лапша",
+      "price": 1800,
+      "img": "image/lapsha.jpg",
+      "desc": "Курица,лапша,зелень"
+    },
+    "42": {
+      "name": "Рамен кимчи с говядиной",
+      "price": 3000,
+      "img": "image/rameninmeat.JPG",
+      "desc": "Говядина,корейская лапша,шампиьоны,яйцо пашот,нори"
+    },
+    "43": {
+      "name": "Рамен с курицей",
+      "price": 2800,
+      "img": "image/rameninchicken.jpeg",
+      "desc": "Курица,корейская лапша,шампиьоны,яйцо пашот,нори"
+    },
+    "44": {
+      "name": "Пельмени",
+      "price": 2100,
+      "img": "image/pelmeni.webp",
+      "desc": "Пельмени,сметана,зелень"
+    },
+    "45": {
+      "name": "Шорпа",
+      "price": 2200,
+      "img": "image/shorpa.JPG",
+      "desc": "Говядина/баранина,картошка"
+    },
+    "46": {
+      "name": "Хинкали с говядиной",
+      "price": 3500,
+      "img": "image/hinkali.JPG",
+      "desc": "Говяжий фарш,тесто,сметанный соус"
+    },
+    "47": {
+      "name": "Хинкали с грибами",
+      "price": 3500,
+      "img": "image/hinkali.JPG",
+      "desc": "Шампиньоны,тесто,грибной соус"
+    },
+    "48": {
+      "name": "Мимино",
+      "price": 3500,
+      "img": "image/mimino.JPG",
+      "desc": "Шампиньоны,грибной соус"
+    },
+    "50": {
+      "name": "Оджахури",
+      "price": 4000,
+      "img": "image/ojahuri.jpg",
+      "desc": "Говядина,перец светофор,полугорький перец,картофель,чеснок,грузинские специи"
+    },
+    "51": {
+      "name": "Ребра Батхани",
+      "price": 5300,
+      "img": "image/rebrabathani.jpg",
+      "desc": "Барань ребра,винный соус,картофель"
+    },
+    "52": {
+      "name": "Чахохбили",
+      "price": 3300,
+      "img": "image/chahohbili.png",
+      "desc": "Мясо цыпленка,перец светофор,полугроький перец,помидоры,чеснок,грузинские специи"
+    },
+    "53": {
+      "name": "Чашошули",
+      "price": 4500,
+      "img": "image/chashahuli.jpg",
+      "desc": "Говядина,перец светофор,полугорький перец,чеснок,грузинские специи"
+    },
+    "54": {
+      "name": "Шкмерули",
+      "price": 4300,
+      "img": "image/chkmeruli.jpg",
+      "desc": "Цыплята в сливочном соусе"
+    },
+    "56": {
+      "name": "Хачапури по мегрельски",
+      "price": 3500,
+      "img": "image/megrelski.jpg",
+      "desc": "Тесто,брынза,моцарелла"
+    },
+    "57": {
+      "name": "Хачапури по аджарски",
+      "price": 2800,
+      "img": "image/puriadjarski.jpg",
+      "desc": "Тесто,брынза,моцарелла"
+    },
+    "58": {
+      "name": "Хачапури по имеретински",
+      "price": 3500,
+      "img": "image/imeretinkski.png",
+      "desc": "Тесто,брынза,моцарелла"
+    },
+    "59": {
+      "name": "Хачапури по королевски",
+      "price": 4000,
+      "img": "image/king.JPG",
+      "desc": "Тесто,брынза,моцарелла,"
+    },
+    "60": {
+      "name": "Хычины с сыром",
+      "price": 1500,
+      "img": "image/huchina.JPG",
+      "desc": "Тесто,брынза,моцарелла"
+    },
+    "61": {
+      "name": "Хычины с сыром и зеленью",
+      "price": 1600,
+      "img": "image/huchina.JPG",
+      "desc": "Тесто,брынза,моцарелла,зелень"
+    },
+    "62": {
+      "name": "Пицца 4 сезона",
+      "price": 3200,
+      "img": "image/fourseasn.jpg",
+      "desc": "Сыр,курица,грибы,колбаса,помидоры"
+    },
+    "63": {
+      "name": "Болоньезе пицца",
+      "price": 2300,
+      "img": "image/boloneze.JPG",
+      "desc": "Сыр,фарш,cоус болоньезе"
+    },
+    "64": {
+      "name": "Пицца курица грибы",
+      "price": 2700,
+      "img": "image/julenpizza.JPG",
+      "desc": "Сыр,курица,шампиньоны,соус сливочный"
+    },
+    "65": {
+      "name": "Пицца маргарита",
+      "price": 2300,
+      "img": "image/margarita.JPG",
+      "desc": "Сыр,помидоры"
+    },
+    "66": {
+      "name": "Пицца пеперони",
+      "price": 2700,
+      "img": "image/peperoni.jpg",
+      "desc": "Сыр,колбаса"
+    },
+    "67": {
+      "name": "Пицца с лососем",
+      "price": 3400,
+      "img": "image/pizzainfish.png",
+      "desc": "Сыр,лосось,соус трюфельный,руколла"
+    },
+    "68": {
+      "name": "Рыбное плато",
+      "price": 8800,
+      "img": "image/rybnaya-narezka-foto-33.jpg",
+      "desc": "Семга,эскалар,кета,красная икра,крем чиз,"
+    },
+    "69": {
+      "name": "Сырное плато",
+      "price": 7000,
+      "img": "image/cheasas.jpg",
+      "desc": "5 видов сыра,виноград,мед,валеные томаты"
+    },
+    "70": {
+      "name": "Мясное плато",
+      "price": 8000,
+      "img": "image/meatas.jpeg",
+      "desc": "Казы,жая,язык говяжий,копченная куриц,соус тартар"
+    },
+    "71": {
+      "name": "Русская закуска",
+      "price": 3200,
+      "img": "image/russianzak.png",
+      "desc": "Селедка,картофель,квашенная капуста,бородинский хлеб,корнишоны"
+    },
+    "72": {
+      "name": "Сырные палочки",
+      "price": 2300,
+      "img": "image/cheasteks.jpg",
+      "desc": "Сыр,понировка"
+    },
+    "73": {
+      "name": "Гарлики",
+      "price": 900,
+      "img": "image/Garliki2.png",
+      "desc": "Бородинский хлеб,соус чесночный"
+    },
+    "74": {
+      "name": "Бараньи семечки",
+      "price": 2100,
+      "img": "image/barniisemeshki.png",
+      "desc": ""
+    },
+    "75": {
+      "name": "Пивные креветки",
+      "price": 3600,
+      "img": "image/pivnyekrevetki.jpg",
+      "desc": "Жаренные креветки,лимонная вода"
+    },
+    "76": {
+      "name": "Крылышки баффало",
+      "price": 2800,
+      "img": "image/kralishki.jpeg",
+      "desc": "Куринные крылышки в соусе"
+    },
+    "77": {
+      "name": "Пивной сет",
+      "price": 13000,
+      "img": "image/pivnoiset.JPG",
+      "desc": "Чечил жаренный,бараньи семечки,копченная сырная палочка,луковые кольца,пивные креветки,сосиски,пельмени жаренные,фри,3 вида соуса"
+    },
+    "78": {
+      "name": "Рибай",
+      "price": 5000,
+      "img": "image/ribay.JPG",
+      "desc": "Мясо реберной части говядины,картофель,кукуруза,помидоры,шампиьоны,соус авторский"
+    },
+    "79": {
+      "name": "Тибон",
+      "price": 5600,
+      "img": "image/tibon.png",
+      "desc": "Мясо поясничной части говядины,картофель,кукуруза,помидоры,шампиьоны,соус авторский"
+    },
+    "80": {
+      "name": "Медальоны",
+      "price": 5900,
+      "img": "image/meadlion.jpg",
+      "desc": "Телячья вырезка,микс салата,соус авторский"
+    },
+    "81": {
+      "name": "Оссобуко",
+      "price": 4300,
+      "img": "image/ossobuko.webp",
+      "desc": "Темленная говядина,пюре картофельное,соус демигласс"
+    },
+    "82": {
+      "name": "Стриплойн",
+      "price": 6000,
+      "img": "image/striploin.jpg",
+      "desc": "Говядина,баклажаны,болгарский перец,мини морковь,черри,соус авторский"
+    },
+    "83": {
+      "name": "Лосось по католонски",
+      "price": 5000,
+      "img": "image/losos.png",
+      "desc": "Лосось,овощи,лимон,икра лосося"
+    },
+    "84": {
+      "name": "Форель запеченная целиком",
+      "price": 4700,
+      "img": "image/forel.jpg",
+      "desc": "Форель,шпинат,пармизан,соус сливочный"
+    },
+    "85": {
+      "name": "Цыпленок терияки",
+      "price": 3200,
+      "img": "image/Cyplenok.png",
+      "desc": "Цыпленок,факачи, соус татар"
+    },
+    "86": {
+      "name": "Кардон блю с микс салатом",
+      "price": 3600,
+      "img": "image/cardonblu.JPG",
+      "desc": "Куринное филе,крем чиз,грецкий орех,чернослив,инжир,микс салата,соус сливочный"
+    },
+    "87": {
+      "name": "Стейк ассорти",
+      "price": 40000,
+      "img": "image/steakas.jpg",
+      "desc": ""
+    },
+    "88": {
+      "name": "Рыбное ассорти",
+      "price": 3600,
+      "img": "image/rybnayassorti.JPG",
+      "desc": ""
+    },
+    "90": {
+      "name": "Альфредо",
+      "price": 3600,
+      "img": "image/pasta.JPG",
+      "desc": ""
+    },
+    "91": {
+      "name": "Болоньезе",
+      "price": 2600,
+      "img": "image/boloneszepasta.jpg",
+      "desc": ""
+    },
+    "92": {
+      "name": "Спагетти с морепродуктами ",
+      "price": 2600,
+      "img": "image/moreproducti.jpg",
+      "desc": ""
+    },
+    "93": {
+      "name": "Филадельфия ",
+      "price": 2600,
+      "img": "image/fila.jpg",
+      "desc": ""
+    },
+    "95": {
+      "name": "Темпура Америка",
+      "price": 3,
+      "img": "image/amerika.JPG",
+      "desc": ""
+    },
+    "99": {
+      "name": "Чиз Эби",
+      "price": 3,
+      "img": "image/chizeby.JPG",
+      "desc": ""
+    },
+    "100": {
+      "name": "Сет Сакура",
+      "price": 15000,
+      "img": "image/sakura.jpg",
+      "desc": "филадельфия,калифорния,лас вегас,бонито,чиз эби,цезарь темпура"
+    },
+    "101": {
+      "name": "Сет Самурай",
+      "price": 10000,
+      "img": "image/nono.png",
+      "desc": "филадельфия,дракон,америка темпура,снежный краб"
+    },
+    "109": {
+      "name": "Дракон",
+      "price": 3000,
+      "img": "image/drakon.jpg",
+      "desc": ""
+    }
+  }
+}

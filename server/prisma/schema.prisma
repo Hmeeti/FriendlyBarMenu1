@@ -1,0 +1,133 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // Local default: SQLite. For production set provider = "postgresql"
+  // and DATABASE_URL to your Postgres connection string.
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  MANAGER
+}
+
+enum ActionType {
+  CREATE
+  UPDATE
+  DELETE
+  LOGIN
+  LOGOUT
+}
+
+enum Availability {
+  IN_STOCK
+  OUT_OF_STOCK
+}
+
+model AdminUser {
+  id           String     @id @default(cuid())
+  username     String     @unique
+  email        String     @unique
+  name         String
+  passwordHash String
+  role         Role       @default(MANAGER)
+  isActive     Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  auditLogs    AuditLog[]
+}
+
+model Category {
+  id        String     @id @default(cuid())
+  title     String
+  slug      String     @unique
+  sortOrder Int        @default(0)
+  isActive  Boolean    @default(true)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  items     MenuItem[]
+}
+
+model MenuItem {
+  id           String         @id @default(cuid())
+  legacyId     Int?           @unique
+  categoryId   String
+  category     Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  name         String
+  description  String         @default("")
+  weight       String         @default("")
+  price        Int
+  imageUrl     String         @default("image/nono.png")
+  availability Availability   @default(IN_STOCK)
+  isActive     Boolean        @default(true)
+  sortOrder    Int            @default(0)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  variants     Variant[]
+  modifiers    ItemModifier[]
+
+  @@index([categoryId, sortOrder])
+}
+
+model Variant {
+  id           String       @id @default(cuid())
+  menuItemId   String
+  menuItem     MenuItem     @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
+  name         String
+  priceDelta   Int          @default(0)
+  availability Availability @default(IN_STOCK)
+  sortOrder    Int          @default(0)
+}
+
+model ModifierGroup {
+  id        String     @id @default(cuid())
+  name      String
+  minSelect Int        @default(0)
+  maxSelect Int        @default(1)
+  required  Boolean    @default(false)
+  modifiers Modifier[]
+}
+
+model Modifier {
+  id              String         @id @default(cuid())
+  groupId         String
+  group           ModifierGroup  @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  name            String
+  priceDelta      Int            @default(0)
+  availability    Availability   @default(IN_STOCK)
+  itemLinks       ItemModifier[]
+}
+
+model ItemModifier {
+  menuItemId String
+  modifierId String
+  menuItem   MenuItem @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
+  modifier   Modifier @relation(fields: [modifierId], references: [id], onDelete: Cascade)
+
+  @@id([menuItemId, modifierId])
+}
+
+model AuditLog {
+  id         String     @id @default(cuid())
+  createdAt  DateTime   @default(now())
+  adminId    String?
+  admin      AdminUser? @relation(fields: [adminId], references: [id], onDelete: SetNull)
+  adminEmail String
+  adminName  String
+  action     ActionType
+  entityType String
+  entityId   String?
+  entityLabel String    @default("")
+  summary    String
+  before     Json?
+  after      Json?
+  ip         String?
+  userAgent  String?
+
+  @@index([createdAt])
+  @@index([entityType, entityId])
+  @@index([adminId])
+}
