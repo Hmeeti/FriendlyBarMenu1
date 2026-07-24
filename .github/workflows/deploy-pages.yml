@@ -1,4 +1,4 @@
-name: Deploy static menu to GitHub Pages
+name: Deploy frontend to GitHub Pages
 
 on:
   push:
@@ -21,28 +21,19 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v5
 
       - name: Prepare publish folder
         run: |
           mkdir -p _site
-          # Static guest menu + admin.html (no node_modules / server)
-          cp index.html admin.html _site/
-          cp -r css js image _site/
-          # Optional docs
-          cp README.md _site/ 2>/dev/null || true
-          # Keep uploads path empty placeholder if referenced
+          cp -r frontend/* _site/
           mkdir -p _site/uploads
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4

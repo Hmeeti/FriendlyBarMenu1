@@ -2,34 +2,43 @@
 node_modules/
 **/node_modules/
 
-# Env & secrets
+# Environment & secrets
 .env
 .env.*
 !.env.example
+!.env.production.example
+**/.env
 !**/.env.example
-server/.env
+!**/.env.production.example
 
-# Databases & uploads
+# Databases & local uploads
+backend/prisma/*.db
+backend/prisma/*.db-journal
+backend/uploads/*
+!backend/uploads/.gitkeep
 server/prisma/*.db
-server/prisma/*.db-journal
 server/uploads/*
-!server/uploads/.gitkeep
 
 # Build outputs
 dist/
-admin/dist/
-server/dist/
+**/dist/
+build/
+coverage/
+
+# Logs & OS
 *.log
 npm-debug.log*
-
-# OS / IDE
+yarn-error.log*
 .DS_Store
 Thumbs.db
+
+# IDE
 .idea/
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
 
-# Local tooling caches
+# Caches
 .cache/
 *.tmp
+.turbo/

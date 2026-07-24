@@ -1,68 +1,149 @@
 # Friendly Menu
 
-Электронное меню ресторана + админ-панель с API, real-time обновлениями и аудитом.
+Электронное меню ресторана с админ-панелью, REST API, real-time синхронизацией и аудитом изменений.
 
-## Стек
+## Структура проекта
 
-| Часть | Технологии |
-|---|---|
-| Гостевое меню | HTML / CSS / JS |
-| Админка (простая) | `admin.html` |
-| Админка (React) | Vite + React (`admin/`) |
-| API | Node.js + Express + Socket.io + Prisma |
-| БД | SQLite (локально) / PostgreSQL (продакшен) |
+```text
+friendly-menu/
+├── .github/
+│   └── workflows/
+│       └── deploy-pages.yml      # GitHub Pages (frontend)
+├── frontend/                     # Гостевое меню + лёгкая админка
+│   ├── index.html                # Электронное меню
+│   ├── admin.html                # Админ-панель (категории / блюда)
+│   ├── css/
+│   ├── js/
+│   │   ├── config.js             # URL API для продакшена
+│   │   ├── script.js
+│   │   ├── menu-live.js
+│   │   └── admin-panel.js
+│   └── image/                    # Фото блюд (public assets)
+├── backend/                      # Node.js API + БД
+│   ├── src/
+│   │   ├── index.js              # Express + Socket.io
+│   │   ├── routes/
+│   │   ├── middleware/
+│   │   └── lib/
+│   ├── prisma/
+│   │   ├── schema.prisma
+│   │   └── seed.js
+│   ├── data/
+│   │   └── menu-export.json      # Сид меню
+│   ├── uploads/                  # Загруженные изображения
+│   ├── .env.example
+│   ├── .env.production.example
+│   └── package.json
+├── admin-web/                    # Опциональная React-админка (Vite)
+│   ├── src/
+│   └── package.json
+├── docs/
+│   ├── ADMIN.md
+│   └── RUN.md
+├── scripts/
+│   └── legacy/                   # Вспомогательные скрипты
+├── docker-compose.yml            # PostgreSQL для продакшена
+├── package.json                  # Корневые npm-скрипты
+├── .gitignore
+└── README.md
+```
+
+## Требования
+
+- Node.js **20+**
+- npm 10+
+- (опционально) Docker — для PostgreSQL
 
 ## Быстрый старт (локально)
 
+### 1. Backend API
+
 ```bash
-# 1) API
-cd server
+cd backend
 cp .env.example .env
 npm install
 npx prisma generate
 npx prisma db push
 npm run db:seed
 npm run dev
-# → http://127.0.0.1:4000
-
-# 2) Гостевое меню
-# Откройте index.html через Live Server (порт 5500/5501)
-
-# 3) Админка
-# http://127.0.0.1:5501/admin.html
 ```
 
-**Логин админа (по умолчанию):**
-- Login: `ilnur000`
-- Password: `9987650`
+API: **http://127.0.0.1:4000**  
+Проверка: http://127.0.0.1:4000/api/health → `{"ok":true}`
 
-Смените пароль в `server/.env` перед продакшеном.
+Из корня репозитория можно так:
 
-## Структура
-
+```bash
+npm run setup
+npm run dev:api
 ```
-index.html          # электронное меню
-admin.html          # админ-панель (категории + редактирование блюд)
-js/                 # клиентские скрипты
-css/                # стили
-image/              # фото блюд
-server/             # Express API + Prisma
-admin/              # React-админка (опционально)
-docker-compose.yml  # PostgreSQL для продакшена
+
+### 2. Frontend (электронное меню)
+
+Откройте папку `frontend/` через **Live Server** (VS Code / Cursor):
+
+- Меню: `http://127.0.0.1:5501/index.html` (порт может быть 5500/5501)
+- Админка: `http://127.0.0.1:5501/admin.html`
+
+Либо из корня:
+
+```bash
+npx --yes serve frontend -p 5501
+```
+
+### 3. Вход в админ-панель
+
+1. На странице меню нажмите кнопку **Admin** (в шапке)  
+   или откройте `frontend/admin.html`
+2. Логин / пароль по умолчанию:
+
+| Поле | Значение |
+|---|---|
+| Login | `ilnur000` |
+| Password | `9987650` |
+
+> Перед продакшеном смените пароль в `backend/.env` (`ADMIN_PASSWORD`) и перезапустите `npm run db:seed`.
+
+### 4. (Опционально) React Admin
+
+```bash
+cd admin-web
+npm install
+npm run dev
+```
+
+Откроется http://localhost:5173 (проксирует `/api` на backend).
+
+## Переменные окружения (backend)
+
+Скопируйте `backend/.env.example` → `backend/.env`:
+
+```env
+DATABASE_URL="file:./dev.db"
+JWT_SECRET="change-me"
+PORT=4000
+HOST=0.0.0.0
+CLIENT_ORIGIN="http://127.0.0.1:5501,http://localhost:5501"
+ADMIN_USERNAME="ilnur000"
+ADMIN_PASSWORD="9987650"
+```
+
+Для продакшена см. `backend/.env.production.example`.
+
+## Конфиг frontend → API
+
+Файл `frontend/js/config.js`:
+
+```js
+window.FRIENDLY_CONFIG = {
+  // Локально можно оставить пустым (auto: hostname:4000)
+  apiBase: '',
+  // После деплоя API, например:
+  // apiBase: 'https://your-api.onrender.com',
+};
 ```
 
 ## Деплой на GitHub
-
-### 1. Залить код
-
-```bash
-git init
-git add .
-git commit -m "Initial commit: Friendly Menu with admin API"
-gh repo create friendly-menu --public --source=. --remote=origin --push
-```
-
-Или создайте репозиторий на github.com и:
 
 ```bash
 git remote add origin https://github.com/<USER>/<REPO>.git
@@ -70,67 +151,29 @@ git branch -M main
 git push -u origin main
 ```
 
-### 2. GitHub Pages (статическое меню)
+1. **GitHub Pages** (frontend): Settings → Pages → Source: **GitHub Actions**
+2. **Backend**: Render / Railway / Fly — Root Directory = `backend`
+3. В `frontend/js/config.js` укажите `apiBase` на URL вашего API
+4. В `CLIENT_ORIGIN` добавьте URL GitHub Pages
 
-1. Settings → Pages → Source: **GitHub Actions**
-2. Workflow уже лежит в `.github/workflows/deploy-pages.yml`
-3. После push на `main` меню будет на:
-   `https://<USER>.github.io/<REPO>/`
+## Основные API-эндпоинты
 
-**Важно:** для сохранения изменений из админки нужен отдельный backend (см. ниже).  
-В `js/config.js` укажите URL API:
+| Method | Path | Описание |
+|---|---|---|
+| GET | `/api/health` | Healthcheck |
+| GET | `/api/menu` | Публичное меню |
+| POST | `/api/auth/login` | Вход админа |
+| GET/PATCH | `/api/admin/items` | CRUD блюд |
+| GET/POST | `/api/admin/categories` | Категории |
+| GET | `/api/admin/audit` | Журнал действий |
 
-```js
-window.FRIENDLY_CONFIG = {
-  apiBase: 'https://your-api.onrender.com',
-};
-```
+## Безопасность
 
-### 3. Backend (Render / Railway / Fly.io)
-
-Рекомендуемый бесплатный вариант — [Render](https://render.com):
-
-1. New → Web Service → подключите этот GitHub-репозиторий
-2. Root Directory: `server`
-3. Build Command:
-   ```bash
-   npm install && npx prisma generate && npx prisma db push
-   ```
-4. Start Command: `npm start`
-5. Environment:
-   - `DATABASE_URL` — Postgres (Render Postgres) или оставьте SQLite только для теста
-   - `JWT_SECRET` — длинная случайная строка
-   - `CLIENT_ORIGIN` — `https://<USER>.github.io` (и ваш custom domain)
-   - `ADMIN_USERNAME` / `ADMIN_PASSWORD` / `ADMIN_EMAIL`
-   - `COOKIE_SECURE=true`
-   - `PORT=4000` (Render подставит свой PORT — в коде уже `process.env.PORT`)
-
-Для PostgreSQL в `server/prisma/schema.prisma` смените:
-
-```prisma
-provider = "postgresql"
-```
-
-Затем в Render:
-
-```bash
-npx prisma db push && npm run db:seed && npm start
-```
-
-### 4. CORS
-
-В `CLIENT_ORIGIN` перечислите все фронтенд-origins через запятую, например:
-
-```
-https://username.github.io,https://username.github.io/friendly-menu
-```
-
-Локальные `localhost` / `127.0.0.1` уже разрешены в коде API.
-
-## Документация API
-
-См. [ADMIN.md](./ADMIN.md) и [RUN.md](./RUN.md).
+- `backend/.env` **не коммитится** (см. `.gitignore`)
+- JWT в httpOnly cookie (+ Bearer token)
+- CORS разрешает localhost / 127.0.0.1 и список `CLIENT_ORIGIN`
+- Роли: `SUPER_ADMIN`, `MANAGER`
 
 ## Лицензия
 
-Private / All rights reserved — по желанию владельца.
+Private — все права защищены.
