@@ -61,10 +61,17 @@ async function ensureDatabaseAndAdmin() {
         data: { username: u, email: e, name, passwordHash, role, isActive: true },
       });
       console.log(`[setup] Created admin: ${u} (${role})`);
-    } else {
+    } else if (process.env.RESET_ADMIN_PASSWORD === '1') {
       await prisma.adminUser.update({
         where: { id: existing.id },
         data: { username: u, email: e, name, passwordHash, role, isActive: true },
+      });
+      console.log(`[setup] Reset password for admin: ${u}`);
+    } else {
+      // Never overwrite password on boot — only refresh profile flags
+      await prisma.adminUser.update({
+        where: { id: existing.id },
+        data: { username: u, email: e, name, role, isActive: true },
       });
     }
   };
@@ -86,8 +93,8 @@ async function ensureDatabaseAndAdmin() {
     role: 'SUPER_ADMIN',
   });
 
-  if (!(process.env.JWT_SECRET || '').trim()) {
-    throw new Error('JWT_SECRET is empty. Set it in .env (see .env.example).');
+  if (!(process.env.JWT_SECRET || '').trim() || (process.env.JWT_SECRET || '').length < 24) {
+    throw new Error('JWT_SECRET must be set to a strong value (24+ chars). See .env.example.');
   }
 
   // Fresh Render/SQLite often has zero dishes — keep guest menu alive from data.js
@@ -140,14 +147,20 @@ async function seedMenuFromDataJs() {
   console.log(`[setup] Auto-seeded ${sections.length} categories / ${items} dishes from data.js`);
 }
 
-const allow = (o) =>
-  !o ||
-  !origins.length ||
-  origins.includes('*') ||
-  origins.includes(o) ||
-  /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(o) ||
-  /^https:\/\/([\w-]+\.)?github\.io$/i.test(o) ||
-  /^https:\/\/friendlybarmenu1admin\.onrender\.com$/i.test(o);
+const isProd = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
+const defaultOrigins = [
+  'https://hmeeti.github.io',
+  'https://friendlybarmenu1admin.onrender.com',
+];
+const allow = (o) => {
+  if (!o) return true;
+  if (origins.includes('*')) return !isProd;
+  if (origins.length && origins.includes(o)) return true;
+  if (defaultOrigins.includes(o)) return true;
+  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(o)) return true;
+  if (!origins.length && !isProd) return true;
+  return false;
+};
 
 
 const corsOpts = {
@@ -164,20 +177,61 @@ app.set('trust proxy', 1);
 app.use(cors(corsOpts));
 app.options(/.*/, cors(corsOpts));
 app.use(cookieParser());
-app.use(express.json({ limit: '2mb' }));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.json({ limit: '256kb' }));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'), {
+  setHeaders(res) {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Content-Disposition', 'inline');
+  },
+}));
 app.use('/image', express.static(path.join(__dirname, 'image')));
 
 const uploadDir = path.join(__dirname, 'uploads');
 fs.mkdirSync(uploadDir, { recursive: true });
+const ALLOWED_UPLOAD = {
+  'image/jpeg': '.jpg',
+  'image/png': '.png',
+  'image/webp': '.webp',
+  'image/gif': '.gif',
+};
 const upload = multer({
   storage: multer.diskStorage({
     destination: (_r, _f, cb) => cb(null, uploadDir),
-    filename: (_r, f, cb) => cb(null, `${Date.now()}-${Math.random().toString(36).slice(2)}${path.extname(f.originalname) || '.jpg'}`),
+    filename: (_r, f, cb) => {
+      const ext = ALLOWED_UPLOAD[f.mimetype] || '.jpg';
+      cb(null, `${Date.now()}-${Math.random().toString(36).slice(2)}${ext}`);
+    },
   }),
   limits: { fileSize: 5 * 1024 * 1024 },
-  fileFilter: (_r, f, cb) => (f.mimetype.startsWith('image/') ? cb(null, true) : cb(new Error('Only images allowed'))),
+  fileFilter: (_r, f, cb) =>
+    ALLOWED_UPLOAD[f.mimetype] ? cb(null, true) : cb(new Error('Only jpeg/png/webp/gif allowed')),
 });
+
+function sanitizeImageUrl(raw) {
+  const s = String(raw || '').trim();
+  if (!s || /[<>"'`]/.test(s) || /[\s]/.test(s)) return 'image/nono.png';
+  if (/^(javascript|data|vbscript):/i.test(s)) return 'image/nono.png';
+  if (/^https?:\/\//i.test(s)) {
+    try {
+      const u = new URL(s);
+      if (u.protocol !== 'http:' && u.protocol !== 'https:') return 'image/nono.png';
+      return u.href;
+    } catch {
+      return 'image/nono.png';
+    }
+  }
+  if (/^\/uploads\/[A-Za-z0-9._-]+$/.test(s)) return s;
+  if (/^image\/[A-Za-z0-9._/-]+$/.test(s)) return s;
+  return 'image/nono.png';
+}
+
+const cookieSecure = process.env.COOKIE_SECURE === 'true' || isProd;
+const cookieOpts = {
+  httpOnly: true,
+  sameSite: 'lax',
+  secure: cookieSecure,
+  path: '/',
+};
 
 const itemInclude = {
   category: true,
@@ -190,8 +244,21 @@ const slugify = (t) =>
 
 const sign = (u) => jwt.sign({ sub: u.id, role: u.role, email: u.email }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN || '8h' });
 const setCookie = (res, token) =>
-  res.cookie(COOKIE, token, { httpOnly: true, sameSite: 'lax', secure: process.env.COOKIE_SECURE === 'true', maxAge: 8 * 3600e3, path: '/' });
+  res.cookie(COOKIE, token, { ...cookieOpts, maxAge: 8 * 3600e3 });
 const readToken = (req) => req.cookies?.[COOKIE] || (req.headers.authorization?.startsWith('Bearer ') ? req.headers.authorization.slice(7) : null);
+
+const loginHits = new Map();
+function allowLoginAttempt(key) {
+  const now = Date.now();
+  const windowMs = 15 * 60e3;
+  let row = loginHits.get(key);
+  if (!row || now > row.reset) row = { n: 0, reset: now + windowMs };
+  row.n += 1;
+  loginHits.set(key, row);
+  return row.n <= 20;
+}
+
+const DUMMY_HASH = bcrypt.hashSync('__friendly_dummy_login__', 10);
 
 async function audit({ admin, action, entityType, entityId = null, entityLabel = '', summary, before = null, after = null, req = null }) {
   return prisma.auditLog.create({
@@ -299,9 +366,15 @@ app.get('/api/menu', async (_req, res) => {
 app.post('/api/auth/login', async (req, res) => {
   const loginId = String(req.body.login || req.body.username || req.body.email || '').trim().toLowerCase();
   const password = String(req.body.password || '');
+  const ip = String(req.ip || req.headers['x-forwarded-for'] || 'unknown');
+  if (!allowLoginAttempt(`${ip}:${loginId || '_'}`)) {
+    return res.status(429).json({ error: 'Too many login attempts. Try again later.' });
+  }
   if (!loginId || password.length < 6) return res.status(400).json({ error: 'Invalid credentials payload' });
   const user = await prisma.adminUser.findFirst({ where: { OR: [{ username: loginId }, { email: loginId }] } });
-  if (!user?.isActive || !(await bcrypt.compare(password, user.passwordHash))) {
+  const hash = user?.passwordHash || DUMMY_HASH;
+  const ok = await bcrypt.compare(password, hash);
+  if (!user?.isActive || !ok) {
     return res.status(401).json({ error: 'Invalid login or password' });
   }
   const token = sign(user);
@@ -312,7 +385,7 @@ app.post('/api/auth/login', async (req, res) => {
 
 app.post('/api/auth/logout', auth, async (req, res) => {
   await audit({ admin: req.admin, action: 'LOGOUT', entityType: 'AdminUser', entityId: req.admin.id, entityLabel: req.admin.email, summary: `${req.admin.name} logged out`, req });
-  res.clearCookie(COOKIE, { path: '/' });
+  res.clearCookie(COOKIE, cookieOpts);
   res.json({ ok: true });
 });
 
@@ -432,7 +505,7 @@ app.post('/api/admin/items', auth, role('SUPER_ADMIN', 'MANAGER'), async (req, r
       description: req.body.description ?? '',
       weight: req.body.weight ?? '',
       price: Number(price) || 0,
-      imageUrl: req.body.imageUrl ?? 'image/nono.png',
+      imageUrl: sanitizeImageUrl(req.body.imageUrl ?? 'image/nono.png'),
       availability: req.body.availability === 'OUT_OF_STOCK' ? 'OUT_OF_STOCK' : 'IN_STOCK',
       isActive: req.body.isActive !== false,
       sortOrder: Number(req.body.sortOrder) || 0,
@@ -451,6 +524,7 @@ app.patch('/api/admin/items/:id', auth, role('SUPER_ADMIN', 'MANAGER'), async (r
   const data = {};
   for (const k of fields) if (k in req.body) data[k] = req.body[k];
   if ('price' in data) data.price = Number(data.price) || 0;
+  if ('imageUrl' in data) data.imageUrl = sanitizeImageUrl(data.imageUrl);
   const updated = await prisma.menuItem.update({ where: { id: before.id }, data, include: itemInclude });
   await audit({ admin: req.admin, action: 'UPDATE', entityType: 'MenuItem', entityId: updated.id, entityLabel: updated.name, summary: summarize(req.admin.name, `dish "${updated.name}"`, diff(before, updated, Object.keys(data))), before, after: updated, req });
   bump('item.updated', { itemId: updated.id });
@@ -546,7 +620,11 @@ app.delete('/api/admin/audit', auth, role('SUPER_ADMIN'), async (req, res) => {
 
 app.use((err, _req, res, _next) => {
   console.error(err);
-  res.status(/CORS blocked/i.test(err.message) ? 403 : 500).json({ error: err.message || 'Server error' });
+  if (/CORS blocked/i.test(err.message)) return res.status(403).json({ error: 'CORS blocked' });
+  if (/Only jpeg|Only images|File too large|Unexpected field/i.test(err.message)) {
+    return res.status(400).json({ error: err.message });
+  }
+  res.status(500).json({ error: 'Server error' });
 });
 
 io.on('connection', (s) => s.emit('menu:hello', { at: new Date().toISOString() }));
@@ -555,7 +633,6 @@ ensureDatabaseAndAdmin()
   .then(() => {
     server.listen(port, host, () => {
       console.log(`Friendly Menu API on http://127.0.0.1:${port}`);
-      console.log(`Admin login: ${process.env.ADMIN_USERNAME || 'ilnur000'} / (see ADMIN_PASSWORD in .env)`);
     });
   })
   .catch((err) => {

@@ -42,6 +42,10 @@ function escapeHtml(text) {
         .replace(/"/g, '&quot;');
 }
 
+function escapeAttr(text) {
+    return escapeHtml(text).replace(/'/g, '&#39;');
+}
+
 function normalizeMenuImagePath(path) {
     if (!path) return 'image/nono.png';
     let p = String(path).trim().replace(/^\.\//, '');
@@ -179,7 +183,7 @@ function renderMenuItemCard(it) {
     const out = it.availability === 'OUT_OF_STOCK';
     const imgPath = it.img ? imgSrcForPage(it.img) : '';
     const imgBlock = imgPath
-        ? `<div class="item-image-wrap"><img src="${imgPath}" alt="" class="item-image" loading="lazy" width="400" height="280" decoding="async"></div>`
+        ? `<div class="item-image-wrap"><img src="${escapeAttr(imgPath)}" alt="" class="item-image" loading="lazy" width="400" height="280" decoding="async"></div>`
         : '';
     const itemClass = (imgPath ? 'menu-item' : 'menu-item menu-item--no-image') + (out ? ' menu-item--oos' : '');
     const addBtn = out
@@ -516,37 +520,15 @@ function initToTopButtons() {
     onScroll();
 }
 
-function applyTheme(theme) {
-    const isDark = theme === 'dark';
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-    const fab = document.getElementById('themeFab');
-    if (fab) {
-        fab.setAttribute(
-            'aria-label',
-            isDark ? tr('theme.light', 'Светлая тема') : tr('theme.dark', 'Тёмная тема')
-        );
-        fab.setAttribute('title', isDark ? tr('theme.light', 'Светлая тема') : tr('theme.dark', 'Тёмная тема'));
-        fab.classList.toggle('theme-fab--dark', isDark);
-    }
+function applyTheme() {
+    document.documentElement.setAttribute('data-theme', 'dark');
     try {
-        localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light');
+        localStorage.setItem(THEME_KEY, 'dark');
     } catch (_) {}
 }
 
 function initThemeToggle() {
-    let saved = 'light';
-    try {
-        saved = localStorage.getItem(THEME_KEY) || 'light';
-    } catch (_) {}
-    if (saved !== 'dark' && saved !== 'light') saved = 'light';
-    applyTheme(saved);
-
-    const fab = document.getElementById('themeFab');
-    if (!fab) return;
-    fab.addEventListener('click', () => {
-        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        applyTheme(next);
-    });
+    applyTheme();
 }
 
 function initLangSwitch() {

@@ -29,10 +29,9 @@ async function main() {
     (await prisma.adminUser.findUnique({ where: { email } }));
 
   if (existing) {
-    await prisma.adminUser.update({
-      where: { id: existing.id },
-      data: { username, email, name, passwordHash, role: 'SUPER_ADMIN', isActive: true },
-    });
+    const data = { username, email, name, role: 'SUPER_ADMIN', isActive: true };
+    if (process.env.RESET_ADMIN_PASSWORD === '1') data.passwordHash = passwordHash;
+    await prisma.adminUser.update({ where: { id: existing.id }, data });
   } else {
     await prisma.adminUser.create({
       data: { username, email, name, passwordHash, role: 'SUPER_ADMIN' },
