@@ -324,23 +324,28 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     const fd = new FormData(els.gateForm);
     const login = String(fd.get('login') || '').trim();
     const password = String(fd.get('password') || '');
-
-    if (login !== HARDCODED_LOGIN || password !== HARDCODED_PASSWORD) {
-      showGateError('Неверный логин или пароль');
-      return;
-    }
+    const submitBtn = els.gateForm.querySelector('[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
 
     try {
+      // Prefer real API auth (DB user). Hardcoded pair is the known default after bootstrap.
       await loginToApi(login, password);
       setAuthed(true);
+      els.liveStatus.textContent = 'API online';
+      els.liveStatus.classList.remove('is-off');
       await loadData();
     } catch (err) {
-      // Hardcoded gate passed — still open UI, but warn if API auth failed
-      setAuthed(true);
-      els.liveStatus.textContent = 'API offline';
-      els.liveStatus.classList.add('is-off');
-      showGateError('');
-      alert('Локальный вход выполнен, но API недоступен: ' + (err.message || 'ошибка') + '\nЗапустите server (порт 4000), чтобы сохранять изменения.');
+      const msg = String(err.message || err);
+      if (/failed to fetch|networkerror|load failed/i.test(msg)) {
+        showGateError('API не запущен. В корне проекта выполните: npm run dev (порт 4000)');
+      } else if (login === HARDCODED_LOGIN && password === HARDCODED_PASSWORD) {
+        showGateError('API отклонил вход. Перезапустите: npm run dev (админ создаётся автоматически)');
+      } else {
+        showGateError(msg === 'Failed to fetch' ? 'API недоступен (npm run dev)' : (msg || 'Неверный логин или пароль'));
+      }
+      setAuthed(false);
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
     }
   });
 

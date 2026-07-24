@@ -15,11 +15,16 @@
 ## Запуск
 
 ```bash
-npm run setup
+npm install
 npm run dev
 ```
 
-Меню: Live Server → `index.html`  
-Админка: `admin.html` → `ilnur000` / `9987650`
+При первом запуске сервер сам:
+1. создаёт `.env` из `.env.example` (если нет)
+2. создаёт SQLite БД (`prisma/dev.db`)
+3. создаёт админа `ilnur000` / `9987650`
 
-> `node_modules` появляется после `npm install` — это нормально. В GitHub она не попадает.
+Меню: Live Server → `index.html`  
+Админка: `admin.html`
+
+> `.env` и `prisma/*.db` не в Git — это нормально, они поднимаются автоматически.

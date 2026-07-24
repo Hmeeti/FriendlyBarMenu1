@@ -1,4 +1,5 @@
 node_modules/
+# Local secrets & DB are recreated on `npm run dev` (see server.js ensureDatabaseAndAdmin)
 .env
 .env.*
 !.env.example

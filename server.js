@@ -1,9 +1,10 @@
-import 'dotenv/config';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
+import dotenv from 'dotenv';
 import express from 'express';
 import http from 'http';
-import path from 'path';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import multer from 'multer';
@@ -13,11 +14,69 @@ import { Server } from 'socket.io';
 import { PrismaClient } from '@prisma/client';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// After Git clone .env and SQLite DB are missing — recreate before anything else
+const envPath = path.join(__dirname, '.env');
+const envExample = path.join(__dirname, '.env.example');
+if (!fs.existsSync(envPath) && fs.existsSync(envExample)) {
+  fs.copyFileSync(envExample, envPath);
+  console.log('[setup] Created .env from .env.example');
+}
+dotenv.config({ path: envPath });
+
 const prisma = new PrismaClient();
 const COOKIE = 'fm_admin_token';
 const port = Number(process.env.PORT) || 4000;
 const host = process.env.HOST || '0.0.0.0';
 const origins = (process.env.CLIENT_ORIGIN || '').split(',').map((s) => s.trim()).filter(Boolean);
+
+/** Ensure SQLite schema + default admin exist (safe after fresh git clone) */
+async function ensureDatabaseAndAdmin() {
+  try {
+    await prisma.$queryRaw`SELECT 1`;
+  } catch {
+    console.log('[setup] Database missing or empty — running prisma db push…');
+    execSync('npx prisma db push --skip-generate', { stdio: 'inherit', cwd: __dirname });
+  }
+
+  const username = (process.env.ADMIN_USERNAME || 'ilnur000').toLowerCase();
+  const email = (process.env.ADMIN_EMAIL || `${username}@friendly.local`).toLowerCase();
+  const password = process.env.ADMIN_PASSWORD || '9987650';
+  const name = process.env.ADMIN_NAME || 'Ilnur';
+  const passwordHash = await bcrypt.hash(password, 12);
+
+  let existing = null;
+  try {
+    existing =
+      (await prisma.adminUser.findUnique({ where: { username } })) ||
+      (await prisma.adminUser.findUnique({ where: { email } }));
+  } catch {
+    console.log('[setup] Tables missing — running prisma db push…');
+    execSync('npx prisma db push --skip-generate', { stdio: 'inherit', cwd: __dirname });
+  }
+
+  if (!existing) {
+    existing =
+      (await prisma.adminUser.findUnique({ where: { username } })) ||
+      (await prisma.adminUser.findUnique({ where: { email } }));
+  }
+
+  if (!existing) {
+    await prisma.adminUser.create({
+      data: { username, email, name, passwordHash, role: 'SUPER_ADMIN', isActive: true },
+    });
+    console.log(`[setup] Created default admin: ${username}`);
+  } else {
+    await prisma.adminUser.update({
+      where: { id: existing.id },
+      data: { username, email, name, passwordHash, role: 'SUPER_ADMIN', isActive: true },
+    });
+  }
+
+  if (!(process.env.JWT_SECRET || '').trim()) {
+    throw new Error('JWT_SECRET is empty. Set it in .env (see .env.example).');
+  }
+}
 
 const allow = (o) =>
   !o || origins.includes('*') || origins.includes(o) || /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(o);
@@ -418,4 +477,15 @@ app.use((err, _req, res, _next) => {
 });
 
 io.on('connection', (s) => s.emit('menu:hello', { at: new Date().toISOString() }));
-server.listen(port, host, () => console.log(`Friendly Menu API on http://127.0.0.1:${port}`));
+
+ensureDatabaseAndAdmin()
+  .then(() => {
+    server.listen(port, host, () => {
+      console.log(`Friendly Menu API on http://127.0.0.1:${port}`);
+      console.log(`Admin login: ${process.env.ADMIN_USERNAME || 'ilnur000'} / (see ADMIN_PASSWORD in .env)`);
+    });
+  })
+  .catch((err) => {
+    console.error('[setup] Failed to initialize database/admin:', err);
+    process.exit(1);
+  });
