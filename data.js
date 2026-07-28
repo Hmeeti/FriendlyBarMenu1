@@ -2,31 +2,31 @@
 window.ITEM_DETAILS = {
   "12": {
     "name": "Кавказ",
-    "price": 4500,
+    "price": 4590,
     "img": "image/kavkaz.JPG",
     "desc": "Помидоры,огурцы,болгарский перец,брынза,редиска,зелень,маслины"
   },
   "13": {
     "name": "Соленья",
-    "price": 4500,
+    "price": 4790,
     "img": "image/solenia.JPG",
     "desc": "Мар.опята,квашенная капуста,почтаки кукурузы,карнишоны,маринованные черри,бочковые огурцы"
   },
   "14": {
     "name": "Бадриджани",
-    "price": 2200,
+    "price": 2790,
     "img": "image/badridjani.jpg",
     "desc": "Жаренные баклажаны с ореховым соусом"
   },
   "15": {
     "name": "Баклажан мефурат",
-    "price": 2900,
+    "price": 3390,
     "img": "image/nono.png",
     "desc": "говяжий фарш,баклажаны,помидоры,моцарелла,грузинские специи"
   },
   "16": {
     "name": "Грибы на кеци",
-    "price": 2900,
+    "price": 3190,
     "img": "image/gribinakeqi.jpg",
     "desc": "Шампиньоны,сливочное масло,моцарелла"
   },
@@ -43,50 +43,56 @@ window.ITEM_DETAILS = {
     "desc": "Болгарский перец,говяжий фарш,рис,соус сметанковый"
   },
   "19": {
-    "name": "Салат по имеретински",
-    "price": 2400,
+    "name": "Салат по Имеретински",
+    "price": 2890,
     "img": "image/nono.png",
     "desc": "Помидоры,огурцы,карсный лук,сметана,зелень,орехи"
   },
   "20": {
-    "name": "Салат Глехури",
-    "price": 1900,
+    "name": "Глехури",
+    "price": 2490,
     "img": "image/glehuri.png",
     "desc": "Помидоры,огурцы, красный лук,полугорький перец, зелен райхон, винный уксус"
   },
   "21": {
-    "name": "Салат грибной по грузински",
-    "price": 3300,
+    "name": "Грибной по грузинский",
+    "price": 3790,
     "img": "image/nono.png",
     "desc": "Шампиньоны,брынза,помидоры черри"
   },
   "22": {
     "name": "Салат Сулико",
-    "price": 3600,
+    "price": 3890,
     "img": "image/suliko.jpg",
     "desc": "Отварной язык, запеченное куринное филе, жаренные шампиньоны,гризинские специи,майонез"
   },
+  "23": {
+    "name": "Салат Тифлис",
+    "price": 3590,
+    "img": "image/nono.png",
+    "desc": ""
+  },
   "24": {
-    "name": "Салат friendly",
-    "price": 3800,
+    "name": "Салат Friendly",
+    "price": 4490,
     "img": "image/Friednly.JPG",
     "desc": "Ростбиф,язык говяжий,свекла,соус медово апельсиновый, микс салата"
   },
   "25": {
-    "name": "Салат Буратта",
-    "price": 3500,
+    "name": "Буратта",
+    "price": 3590,
     "img": "image/buratta.JPG",
     "desc": "Сыр,микс салата, микс томата"
   },
   "26": {
     "name": "Салат Греческий",
-    "price": 2600,
+    "price": 2790,
     "img": "image/grecheski.jpg",
     "desc": "Огурцы,помидоры,болг.перец,сыр фетта, греческий соус,"
   },
   "27": {
-    "name": "Салат Острый гурман",
-    "price": 2600,
+    "name": "Острый гурман",
+    "price": 3090,
     "img": "image/ostriigyrman.png",
     "desc": "Говядина,болг.перец, перец чили,полугорький перец,  патисоны"
   },
@@ -98,217 +104,217 @@ window.ITEM_DETAILS = {
   },
   "29": {
     "name": "Салат Фреш",
-    "price": 1500,
+    "price": 2790,
     "img": "image/fresh.jpg",
     "desc": "Огурцы,помидоры,полугорький перец,соус фламинго"
   },
   "30": {
-    "name": "Салат Хрустящие баклажаны",
-    "price": 2400,
+    "name": "Хрустящие баклажаны",
+    "price": 2890,
     "img": "image/hrustachie.JPG",
     "desc": "Баклажаны,крем чиз,помидоры,соус сладкий чили"
   },
   "31": {
-    "name": "Салат Цезарь с креветками",
-    "price": 2800,
+    "name": "Цезарь с креветками",
+    "price": 3490,
     "img": "image/krevatkami.png",
     "desc": "Креветки,айсберг,перепилинное яйцо, черри, сухари, соус цезарь"
   },
   "32": {
-    "name": "Салат Цезарь с курицей",
-    "price": 2500,
+    "name": "Цезарь с курицей",
+    "price": 3190,
     "img": "image/cezar.png",
     "desc": "Курица,айсберг,перепилинное яйцо, черри, сухари, соус цезарь"
   },
   "33": {
-    "name": "Салат Цезарь с Семгой",
-    "price": 3200,
+    "name": "Цезарь с семгой",
+    "price": 3390,
     "img": "image/cezarslososem.jpg",
     "desc": "Семга,айсберг,перепилинное яйцо, черри, сухари, соус цезарь"
   },
   "35": {
     "name": "Бозбаш",
-    "price": 4200,
+    "price": 4390,
     "img": "image/bozbash.png",
     "desc": ",Баранья голень,нохат,овощи,грузинские специи"
   },
   "36": {
     "name": "Солянка по грузинский",
-    "price": 3600,
+    "price": 3690,
     "img": "image/harcho.jpg",
     "desc": "Говяжье бон филе,грибы,полугорький перец,грузинские специи"
   },
   "37": {
     "name": "Харчо из говядины",
-    "price": 2700,
+    "price": 2790,
     "img": "image/harcho2.png",
     "desc": "Говядина,овощи,рис,грузинские специи"
   },
   "38": {
     "name": "Харчо из курицы",
-    "price": 2500,
+    "price": 2690,
     "img": "image/harchoinchiken.JPG",
     "desc": "Мясо цыпленка,овощи,рис,грузинские специи"
   },
   "39": {
-    "name": "Суп Том-ям",
-    "price": 4000,
+    "name": "Том-ям",
+    "price": 4490,
     "img": "image/tomyam.JPG",
     "desc": "Морской коктель,том-ям паста,лемонграсс,имбирь,кокосовое молоко,рис"
   },
   "40": {
-    "name": "Суп чечевичный",
-    "price": 1500,
+    "name": "Суп Чечевичный",
+    "price": 2290,
     "img": "image/cheche.jpg",
     "desc": "Чечевица,сухари,сливки"
   },
   "41": {
-    "name": "Суп лапша",
-    "price": 1800,
+    "name": "Суп Лапша",
+    "price": 1890,
     "img": "image/lapsha.jpg",
     "desc": "Курица,лапша,зелень"
   },
   "42": {
     "name": "Рамен кимчи с говядиной",
-    "price": 3000,
+    "price": 3190,
     "img": "image/rameninmeat.JPG",
     "desc": "Говядина,корейская лапша,шампиьоны,яйцо пашот,нори"
   },
   "43": {
-    "name": "Рамен с курицей",
-    "price": 2800,
+    "name": "Рамен кимчи с курицей",
+    "price": 3190,
     "img": "image/rameninchicken.jpeg",
     "desc": "Курица,корейская лапша,шампиьоны,яйцо пашот,нори"
   },
   "44": {
     "name": "Пельмени",
-    "price": 2100,
+    "price": 2890,
     "img": "image/pelmeni.webp",
     "desc": "Пельмени,сметана,зелень"
   },
   "45": {
     "name": "Шорпа",
-    "price": 2200,
+    "price": 2890,
     "img": "image/shorpa.JPG",
     "desc": "Говядина/баранина,картошка"
   },
   "46": {
-    "name": "Хинкали с говядиной",
-    "price": 3500,
+    "name": "Хинкали из говядины",
+    "price": 3590,
     "img": "image/hinkali.JPG",
     "desc": "Говяжий фарш,тесто,сметанный соус"
   },
   "47": {
     "name": "Хинкали с грибами",
-    "price": 3500,
+    "price": 3590,
     "img": "image/hinkali.JPG",
     "desc": "Шампиньоны,тесто,грибной соус"
   },
   "48": {
     "name": "Мимино",
-    "price": 3500,
+    "price": 4890,
     "img": "image/mimino.JPG",
     "desc": "Шампиньоны,грибной соус"
   },
   "50": {
     "name": "Оджахури",
-    "price": 4000,
+    "price": 4590,
     "img": "image/ojahuri.jpg",
     "desc": "Говядина,перец светофор,полугорький перец,картофель,чеснок,грузинские специи"
   },
   "51": {
     "name": "Ребра Батхани",
-    "price": 5300,
+    "price": 5390,
     "img": "image/rebrabathani.jpg",
     "desc": "Барань ребра,винный соус,картофель"
   },
   "52": {
     "name": "Чахохбили",
-    "price": 3300,
+    "price": 3990,
     "img": "image/chahohbili.png",
     "desc": "Мясо цыпленка,перец светофор,полугроький перец,помидоры,чеснок,грузинские специи"
   },
   "53": {
     "name": "Чашошули",
-    "price": 4500,
+    "price": 4590,
     "img": "image/chashahuli.jpg",
     "desc": "Говядина,перец светофор,полугорький перец,чеснок,грузинские специи"
   },
   "54": {
     "name": "Шкмерули",
-    "price": 4300,
+    "price": 4790,
     "img": "image/chkmeruli.jpg",
     "desc": "Цыплята в сливочном соусе"
   },
   "56": {
     "name": "Хачапури по мегрельски",
-    "price": 3500,
+    "price": 3590,
     "img": "image/megrelski.jpg",
     "desc": "Тесто,брынза,моцарелла"
   },
   "57": {
     "name": "Хачапури по аджарски",
-    "price": 2800,
+    "price": 3590,
     "img": "image/puriadjarski.jpg",
     "desc": "Тесто,брынза,моцарелла"
   },
   "58": {
     "name": "Хачапури по имеретински",
-    "price": 3500,
+    "price": 3590,
     "img": "image/imeretinkski.png",
     "desc": "Тесто,брынза,моцарелла"
   },
   "59": {
     "name": "Хачапури по королевски",
-    "price": 4000,
+    "price": 4190,
     "img": "image/king.JPG",
     "desc": "Тесто,брынза,моцарелла,"
   },
   "60": {
     "name": "Хычины с сыром",
-    "price": 1500,
+    "price": 1690,
     "img": "image/huchina.JPG",
     "desc": "Тесто,брынза,моцарелла"
   },
   "61": {
     "name": "Хычины с сыром и зеленью",
-    "price": 1600,
+    "price": 1790,
     "img": "image/huchina.JPG",
     "desc": "Тесто,брынза,моцарелла,зелень"
   },
   "62": {
-    "name": "Пицца 4 сезона",
-    "price": 3200,
+    "name": "4 сезона",
+    "price": 3490,
     "img": "image/fourseasn.jpg",
     "desc": "Сыр,курица,грибы,колбаса,помидоры"
   },
   "63": {
     "name": "Болоньезе пицца",
-    "price": 2300,
+    "price": 3190,
     "img": "image/boloneze.JPG",
     "desc": "Сыр,фарш,cоус болоньезе"
   },
   "64": {
-    "name": "Пицца курица грибы",
-    "price": 2700,
+    "name": "Курица с грибами",
+    "price": 3190,
     "img": "image/julenpizza.JPG",
     "desc": "Сыр,курица,шампиньоны,соус сливочный"
   },
   "65": {
-    "name": "Пицца маргарита",
-    "price": 2300,
+    "name": "Маргарита",
+    "price": 2890,
     "img": "image/margarita.JPG",
     "desc": "Сыр,помидоры"
   },
   "66": {
-    "name": "Пицца пеперони",
-    "price": 2700,
+    "name": "Пеперони",
+    "price": 3190,
     "img": "image/peperoni.jpg",
     "desc": "Сыр,колбаса"
   },
   "67": {
     "name": "Пицца с лососем",
-    "price": 3400,
+    "price": 3590,
     "img": "image/pizzainfish.png",
     "desc": "Сыр,лосось,соус трюфельный,руколла"
   },
@@ -332,31 +338,31 @@ window.ITEM_DETAILS = {
   },
   "71": {
     "name": "Русская закуска",
-    "price": 3200,
+    "price": 4190,
     "img": "image/russianzak.png",
     "desc": "Селедка,картофель,квашенная капуста,бородинский хлеб,корнишоны"
   },
   "72": {
     "name": "Сырные палочки",
-    "price": 2300,
+    "price": 2490,
     "img": "image/cheasteks.jpg",
     "desc": "Сыр,понировка"
   },
   "73": {
     "name": "Гарлики",
-    "price": 900,
+    "price": 1190,
     "img": "image/Garliki2.png",
     "desc": "Бородинский хлеб,соус чесночный"
   },
   "74": {
     "name": "Бараньи семечки",
-    "price": 2100,
+    "price": 2890,
     "img": "image/barniisemeshki.png",
     "desc": ""
   },
   "75": {
     "name": "Пивные креветки",
-    "price": 3600,
+    "price": 4390,
     "img": "image/pivnyekrevetki.jpg",
     "desc": "Жаренные креветки,лимонная вода"
   },
@@ -374,55 +380,55 @@ window.ITEM_DETAILS = {
   },
   "78": {
     "name": "Рибай",
-    "price": 5000,
+    "price": 6490,
     "img": "image/ribay.JPG",
     "desc": "Мясо реберной части говядины,картофель,кукуруза,помидоры,шампиьоны,соус авторский"
   },
   "79": {
     "name": "Тибон",
-    "price": 5600,
+    "price": 6990,
     "img": "image/tibon.png",
     "desc": "Мясо поясничной части говядины,картофель,кукуруза,помидоры,шампиьоны,соус авторский"
   },
   "80": {
     "name": "Медальоны",
-    "price": 5900,
+    "price": 6890,
     "img": "image/meadlion.jpg",
     "desc": "Телячья вырезка,микс салата,соус авторский"
   },
   "81": {
     "name": "Оссобуко",
-    "price": 4300,
+    "price": 5890,
     "img": "image/ossobuko.webp",
     "desc": "Темленная говядина,пюре картофельное,соус демигласс"
   },
   "82": {
     "name": "Стриплойн",
-    "price": 6000,
+    "price": 6090,
     "img": "image/striploin.jpg",
     "desc": "Говядина,баклажаны,болгарский перец,мини морковь,черри,соус авторский"
   },
   "83": {
     "name": "Лосось по католонски",
-    "price": 5000,
+    "price": 5890,
     "img": "image/losos.png",
     "desc": "Лосось,овощи,лимон,икра лосося"
   },
   "84": {
     "name": "Форель запеченная целиком",
-    "price": 4700,
+    "price": 5490,
     "img": "image/forel.jpg",
     "desc": "Форель,шпинат,пармизан,соус сливочный"
   },
   "85": {
     "name": "Цыпленок терияки",
-    "price": 3200,
+    "price": 4290,
     "img": "image/Cyplenok.png",
     "desc": "Цыпленок,факачи, соус татар"
   },
   "86": {
     "name": "Кардон блю с микс салатом",
-    "price": 3600,
+    "price": 4590,
     "img": "image/cardonblu.JPG",
     "desc": "Куринное филе,крем чиз,грецкий орех,чернослив,инжир,микс салата,соус сливочный"
   },
@@ -440,26 +446,32 @@ window.ITEM_DETAILS = {
   },
   "90": {
     "name": "Альфредо",
-    "price": 3600,
+    "price": 3790,
     "img": "image/pasta.JPG",
     "desc": ""
   },
   "91": {
     "name": "Болоньезе",
-    "price": 2600,
+    "price": 3690,
     "img": "image/boloneszepasta.jpg",
     "desc": ""
   },
   "92": {
-    "name": "Спагетти с морепродуктами ",
-    "price": 2600,
+    "name": "Спагетти с морепродуктами",
+    "price": 3590,
     "img": "image/moreproducti.jpg",
     "desc": ""
   },
   "93": {
-    "name": "Филадельфия ",
-    "price": 2600,
+    "name": "Филадельфия",
+    "price": 3490,
     "img": "image/fila.jpg",
+    "desc": ""
+  },
+  "94": {
+    "name": "Калифорния",
+    "price": 3390,
+    "img": "image/nono.png",
     "desc": ""
   },
   "95": {
@@ -468,9 +480,21 @@ window.ITEM_DETAILS = {
     "img": "image/amerika.JPG",
     "desc": ""
   },
+  "96": {
+    "name": "Лас-Вегас темпура",
+    "price": 3590,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "98": {
+    "name": "Бонито",
+    "price": 3190,
+    "img": "image/nono.png",
+    "desc": ""
+  },
   "99": {
     "name": "Чиз Эби",
-    "price": 3,
+    "price": 3290,
     "img": "image/chizeby.JPG",
     "desc": ""
   },
@@ -486,10 +510,106 @@ window.ITEM_DETAILS = {
     "img": "image/nono.png",
     "desc": "филадельфия,дракон,америка темпура,снежный краб"
   },
+  "102": {
+    "name": "Картофельные дольки",
+    "price": 1190,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "103": {
+    "name": "Картофель по домашнему",
+    "price": 1190,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "104": {
+    "name": "Овощи на гриле",
+    "price": 1990,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "105": {
+    "name": "Пюре",
+    "price": 890,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "106": {
+    "name": "Рис",
+    "price": 990,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "107": {
+    "name": "Фри",
+    "price": 1190,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "108": {
+    "name": "Цезарь темпура",
+    "price": 3490,
+    "img": "image/nono.png",
+    "desc": ""
+  },
   "109": {
     "name": "Дракон",
-    "price": 3000,
+    "price": 3590,
     "img": "image/drakon.jpg",
+    "desc": ""
+  },
+  "116": {
+    "name": "Мякоть баранины",
+    "price": 3690,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "117": {
+    "name": "Антрекот",
+    "price": 3990,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "118": {
+    "name": "Кавказский шашлык",
+    "price": 4190,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "119": {
+    "name": "Крылышки",
+    "price": 2590,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "120": {
+    "name": "Куринное филе",
+    "price": 2790,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "121": {
+    "name": "Люля-кебаб",
+    "price": 2790,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "122": {
+    "name": "Семечки",
+    "price": 2290,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "123": {
+    "name": "Овощи на гриле",
+    "price": 1990,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "124": {
+    "name": "Шампиньоны",
+    "price": 2290,
+    "img": "image/nono.png",
     "desc": ""
   },
   "129": {
@@ -764,7 +884,7 @@ window.ITEM_DETAILS = {
   },
   "196": {
     "name": "Чечил жареный",
-    "price": 1500,
+    "price": 1790,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -887,6 +1007,48 @@ window.ITEM_DETAILS = {
     "price": 6200,
     "img": "image/nono.png",
     "desc": ""
+  },
+  "301": {
+    "name": "Мясо по аджарски",
+    "price": 4890,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "302": {
+    "name": "Тевзи мефурат",
+    "price": 5290,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "303": {
+    "name": "Запеченный лосось",
+    "price": 3290,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "304": {
+    "name": "Запеченный угорь",
+    "price": 3390,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "305": {
+    "name": "Фукуока ролл",
+    "price": 3390,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "306": {
+    "name": "Окаяма ролл",
+    "price": 3390,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "307": {
+    "name": "Френдли ролл",
+    "price": 3990,
+    "img": "image/nono.png",
+    "desc": ""
   }
 };
 
@@ -903,58 +1065,72 @@ window.MENU_SECTIONS = [
       {
         "id": 46,
         "name": "Хинкали из говядины",
-        "price": 3500,
-        "priceDisplay": "3500тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/hinkali.JPG"
       },
       {
         "id": 47,
         "name": "Хинкали с грибами",
-        "price": 3500,
-        "priceDisplay": "3500тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/hinkali.JPG"
       },
       {
         "id": 48,
         "name": "Мимино",
-        "price": 4500,
-        "priceDisplay": "4500тг",
+        "price": 4890,
+        "priceDisplay": "4890тг",
         "img": "image/mimino.JPG"
       },
       {
         "id": 50,
         "name": "Оджахури",
-        "price": 4000,
-        "priceDisplay": "4000тг",
+        "price": 4590,
+        "priceDisplay": "4590тг",
         "img": "image/ojahuri.jpg"
       },
       {
         "id": 51,
         "name": "Ребра Батхани",
-        "price": 5300,
-        "priceDisplay": "5300тг",
+        "price": 5390,
+        "priceDisplay": "5390тг",
         "img": "image/rebrabathani.jpg"
       },
       {
         "id": 52,
         "name": "Чахохбили",
-        "price": 3300,
-        "priceDisplay": "3300тг",
+        "price": 3990,
+        "priceDisplay": "3990тг",
         "img": "image/chahohbili.png"
       },
       {
         "id": 53,
         "name": "Чашошули",
-        "price": 4500,
-        "priceDisplay": "4500тг",
+        "price": 4590,
+        "priceDisplay": "4590тг",
         "img": "image/chashahuli.jpg"
       },
       {
         "id": 54,
         "name": "Шкмерули",
-        "price": 4300,
-        "priceDisplay": "4300тг",
+        "price": 4790,
+        "priceDisplay": "4790тг",
         "img": "image/chkmeruli.jpg"
+      },
+      {
+        "id": 301,
+        "name": "Мясо по аджарски",
+        "price": 4890,
+        "priceDisplay": "4890тг",
+        "img": null
+      },
+      {
+        "id": 302,
+        "name": "Тевзи мефурат",
+        "price": 5290,
+        "priceDisplay": "5290тг",
+        "img": null
       }
     ]
   },
@@ -965,29 +1141,29 @@ window.MENU_SECTIONS = [
       {
         "id": 22,
         "name": "Салат Сулико",
-        "price": 3600,
-        "priceDisplay": "3600тг",
+        "price": 3890,
+        "priceDisplay": "3890тг",
         "img": "image/suliko.jpg"
       },
       {
         "id": 19,
         "name": "Салат по Имеретински",
-        "price": 2400,
-        "priceDisplay": "2400тг",
+        "price": 2890,
+        "priceDisplay": "2890тг",
         "img": "image/nono.png"
       },
       {
         "id": 20,
         "name": "Глехури",
-        "price": 1900,
-        "priceDisplay": "1900тг",
+        "price": 2490,
+        "priceDisplay": "2490тг",
         "img": "image/glehuri.png"
       },
       {
         "id": 21,
         "name": "Грибной по грузинский",
-        "price": 3300,
-        "priceDisplay": "3300тг",
+        "price": 3790,
+        "priceDisplay": "3790тг",
         "img": "image/nono.png"
       }
     ]
@@ -999,78 +1175,78 @@ window.MENU_SECTIONS = [
       {
         "id": 35,
         "name": "Бозбаш",
-        "price": 4200,
-        "priceDisplay": "4200тг",
+        "price": 4390,
+        "priceDisplay": "4390тг",
         "img": "image/bozbash.png"
       },
       {
         "id": 36,
         "name": "Солянка по грузинский",
-        "price": 3600,
-        "priceDisplay": "3600тг",
+        "price": 3690,
+        "priceDisplay": "3690тг",
         "img": "image/harcho.jpg"
       },
       {
         "id": 37,
         "name": "Харчо из говядины",
-        "price": 2700,
-        "priceDisplay": "2700тг",
+        "price": 2790,
+        "priceDisplay": "2790тг",
         "img": "image/harcho2.png"
       },
       {
         "id": 38,
         "name": "Харчо из курицы",
-        "price": 2500,
-        "priceDisplay": "2500тг",
+        "price": 2690,
+        "priceDisplay": "2690тг",
         "img": "image/harchoinchiken.JPG"
       },
       {
         "id": 39,
         "name": "Том-ям",
-        "price": 4000,
-        "priceDisplay": "4000тг",
+        "price": 4490,
+        "priceDisplay": "4490тг",
         "img": "image/tomyam.JPG"
       },
       {
         "id": 40,
         "name": "Суп Чечевичный",
-        "price": 1500,
-        "priceDisplay": "1500тг",
+        "price": 2290,
+        "priceDisplay": "2290тг",
         "img": "image/cheche.jpg"
       },
       {
         "id": 41,
         "name": "Суп Лапша",
-        "price": 1800,
-        "priceDisplay": "1800тг",
+        "price": 1890,
+        "priceDisplay": "1890тг",
         "img": "image/lapsha.jpg"
       },
       {
         "id": 42,
         "name": "Рамен кимчи с говядиной",
-        "price": 3000,
-        "priceDisplay": "3000тг",
+        "price": 3190,
+        "priceDisplay": "3190тг",
         "img": "image/rameninmeat.JPG"
       },
       {
         "id": 43,
         "name": "Рамен кимчи с курицей",
-        "price": 2800,
-        "priceDisplay": "2800тг",
+        "price": 3190,
+        "priceDisplay": "3190тг",
         "img": "image/rameninchicken.jpeg"
       },
       {
         "id": 44,
         "name": "Пельмени",
-        "price": 2100,
-        "priceDisplay": "2100тг",
+        "price": 2890,
+        "priceDisplay": "2890тг",
         "img": "image/pelmeni.webp"
       },
       {
         "id": 45,
         "name": "Шорпа",
-        "price": 2200,
-        "priceDisplay": "2200тг",
+        "price": 2890,
+        "priceDisplay": "2890тг",
         "img": "image/shorpa.JPG"
       }
     ]
@@ -1082,43 +1258,43 @@ window.MENU_SECTIONS = [
       {
         "id": 56,
         "name": "Хачапури по мегрельски",
-        "price": 3500,
-        "priceDisplay": "3500тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/megrelski.jpg"
       },
       {
         "id": 57,
         "name": "Хачапури по аджарски",
-        "price": 2800,
-        "priceDisplay": "2800тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/puriadjarski.jpg"
       },
       {
         "id": 58,
         "name": "Хачапури по имеретински",
-        "price": 3500,
-        "priceDisplay": "3500тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/imeretinkski.png"
       },
       {
         "id": 59,
         "name": "Хачапури по королевски",
-        "price": 4000,
-        "priceDisplay": "4000тг",
+        "price": 4190,
+        "priceDisplay": "4190тг",
         "img": "image/king.JPG"
       },
       {
         "id": 60,
         "name": "Хычины с сыром",
-        "price": 1500,
-        "priceDisplay": "1500тг",
+        "price": 1690,
+        "priceDisplay": "1690тг",
         "img": "image/huchina.JPG"
       },
       {
         "id": 61,
         "name": "Хычины с сыром и зеленью",
-        "price": 1600,
-        "priceDisplay": "1600тг",
+        "price": 1790,
+        "priceDisplay": "1790тг",
         "img": "image/huchina.JPG"
       }
     ]
@@ -1130,22 +1306,22 @@ window.MENU_SECTIONS = [
       {
         "id": 14,
         "name": "Бадриджани",
-        "price": 2200,
-        "priceDisplay": "2200тг",
+        "price": 2790,
+        "priceDisplay": "2790тг",
         "img": "image/badridjani.jpg"
       },
       {
         "id": 15,
         "name": "Баклажан мефурат",
-        "price": 2900,
-        "priceDisplay": "2900тг",
+        "price": 3390,
+        "priceDisplay": "3390тг",
         "img": "image/nono.png"
       },
       {
         "id": 16,
         "name": "Грибы на кеци",
-        "price": 2900,
-        "priceDisplay": "2900тг",
+        "price": 3190,
+        "priceDisplay": "3190тг",
         "img": "image/gribinakeqi.jpg"
       },
       {
@@ -1165,29 +1341,29 @@ window.MENU_SECTIONS = [
       {
         "id": 72,
         "name": "Сырные палочки",
-        "price": 2300,
-        "priceDisplay": "2300тг",
+        "price": 2490,
+        "priceDisplay": "2490тг",
         "img": "image/cheasteks.jpg"
       },
       {
         "id": 73,
         "name": "Гарлики",
-        "price": 900,
-        "priceDisplay": "900тг",
+        "price": 1190,
+        "priceDisplay": "1190тг",
         "img": "image/Garliki2.png"
       },
       {
         "id": 74,
         "name": "Бараньи семечки",
-        "price": 2100,
-        "priceDisplay": "2100тг",
+        "price": 2890,
+        "priceDisplay": "2890тг",
         "img": "image/barniisemeshki.png"
       },
       {
         "id": 75,
         "name": "Пивные креветки",
-        "price": 3600,
-        "priceDisplay": "3600тг",
+        "price": 4390,
+        "priceDisplay": "4390тг",
         "img": "image/pivnyekrevetki.jpg"
       },
       {
@@ -1213,15 +1389,15 @@ window.MENU_SECTIONS = [
       {
         "id": 12,
         "name": "Кавказ",
-        "price": 4500,
-        "priceDisplay": "4500тг",
+        "price": 4590,
+        "priceDisplay": "4590тг",
         "img": "image/kavkaz.JPG"
       },
       {
         "id": 13,
         "name": "Соленья",
-        "price": 4500,
-        "priceDisplay": "4500тг",
+        "price": 4790,
+        "priceDisplay": "4790тг",
         "img": "image/solenia.JPG"
       },
       {
@@ -1248,8 +1424,8 @@ window.MENU_SECTIONS = [
       {
         "id": 71,
         "name": "Русская закуска",
-        "price": 3200,
-        "priceDisplay": "3200тг",
+        "price": 4190,
+        "priceDisplay": "4190тг",
         "img": "image/russianzak.png"
       }
     ]
@@ -1266,36 +1442,36 @@ window.MENU_SECTIONS = [
       {
         "id": 23,
         "name": "Салат Тифлис",
-        "price": 2800,
-        "priceDisplay": "2800тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/tiflis.JPG"
       },
       {
         "id": 24,
         "name": "Салат Friendly",
-        "price": 3800,
-        "priceDisplay": "3800тг",
+        "price": 4490,
+        "priceDisplay": "4490тг",
         "img": "image/Friednly.JPG"
       },
       {
         "id": 25,
         "name": "Буратта",
-        "price": 3500,
-        "priceDisplay": "3500тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/buratta.JPG"
       },
       {
         "id": 26,
         "name": "Салат Греческий",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 2790,
+        "priceDisplay": "2790тг",
         "img": "image/grecheski.jpg"
       },
       {
         "id": 27,
         "name": "Острый гурман",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 3090,
+        "priceDisplay": "3090тг",
         "img": "image/ostriigyrman.png"
       },
       {
@@ -1308,36 +1484,36 @@ window.MENU_SECTIONS = [
       {
         "id": 29,
         "name": "Салат Фреш",
-        "price": 1500,
-        "priceDisplay": "1500тг",
+        "price": 2790,
+        "priceDisplay": "2790тг",
         "img": "image/fresh.jpg"
       },
       {
         "id": 30,
         "name": "Хрустящие баклажаны",
-        "price": 2400,
-        "priceDisplay": "2400тг",
+        "price": 2890,
+        "priceDisplay": "2890тг",
         "img": "image/hrustachie.JPG"
       },
       {
         "id": 31,
         "name": "Цезарь с креветками",
-        "price": 2800,
-        "priceDisplay": "2800тг",
+        "price": 3490,
+        "priceDisplay": "3490тг",
         "img": "image/krevatkami.png"
       },
       {
         "id": 32,
         "name": "Цезарь с курицей",
-        "price": 2500,
-        "priceDisplay": "2500тг",
+        "price": 3190,
+        "priceDisplay": "3190тг",
         "img": "image/cezar.png"
       },
       {
         "id": 33,
         "name": "Цезарь с семгой",
-        "price": 3200,
-        "priceDisplay": "3200тг",
+        "price": 3390,
+        "priceDisplay": "3390тг",
         "img": "image/cezarslososem.jpg"
       }
     ]
@@ -1349,36 +1525,36 @@ window.MENU_SECTIONS = [
       {
         "id": 78,
         "name": "Рибай",
-        "price": 6000,
-        "priceDisplay": "6000тг",
+        "price": 6490,
+        "priceDisplay": "6490тг",
         "img": "image/ribay.JPG"
       },
       {
         "id": 79,
         "name": "Тибон",
-        "price": 6500,
-        "priceDisplay": "6500тг",
+        "price": 6990,
+        "priceDisplay": "6990тг",
         "img": "image/tibon.png"
       },
       {
         "id": 80,
         "name": "Медальоны",
-        "price": 5900,
-        "priceDisplay": "5900тг",
+        "price": 6890,
+        "priceDisplay": "6890тг",
         "img": "image/meadlion.jpg"
       },
       {
         "id": 81,
         "name": "Оссобуко",
-        "price": 4300,
-        "priceDisplay": "4300тг",
+        "price": 5890,
+        "priceDisplay": "5890тг",
         "img": "image/ossobuko.webp"
       },
       {
         "id": 82,
         "name": "Стриплойн",
-        "price": 6000,
-        "priceDisplay": "6000тг",
+        "price": 6090,
+        "priceDisplay": "6090тг",
         "img": "image/striploin.jpg"
       }
     ]
@@ -1390,15 +1566,15 @@ window.MENU_SECTIONS = [
       {
         "id": 83,
         "name": "Лосось по католонски",
-        "price": 5000,
-        "priceDisplay": "5000тг",
+        "price": 5890,
+        "priceDisplay": "5890тг",
         "img": "image/losos.png"
       },
       {
         "id": 84,
         "name": "Форель запеченная целиком",
-        "price": 4700,
-        "priceDisplay": "4700тг",
+        "price": 5490,
+        "priceDisplay": "5490тг",
         "img": "image/forel.jpg"
       }
     ]
@@ -1410,15 +1586,15 @@ window.MENU_SECTIONS = [
       {
         "id": 85,
         "name": "Цыпленок терияки",
-        "price": 3200,
-        "priceDisplay": "3200тг",
+        "price": 4290,
+        "priceDisplay": "4290тг",
         "img": "image/Cyplenok.png"
       },
       {
         "id": 86,
         "name": "Кардон блю с микс салатом",
-        "price": 3600,
-        "priceDisplay": "3600тг",
+        "price": 4590,
+        "priceDisplay": "4590тг",
         "img": "image/cardonblu.JPG"
       }
     ]
@@ -1457,22 +1633,22 @@ window.MENU_SECTIONS = [
       {
         "id": 90,
         "name": "Альфредо",
-        "price": 2800,
-        "priceDisplay": "2800тг",
+        "price": 3790,
+        "priceDisplay": "3790тг",
         "img": "image/pasta.JPG"
       },
       {
         "id": 91,
         "name": "Болоньезе",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 3690,
+        "priceDisplay": "3690тг",
         "img": "image/boloneszepasta.jpg"
       },
       {
         "id": 92,
         "name": "Спагетти с морепродуктами",
-        "price": 3000,
-        "priceDisplay": "3000тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/moreproducti.jpg"
       }
     ]
@@ -1484,15 +1660,15 @@ window.MENU_SECTIONS = [
       {
         "id": 93,
         "name": "Филадельфия",
-        "price": 3000,
-        "priceDisplay": "3000тг",
+        "price": 3490,
+        "priceDisplay": "3490тг",
         "img": "image/fila.jpg"
       },
       {
         "id": 94,
         "name": "Калифорния",
-        "price": 3100,
-        "priceDisplay": "3100тг",
+        "price": 3390,
+        "priceDisplay": "3390тг",
         "img": "image/nono.png"
       },
       {
@@ -1505,15 +1681,15 @@ window.MENU_SECTIONS = [
       {
         "id": 96,
         "name": "Лас-Вегас темпура",
-        "price": 3300,
-        "priceDisplay": "3300тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/nono.png"
       },
       {
         "id": 108,
         "name": "Цезарь темпура",
-        "price": 2700,
-        "priceDisplay": "2700тг",
+        "price": 3490,
+        "priceDisplay": "3490тг",
         "img": "image/nono.png"
       },
       {
@@ -1526,23 +1702,58 @@ window.MENU_SECTIONS = [
       {
         "id": 98,
         "name": "Бонито",
-        "price": 2800,
-        "priceDisplay": "2800тг",
+        "price": 3190,
+        "priceDisplay": "3190тг",
         "img": "image/bonito.png"
       },
       {
         "id": 99,
         "name": "Чиз Эби",
-        "price": 2700,
-        "priceDisplay": "2700тг",
+        "price": 3290,
+        "priceDisplay": "3290тг",
         "img": "image/chizeby.JPG"
       },
       {
         "id": 109,
         "name": "Дракон",
-        "price": 3100,
-        "priceDisplay": "3100тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/drakon.jpg"
+      },
+      {
+        "id": 303,
+        "name": "Запеченный лосось",
+        "price": 3290,
+        "priceDisplay": "3290тг",
+        "img": null
+      },
+      {
+        "id": 304,
+        "name": "Запеченный угорь",
+        "price": 3390,
+        "priceDisplay": "3390тг",
+        "img": null
+      },
+      {
+        "id": 305,
+        "name": "Фукуока ролл",
+        "price": 3390,
+        "priceDisplay": "3390тг",
+        "img": null
+      },
+      {
+        "id": 306,
+        "name": "Окаяма ролл",
+        "price": 3390,
+        "priceDisplay": "3390тг",
+        "img": null
+      },
+      {
+        "id": 307,
+        "name": "Френдли ролл",
+        "price": 3990,
+        "priceDisplay": "3990тг",
+        "img": null
       }
     ]
   },
@@ -1573,57 +1784,57 @@ window.MENU_SECTIONS = [
       {
         "id": 60,
         "name": "Хычины с сыром",
-        "price": 1500,
-        "priceDisplay": "1500тг",
+        "price": 1690,
+        "priceDisplay": "1690тг",
         "img": "image/huchina.JPG"
       },
       {
         "id": 61,
         "name": "Хычины с сыром и зеленью",
-        "price": 1600,
-        "priceDisplay": "1600тг",
+        "price": 1790,
+        "priceDisplay": "1790тг",
         "img": "image/huchina.JPG"
       },
       {
         "id": 62,
         "name": "4 сезона",
-        "price": 3200,
-        "priceDisplay": "3200тг",
+        "price": 3490,
+        "priceDisplay": "3490тг",
         "img": "image/fourseasn.jpg"
       },
       {
         "id": 63,
         "name": "Болоньезе пицца",
-        "price": 2300,
-        "priceDisplay": "2300тг",
+        "price": 3190,
+        "priceDisplay": "3190тг",
         "img": "image/boloneze.JPG"
       },
       {
         "id": 64,
         "name": "Курица с грибами",
-        "price": 2700,
-        "priceDisplay": "2700тг",
+        "price": 3190,
+        "priceDisplay": "3190тг",
         "img": "image/julenpizza.JPG"
       },
       {
         "id": 65,
         "name": "Маргарита",
-        "price": 2300,
-        "priceDisplay": "2300тг",
+        "price": 2890,
+        "priceDisplay": "2890тг",
         "img": "image/margarita.JPG"
       },
       {
         "id": 66,
         "name": "Пеперони",
-        "price": 2700,
-        "priceDisplay": "2700тг",
+        "price": 3190,
+        "priceDisplay": "3190тг",
         "img": "image/peperoni.jpg"
       },
       {
         "id": 67,
         "name": "Пицца с лососем",
-        "price": 3400,
-        "priceDisplay": "3400тг",
+        "price": 3590,
+        "priceDisplay": "3590тг",
         "img": "image/pizzainfish.png"
       }
     ]
@@ -1635,64 +1846,64 @@ window.MENU_SECTIONS = [
       {
         "id": 116,
         "name": "Мякоть баранины",
-        "price": 3500,
-        "priceDisplay": "3500тг",
+        "price": 3690,
+        "priceDisplay": "3690тг",
         "img": null
       },
       {
         "id": 117,
         "name": "Антрекот",
-        "price": 3900,
-        "priceDisplay": "3900тг",
+        "price": 3990,
+        "priceDisplay": "3990тг",
         "img": null
       },
       {
         "id": 118,
         "name": "Кавказский шашлык",
-        "price": 3900,
-        "priceDisplay": "3900тг",
+        "price": 4190,
+        "priceDisplay": "4190тг",
         "img": null
       },
       {
         "id": 119,
         "name": "Крылышки",
-        "price": 2400,
-        "priceDisplay": "2400тг",
+        "price": 2590,
+        "priceDisplay": "2590тг",
         "img": null
       },
       {
         "id": 120,
         "name": "Куринное филе",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 2790,
+        "priceDisplay": "2790тг",
         "img": null
       },
       {
         "id": 121,
         "name": "Люля-кебаб",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 2790,
+        "priceDisplay": "2790тг",
         "img": null
       },
       {
         "id": 122,
         "name": "Семечки",
-        "price": 2200,
-        "priceDisplay": "2200тг",
+        "price": 2290,
+        "priceDisplay": "2290тг",
         "img": null
       },
       {
         "id": 123,
         "name": "Овощи на гриле",
-        "price": 1900,
-        "priceDisplay": "1900тг",
+        "price": 1990,
+        "priceDisplay": "1990тг",
         "img": null
       },
       {
         "id": 124,
         "name": "Шампиньоны",
-        "price": 2200,
-        "priceDisplay": "2200тг",
+        "price": 2290,
+        "priceDisplay": "2290тг",
         "img": null
       },
       {
@@ -1718,43 +1929,43 @@ window.MENU_SECTIONS = [
       {
         "id": 102,
         "name": "Картофельные дольки",
-        "price": 700,
-        "priceDisplay": "700тг",
+        "price": 1190,
+        "priceDisplay": "1190тг",
         "img": "image/nono.png"
       },
       {
         "id": 103,
         "name": "Картофель по домашнему",
-        "price": 800,
-        "priceDisplay": "800тг",
+        "price": 1190,
+        "priceDisplay": "1190тг",
         "img": "image/nono.png"
       },
       {
         "id": 104,
         "name": "Овощи на гриле",
-        "price": 1800,
-        "priceDisplay": "1800тг",
+        "price": 1990,
+        "priceDisplay": "1990тг",
         "img": "image/nono.png"
       },
       {
         "id": 105,
         "name": "Пюре",
-        "price": 500,
-        "priceDisplay": "500тг",
+        "price": 890,
+        "priceDisplay": "890тг",
         "img": "image/nono.png"
       },
       {
         "id": 106,
         "name": "Рис",
-        "price": 450,
-        "priceDisplay": "450тг",
+        "price": 990,
+        "priceDisplay": "990тг",
         "img": "image/nono.png"
       },
       {
         "id": 107,
         "name": "Фри",
-        "price": 800,
-        "priceDisplay": "800тг",
+        "price": 1190,
+        "priceDisplay": "1190тг",
         "img": "image/nono.png"
       }
     ]
@@ -2369,8 +2580,8 @@ window.MENU_SECTIONS = [
       {
         "id": 196,
         "name": "Чечил жареный",
-        "price": 1500,
-        "priceDisplay": "1500тг",
+        "price": 1790,
+        "priceDisplay": "1790тг",
         "img": null
       }
     ]
@@ -3242,31 +3453,31 @@ if (window.MENU_SECTIONS && Array.isArray(window.MENU_SECTIONS)) {
 window.MENU_ITEMS = {
   "12": {
     "name": "Кавказ",
-    "price": 4500,
+    "price": 4590,
     "img": "image/kavkaz.JPG",
     "desc": ""
   },
   "13": {
     "name": "Соленья",
-    "price": 4500,
+    "price": 4790,
     "img": "image/solenia.JPG",
     "desc": ""
   },
   "14": {
     "name": "Бадриджани",
-    "price": 2200,
+    "price": 2790,
     "img": "image/badridjani.jpg",
     "desc": ""
   },
   "15": {
     "name": "Баклажан мефурат",
-    "price": 2900,
+    "price": 3390,
     "img": "image/nono.png",
     "desc": ""
   },
   "16": {
     "name": "Грибы на кеци",
-    "price": 2900,
+    "price": 3190,
     "img": "image/gribinakeqi.jpg",
     "desc": ""
   },
@@ -3284,49 +3495,55 @@ window.MENU_ITEMS = {
   },
   "19": {
     "name": "Салат по Имеретински",
-    "price": 2400,
+    "price": 2890,
     "img": "image/nono.png",
     "desc": ""
   },
   "20": {
     "name": "Глехури",
-    "price": 1900,
+    "price": 2490,
     "img": "image/glehuri.png",
     "desc": ""
   },
   "21": {
     "name": "Грибной по грузинский",
-    "price": 3300,
+    "price": 3790,
     "img": "image/nono.png",
     "desc": ""
   },
   "22": {
     "name": "Салат Сулико",
-    "price": 3600,
+    "price": 3890,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "23": {
+    "name": "Салат Тифлис",
+    "price": 3590,
     "img": "image/nono.png",
     "desc": ""
   },
   "24": {
     "name": "Салат Friendly",
-    "price": 3800,
+    "price": 4490,
     "img": "image/Friednly.JPG",
     "desc": ""
   },
   "25": {
     "name": "Буратта",
-    "price": 3500,
+    "price": 3590,
     "img": "image/buratta.JPG",
     "desc": ""
   },
   "26": {
     "name": "Салат Греческий",
-    "price": 2600,
+    "price": 2790,
     "img": "image/grecheski.jpg",
     "desc": ""
   },
   "27": {
     "name": "Острый гурман",
-    "price": 2600,
+    "price": 3090,
     "img": "image/ostriigyrman.png",
     "desc": ""
   },
@@ -3338,145 +3555,145 @@ window.MENU_ITEMS = {
   },
   "29": {
     "name": "Салат Фреш",
-    "price": 1500,
+    "price": 2790,
     "img": "image/fresh.jpg",
     "desc": ""
   },
   "30": {
     "name": "Хрустящие баклажаны",
-    "price": 2400,
+    "price": 2890,
     "img": "image/hrustachie.JPG",
     "desc": ""
   },
   "31": {
     "name": "Цезарь с креветками",
-    "price": 2800,
+    "price": 3490,
     "img": "image/krevatkami.png",
     "desc": ""
   },
   "32": {
     "name": "Цезарь с курицей",
-    "price": 2500,
+    "price": 3190,
     "img": "image/cezar.png",
     "desc": ""
   },
   "33": {
     "name": "Цезарь с семгой",
-    "price": 3200,
+    "price": 3390,
     "img": "image/cezarslososem.jpg",
     "desc": ""
   },
   "35": {
     "name": "Бозбаш",
-    "price": 4200,
+    "price": 4390,
     "img": "image/bozbash.png",
     "desc": ""
   },
   "36": {
     "name": "Солянка по грузинский",
-    "price": 3600,
+    "price": 3690,
     "img": "image/harcho.jpg",
     "desc": ""
   },
   "37": {
     "name": "Харчо из говядины",
-    "price": 2700,
+    "price": 2790,
     "img": "image/harcho2.png",
     "desc": ""
   },
   "38": {
     "name": "Харчо из курицы",
-    "price": 2500,
+    "price": 2690,
     "img": "image/harchoinchiken.JPG",
     "desc": ""
   },
   "39": {
     "name": "Том-ям",
-    "price": 4000,
+    "price": 4490,
     "img": "image/tomyam.JPG",
     "desc": ""
   },
   "40": {
     "name": "Суп Чечевичный",
-    "price": 1500,
+    "price": 2290,
     "img": "image/nono.png",
     "desc": ""
   },
   "41": {
     "name": "Суп Лапша",
-    "price": 1800,
+    "price": 1890,
     "img": "image/lapsha.jpg",
     "desc": ""
   },
   "42": {
     "name": "Рамен кимчи с говядиной",
-    "price": 3000,
+    "price": 3190,
     "img": "image/rameninmeat.JPG",
     "desc": ""
   },
   "43": {
     "name": "Рамен кимчи с курицей",
-    "price": 2800,
+    "price": 3190,
     "img": "image/rameninchicken.jpeg",
     "desc": ""
   },
   "44": {
     "name": "Пельмени",
-    "price": 2100,
+    "price": 2890,
     "img": "image/pelmeni.webp",
     "desc": ""
   },
   "45": {
     "name": "Шорпа",
-    "price": 2200,
+    "price": 2890,
     "img": "image/shorpa.JPG",
     "desc": ""
   },
   "46": {
     "name": "Хинкали из говядины",
-    "price": 3500,
+    "price": 3590,
     "img": "image/hinkali.JPG",
     "desc": ""
   },
   "47": {
     "name": "Хинкали с грибами",
-    "price": 3500,
+    "price": 3590,
     "img": "image/hinkali.JPG",
     "desc": ""
   },
   "48": {
     "name": "Мимино",
-    "price": 4500,
+    "price": 4890,
     "img": "image/mimino.JPG",
     "desc": ""
   },
   "50": {
     "name": "Оджахури",
-    "price": 4000,
+    "price": 4590,
     "img": "image/ojahuri.jpg",
     "desc": ""
   },
   "51": {
     "name": "Ребра Батхани",
-    "price": 5300,
+    "price": 5390,
     "img": "image/rebrabathani.jpg",
     "desc": ""
   },
   "52": {
     "name": "Чахохбили",
-    "price": 3300,
+    "price": 3990,
     "img": "image/chahohbili.png",
     "desc": ""
   },
   "53": {
-    "name": "Чашашули",
-    "price": 4500,
+    "name": "Чашошули",
+    "price": 4590,
     "img": "image/chashahuli.jpg",
     "desc": ""
   },
   "54": {
     "name": "Шкмерули",
-    "price": 4300,
+    "price": 4790,
     "img": "image/chkmeruli.jpg",
     "desc": ""
   },
@@ -3488,73 +3705,73 @@ window.MENU_ITEMS = {
   },
   "56": {
     "name": "Хачапури по мегрельски",
-    "price": 3500,
+    "price": 3590,
     "img": "image/megrelski.jpg",
     "desc": ""
   },
   "57": {
     "name": "Хачапури по аджарски",
-    "price": 2800,
+    "price": 3590,
     "img": "image/puriadjarski.jpg",
     "desc": ""
   },
   "58": {
     "name": "Хачапури по имеретински",
-    "price": 3500,
+    "price": 3590,
     "img": "image/imeretinkski.png",
     "desc": ""
   },
   "59": {
     "name": "Хачапури по королевски",
-    "price": 4000,
+    "price": 4190,
     "img": "image/king.JPG",
     "desc": ""
   },
   "60": {
     "name": "Хычины с сыром",
-    "price": 1500,
+    "price": 1690,
     "img": "image/huchina.JPG",
     "desc": ""
   },
   "61": {
     "name": "Хычины с сыром и зеленью",
-    "price": 1600,
+    "price": 1790,
     "img": "image/huchina.JPG",
     "desc": ""
   },
   "62": {
     "name": "4 сезона",
-    "price": 3200,
+    "price": 3490,
     "img": "image/fourseasn.jpg",
     "desc": ""
   },
   "63": {
     "name": "Болоньезе пицца",
-    "price": 2300,
+    "price": 3190,
     "img": "image/boloneze.JPG",
     "desc": ""
   },
   "64": {
     "name": "Курица с грибами",
-    "price": 2700,
+    "price": 3190,
     "img": "image/julenpizza.JPG",
     "desc": ""
   },
   "65": {
     "name": "Маргарита",
-    "price": 2300,
+    "price": 2890,
     "img": "image/margarita.JPG",
     "desc": ""
   },
   "66": {
     "name": "Пеперони",
-    "price": 2700,
+    "price": 3190,
     "img": "image/peperoni.jpg",
     "desc": ""
   },
   "67": {
     "name": "Пицца с лососем",
-    "price": 3400,
+    "price": 3590,
     "img": "image/pizzainfish.png",
     "desc": ""
   },
@@ -3578,31 +3795,31 @@ window.MENU_ITEMS = {
   },
   "71": {
     "name": "Русская закуска",
-    "price": 3200,
+    "price": 4190,
     "img": "image/russianzak.png",
     "desc": ""
   },
   "72": {
     "name": "Сырные палочки",
-    "price": 2300,
+    "price": 2490,
     "img": "image/cheasteks.jpg",
     "desc": ""
   },
   "73": {
     "name": "Гарлики",
-    "price": 900,
+    "price": 1190,
     "img": "image/Garliki2.png",
     "desc": ""
   },
   "74": {
     "name": "Бараньи семечки",
-    "price": 2100,
+    "price": 2890,
     "img": "image/barniisemeshki.png",
     "desc": ""
   },
   "75": {
     "name": "Пивные креветки",
-    "price": 3600,
+    "price": 4390,
     "img": "image/pivnyekrevetki.jpg",
     "desc": ""
   },
@@ -3620,55 +3837,55 @@ window.MENU_ITEMS = {
   },
   "78": {
     "name": "Рибай",
-    "price": 6000,
+    "price": 6490,
     "img": "image/ribay.JPG",
     "desc": ""
   },
   "79": {
     "name": "Тибон",
-    "price": 6500,
+    "price": 6990,
     "img": "image/tibon.png",
     "desc": ""
   },
   "80": {
     "name": "Медальоны",
-    "price": 5900,
+    "price": 6890,
     "img": "image/meadlion.jpg",
     "desc": ""
   },
   "81": {
     "name": "Оссобуко",
-    "price": 4300,
+    "price": 5890,
     "img": "image/ossobuko.webp",
     "desc": ""
   },
   "82": {
     "name": "Стриплойн",
-    "price": 6000,
+    "price": 6090,
     "img": "image/striploin.jpg",
     "desc": ""
   },
   "83": {
     "name": "Лосось по католонски",
-    "price": 5000,
+    "price": 5890,
     "img": "image/losos.png",
     "desc": ""
   },
   "84": {
     "name": "Форель запеченная целиком",
-    "price": 4700,
+    "price": 5490,
     "img": "image/forel.jpg",
     "desc": ""
   },
   "85": {
     "name": "Цыпленок терияки",
-    "price": 3200,
+    "price": 4290,
     "img": "image/Cyplenok.png",
     "desc": ""
   },
   "86": {
     "name": "Кардон блю с микс салатом",
-    "price": 3600,
+    "price": 4590,
     "img": "image/cardonblu.JPG",
     "desc": ""
   },
@@ -3692,31 +3909,31 @@ window.MENU_ITEMS = {
   },
   "90": {
     "name": "Альфредо",
-    "price": 2800,
+    "price": 3790,
     "img": "image/pasta.JPG",
     "desc": ""
   },
   "91": {
     "name": "Болоньезе",
-    "price": 2600,
+    "price": 3690,
     "img": "image/boloneszepasta.jpg",
     "desc": ""
   },
   "92": {
     "name": "Спагетти с морепродуктами",
-    "price": 3000,
+    "price": 3590,
     "img": "image/moreproducti.jpg",
     "desc": ""
   },
   "93": {
     "name": "Филадельфия",
-    "price": 3000,
+    "price": 3490,
     "img": "image/fila.jpg",
     "desc": ""
   },
   "94": {
     "name": "Калифорния",
-    "price": 3100,
+    "price": 3390,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -3728,7 +3945,7 @@ window.MENU_ITEMS = {
   },
   "96": {
     "name": "Лас-Вегас темпура",
-    "price": 3300,
+    "price": 3590,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -3740,13 +3957,13 @@ window.MENU_ITEMS = {
   },
   "98": {
     "name": "Бонито",
-    "price": 2800,
+    "price": 3190,
     "img": "image/bonito.png",
     "desc": ""
   },
   "99": {
     "name": "Чиз Эби",
-    "price": 2700,
+    "price": 3290,
     "img": "image/chizeby.JPG",
     "desc": ""
   },
@@ -3764,49 +3981,49 @@ window.MENU_ITEMS = {
   },
   "102": {
     "name": "Картофельные дольки",
-    "price": 700,
+    "price": 1190,
     "img": "image/nono.png",
     "desc": ""
   },
   "103": {
     "name": "Картофель по домашнему",
-    "price": 800,
+    "price": 1190,
     "img": "image/nono.png",
     "desc": ""
   },
   "104": {
     "name": "Овощи на гриле",
-    "price": 1800,
+    "price": 1990,
     "img": "image/nono.png",
     "desc": ""
   },
   "105": {
     "name": "Пюре",
-    "price": 500,
+    "price": 890,
     "img": "image/nono.png",
     "desc": ""
   },
   "106": {
     "name": "Рис",
-    "price": 450,
+    "price": 990,
     "img": "image/nono.png",
     "desc": ""
   },
   "107": {
     "name": "Фри",
-    "price": 800,
+    "price": 1190,
     "img": "image/nono.png",
     "desc": ""
   },
   "108": {
     "name": "Цезарь темпура",
-    "price": 2700,
+    "price": 3490,
     "img": "image/nono.png",
     "desc": ""
   },
   "109": {
     "name": "Дракон",
-    "price": 3100,
+    "price": 3590,
     "img": "image/drakon.jpg",
     "desc": ""
   },
@@ -3848,55 +4065,55 @@ window.MENU_ITEMS = {
   },
   "116": {
     "name": "Мякоть баранины",
-    "price": 3500,
+    "price": 3690,
     "img": "image/nono.png",
     "desc": ""
   },
   "117": {
     "name": "Антрекот",
-    "price": 3900,
+    "price": 3990,
     "img": "image/nono.png",
     "desc": ""
   },
   "118": {
     "name": "Кавказский шашлык",
-    "price": 3900,
+    "price": 4190,
     "img": "image/nono.png",
     "desc": ""
   },
   "119": {
     "name": "Крылышки",
-    "price": 2400,
+    "price": 2590,
     "img": "image/nono.png",
     "desc": ""
   },
   "120": {
     "name": "Куринное филе",
-    "price": 2600,
+    "price": 2790,
     "img": "image/nono.png",
     "desc": ""
   },
   "121": {
     "name": "Люля-кебаб",
-    "price": 2600,
+    "price": 2790,
     "img": "image/nono.png",
     "desc": ""
   },
   "122": {
     "name": "Семечки",
-    "price": 2200,
+    "price": 2290,
     "img": "image/nono.png",
     "desc": ""
   },
   "123": {
     "name": "Овощи на гриле",
-    "price": 1900,
+    "price": 1990,
     "img": "image/nono.png",
     "desc": ""
   },
   "124": {
     "name": "Шампиньоны",
-    "price": 2200,
+    "price": 2290,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4328,7 +4545,7 @@ window.MENU_ITEMS = {
   },
   "196": {
     "name": "Чечил жареный",
-    "price": 1500,
+    "price": 1790,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4947,6 +5164,48 @@ window.MENU_ITEMS = {
   "300": {
     "name": "Колба 3л",
     "price": 6200,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "301": {
+    "name": "Мясо по аджарски",
+    "price": 4890,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "302": {
+    "name": "Тевзи мефурат",
+    "price": 5290,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "303": {
+    "name": "Запеченный лосось",
+    "price": 3290,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "304": {
+    "name": "Запеченный угорь",
+    "price": 3390,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "305": {
+    "name": "Фукуока ролл",
+    "price": 3390,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "306": {
+    "name": "Окаяма ролл",
+    "price": 3390,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "307": {
+    "name": "Френдли ролл",
+    "price": 3990,
     "img": "image/nono.png",
     "desc": ""
   }
