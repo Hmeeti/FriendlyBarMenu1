@@ -426,7 +426,7 @@ window.ITEM_DETAILS = {
     "img": "image/cardonblu.JPG",
     "desc": "Куринное филе,крем чиз,грецкий орех,чернослив,инжир,микс салата,соус сливочный"
   },
-  "87": { 
+  "87": {
     "name": "Стейк ассорти",
     "price": 40000,
     "img": "image/steakas.jpg",
@@ -491,11 +491,405 @@ window.ITEM_DETAILS = {
     "price": 3000,
     "img": "image/drakon.jpg",
     "desc": ""
+  },
+  "129": {
+    "name": "",
+    "price": 800,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "130": {
+    "name": "",
+    "price": 800,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "131": {
+    "name": "",
+    "price": 800,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "132": {
+    "name": "",
+    "price": 800,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "136": {
+    "name": "Ташкентский",
+    "price": 2000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "137": {
+    "name": "Ягодный",
+    "price": 2100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "138": {
+    "name": "Имбирь мед",
+    "price": 2100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "139": {
+    "name": "Малина мята",
+    "price": 2100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "140": {
+    "name": "Марокканский",
+    "price": 2100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "141": {
+    "name": "Облепиховый",
+    "price": 2100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "151": {
+    "name": "",
+    "price": 2700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "152": {
+    "name": "",
+    "price": 2700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "153": {
+    "name": "",
+    "price": 2700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "154": {
+    "name": "",
+    "price": 2700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "155": {
+    "name": "",
+    "price": 2700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "156": {
+    "name": "",
+    "price": 2700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "157": {
+    "name": "",
+    "price": 2700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "158": {
+    "name": "",
+    "price": 2700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "159": {
+    "name": "",
+    "price": 2100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "160": {
+    "name": "",
+    "price": 2100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "161": {
+    "name": "",
+    "price": 2100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "162": {
+    "name": "",
+    "price": 2100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "163": {
+    "name": "",
+    "price": 2100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "168": {
+    "name": "",
+    "price": 2500,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "169": {
+    "name": "",
+    "price": 2500,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "170": {
+    "name": "",
+    "price": 2500,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "171": {
+    "name": "",
+    "price": 2500,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "173": {
+    "name": "Кола 0.25 стекло",
+    "price": 900,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "174": {
+    "name": "Сок Piko в ассортименте",
+    "price": 1800,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "175": {
+    "name": "Borjomi 0.5",
+    "price": 1400,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "176": {
+    "name": "Red Bull",
+    "price": 1200,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "177": {
+    "name": "Schweppes 0.5",
+    "price": 1300,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "178": {
+    "name": "Turan вода 0.5",
+    "price": 1000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "179": {
+    "name": "Сок Rich",
+    "price": 1200,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "184": {
+    "name": "",
+    "price": 1700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "185": {
+    "name": "Line brue 0.5",
+    "price": 1600,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "186": {
+    "name": "",
+    "price": 1100,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "187": {
+    "name": "Corona Extra 0.33",
+    "price": 2700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "189": {
+    "name": "Tsingtao 0.33",
+    "price": 1900,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "190": {
+    "name": "Guinness",
+    "price": 3000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "191": {
+    "name": "",
+    "price": 1000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "192": {
+    "name": "",
+    "price": 900,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "193": {
+    "name": "",
+    "price": 1700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "194": {
+    "name": "Чечил",
+    "price": 1500,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "195": {
+    "name": "",
+    "price": 1500,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "196": {
+    "name": "Чечил жареный",
+    "price": 1500,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "204": {
+    "name": "Chivas Regal 12",
+    "price": 3200,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "217": {
+    "name": "Jameson Black Barrel",
+    "price": 2600,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "218": {
+    "name": "Jameson",
+    "price": 2500,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "225": {
+    "name": "Глинтвейн",
+    "price": 2000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "235": {
+    "name": "Bombay",
+    "price": 1900,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "248": {
+    "name": "",
+    "price": 1000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "249": {
+    "name": "",
+    "price": 1000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "250": {
+    "name": "",
+    "price": 1000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "251": {
+    "name": "",
+    "price": 1000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "260": {
+    "name": "Olmeca Blanca",
+    "price": 2000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "267": {
+    "name": "Martini Asti",
+    "price": 15000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "268": {
+    "name": "",
+    "price": 15000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "269": {
+    "name": "Martini Prosecco",
+    "price": 15000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "271": {
+    "name": "Абрау дюрсо",
+    "price": 10000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "294": {
+    "name": "",
+    "price": 1700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "295": {
+    "name": "",
+    "price": 1700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "297": {
+    "name": "",
+    "price": 1900,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "298": {
+    "name": "Samal/Turan 1л",
+    "price": 900,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "299": {
+    "name": "Samal 0.5",
+    "price": 1000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "300": {
+    "name": "Колба 3л",
+    "price": 6200,
+    "img": "image/nono.png",
+    "desc": ""
   }
 };
 
-
-/* Авто-сгенерировано tools/extract-menu.mjs — не править руками */
 window.MENU_SECTIONS = [
   {
     "title": "Меню Грузия",
@@ -509,7 +903,6 @@ window.MENU_SECTIONS = [
       {
         "id": 46,
         "name": "Хинкали из говядины",
-        "weight": "560 гр",
         "price": 3500,
         "priceDisplay": "3500тг",
         "img": "image/hinkali.JPG"
@@ -517,7 +910,6 @@ window.MENU_SECTIONS = [
       {
         "id": 47,
         "name": "Хинкали с грибами",
-        "weight": "560 гр",
         "price": 3500,
         "priceDisplay": "3500тг",
         "img": "image/hinkali.JPG"
@@ -525,7 +917,6 @@ window.MENU_SECTIONS = [
       {
         "id": 48,
         "name": "Мимино",
-        "weight": "830 гр",
         "price": 4500,
         "priceDisplay": "4500тг",
         "img": "image/mimino.JPG"
@@ -533,7 +924,6 @@ window.MENU_SECTIONS = [
       {
         "id": 50,
         "name": "Оджахури",
-        "weight": "750 гр",
         "price": 4000,
         "priceDisplay": "4000тг",
         "img": "image/ojahuri.jpg"
@@ -541,7 +931,6 @@ window.MENU_SECTIONS = [
       {
         "id": 51,
         "name": "Ребра Батхани",
-        "weight": "600 гр",
         "price": 5300,
         "priceDisplay": "5300тг",
         "img": "image/rebrabathani.jpg"
@@ -549,7 +938,6 @@ window.MENU_SECTIONS = [
       {
         "id": 52,
         "name": "Чахохбили",
-        "weight": "800 гр",
         "price": 3300,
         "priceDisplay": "3300тг",
         "img": "image/chahohbili.png"
@@ -557,7 +945,6 @@ window.MENU_SECTIONS = [
       {
         "id": 53,
         "name": "Чашошули",
-        "weight": "800 гр",
         "price": 4500,
         "priceDisplay": "4500тг",
         "img": "image/chashahuli.jpg"
@@ -565,7 +952,6 @@ window.MENU_SECTIONS = [
       {
         "id": 54,
         "name": "Шкмерули",
-        "weight": "800 гр",
         "price": 4300,
         "priceDisplay": "4300тг",
         "img": "image/chkmeruli.jpg"
@@ -579,7 +965,6 @@ window.MENU_SECTIONS = [
       {
         "id": 22,
         "name": "Салат Сулико",
-        "weight": "460 гр",
         "price": 3600,
         "priceDisplay": "3600тг",
         "img": "image/suliko.jpg"
@@ -587,7 +972,6 @@ window.MENU_SECTIONS = [
       {
         "id": 19,
         "name": "Салат по Имеретински",
-        "weight": "740 гр",
         "price": 2400,
         "priceDisplay": "2400тг",
         "img": "image/nono.png"
@@ -595,7 +979,6 @@ window.MENU_SECTIONS = [
       {
         "id": 20,
         "name": "Глехури",
-        "weight": "500 гр",
         "price": 1900,
         "priceDisplay": "1900тг",
         "img": "image/glehuri.png"
@@ -603,7 +986,6 @@ window.MENU_SECTIONS = [
       {
         "id": 21,
         "name": "Грибной по грузинский",
-        "weight": "400 гр",
         "price": 3300,
         "priceDisplay": "3300тг",
         "img": "image/nono.png"
@@ -617,7 +999,6 @@ window.MENU_SECTIONS = [
       {
         "id": 35,
         "name": "Бозбаш",
-        "weight": "800 гр",
         "price": 4200,
         "priceDisplay": "4200тг",
         "img": "image/bozbash.png"
@@ -625,7 +1006,6 @@ window.MENU_SECTIONS = [
       {
         "id": 36,
         "name": "Солянка по грузинский",
-        "weight": "600 гр",
         "price": 3600,
         "priceDisplay": "3600тг",
         "img": "image/harcho.jpg"
@@ -633,7 +1013,6 @@ window.MENU_SECTIONS = [
       {
         "id": 37,
         "name": "Харчо из говядины",
-        "weight": "600 гр",
         "price": 2700,
         "priceDisplay": "2700тг",
         "img": "image/harcho2.png"
@@ -641,7 +1020,6 @@ window.MENU_SECTIONS = [
       {
         "id": 38,
         "name": "Харчо из курицы",
-        "weight": "600 гр",
         "price": 2500,
         "priceDisplay": "2500тг",
         "img": "image/harchoinchiken.JPG"
@@ -649,7 +1027,6 @@ window.MENU_SECTIONS = [
       {
         "id": 39,
         "name": "Том-ям",
-        "weight": "690 гр",
         "price": 4000,
         "priceDisplay": "4000тг",
         "img": "image/tomyam.JPG"
@@ -657,7 +1034,6 @@ window.MENU_SECTIONS = [
       {
         "id": 40,
         "name": "Суп Чечевичный",
-        "weight": "440 гр",
         "price": 1500,
         "priceDisplay": "1500тг",
         "img": "image/cheche.jpg"
@@ -665,7 +1041,6 @@ window.MENU_SECTIONS = [
       {
         "id": 41,
         "name": "Суп Лапша",
-        "weight": "400 гр",
         "price": 1800,
         "priceDisplay": "1800тг",
         "img": "image/lapsha.jpg"
@@ -673,7 +1048,6 @@ window.MENU_SECTIONS = [
       {
         "id": 42,
         "name": "Рамен кимчи с говядиной",
-        "weight": "400 гр",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": "image/rameninmeat.JPG"
@@ -681,7 +1055,6 @@ window.MENU_SECTIONS = [
       {
         "id": 43,
         "name": "Рамен кимчи с курицей",
-        "weight": "400 гр",
         "price": 2800,
         "priceDisplay": "2800тг",
         "img": "image/rameninchicken.jpeg"
@@ -689,7 +1062,6 @@ window.MENU_SECTIONS = [
       {
         "id": 44,
         "name": "Пельмени",
-        "weight": "500 гр",
         "price": 2100,
         "priceDisplay": "2100тг",
         "img": "image/pelmeni.webp"
@@ -697,7 +1069,6 @@ window.MENU_SECTIONS = [
       {
         "id": 45,
         "name": "Шорпа",
-        "weight": "500 гр",
         "price": 2200,
         "priceDisplay": "2200тг",
         "img": "image/shorpa.JPG"
@@ -711,7 +1082,6 @@ window.MENU_SECTIONS = [
       {
         "id": 56,
         "name": "Хачапури по мегрельски",
-        "weight": "860 гр",
         "price": 3500,
         "priceDisplay": "3500тг",
         "img": "image/megrelski.jpg"
@@ -719,7 +1089,6 @@ window.MENU_SECTIONS = [
       {
         "id": 57,
         "name": "Хачапури по аджарски",
-        "weight": "710 гр",
         "price": 2800,
         "priceDisplay": "2800тг",
         "img": "image/puriadjarski.jpg"
@@ -727,7 +1096,6 @@ window.MENU_SECTIONS = [
       {
         "id": 58,
         "name": "Хачапури по имеретински",
-        "weight": "710 гр",
         "price": 3500,
         "priceDisplay": "3500тг",
         "img": "image/imeretinkski.png"
@@ -735,7 +1103,6 @@ window.MENU_SECTIONS = [
       {
         "id": 59,
         "name": "Хачапури по королевски",
-        "weight": "940 гр",
         "price": 4000,
         "priceDisplay": "4000тг",
         "img": "image/king.JPG"
@@ -743,7 +1110,6 @@ window.MENU_SECTIONS = [
       {
         "id": 60,
         "name": "Хычины с сыром",
-        "weight": "250 гр",
         "price": 1500,
         "priceDisplay": "1500тг",
         "img": "image/huchina.JPG"
@@ -751,7 +1117,6 @@ window.MENU_SECTIONS = [
       {
         "id": 61,
         "name": "Хычины с сыром и зеленью",
-        "weight": "240 гр",
         "price": 1600,
         "priceDisplay": "1600тг",
         "img": "image/huchina.JPG"
@@ -765,7 +1130,6 @@ window.MENU_SECTIONS = [
       {
         "id": 14,
         "name": "Бадриджани",
-        "weight": "400 гр",
         "price": 2200,
         "priceDisplay": "2200тг",
         "img": "image/badridjani.jpg"
@@ -773,7 +1137,6 @@ window.MENU_SECTIONS = [
       {
         "id": 15,
         "name": "Баклажан мефурат",
-        "weight": "740 гр",
         "price": 2900,
         "priceDisplay": "2900тг",
         "img": "image/nono.png"
@@ -781,7 +1144,6 @@ window.MENU_SECTIONS = [
       {
         "id": 16,
         "name": "Грибы на кеци",
-        "weight": "420 гр",
         "price": 2900,
         "priceDisplay": "2900тг",
         "img": "image/gribinakeqi.jpg"
@@ -789,7 +1151,6 @@ window.MENU_SECTIONS = [
       {
         "id": 17,
         "name": "Долма",
-        "weight": "350 гр",
         "price": 3400,
         "priceDisplay": "3400тг",
         "img": "image/dolma.jpg"
@@ -797,7 +1158,6 @@ window.MENU_SECTIONS = [
       {
         "id": 18,
         "name": "Долма в перчике",
-        "weight": "630 гр",
         "price": 3600,
         "priceDisplay": "3600тг",
         "img": "image/nono.png"
@@ -805,7 +1165,6 @@ window.MENU_SECTIONS = [
       {
         "id": 72,
         "name": "Сырные палочки",
-        "weight": "250 гр",
         "price": 2300,
         "priceDisplay": "2300тг",
         "img": "image/cheasteks.jpg"
@@ -813,7 +1172,6 @@ window.MENU_SECTIONS = [
       {
         "id": 73,
         "name": "Гарлики",
-        "weight": "210 гр",
         "price": 900,
         "priceDisplay": "900тг",
         "img": "image/Garliki2.png"
@@ -821,7 +1179,6 @@ window.MENU_SECTIONS = [
       {
         "id": 74,
         "name": "Бараньи семечки",
-        "weight": "250 гр",
         "price": 2100,
         "priceDisplay": "2100тг",
         "img": "image/barniisemeshki.png"
@@ -829,7 +1186,6 @@ window.MENU_SECTIONS = [
       {
         "id": 75,
         "name": "Пивные креветки",
-        "weight": "330 гр",
         "price": 3600,
         "priceDisplay": "3600тг",
         "img": "image/pivnyekrevetki.jpg"
@@ -837,7 +1193,6 @@ window.MENU_SECTIONS = [
       {
         "id": 76,
         "name": "Крылышки Баффало",
-        "weight": "400 гр",
         "price": 2800,
         "priceDisplay": "2800тг",
         "img": "image/kralishki.jpeg"
@@ -845,7 +1200,6 @@ window.MENU_SECTIONS = [
       {
         "id": 77,
         "name": "Пивной сет",
-        "weight": "1700 гр",
         "price": 13000,
         "priceDisplay": "13000тг",
         "img": "image/pivnoiset.JPG"
@@ -859,7 +1213,6 @@ window.MENU_SECTIONS = [
       {
         "id": 12,
         "name": "Кавказ",
-        "weight": "630 гр",
         "price": 4500,
         "priceDisplay": "4500тг",
         "img": "image/kavkaz.JPG"
@@ -867,7 +1220,6 @@ window.MENU_SECTIONS = [
       {
         "id": 13,
         "name": "Соленья",
-        "weight": "590 гр",
         "price": 4500,
         "priceDisplay": "4500тг",
         "img": "image/solenia.JPG"
@@ -875,7 +1227,6 @@ window.MENU_SECTIONS = [
       {
         "id": 68,
         "name": "Рыбное плато",
-        "weight": "500 гр",
         "price": 8800,
         "priceDisplay": "8800тг",
         "img": "image/rybnaya-narezka-foto-33.jpg"
@@ -883,7 +1234,6 @@ window.MENU_SECTIONS = [
       {
         "id": 69,
         "name": "Сырное плато",
-        "weight": "500 гр",
         "price": 7000,
         "priceDisplay": "7000тг",
         "img": "image/cheasas.jpg"
@@ -891,7 +1241,6 @@ window.MENU_SECTIONS = [
       {
         "id": 70,
         "name": "Мясное плато",
-        "weight": "800 гр",
         "price": 8000,
         "priceDisplay": "8000тг",
         "img": "image/meatas.jpeg"
@@ -899,7 +1248,6 @@ window.MENU_SECTIONS = [
       {
         "id": 71,
         "name": "Русская закуска",
-        "weight": "660 гр",
         "price": 3200,
         "priceDisplay": "3200тг",
         "img": "image/russianzak.png"
@@ -918,7 +1266,6 @@ window.MENU_SECTIONS = [
       {
         "id": 23,
         "name": "Салат Тифлис",
-        "weight": "600 гр",
         "price": 2800,
         "priceDisplay": "2800тг",
         "img": "image/tiflis.JPG"
@@ -926,7 +1273,6 @@ window.MENU_SECTIONS = [
       {
         "id": 24,
         "name": "Салат Friendly",
-        "weight": "450 гр",
         "price": 3800,
         "priceDisplay": "3800тг",
         "img": "image/Friednly.JPG"
@@ -934,7 +1280,6 @@ window.MENU_SECTIONS = [
       {
         "id": 25,
         "name": "Буратта",
-        "weight": "410 гр",
         "price": 3500,
         "priceDisplay": "3500тг",
         "img": "image/buratta.JPG"
@@ -942,7 +1287,6 @@ window.MENU_SECTIONS = [
       {
         "id": 26,
         "name": "Салат Греческий",
-        "weight": "520 гр",
         "price": 2600,
         "priceDisplay": "2600тг",
         "img": "image/grecheski.jpg"
@@ -950,7 +1294,6 @@ window.MENU_SECTIONS = [
       {
         "id": 27,
         "name": "Острый гурман",
-        "weight": "460 гр",
         "price": 2600,
         "priceDisplay": "2600тг",
         "img": "image/ostriigyrman.png"
@@ -958,7 +1301,6 @@ window.MENU_SECTIONS = [
       {
         "id": 28,
         "name": "Руколла с креветками",
-        "weight": "430 гр",
         "price": 3600,
         "priceDisplay": "3600тг",
         "img": "image/rukola.png"
@@ -966,7 +1308,6 @@ window.MENU_SECTIONS = [
       {
         "id": 29,
         "name": "Салат Фреш",
-        "weight": "410 гр",
         "price": 1500,
         "priceDisplay": "1500тг",
         "img": "image/fresh.jpg"
@@ -974,7 +1315,6 @@ window.MENU_SECTIONS = [
       {
         "id": 30,
         "name": "Хрустящие баклажаны",
-        "weight": "440 гр",
         "price": 2400,
         "priceDisplay": "2400тг",
         "img": "image/hrustachie.JPG"
@@ -982,7 +1322,6 @@ window.MENU_SECTIONS = [
       {
         "id": 31,
         "name": "Цезарь с креветками",
-        "weight": "400 гр",
         "price": 2800,
         "priceDisplay": "2800тг",
         "img": "image/krevatkami.png"
@@ -990,7 +1329,6 @@ window.MENU_SECTIONS = [
       {
         "id": 32,
         "name": "Цезарь с курицей",
-        "weight": "380 гр",
         "price": 2500,
         "priceDisplay": "2500тг",
         "img": "image/cezar.png"
@@ -998,7 +1336,6 @@ window.MENU_SECTIONS = [
       {
         "id": 33,
         "name": "Цезарь с семгой",
-        "weight": "400 гр",
         "price": 3200,
         "priceDisplay": "3200тг",
         "img": "image/cezarslososem.jpg"
@@ -1012,7 +1349,6 @@ window.MENU_SECTIONS = [
       {
         "id": 78,
         "name": "Рибай",
-        "weight": "600 гр",
         "price": 6000,
         "priceDisplay": "6000тг",
         "img": "image/ribay.JPG"
@@ -1020,7 +1356,6 @@ window.MENU_SECTIONS = [
       {
         "id": 79,
         "name": "Тибон",
-        "weight": "600 гр",
         "price": 6500,
         "priceDisplay": "6500тг",
         "img": "image/tibon.png"
@@ -1028,7 +1363,6 @@ window.MENU_SECTIONS = [
       {
         "id": 80,
         "name": "Медальоны",
-        "weight": "550 гр",
         "price": 5900,
         "priceDisplay": "5900тг",
         "img": "image/meadlion.jpg"
@@ -1036,7 +1370,6 @@ window.MENU_SECTIONS = [
       {
         "id": 81,
         "name": "Оссобуко",
-        "weight": "700 гр",
         "price": 4300,
         "priceDisplay": "4300тг",
         "img": "image/ossobuko.webp"
@@ -1044,7 +1377,6 @@ window.MENU_SECTIONS = [
       {
         "id": 82,
         "name": "Стриплойн",
-        "weight": "600 гр",
         "price": 6000,
         "priceDisplay": "6000тг",
         "img": "image/striploin.jpg"
@@ -1058,7 +1390,6 @@ window.MENU_SECTIONS = [
       {
         "id": 83,
         "name": "Лосось по католонски",
-        "weight": "680 гр",
         "price": 5000,
         "priceDisplay": "5000тг",
         "img": "image/losos.png"
@@ -1066,7 +1397,6 @@ window.MENU_SECTIONS = [
       {
         "id": 84,
         "name": "Форель запеченная целиком",
-        "weight": "1000 гр",
         "price": 4700,
         "priceDisplay": "4700тг",
         "img": "image/forel.jpg"
@@ -1080,7 +1410,6 @@ window.MENU_SECTIONS = [
       {
         "id": 85,
         "name": "Цыпленок терияки",
-        "weight": "1000 гр",
         "price": 3200,
         "priceDisplay": "3200тг",
         "img": "image/Cyplenok.png"
@@ -1088,7 +1417,6 @@ window.MENU_SECTIONS = [
       {
         "id": 86,
         "name": "Кардон блю с микс салатом",
-        "weight": "600 гр",
         "price": 3600,
         "priceDisplay": "3600тг",
         "img": "image/cardonblu.JPG"
@@ -1102,7 +1430,6 @@ window.MENU_SECTIONS = [
       {
         "id": 87,
         "name": "Стейк ассорти",
-        "weight": "5270 гр",
         "price": 40000,
         "priceDisplay": "40000тг",
         "img": "image/steakas.jpg"
@@ -1110,7 +1437,6 @@ window.MENU_SECTIONS = [
       {
         "id": 88,
         "name": "Рыбное ассорти",
-        "weight": "3780 гр",
         "price": 35000,
         "priceDisplay": "35000тг",
         "img": "image/rybnayassorti.JPG"
@@ -1118,7 +1444,6 @@ window.MENU_SECTIONS = [
       {
         "id": 89,
         "name": "Фирменное блюдо Friendly",
-        "weight": "3500 гр",
         "price": 30000,
         "priceDisplay": "30000тг",
         "img": "image/nono.png"
@@ -1132,7 +1457,6 @@ window.MENU_SECTIONS = [
       {
         "id": 90,
         "name": "Альфредо",
-        "weight": "370 гр",
         "price": 2800,
         "priceDisplay": "2800тг",
         "img": "image/pasta.JPG"
@@ -1140,7 +1464,6 @@ window.MENU_SECTIONS = [
       {
         "id": 91,
         "name": "Болоньезе",
-        "weight": "340 гр",
         "price": 2600,
         "priceDisplay": "2600тг",
         "img": "image/boloneszepasta.jpg"
@@ -1148,7 +1471,6 @@ window.MENU_SECTIONS = [
       {
         "id": 92,
         "name": "Спагетти с морепродуктами",
-        "weight": "470 гр",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": "image/moreproducti.jpg"
@@ -1162,7 +1484,6 @@ window.MENU_SECTIONS = [
       {
         "id": 93,
         "name": "Филадельфия",
-        "weight": "490 гр",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": "image/fila.jpg"
@@ -1170,7 +1491,6 @@ window.MENU_SECTIONS = [
       {
         "id": 94,
         "name": "Калифорния",
-        "weight": "460 гр",
         "price": 3100,
         "priceDisplay": "3100тг",
         "img": "image/nono.png"
@@ -1178,7 +1498,6 @@ window.MENU_SECTIONS = [
       {
         "id": 95,
         "name": "Америка темпура",
-        "weight": "520 гр",
         "price": 3100,
         "priceDisplay": "3100тг",
         "img": "image/amerika.JPG"
@@ -1186,7 +1505,6 @@ window.MENU_SECTIONS = [
       {
         "id": 96,
         "name": "Лас-Вегас темпура",
-        "weight": "490 гр",
         "price": 3300,
         "priceDisplay": "3300тг",
         "img": "image/nono.png"
@@ -1194,7 +1512,6 @@ window.MENU_SECTIONS = [
       {
         "id": 108,
         "name": "Цезарь темпура",
-        "weight": "550 гр",
         "price": 2700,
         "priceDisplay": "2700тг",
         "img": "image/nono.png"
@@ -1202,7 +1519,6 @@ window.MENU_SECTIONS = [
       {
         "id": 97,
         "name": "Калифорния темпура",
-        "weight": "460 гр",
         "price": 3200,
         "priceDisplay": "3200тг",
         "img": "image/nono.png"
@@ -1210,7 +1526,6 @@ window.MENU_SECTIONS = [
       {
         "id": 98,
         "name": "Бонито",
-        "weight": "530 гр",
         "price": 2800,
         "priceDisplay": "2800тг",
         "img": "image/bonito.png"
@@ -1218,7 +1533,6 @@ window.MENU_SECTIONS = [
       {
         "id": 99,
         "name": "Чиз Эби",
-        "weight": "510 гр",
         "price": 2700,
         "priceDisplay": "2700тг",
         "img": "image/chizeby.JPG"
@@ -1226,7 +1540,6 @@ window.MENU_SECTIONS = [
       {
         "id": 109,
         "name": "Дракон",
-        "weight": "490 гр",
         "price": 3100,
         "priceDisplay": "3100тг",
         "img": "image/drakon.jpg"
@@ -1240,7 +1553,6 @@ window.MENU_SECTIONS = [
       {
         "id": 100,
         "name": "Сет Сакура",
-        "weight": "3000 гр",
         "price": 15000,
         "priceDisplay": "15000тг",
         "img": "image/sakura.jpg"
@@ -1248,7 +1560,6 @@ window.MENU_SECTIONS = [
       {
         "id": 101,
         "name": "Сет Самурай",
-        "weight": "1900 гр",
         "price": 10000,
         "priceDisplay": "10000тг",
         "img": "image/nono.png"
@@ -1262,7 +1573,6 @@ window.MENU_SECTIONS = [
       {
         "id": 60,
         "name": "Хычины с сыром",
-        "weight": "250 гр",
         "price": 1500,
         "priceDisplay": "1500тг",
         "img": "image/huchina.JPG"
@@ -1270,7 +1580,6 @@ window.MENU_SECTIONS = [
       {
         "id": 61,
         "name": "Хычины с сыром и зеленью",
-        "weight": "240 гр",
         "price": 1600,
         "priceDisplay": "1600тг",
         "img": "image/huchina.JPG"
@@ -1278,7 +1587,6 @@ window.MENU_SECTIONS = [
       {
         "id": 62,
         "name": "4 сезона",
-        "weight": "620 гр",
         "price": 3200,
         "priceDisplay": "3200тг",
         "img": "image/fourseasn.jpg"
@@ -1286,7 +1594,6 @@ window.MENU_SECTIONS = [
       {
         "id": 63,
         "name": "Болоньезе пицца",
-        "weight": "680 гр",
         "price": 2300,
         "priceDisplay": "2300тг",
         "img": "image/boloneze.JPG"
@@ -1294,7 +1601,6 @@ window.MENU_SECTIONS = [
       {
         "id": 64,
         "name": "Курица с грибами",
-        "weight": "760 гр",
         "price": 2700,
         "priceDisplay": "2700тг",
         "img": "image/julenpizza.JPG"
@@ -1302,7 +1608,6 @@ window.MENU_SECTIONS = [
       {
         "id": 65,
         "name": "Маргарита",
-        "weight": "660 гр",
         "price": 2300,
         "priceDisplay": "2300тг",
         "img": "image/margarita.JPG"
@@ -1310,7 +1615,6 @@ window.MENU_SECTIONS = [
       {
         "id": 66,
         "name": "Пеперони",
-        "weight": "700 гр",
         "price": 2700,
         "priceDisplay": "2700тг",
         "img": "image/peperoni.jpg"
@@ -1318,7 +1622,6 @@ window.MENU_SECTIONS = [
       {
         "id": 67,
         "name": "Пицца с лососем",
-        "weight": "740 гр",
         "price": 3400,
         "priceDisplay": "3400тг",
         "img": "image/pizzainfish.png"
@@ -1332,7 +1635,6 @@ window.MENU_SECTIONS = [
       {
         "id": 116,
         "name": "Мякоть баранины",
-        "weight": "",
         "price": 3500,
         "priceDisplay": "3500тг",
         "img": null
@@ -1340,7 +1642,6 @@ window.MENU_SECTIONS = [
       {
         "id": 117,
         "name": "Антрекот",
-        "weight": "",
         "price": 3900,
         "priceDisplay": "3900тг",
         "img": null
@@ -1348,7 +1649,6 @@ window.MENU_SECTIONS = [
       {
         "id": 118,
         "name": "Кавказский шашлык",
-        "weight": "",
         "price": 3900,
         "priceDisplay": "3900тг",
         "img": null
@@ -1356,7 +1656,6 @@ window.MENU_SECTIONS = [
       {
         "id": 119,
         "name": "Крылышки",
-        "weight": "",
         "price": 2400,
         "priceDisplay": "2400тг",
         "img": null
@@ -1364,7 +1663,6 @@ window.MENU_SECTIONS = [
       {
         "id": 120,
         "name": "Куринное филе",
-        "weight": "",
         "price": 2600,
         "priceDisplay": "2600тг",
         "img": null
@@ -1372,7 +1670,6 @@ window.MENU_SECTIONS = [
       {
         "id": 121,
         "name": "Люля-кебаб",
-        "weight": "",
         "price": 2600,
         "priceDisplay": "2600тг",
         "img": null
@@ -1380,7 +1677,6 @@ window.MENU_SECTIONS = [
       {
         "id": 122,
         "name": "Семечки",
-        "weight": "",
         "price": 2200,
         "priceDisplay": "2200тг",
         "img": null
@@ -1388,7 +1684,6 @@ window.MENU_SECTIONS = [
       {
         "id": 123,
         "name": "Овощи на гриле",
-        "weight": "",
         "price": 1900,
         "priceDisplay": "1900тг",
         "img": null
@@ -1396,7 +1691,6 @@ window.MENU_SECTIONS = [
       {
         "id": 124,
         "name": "Шампиньоны",
-        "weight": "",
         "price": 2200,
         "priceDisplay": "2200тг",
         "img": null
@@ -1404,7 +1698,6 @@ window.MENU_SECTIONS = [
       {
         "id": 125,
         "name": "Маленький сет",
-        "weight": "",
         "price": 18000,
         "priceDisplay": "18000тг",
         "img": null
@@ -1412,7 +1705,6 @@ window.MENU_SECTIONS = [
       {
         "id": 126,
         "name": "Большой сет",
-        "weight": "",
         "price": 25000,
         "priceDisplay": "25000тг",
         "img": null
@@ -1426,7 +1718,6 @@ window.MENU_SECTIONS = [
       {
         "id": 102,
         "name": "Картофельные дольки",
-        "weight": "260 гр",
         "price": 700,
         "priceDisplay": "700тг",
         "img": "image/nono.png"
@@ -1434,7 +1725,6 @@ window.MENU_SECTIONS = [
       {
         "id": 103,
         "name": "Картофель по домашнему",
-        "weight": "260 гр",
         "price": 800,
         "priceDisplay": "800тг",
         "img": "image/nono.png"
@@ -1442,7 +1732,6 @@ window.MENU_SECTIONS = [
       {
         "id": 104,
         "name": "Овощи на гриле",
-        "weight": "710 гр",
         "price": 1800,
         "priceDisplay": "1800тг",
         "img": "image/nono.png"
@@ -1450,7 +1739,6 @@ window.MENU_SECTIONS = [
       {
         "id": 105,
         "name": "Пюре",
-        "weight": "430 гр",
         "price": 500,
         "priceDisplay": "500тг",
         "img": "image/nono.png"
@@ -1458,7 +1746,6 @@ window.MENU_SECTIONS = [
       {
         "id": 106,
         "name": "Рис",
-        "weight": "180 гр",
         "price": 450,
         "priceDisplay": "450тг",
         "img": "image/nono.png"
@@ -1466,7 +1753,6 @@ window.MENU_SECTIONS = [
       {
         "id": 107,
         "name": "Фри",
-        "weight": "260 гр",
         "price": 800,
         "priceDisplay": "800тг",
         "img": "image/nono.png"
@@ -1480,7 +1766,6 @@ window.MENU_SECTIONS = [
       {
         "id": 109,
         "name": "BBQ соус",
-        "weight": "",
         "price": 450,
         "priceDisplay": "450тг",
         "img": null
@@ -1488,7 +1773,6 @@ window.MENU_SECTIONS = [
       {
         "id": 110,
         "name": "Демигласс",
-        "weight": "",
         "price": 800,
         "priceDisplay": "800тг",
         "img": null
@@ -1496,7 +1780,6 @@ window.MENU_SECTIONS = [
       {
         "id": 111,
         "name": "Кетчуп",
-        "weight": "",
         "price": 400,
         "priceDisplay": "400тг",
         "img": null
@@ -1504,7 +1787,6 @@ window.MENU_SECTIONS = [
       {
         "id": 112,
         "name": "Сливочный",
-        "weight": "",
         "price": 700,
         "priceDisplay": "700тг",
         "img": null
@@ -1512,7 +1794,6 @@ window.MENU_SECTIONS = [
       {
         "id": 113,
         "name": "Сырный соус",
-        "weight": "",
         "price": 500,
         "priceDisplay": "500тг",
         "img": null
@@ -1520,7 +1801,6 @@ window.MENU_SECTIONS = [
       {
         "id": 114,
         "name": "Тар-Тар",
-        "weight": "",
         "price": 500,
         "priceDisplay": "500тг",
         "img": null
@@ -1528,7 +1808,6 @@ window.MENU_SECTIONS = [
       {
         "id": 115,
         "name": "Шашлычный соус",
-        "weight": "",
         "price": 500,
         "priceDisplay": "500тг",
         "img": null
@@ -1542,7 +1821,6 @@ window.MENU_SECTIONS = [
       {
         "id": 127,
         "name": "Испанский чизкейк",
-        "weight": "",
         "price": 2600,
         "priceDisplay": "2600тг",
         "img": null
@@ -1550,7 +1828,6 @@ window.MENU_SECTIONS = [
       {
         "id": 128,
         "name": "Классический чизкейк",
-        "weight": "",
         "price": 2500,
         "priceDisplay": "2500тг",
         "img": null
@@ -1558,7 +1835,6 @@ window.MENU_SECTIONS = [
       {
         "id": 129,
         "name": "Меренговый рулет",
-        "weight": "",
         "price": 2100,
         "priceDisplay": "2100тг",
         "img": null
@@ -1566,7 +1842,6 @@ window.MENU_SECTIONS = [
       {
         "id": 130,
         "name": "Молочная девочка",
-        "weight": "",
         "price": 2600,
         "priceDisplay": "2600тг",
         "img": null
@@ -1574,7 +1849,6 @@ window.MENU_SECTIONS = [
       {
         "id": 131,
         "name": "Наполеон",
-        "weight": "",
         "price": 2300,
         "priceDisplay": "2300тг",
         "img": null
@@ -1582,7 +1856,6 @@ window.MENU_SECTIONS = [
       {
         "id": 126,
         "name": "Сникерс",
-        "weight": "",
         "price": 2800,
         "priceDisplay": "2800тг",
         "img": null
@@ -1590,7 +1863,6 @@ window.MENU_SECTIONS = [
       {
         "id": 127,
         "name": "Фруктовое ассорти(мини)",
-        "weight": "",
         "price": 6000,
         "priceDisplay": "6000тг",
         "img": null
@@ -1598,9 +1870,56 @@ window.MENU_SECTIONS = [
       {
         "id": 128,
         "name": "Фруктовое ассорти(большое)",
-        "weight": "",
         "price": 11000,
         "priceDisplay": "11000тг",
+        "img": null
+      }
+    ]
+  },
+  {
+    "title": "Чаи",
+    "anchor": null,
+    "items": [
+      {
+        "id": 136,
+        "name": "Ташкентский",
+        "price": 2000,
+        "priceDisplay": "2000тг",
+        "img": null
+      },
+      {
+        "id": 137,
+        "name": "Ягодный",
+        "price": 2100,
+        "priceDisplay": "2100тг",
+        "img": null
+      },
+      {
+        "id": 138,
+        "name": "Имбирь мед",
+        "price": 2100,
+        "priceDisplay": "2100тг",
+        "img": null
+      },
+      {
+        "id": 139,
+        "name": "Малина мята",
+        "price": 2100,
+        "priceDisplay": "2100тг",
+        "img": null
+      },
+      {
+        "id": 140,
+        "name": "Марокканский",
+        "price": 2100,
+        "priceDisplay": "2100тг",
+        "img": null
+      },
+      {
+        "id": 141,
+        "name": "Облепиховый",
+        "price": 2100,
+        "priceDisplay": "2100тг",
         "img": null
       }
     ]
@@ -1612,39 +1931,34 @@ window.MENU_SECTIONS = [
       {
         "id": 129,
         "name": "Лимон",
-        "weight": "",
-        "price": 700,
-        "priceDisplay": "700тг",
+        "price": 800,
+        "priceDisplay": "800тг",
         "img": null
       },
       {
         "id": 130,
         "name": "Лайм",
-        "weight": "",
-        "price": 600,
-        "priceDisplay": "600тг",
+        "price": 800,
+        "priceDisplay": "800тг",
         "img": null
       },
       {
         "id": 131,
         "name": "Мед",
-        "weight": "",
-        "price": 600,
-        "priceDisplay": "600тг",
+        "price": 800,
+        "priceDisplay": "800тг",
         "img": null
       },
       {
         "id": 132,
         "name": "Молоко",
-        "weight": "",
-        "price": 600,
-        "priceDisplay": "600тг",
+        "price": 800,
+        "priceDisplay": "800тг",
         "img": null
       },
       {
         "id": 133,
         "name": "Шоколад",
-        "weight": "",
         "price": 1600,
         "priceDisplay": "1600тг",
         "img": null
@@ -1658,7 +1972,6 @@ window.MENU_SECTIONS = [
       {
         "id": 146,
         "name": "Ice Americano",
-        "weight": "",
         "price": 1600,
         "priceDisplay": "1600тг",
         "img": null
@@ -1666,7 +1979,6 @@ window.MENU_SECTIONS = [
       {
         "id": 147,
         "name": "Ice Cappuccino",
-        "weight": "",
         "price": 1600,
         "priceDisplay": "1600тг",
         "img": null
@@ -1680,7 +1992,6 @@ window.MENU_SECTIONS = [
       {
         "id": 148,
         "name": "Сироп Ваниль",
-        "weight": "",
         "price": 200,
         "priceDisplay": "200тг",
         "img": null
@@ -1688,7 +1999,6 @@ window.MENU_SECTIONS = [
       {
         "id": 149,
         "name": "Сироп Карамель",
-        "weight": "",
         "price": 200,
         "priceDisplay": "200тг",
         "img": null
@@ -1696,7 +2006,6 @@ window.MENU_SECTIONS = [
       {
         "id": 150,
         "name": "Сироп Шоколад",
-        "weight": "",
         "price": 200,
         "priceDisplay": "200тг",
         "img": null
@@ -1710,65 +2019,57 @@ window.MENU_SECTIONS = [
       {
         "id": 151,
         "name": "Киви-Лайм 1л",
-        "weight": "",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 2700,
+        "priceDisplay": "2700тг",
         "img": null
       },
       {
         "id": 152,
         "name": "Классический 1л",
-        "weight": "",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 2700,
+        "priceDisplay": "2700тг",
         "img": null
       },
       {
         "id": 153,
         "name": "Манго-Ананас 1л",
-        "weight": "",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 2700,
+        "priceDisplay": "2700тг",
         "img": null
       },
       {
         "id": 154,
         "name": "Манго-Клубника 1л",
-        "weight": "",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 2700,
+        "priceDisplay": "2700тг",
         "img": null
       },
       {
         "id": 155,
         "name": "Манго-Маракуйя 1л",
-        "weight": "",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 2700,
+        "priceDisplay": "2700тг",
         "img": null
       },
       {
         "id": 156,
         "name": "Маракуйя-Апельсин 1л",
-        "weight": "",
-        "price": 260,
-        "priceDisplay": "2600тг",
+        "price": 2700,
+        "priceDisplay": "2700тг",
         "img": null
       },
       {
         "id": 157,
         "name": "Мохито 1л",
-        "weight": "",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 2700,
+        "priceDisplay": "2700тг",
         "img": null
       },
       {
         "id": 158,
         "name": "Ягодный 1л",
-        "weight": "",
-        "price": 2600,
-        "priceDisplay": "2600тг",
+        "price": 2700,
+        "priceDisplay": "2700тг",
         "img": null
       }
     ]
@@ -1780,41 +2081,36 @@ window.MENU_SECTIONS = [
       {
         "id": 159,
         "name": "Клубнично-Банановый",
-        "weight": "",
-        "price": 1800,
-        "priceDisplay": "1800тг",
+        "price": 2100,
+        "priceDisplay": "2100тг",
         "img": null
       },
       {
         "id": 160,
         "name": "Клубничный",
-        "weight": "",
-        "price": 1800,
-        "priceDisplay": "1800тг",
+        "price": 2100,
+        "priceDisplay": "2100тг",
         "img": null
       },
       {
         "id": 161,
         "name": "Сливочный",
-        "weight": "",
-        "price": 1800,
-        "priceDisplay": "1800тг",
+        "price": 2100,
+        "priceDisplay": "2100тг",
         "img": null
       },
       {
         "id": 162,
         "name": "Шоколадный",
-        "weight": "",
-        "price": 1800,
-        "priceDisplay": "1800тг",
+        "price": 2100,
+        "priceDisplay": "2100тг",
         "img": null
       },
       {
         "id": 163,
         "name": "Банановый",
-        "weight": "",
-        "price": 1800,
-        "priceDisplay": "1800тг",
+        "price": 2100,
+        "priceDisplay": "2100тг",
         "img": null
       }
     ]
@@ -1826,7 +2122,6 @@ window.MENU_SECTIONS = [
       {
         "id": 164,
         "name": "Florida коктель",
-        "weight": "",
         "price": 2000,
         "priceDisplay": "2000тг",
         "img": null
@@ -1834,7 +2129,6 @@ window.MENU_SECTIONS = [
       {
         "id": 165,
         "name": "Клубничный мохито",
-        "weight": "",
         "price": 2500,
         "priceDisplay": "2500тг",
         "img": null
@@ -1842,7 +2136,6 @@ window.MENU_SECTIONS = [
       {
         "id": 166,
         "name": "Мохито",
-        "weight": "",
         "price": 2500,
         "priceDisplay": "2500тг",
         "img": null
@@ -1850,7 +2143,6 @@ window.MENU_SECTIONS = [
       {
         "id": 167,
         "name": "Aperol Spritz",
-        "weight": "",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": null
@@ -1864,33 +2156,29 @@ window.MENU_SECTIONS = [
       {
         "id": 168,
         "name": "Апельсиновый 0,33",
-        "weight": "",
-        "price": 2000,
-        "priceDisplay": "2000тг",
+        "price": 2500,
+        "priceDisplay": "2500тг",
         "img": null
       },
       {
         "id": 169,
         "name": "Морковный 0,33",
-        "weight": "",
-        "price": 2000,
-        "priceDisplay": "2000тг",
+        "price": 2500,
+        "priceDisplay": "2500тг",
         "img": null
       },
       {
         "id": 170,
         "name": "Яблочный 0,33",
-        "weight": "",
-        "price": 2000,
-        "priceDisplay": "2000тг",
+        "price": 2500,
+        "priceDisplay": "2500тг",
         "img": null
       },
       {
         "id": 171,
         "name": "MIX 0,33",
-        "weight": "",
-        "price": 2000,
-        "priceDisplay": "2000тг",
+        "price": 2500,
+        "priceDisplay": "2500тг",
         "img": null
       }
     ]
@@ -1902,95 +2190,69 @@ window.MENU_SECTIONS = [
       {
         "id": 172,
         "name": "Coca-Cola/ Fanta/Sprite 1л",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
       },
       {
         "id": 173,
-        "name": "Coca-Cola/ Fanta/Sprite 0.25л (стекло)",
-        "weight": "",
-        "price": 700,
-        "priceDisplay": "700тг",
+        "name": "Кола 0.25 стекло",
+        "price": 900,
+        "priceDisplay": "900тг",
         "img": null
       },
       {
         "id": 174,
-        "name": "Сок Ріко в асортименте Іл",
-        "weight": "",
-        "price": 1600,
-        "priceDisplay": "1600тг",
-        "img": null
-      },
-      {
-        "id": 175,
-        "name": "Минеральная вода Borjomi 0,5л(стекло)",
-        "weight": "",
-        "price": 1200,
-        "priceDisplay": "1200тг",
-        "img": null
-      },
-      {
-        "id": 176,
-        "name": "Red Bull 0,25лl",
-        "weight": "",
+        "name": "Сок Piko в ассортименте",
         "price": 1800,
         "priceDisplay": "1800тг",
         "img": null
       },
       {
+        "id": 175,
+        "name": "Borjomi 0.5",
+        "price": 1400,
+        "priceDisplay": "1400тг",
+        "img": null
+      },
+      {
+        "id": 176,
+        "name": "Red Bull",
+        "price": 1200,
+        "priceDisplay": "1200тг",
+        "img": null
+      },
+      {
         "id": 177,
-        "name": "Schweppes 0,35л",
-        "weight": "",
-        "price": 900,
-        "priceDisplay": "900тг",
+        "name": "Schweppes 0.5",
+        "price": 1300,
+        "priceDisplay": "1300тг",
         "img": null
       },
       {
         "id": 178,
-        "name": "Turan вода (газ, негаз) 0,5л",
-        "weight": "",
-        "price": 900,
-        "priceDisplay": "900тг",
-        "img": null
-      },
-      {
-        "id": 179,
-        "name": "Сок «rich» 02л",
-        "weight": "",
+        "name": "Turan вода 0.5",
         "price": 1000,
         "priceDisplay": "1000тг",
         "img": null
       },
       {
-        "id": 180,
-        "name": "Тассай Excellent 0,75 л",
-        "weight": "",
-        "price": 2000,
-        "priceDisplay": "2000тг",
+        "id": 179,
+        "name": "Сок Rich",
+        "price": 1200,
+        "priceDisplay": "1200тг",
         "img": null
       },
       {
-        "id": 181,
-        "name": "Тассай Emrald 0,75 л",
-        "weight": "",
-        "price": 2000,
-        "priceDisplay": "2000тг",
-        "img": null
-      },
-      {
-        "id": 182,
-        "name": "Тассай 1л",
-        "weight": "",
+        "id": 298,
+        "name": "Samal/Turan 1л",
         "price": 900,
         "priceDisplay": "900тг",
         "img": null
       },
       {
-        "id": 183,
-        "name": "Тассай стекло 0,5л",
-        "weight": "",
+        "id": 299,
+        "name": "Samal 0.5",
         "price": 1000,
         "priceDisplay": "1000тг",
         "img": null
@@ -2004,15 +2266,13 @@ window.MENU_SECTIONS = [
       {
         "id": 184,
         "name": "Bud 0.5",
-        "weight": "",
-        "price": 1600,
-        "priceDisplay": "1600тг",
+        "price": 1700,
+        "priceDisplay": "1700тг",
         "img": null
       },
       {
         "id": 185,
-        "name": "Line Brew 0.5",
-        "weight": "",
+        "name": "Line brue 0.5",
         "price": 1600,
         "priceDisplay": "1600тг",
         "img": null
@@ -2020,9 +2280,15 @@ window.MENU_SECTIONS = [
       {
         "id": 186,
         "name": "Прага Южная 0.5",
-        "weight": "",
-        "price": 900,
-        "priceDisplay": "900тг",
+        "price": 1100,
+        "priceDisplay": "1100тг",
+        "img": null
+      },
+      {
+        "id": 300,
+        "name": "Колба 3л",
+        "price": 6200,
+        "priceDisplay": "6200тг",
         "img": null
       }
     ]
@@ -2034,33 +2300,29 @@ window.MENU_SECTIONS = [
       {
         "id": 187,
         "name": "Corona Extra 0.33",
-        "weight": "",
-        "price": 2500,
-        "priceDisplay": "2500тг",
+        "price": 2700,
+        "priceDisplay": "2700тг",
         "img": null
       },
       {
         "id": 189,
-        "name": "Tsingtao 0",
-        "weight": "",
-        "price": 1600,
-        "priceDisplay": "1600тг",
+        "name": "Tsingtao 0.33",
+        "price": 1900,
+        "priceDisplay": "1900тг",
         "img": null
       },
       {
         "id": 297,
         "name": "Bud",
-        "weight": "",
-        "price": 1600,
-        "priceDisplay": "1600тг",
-        "img": null 
+        "price": 1900,
+        "priceDisplay": "1900тг",
+        "img": null
       },
       {
         "id": 190,
-        "name": "Guinness 0.44",
-        "weight": "",
-        "price": 2800,
-        "priceDisplay": "2800тг",
+        "name": "Guinness",
+        "price": 3000,
+        "priceDisplay": "3000тг",
         "img": null
       }
     ]
@@ -2072,49 +2334,43 @@ window.MENU_SECTIONS = [
       {
         "id": 191,
         "name": "Арахис",
-        "weight": "",
-        "price": 800,
-        "priceDisplay": "800тг",
+        "price": 1000,
+        "priceDisplay": "1000тг",
         "img": null
       },
       {
         "id": 192,
         "name": "Курт",
-        "weight": "",
-        "price": 700,
-        "priceDisplay": "700тг",
+        "price": 900,
+        "priceDisplay": "900тг",
         "img": null
       },
       {
         "id": 193,
         "name": "Фисташки",
-        "weight": "",
-        "price": 1600,
-        "priceDisplay": "1600тг",
+        "price": 1700,
+        "priceDisplay": "1700тг",
         "img": null
       },
       {
         "id": 194,
         "name": "Чечил",
-        "weight": "",
-        "price": 1200,
-        "priceDisplay": "1200тг",
+        "price": 1500,
+        "priceDisplay": "1500тг",
         "img": null
       },
       {
         "id": 195,
         "name": "Чипсы",
-        "weight": "",
-        "price": 1200,
-        "priceDisplay": "1200тг",
+        "price": 1500,
+        "priceDisplay": "1500тг",
         "img": null
       },
       {
         "id": 196,
-        "name": "Чечил жаренный",
-        "weight": "",
-        "price": 1200,
-        "priceDisplay": "1200тг",
+        "name": "Чечил жареный",
+        "price": 1500,
+        "priceDisplay": "1500тг",
         "img": null
       }
     ]
@@ -2126,7 +2382,6 @@ window.MENU_SECTIONS = [
       {
         "id": 197,
         "name": "Absolut Original 50мл",
-        "weight": "",
         "price": 1400,
         "priceDisplay": "1400тг",
         "img": null
@@ -2134,7 +2389,6 @@ window.MENU_SECTIONS = [
       {
         "id": 198,
         "name": "Gray Goose 50мл",
-        "weight": "",
         "price": 2200,
         "priceDisplay": "2200тг",
         "img": null
@@ -2142,7 +2396,6 @@ window.MENU_SECTIONS = [
       {
         "id": 199,
         "name": "Белуга 50мл",
-        "weight": "",
         "price": 2300,
         "priceDisplay": "2300тг",
         "img": null
@@ -2150,7 +2403,6 @@ window.MENU_SECTIONS = [
       {
         "id": 200,
         "name": "Финляндия 50мл",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
@@ -2158,7 +2410,6 @@ window.MENU_SECTIONS = [
       {
         "id": 200,
         "name": "Кызыл Жар 50мл",
-        "weight": "",
         "price": 700,
         "priceDisplay": "700тг",
         "img": null
@@ -2166,7 +2417,6 @@ window.MENU_SECTIONS = [
       {
         "id": 200,
         "name": "Архангельская 50мл",
-        "weight": "",
         "price": 700,
         "priceDisplay": "700тг",
         "img": null
@@ -2174,7 +2424,6 @@ window.MENU_SECTIONS = [
       {
         "id": 200,
         "name": "Хортица Ice 50мл",
-        "weight": "",
         "price": 700,
         "priceDisplay": "700тг",
         "img": null
@@ -2188,7 +2437,6 @@ window.MENU_SECTIONS = [
       {
         "id": 201,
         "name": "Macallan 12YO 50мл",
-        "weight": "",
         "price": 6500,
         "priceDisplay": "6500тг",
         "img": null
@@ -2196,7 +2444,6 @@ window.MENU_SECTIONS = [
       {
         "id": 202,
         "name": "Aberfeldy 12YO 50мл",
-        "weight": "",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": null
@@ -2204,7 +2451,6 @@ window.MENU_SECTIONS = [
       {
         "id": 203,
         "name": "Glenmarange Original 50мл",
-        "weight": "",
         "price": 3600,
         "priceDisplay": "3600тг",
         "img": null
@@ -2217,16 +2463,14 @@ window.MENU_SECTIONS = [
     "items": [
       {
         "id": 204,
-        "name": "Chivas Regal 12YO 50 мл",
-        "weight": "",
-        "price": 2800,
-        "priceDisplay": "2800тг",
+        "name": "Chivas Regal 12",
+        "price": 3200,
+        "priceDisplay": "3200тг",
         "img": null
       },
       {
         "id": 205,
         "name": "Dewars 12YO 50 мл",
-        "weight": "",
         "price": 2600,
         "priceDisplay": "2600тг",
         "img": null
@@ -2234,7 +2478,6 @@ window.MENU_SECTIONS = [
       {
         "id": 206,
         "name": "Dewars 18YO 50 мл",
-        "weight": "",
         "price": 4600,
         "priceDisplay": "4600тг",
         "img": null
@@ -2242,7 +2485,6 @@ window.MENU_SECTIONS = [
       {
         "id": 207,
         "name": "Dewars Caribbean 8YO 50 мл",
-        "weight": "",
         "price": 1800,
         "priceDisplay": "1800тг",
         "img": null
@@ -2250,7 +2492,6 @@ window.MENU_SECTIONS = [
       {
         "id": 208,
         "name": "Dewars Japanese 8YO 50 мл",
-        "weight": "",
         "price": 1800,
         "priceDisplay": "1800тг",
         "img": null
@@ -2258,7 +2499,6 @@ window.MENU_SECTIONS = [
       {
         "id": 209,
         "name": "Dewars Portuguese 8YO 50 мл",
-        "weight": "",
         "price": 1800,
         "priceDisplay": "1800тг",
         "img": null
@@ -2266,7 +2506,6 @@ window.MENU_SECTIONS = [
       {
         "id": 210,
         "name": "Dewars White Label 50 мл",
-        "weight": "",
         "price": 1400,
         "priceDisplay": "1400тг",
         "img": null
@@ -2274,7 +2513,6 @@ window.MENU_SECTIONS = [
       {
         "id": 211,
         "name": "William Lawson`s Super Spiced 50 мл",
-        "weight": "",
         "price": 1300,
         "priceDisplay": "1300тг",
         "img": null
@@ -2282,7 +2520,6 @@ window.MENU_SECTIONS = [
       {
         "id": 212,
         "name": "William Lawson`s 50 мл",
-        "weight": "",
         "price": 1300,
         "priceDisplay": "1300тг",
         "img": null
@@ -2296,7 +2533,6 @@ window.MENU_SECTIONS = [
       {
         "id": 213,
         "name": "Teeling Single Gran",
-        "weight": "",
         "price": 2800,
         "priceDisplay": "2800тг",
         "img": null
@@ -2304,7 +2540,6 @@ window.MENU_SECTIONS = [
       {
         "id": 214,
         "name": "Teeling Small Batch",
-        "weight": "",
         "price": 2300,
         "priceDisplay": "2300тг",
         "img": null
@@ -2312,7 +2547,6 @@ window.MENU_SECTIONS = [
       {
         "id": 215,
         "name": "Busmills Black Bush",
-        "weight": "",
         "price": 2200,
         "priceDisplay": "2200тг",
         "img": null
@@ -2320,25 +2554,22 @@ window.MENU_SECTIONS = [
       {
         "id": 216,
         "name": "Busmills Original",
-        "weight": "",
         "price": 2000,
         "priceDisplay": "2000тг",
         "img": null
       },
       {
         "id": 217,
-        "name": "Jameson Black Barell",
-        "weight": "",
-        "price": 2400,
-        "priceDisplay": "2400тг",
+        "name": "Jameson Black Barrel",
+        "price": 2600,
+        "priceDisplay": "2600тг",
         "img": null
       },
       {
         "id": 218,
-        "name": "Jameson Original",
-        "weight": "",
-        "price": 2300,
-        "priceDisplay": "2300тг",
+        "name": "Jameson",
+        "price": 2500,
+        "priceDisplay": "2500тг",
         "img": null
       }
     ]
@@ -2350,7 +2581,6 @@ window.MENU_SECTIONS = [
       {
         "id": 219,
         "name": "Hennessy XO",
-        "weight": "",
         "price": 25000,
         "priceDisplay": "25000тг",
         "img": null
@@ -2358,7 +2588,6 @@ window.MENU_SECTIONS = [
       {
         "id": 220,
         "name": "Hennessy VSOP",
-        "weight": "",
         "price": 8000,
         "priceDisplay": "8000тг",
         "img": null
@@ -2366,7 +2595,6 @@ window.MENU_SECTIONS = [
       {
         "id": 221,
         "name": "Hennessy VS",
-        "weight": "",
         "price": 4000,
         "priceDisplay": "4000тг",
         "img": null
@@ -2380,7 +2608,6 @@ window.MENU_SECTIONS = [
       {
         "id": 222,
         "name": "Арарат 7 лет",
-        "weight": "",
         "price": 1800,
         "priceDisplay": "1800тг",
         "img": null
@@ -2388,7 +2615,6 @@ window.MENU_SECTIONS = [
       {
         "id": 223,
         "name": "Арарат 5 лет",
-        "weight": "",
         "price": 1500,
         "priceDisplay": "1500тг",
         "img": null
@@ -2402,7 +2628,6 @@ window.MENU_SECTIONS = [
       {
         "id": 224,
         "name": "Global Wine Premium 50 мл",
-        "weight": "",
         "price": 800,
         "priceDisplay": "800тг",
         "img": null
@@ -2415,10 +2640,9 @@ window.MENU_SECTIONS = [
     "items": [
       {
         "id": 225,
-        "name": "Глинтвейн классический 0.33л",
-        "weight": "",
-        "price": 1800,
-        "priceDisplay": "1800тг",
+        "name": "Глинтвейн",
+        "price": 2000,
+        "priceDisplay": "2000тг",
         "img": null
       }
     ]
@@ -2430,7 +2654,6 @@ window.MENU_SECTIONS = [
       {
         "id": 226,
         "name": "Aperol Spritz",
-        "weight": "",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": null
@@ -2438,7 +2661,6 @@ window.MENU_SECTIONS = [
       {
         "id": 227,
         "name": "Long Island",
-        "weight": "",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": null
@@ -2446,7 +2668,6 @@ window.MENU_SECTIONS = [
       {
         "id": 228,
         "name": "PornStar Martini",
-        "weight": "",
         "price": 2500,
         "priceDisplay": "2500тг",
         "img": null
@@ -2454,7 +2675,6 @@ window.MENU_SECTIONS = [
       {
         "id": 229,
         "name": "B-52",
-        "weight": "",
         "price": 2500,
         "priceDisplay": "2500тг",
         "img": null
@@ -2462,7 +2682,6 @@ window.MENU_SECTIONS = [
       {
         "id": 230,
         "name": "B-53",
-        "weight": "",
         "price": 2500,
         "priceDisplay": "2500тг",
         "img": null
@@ -2470,7 +2689,6 @@ window.MENU_SECTIONS = [
       {
         "id": 231,
         "name": "Whisky Sour",
-        "weight": "",
         "price": 2500,
         "priceDisplay": "2500тг",
         "img": null
@@ -2478,7 +2696,6 @@ window.MENU_SECTIONS = [
       {
         "id": 232,
         "name": "Gin and Tonic",
-        "weight": "",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": null
@@ -2486,7 +2703,6 @@ window.MENU_SECTIONS = [
       {
         "id": 233,
         "name": "Cuba Libre",
-        "weight": "",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": null
@@ -2494,7 +2710,6 @@ window.MENU_SECTIONS = [
       {
         "id": 234,
         "name": "Bacardi Mojito",
-        "weight": "",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": null
@@ -2502,7 +2717,6 @@ window.MENU_SECTIONS = [
       {
         "id": 296,
         "name": "Martini negroni",
-        "weight": "",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": null
@@ -2515,10 +2729,9 @@ window.MENU_SECTIONS = [
     "items": [
       {
         "id": 235,
-        "name": "Bombay Sapphire 50мл",
-        "weight": "",
-        "price": 1800,
-        "priceDisplay": "1800тг",
+        "name": "Bombay",
+        "price": 1900,
+        "priceDisplay": "1900тг",
         "img": null
       }
     ]
@@ -2530,7 +2743,6 @@ window.MENU_SECTIONS = [
       {
         "id": 236,
         "name": "Absinthe 50мл",
-        "weight": "",
         "price": 2000,
         "priceDisplay": "2000тг",
         "img": null
@@ -2538,7 +2750,6 @@ window.MENU_SECTIONS = [
       {
         "id": 237,
         "name": "Aperol 50мл",
-        "weight": "",
         "price": 1800,
         "priceDisplay": "1800тг",
         "img": null
@@ -2546,7 +2757,6 @@ window.MENU_SECTIONS = [
       {
         "id": 238,
         "name": "Baileys 50мл",
-        "weight": "",
         "price": 1700,
         "priceDisplay": "1700тг",
         "img": null
@@ -2554,7 +2764,6 @@ window.MENU_SECTIONS = [
       {
         "id": 239,
         "name": "Becherovka 50мл",
-        "weight": "",
         "price": 1700,
         "priceDisplay": "1700тг",
         "img": null
@@ -2562,7 +2771,6 @@ window.MENU_SECTIONS = [
       {
         "id": 240,
         "name": "Campari 50мл",
-        "weight": "",
         "price": 1700,
         "priceDisplay": "1700тг",
         "img": null
@@ -2570,7 +2778,6 @@ window.MENU_SECTIONS = [
       {
         "id": 242,
         "name": "Curacao Blue 50мл",
-        "weight": "",
         "price": 1700,
         "priceDisplay": "1700тг",
         "img": null
@@ -2578,7 +2785,6 @@ window.MENU_SECTIONS = [
       {
         "id": 243,
         "name": "Jagermeister 50мл",
-        "weight": "",
         "price": 1700,
         "priceDisplay": "1700тг",
         "img": null
@@ -2586,7 +2792,6 @@ window.MENU_SECTIONS = [
       {
         "id": 244,
         "name": "Kahlua 50мл",
-        "weight": "",
         "price": 1700,
         "priceDisplay": "1700тг",
         "img": null
@@ -2594,7 +2799,6 @@ window.MENU_SECTIONS = [
       {
         "id": 245,
         "name": "Limoncello 50мл",
-        "weight": "",
         "price": 1700,
         "priceDisplay": "1700тг",
         "img": null
@@ -2602,7 +2806,6 @@ window.MENU_SECTIONS = [
       {
         "id": 246,
         "name": "Malibu Coconut Rum 50мл",
-        "weight": "",
         "price": 1700,
         "priceDisplay": "1700тг",
         "img": null
@@ -2610,7 +2813,6 @@ window.MENU_SECTIONS = [
       {
         "id": 247,
         "name": "Sambuca 50мл",
-        "weight": "",
         "price": 2000,
         "priceDisplay": "2000тг",
         "img": null
@@ -2624,33 +2826,29 @@ window.MENU_SECTIONS = [
       {
         "id": 248,
         "name": "Настойка Имбирная 40гр 50мл",
-        "weight": "",
-        "price": 800,
-        "priceDisplay": "800тг",
+        "price": 1000,
+        "priceDisplay": "1000тг",
         "img": null
       },
       {
         "id": 249,
         "name": "Настойка Смородиновая 40 гр 50мл",
-        "weight": "",
-        "price": 800,
-        "priceDisplay": "800тг",
+        "price": 1000,
+        "priceDisplay": "1000тг",
         "img": null
       },
       {
         "id": 250,
         "name": "Чача Виноградная 48гр 50 мл",
-        "weight": "",
-        "price": 800,
-        "priceDisplay": "800тг",
+        "price": 1000,
+        "priceDisplay": "1000тг",
         "img": null
       },
       {
         "id": 251,
         "name": "Чача Дубовая 48-50гр 50 мл",
-        "weight": "",
-        "price": 800,
-        "priceDisplay": "800тг",
+        "price": 1000,
+        "priceDisplay": "1000тг",
         "img": null
       }
     ]
@@ -2662,7 +2860,6 @@ window.MENU_SECTIONS = [
       {
         "id": 252,
         "name": "Bacardi Carta Blanca 50мл",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
@@ -2670,7 +2867,6 @@ window.MENU_SECTIONS = [
       {
         "id": 253,
         "name": "Bacardi Carta Negra 50мл",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
@@ -2678,7 +2874,6 @@ window.MENU_SECTIONS = [
       {
         "id": 254,
         "name": "Bacardi Reserva 8YO 50мл",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
@@ -2686,7 +2881,6 @@ window.MENU_SECTIONS = [
       {
         "id": 255,
         "name": "Bacardi Spiced 50мл",
-        "weight": "",
         "price": 2000,
         "priceDisplay": "2000тг",
         "img": null
@@ -2694,7 +2888,6 @@ window.MENU_SECTIONS = [
       {
         "id": 256,
         "name": "Oakheart 50мл",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
@@ -2708,7 +2901,6 @@ window.MENU_SECTIONS = [
       {
         "id": 257,
         "name": "Jack Daniels Tennessee 50мл",
-        "weight": "",
         "price": 2200,
         "priceDisplay": "2200тг",
         "img": null
@@ -2722,7 +2914,6 @@ window.MENU_SECTIONS = [
       {
         "id": 258,
         "name": "Patron Anejo 50мл",
-        "weight": "",
         "price": 3000,
         "priceDisplay": "3000тг",
         "img": null
@@ -2730,23 +2921,20 @@ window.MENU_SECTIONS = [
       {
         "id": 259,
         "name": "Patron Silver 50мл",
-        "weight": "",
         "price": 2500,
         "priceDisplay": "2500тг",
         "img": null
       },
       {
         "id": 260,
-        "name": "Olmeca Blanco 50мл",
-        "weight": "",
-        "price": 1800,
-        "priceDisplay": "1800тг",
+        "name": "Olmeca Blanca",
+        "price": 2000,
+        "priceDisplay": "2000тг",
         "img": null
       },
       {
         "id": 261,
         "name": "Olmeca Gold 50мл",
-        "weight": "",
         "price": 2000,
         "priceDisplay": "2000тг",
         "img": null
@@ -2760,7 +2948,6 @@ window.MENU_SECTIONS = [
       {
         "id": 262,
         "name": "Martini Blanco 100мл",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
@@ -2768,7 +2955,6 @@ window.MENU_SECTIONS = [
       {
         "id": 263,
         "name": "Martini Extra Dry 100мл",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
@@ -2776,7 +2962,6 @@ window.MENU_SECTIONS = [
       {
         "id": 264,
         "name": "Martini Fiero 100мл",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
@@ -2784,7 +2969,6 @@ window.MENU_SECTIONS = [
       {
         "id": 265,
         "name": "Martini Riserva Bitter 100мл",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
@@ -2792,7 +2976,6 @@ window.MENU_SECTIONS = [
       {
         "id": 266,
         "name": "Martini Rose 100мл",
-        "weight": "",
         "price": 1200,
         "priceDisplay": "1200тг",
         "img": null
@@ -2805,32 +2988,28 @@ window.MENU_SECTIONS = [
     "items": [
       {
         "id": 267,
-        "name": "Martini Asti DOCG",
-        "weight": "",
-        "price": 13000,
-        "priceDisplay": "13000тг",
+        "name": "Martini Asti",
+        "price": 15000,
+        "priceDisplay": "15000тг",
         "img": null
       },
       {
         "id": 268,
         "name": "Martini Brut",
-        "weight": "",
-        "price": 13000,
-        "priceDisplay": "13000тг",
+        "price": 15000,
+        "priceDisplay": "15000тг",
         "img": null
       },
       {
         "id": 269,
-        "name": "Martini Prosecco DOCG",
-        "weight": "",
-        "price": 13000,
-        "priceDisplay": "13000тг",
+        "name": "Martini Prosecco",
+        "price": 15000,
+        "priceDisplay": "15000тг",
         "img": null
       },
       {
         "id": 270,
         "name": "Moet & Chandon",
-        "weight": "",
         "price": 80000,
         "priceDisplay": "80000тг",
         "img": null
@@ -2838,9 +3017,8 @@ window.MENU_SECTIONS = [
       {
         "id": 271,
         "name": "Абрау дюрсо",
-        "weight": "",
-        "price": 8000,
-        "priceDisplay": "8000тг",
+        "price": 10000,
+        "priceDisplay": "10000тг",
         "img": null
       }
     ]
@@ -2852,7 +3030,6 @@ window.MENU_SECTIONS = [
       {
         "id": 272,
         "name": "Vila Antinori bianco",
-        "weight": "",
         "price": 26000,
         "priceDisplay": "26000тг",
         "img": null
@@ -2860,7 +3037,6 @@ window.MENU_SECTIONS = [
       {
         "id": 273,
         "name": "Vila Antinori rosso",
-        "weight": "",
         "price": 26000,
         "priceDisplay": "26000тг",
         "img": null
@@ -2868,7 +3044,6 @@ window.MENU_SECTIONS = [
       {
         "id": 274,
         "name": "Paladin Syrah rosso",
-        "weight": "",
         "price": 22000,
         "priceDisplay": "22000тг",
         "img": null
@@ -2876,7 +3051,6 @@ window.MENU_SECTIONS = [
       {
         "id": 275,
         "name": "Lambrusco dell`Emilla Rosato",
-        "weight": "",
         "price": 17000,
         "priceDisplay": "17000тг",
         "img": null
@@ -2884,7 +3058,6 @@ window.MENU_SECTIONS = [
       {
         "id": 276,
         "name": "Paladin Chardonnay",
-        "weight": "",
         "price": 17000,
         "priceDisplay": "17000тг",
         "img": null
@@ -2898,7 +3071,6 @@ window.MENU_SECTIONS = [
       {
         "id": 277,
         "name": "San Valentin (Белое)",
-        "weight": "",
         "price": 13000,
         "priceDisplay": "13000тг",
         "img": null
@@ -2906,7 +3078,6 @@ window.MENU_SECTIONS = [
       {
         "id": 278,
         "name": "San Valentin (Красное)",
-        "weight": "",
         "price": 13000,
         "priceDisplay": "13000тг",
         "img": null
@@ -2920,7 +3091,6 @@ window.MENU_SECTIONS = [
       {
         "id": 279,
         "name": "Chablis Premier Cru Simonnet Febvre Blanc",
-        "weight": "",
         "price": 48000,
         "priceDisplay": "48000тг",
         "img": null
@@ -2928,7 +3098,6 @@ window.MENU_SECTIONS = [
       {
         "id": 280,
         "name": "La Marina Colombard Sauvignon",
-        "weight": "",
         "price": 20000,
         "priceDisplay": "20000тг",
         "img": null
@@ -2936,7 +3105,6 @@ window.MENU_SECTIONS = [
       {
         "id": 281,
         "name": "La Marina Cuvee Rouge",
-        "weight": "",
         "price": 20000,
         "priceDisplay": "20000тг",
         "img": null
@@ -2944,7 +3112,6 @@ window.MENU_SECTIONS = [
       {
         "id": 282,
         "name": "Cuvee speciale (белое)",
-        "weight": "",
         "price": 20000,
         "priceDisplay": "20000тг",
         "img": null
@@ -2952,7 +3119,6 @@ window.MENU_SECTIONS = [
       {
         "id": 283,
         "name": "Cuvee speciale (красное)",
-        "weight": "",
         "price": 20000,
         "priceDisplay": "20000тг",
         "img": null
@@ -2966,7 +3132,6 @@ window.MENU_SECTIONS = [
       {
         "id": 284,
         "name": "Алазанская долина NP (белое)",
-        "weight": "",
         "price": 7000,
         "priceDisplay": "7000тг",
         "img": null
@@ -2974,7 +3139,6 @@ window.MENU_SECTIONS = [
       {
         "id": 285,
         "name": "Алазанская долина NP (красное)",
-        "weight": "",
         "price": 7000,
         "priceDisplay": "7000тг",
         "img": null
@@ -2982,7 +3146,6 @@ window.MENU_SECTIONS = [
       {
         "id": 286,
         "name": "Саперави NP",
-        "weight": "",
         "price": 8000,
         "priceDisplay": "8000тг",
         "img": null
@@ -2990,7 +3153,6 @@ window.MENU_SECTIONS = [
       {
         "id": 287,
         "name": "Киндзмараули",
-        "weight": "",
         "price": 9000,
         "priceDisplay": "9000тг",
         "img": null
@@ -2998,7 +3160,6 @@ window.MENU_SECTIONS = [
       {
         "id": 288,
         "name": "Хванчкара",
-        "weight": "",
         "price": 15000,
         "priceDisplay": "15000тг",
         "img": null
@@ -3006,7 +3167,6 @@ window.MENU_SECTIONS = [
       {
         "id": 289,
         "name": "Цинандали NP",
-        "weight": "",
         "price": 8000,
         "priceDisplay": "8000тг",
         "img": null
@@ -3020,7 +3180,6 @@ window.MENU_SECTIONS = [
       {
         "id": 290,
         "name": "Tocornal Cabernet Sauvignon (белое)",
-        "weight": "",
         "price": 11000,
         "priceDisplay": "11000тг",
         "img": null
@@ -3028,7 +3187,6 @@ window.MENU_SECTIONS = [
       {
         "id": 291,
         "name": "Tocornal Cabernet Sauvignon (красное)",
-        "weight": "",
         "price": 11000,
         "priceDisplay": "11000тг",
         "img": null
@@ -3036,7 +3194,6 @@ window.MENU_SECTIONS = [
       {
         "id": 292,
         "name": "Villa Andina Cabernet Sauvignon Carmenere",
-        "weight": "",
         "price": 11000,
         "priceDisplay": "11000тг",
         "img": null
@@ -3044,7 +3201,6 @@ window.MENU_SECTIONS = [
       {
         "id": 293,
         "name": "Villa Andina Chardonnay Sauvignon",
-        "weight": "",
         "price": 12000,
         "priceDisplay": "12000тг",
         "img": null
@@ -3058,21 +3214,19 @@ window.MENU_SECTIONS = [
       {
         "id": 294,
         "name": "Белое полусладкое 150мл",
-        "weight": "",
-        "price": 1600,
-        "priceDisplay": "1600тг",
+        "price": 1700,
+        "priceDisplay": "1700тг",
         "img": null
       },
       {
         "id": 295,
         "name": "Красное полусадкое 150мл",
-        "weight": "",
-        "price": 1600,
-        "priceDisplay": "1600тг",
+        "price": 1700,
+        "priceDisplay": "1700тг",
         "img": null
       }
     ]
-  },
+  }
 ];
 // Удаляем поле `weight` со всех блюд (навигация/рендер будет работать без него)
 if (window.MENU_SECTIONS && Array.isArray(window.MENU_SECTIONS)) {
@@ -3772,25 +3926,25 @@ window.MENU_ITEMS = {
   },
   "129": {
     "name": "Меренговый рулет",
-    "price": 2100,
+    "price": 800,
     "img": "image/nono.png",
     "desc": ""
   },
   "130": {
     "name": "Молочная девочка",
-    "price": 2600,
+    "price": 800,
     "img": "image/nono.png",
     "desc": ""
   },
   "131": {
     "name": "Наполеон",
-    "price": 2300,
+    "price": 800,
     "img": "image/nono.png",
     "desc": ""
   },
   "132": {
     "name": "Молоко",
-    "price": 600,
+    "price": 800,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -3813,38 +3967,38 @@ window.MENU_ITEMS = {
     "desc": ""
   },
   "136": {
-    "name": "Чай ташкенский",
-    "price": 1800,
+    "name": "Ташкентский",
+    "price": 2000,
     "img": "image/nono.png",
     "desc": ""
   },
   "137": {
-    "name": "Чай ягодный",
-    "price": 1900,
+    "name": "Ягодный",
+    "price": 2100,
     "img": "image/nono.png",
     "desc": ""
   },
   "138": {
-    "name": "Чай имбирь-мед",
-    "price": 1900,
+    "name": "Имбирь мед",
+    "price": 2100,
     "img": "image/nono.png",
     "desc": ""
   },
   "139": {
-    "name": "Чай малина-мята",
-    "price": 1900,
+    "name": "Малина мята",
+    "price": 2100,
     "img": "image/nono.png",
     "desc": ""
   },
   "140": {
-    "name": "Чай марокканский",
-    "price": 1900,
+    "name": "Марокканский",
+    "price": 2100,
     "img": "image/nono.png",
     "desc": ""
   },
   "141": {
-    "name": "Чай облепиховый",
-    "price": 1900,
+    "name": "Облепиховый",
+    "price": 2100,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -3904,79 +4058,79 @@ window.MENU_ITEMS = {
   },
   "151": {
     "name": "Киви-Лайм 1л",
-    "price": 2600,
+    "price": 2700,
     "img": "image/nono.png",
     "desc": ""
   },
   "152": {
     "name": "Классический 1л",
-    "price": 2600,
+    "price": 2700,
     "img": "image/nono.png",
     "desc": ""
   },
   "153": {
     "name": "Манго-Ананас 1л",
-    "price": 2600,
+    "price": 2700,
     "img": "image/nono.png",
     "desc": ""
   },
   "154": {
     "name": "Манго-Клубника 1л",
-    "price": 2600,
+    "price": 2700,
     "img": "image/nono.png",
     "desc": ""
   },
   "155": {
     "name": "Манго-Маракуйя 1л",
-    "price": 2600,
+    "price": 2700,
     "img": "image/nono.png",
     "desc": ""
   },
   "156": {
     "name": "Маракуйя-Апельсин 1л",
-    "price": 260,
+    "price": 2700,
     "img": "image/nono.png",
     "desc": ""
   },
   "157": {
     "name": "Мохито 1л",
-    "price": 2600,
+    "price": 2700,
     "img": "image/nono.png",
     "desc": ""
   },
   "158": {
     "name": "Ягодный 1л",
-    "price": 2600,
+    "price": 2700,
     "img": "image/nono.png",
     "desc": ""
   },
   "159": {
     "name": "Клубнично-Банановый",
-    "price": 1800,
+    "price": 2100,
     "img": "image/nono.png",
     "desc": ""
   },
   "160": {
     "name": "Клубничный",
-    "price": 1800,
+    "price": 2100,
     "img": "image/nono.png",
     "desc": ""
   },
   "161": {
     "name": "Сливочный",
-    "price": 1800,
+    "price": 2100,
     "img": "image/nono.png",
     "desc": ""
   },
   "162": {
     "name": "Шоколадный",
-    "price": 1800,
+    "price": 2100,
     "img": "image/nono.png",
     "desc": ""
   },
   "163": {
     "name": "Банановый",
-    "price": 1800,
+    "price": 2100,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4006,25 +4160,25 @@ window.MENU_ITEMS = {
   },
   "168": {
     "name": "Апельсиновый 0,33",
-    "price": 2000,
+    "price": 2500,
     "img": "image/nono.png",
     "desc": ""
   },
   "169": {
     "name": "Морковный ,33",
-    "price": 2000,
+    "price": 2500,
     "img": "image/nono.png",
     "desc": ""
   },
   "170": {
     "name": "Яблочный 0,33",
-    "price": 2000,
+    "price": 2500,
     "img": "image/nono.png",
     "desc": ""
   },
   "171": {
     "name": "MIX 0,33",
-    "price": 2000,
+    "price": 2500,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4035,44 +4189,44 @@ window.MENU_ITEMS = {
     "desc": ""
   },
   "173": {
-    "name": "Coca-Cola/ Fanta/Sprite 0.25л (стекло)",
-    "price": 700,
+    "name": "Кола 0.25 стекло",
+    "price": 900,
     "img": "image/nono.png",
     "desc": ""
   },
   "174": {
-    "name": "Сок Ріко в асортименте Іл",
-    "price": 1600,
+    "name": "Сок Piko в ассортименте",
+    "price": 1800,
     "img": "image/nono.png",
     "desc": ""
   },
   "175": {
-    "name": "Минеральная вода Borjomi 0,5л(стекло)",
-    "price": 1200,
+    "name": "Borjomi 0.5",
+    "price": 1400,
     "img": "image/nono.png",
     "desc": ""
   },
   "176": {
-    "name": "Red Bull 0,25лl",
-    "price": 800,
+    "name": "Red Bull",
+    "price": 1200,
     "img": "image/nono.png",
     "desc": ""
   },
   "177": {
-    "name": "Schweppes 0,35л",
-    "price": 900,
+    "name": "Schweppes 0.5",
+    "price": 1300,
     "img": "image/nono.png",
     "desc": ""
   },
   "178": {
-    "name": "Turan вода (газ, негаз) 0,5л",
-    "price": 900,
+    "name": "Turan вода 0.5",
+    "price": 1000,
     "img": "image/nono.png",
     "desc": ""
   },
   "179": {
-    "name": "Сок «rich» 02л",
-    "price": 1000,
+    "name": "Сок Rich",
+    "price": 1200,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4102,25 +4256,25 @@ window.MENU_ITEMS = {
   },
   "184": {
     "name": "Bud 0.5",
-    "price": 1600,
+    "price": 1700,
     "img": "image/nono.png",
     "desc": ""
   },
   "185": {
-    "name": "Тассай стекло 0,5л",
+    "name": "Line brue 0.5",
     "price": 1600,
     "img": "image/nono.png",
     "desc": ""
   },
   "186": {
     "name": "Прага Южная 0.5",
-    "price": 900,
+    "price": 1100,
     "img": "image/nono.png",
     "desc": ""
   },
   "187": {
     "name": "Corona Extra 0.33",
-    "price": 2500,
+    "price": 2700,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4131,50 +4285,50 @@ window.MENU_ITEMS = {
     "desc": ""
   },
   "189": {
-    "name": "Tsingtao \"0\"",
-    "price": 1600,
+    "name": "Tsingtao 0.33",
+    "price": 1900,
     "img": "image/nono.png",
     "desc": ""
   },
   "190": {
-    "name": "Guinness 0.44",
-    "price": 2800,
+    "name": "Guinness",
+    "price": 3000,
     "img": "image/nono.png",
     "desc": ""
   },
   "191": {
     "name": "Арахис",
-    "price": "800",
+    "price": 1000,
     "img": "image/nono.png",
     "desc": ""
   },
   "192": {
     "name": "Курт",
-    "price": 700,
+    "price": 900,
     "img": "image/nono.png",
     "desc": ""
   },
   "193": {
     "name": "Фисташки",
-    "price": 1600,
+    "price": 1700,
     "img": "image/nono.png",
     "desc": ""
   },
   "194": {
     "name": "Чечил",
-    "price": 1200,
+    "price": 1500,
     "img": "image/nono.png",
     "desc": ""
   },
   "195": {
     "name": "Чипсы",
-    "price": 1200,
+    "price": 1500,
     "img": "image/nono.png",
     "desc": ""
   },
   "196": {
-    "name": "Чечил жаренный",
-    "price": 1200,
+    "name": "Чечил жареный",
+    "price": 1500,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4221,8 +4375,8 @@ window.MENU_ITEMS = {
     "desc": ""
   },
   "204": {
-    "name": "Chivas Regal 12YO 50 мл",
-    "price": 2800,
+    "name": "Chivas Regal 12",
+    "price": 3200,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4299,14 +4453,14 @@ window.MENU_ITEMS = {
     "desc": ""
   },
   "217": {
-    "name": "Jameson black Barell",
-    "price": 2400,
+    "name": "Jameson Black Barrel",
+    "price": 2600,
     "img": "image/nono.png",
     "desc": ""
   },
   "218": {
-    "name": "Jameson Original",
-    "price": 2300,
+    "name": "Jameson",
+    "price": 2500,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4347,8 +4501,8 @@ window.MENU_ITEMS = {
     "desc": ""
   },
   "225": {
-    "name": "Глинтвейн классический 0.33л",
-    "price": 1800,
+    "name": "Глинтвейн",
+    "price": 2000,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4407,8 +4561,8 @@ window.MENU_ITEMS = {
     "desc": ""
   },
   "235": {
-    "name": "Bombay Sapphire 50мл",
-    "price": 1800,
+    "name": "Bombay",
+    "price": 1900,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4486,25 +4640,25 @@ window.MENU_ITEMS = {
   },
   "248": {
     "name": "Настойка Имбирная 40гр 50мл",
-    "price": 800,
+    "price": 1000,
     "img": "image/nono.png",
     "desc": ""
   },
   "249": {
     "name": "Настойка Смородиновая 40 гр 50мл",
-    "price": 800,
+    "price": 1000,
     "img": "image/nono.png",
     "desc": ""
   },
   "250": {
     "name": "Чача Виноградная 48гр 50 мл",
-    "price": 800,
+    "price": 1000,
     "img": "image/nono.png",
     "desc": ""
   },
   "251": {
     "name": "Чача Дубовая 48-50гр 50 мл",
-    "price": 800,
+    "price": 1000,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4557,8 +4711,8 @@ window.MENU_ITEMS = {
     "desc": ""
   },
   "260": {
-    "name": "Olmeca Blanco 50мл",
-    "price": 1800,
+    "name": "Olmeca Blanca",
+    "price": 2000,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4599,20 +4753,20 @@ window.MENU_ITEMS = {
     "desc": ""
   },
   "267": {
-    "name": "Martini Asti DOCG",
-    "price": 13000,
+    "name": "Martini Asti",
+    "price": 15000,
     "img": "image/nono.png",
     "desc": ""
   },
   "268": {
     "name": "Martini Brut",
-    "price": 13000,
+    "price": 15000,
     "img": "image/nono.png",
     "desc": ""
   },
   "269": {
-    "name": "Martini Prosecco DOCG",
-    "price": 13000,
+    "name": "Martini Prosecco",
+    "price": 15000,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4624,7 +4778,7 @@ window.MENU_ITEMS = {
   },
   "271": {
     "name": "Абрау дюрсо",
-    "price": 8000,
+    "price": 10000,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4762,15 +4916,38 @@ window.MENU_ITEMS = {
   },
   "294": {
     "name": "Белое полусладкое 150мл",
-    "price": 1600,
+    "price": 1700,
     "img": "image/nono.png",
     "desc": ""
   },
   "295": {
     "name": "Красное полусадкое 150мл",
-    "price": 1600,
+    "price": 1700,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "297": {
+    "name": "",
+    "price": 1900,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "298": {
+    "name": "Samal/Turan 1л",
+    "price": 900,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "299": {
+    "name": "Samal 0.5",
+    "price": 1000,
+    "img": "image/nono.png",
+    "desc": ""
+  },
+  "300": {
+    "name": "Колба 3л",
+    "price": 6200,
     "img": "image/nono.png",
     "desc": ""
   }
 };
-
