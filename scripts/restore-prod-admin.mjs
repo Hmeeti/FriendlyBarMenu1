@@ -18,16 +18,35 @@ const OWNER_NAME = process.env.OWNER_NAME || 'Hmeeti';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 
-async function api(token, method, pathName, body) {
+let authToken = null;
+
+async function login() {
+  const login = await fetch(`${API}/api/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ login: ADMIN_LOGIN, password: ADMIN_PASSWORD }),
+  }).then((r) => r.json());
+  if (!login.token) throw new Error('Login did not return token');
+  authToken = login.token;
+  console.log('Logged in as', login.user?.username);
+  return login;
+}
+
+async function api(token, method, pathName, body, retried = false) {
   const res = await fetch(`${API}${pathName}`, {
     method,
     headers: {
       'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(token || authToken ? { Authorization: `Bearer ${token || authToken}` } : {}),
     },
     body: body != null ? JSON.stringify(body) : undefined,
   });
   const data = await res.json().catch(() => ({}));
+  if (res.status === 401 && !retried && pathName !== '/api/auth/login') {
+    console.log('Token expired — re-login…');
+    await login();
+    return api(authToken, method, pathName, body, true);
+  }
   if (!res.ok) throw new Error(`${method} ${pathName} → ${res.status} ${data.error || res.statusText}`);
   return data;
 }
@@ -46,18 +65,13 @@ const FORCE = process.env.FORCE_RESEED === '1';
 
 async function main() {
   console.log('API:', API);
-  const login = await api(null, 'POST', '/api/auth/login', {
-    login: ADMIN_LOGIN,
-    password: ADMIN_PASSWORD,
-  });
-  const token = login.token;
-  if (!token) throw new Error('Login did not return token');
-  console.log('Logged in as', login.user?.username);
+  await login();
+  const token = () => authToken;
 
-  const { users } = await api(token, 'GET', '/api/auth/admins');
+  const { users } = await api(token(), 'GET', '/api/auth/admins');
   const hasOwner = (users || []).some((u) => String(u.username).toLowerCase() === OWNER_USER);
   if (!hasOwner) {
-    await api(token, 'POST', '/api/auth/admins', {
+    await api(token(), 'POST', '/api/auth/admins', {
       username: OWNER_USER,
       email: OWNER_EMAIL,
       name: OWNER_NAME,
@@ -69,7 +83,7 @@ async function main() {
     console.log(`Admin ${OWNER_USER} already exists`);
   }
 
-  let cats = await api(token, 'GET', '/api/admin/categories');
+  let cats = await api(token(), 'GET', '/api/admin/categories');
   if ((cats.categories || []).length > 0) {
     if (!FORCE) {
       console.log(`Menu already has ${cats.categories.length} categories — skip seed (set FORCE_RESEED=1 to wipe)`);
@@ -77,7 +91,7 @@ async function main() {
     }
     console.log(`FORCE_RESEED: deleting ${cats.categories.length} categories…`);
     for (const c of cats.categories) {
-      await api(token, 'DELETE', `/api/admin/categories/${c.id}`);
+      await api(token(), 'DELETE', `/api/admin/categories/${c.id}`);
     }
   }
 
@@ -86,7 +100,7 @@ async function main() {
   for (let i = 0; i < sections.length; i++) {
     const sec = sections[i];
     const title = sec.title || `Section ${i + 1}`;
-    const created = await api(token, 'POST', '/api/admin/categories', {
+    const created = await api(token(), 'POST', '/api/admin/categories', {
       title,
       slug: `${sec.anchor || 'cat'}-${i}-${Date.now().toString(36)}`,
       sortOrder: i,
@@ -109,10 +123,10 @@ async function main() {
       const legacyId = Number(it.id);
       if (Number.isFinite(legacyId)) payload.legacyId = legacyId;
       try {
-        await api(token, 'POST', '/api/admin/items', payload);
+        await api(token(), 'POST', '/api/admin/items', payload);
       } catch {
         delete payload.legacyId;
-        await api(token, 'POST', '/api/admin/items', payload);
+        await api(token(), 'POST', '/api/admin/items', payload);
       }
       items++;
     }
