@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./image/favicon.png">
     <title>Friendly — Меню</title>
-    <link rel="stylesheet" href="style.css?v=audit7">
+    <link rel="stylesheet" href="style.css?v=audit8">
 </head>
 
 <body>
@@ -127,11 +127,11 @@
     </div>
 </div> 
 
-    <script src="config.js?v=audit7"></script>
-    <script src="i18n.js?v=audit7"></script>
-    <script src="i18n-menu.js?v=audit7"></script>
-    <script src="data.js?v=audit7"></script>
-    <script src="app.js?v=audit7"></script>
+    <script src="config.js?v=audit8"></script>
+    <script src="i18n.js?v=audit8"></script>
+    <script src="i18n-menu.js?v=audit8"></script>
+    <script src="data.js?v=audit8"></script>
+    <script src="app.js?v=audit8"></script>
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-info">
@@ -167,10 +167,11 @@
 </footer>
 
     <div id="apiWakeOverlay" class="api-wake" hidden>
-        <div class="api-wake__card">
+        <div class="api-wake__card" role="dialog" aria-labelledby="apiWakeTitle">
             <div class="api-wake__spinner" aria-hidden="true"></div>
-            <p class="api-wake__title">Подключаем меню…</p>
-            <p class="api-wake__hint">Сервер просыпается (обычно 20–40 сек)</p>
+            <p id="apiWakeTitle" class="api-wake__title">Подключаем меню…</p>
+            <p class="api-wake__hint">Сервер просыпается. Меню уже доступно локально.</p>
+            <button type="button" id="apiWakeDismiss" class="api-wake__btn">Показать меню</button>
         </div>
     </div>
     <div id="toastHost" class="toast-host" aria-live="polite"></div>

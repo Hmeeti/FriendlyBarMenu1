@@ -970,14 +970,14 @@ function startMenuVisit(choice) {
 
   async function fetchMenuWithRetry() {
     let lastErr = null;
-    for (let i = 0; i < 5; i++) {
+    // Keep total wait short so the wake overlay never hangs for minutes
+    for (let i = 0; i < 3; i++) {
       try {
-        // First tries are shorter; later allow Render cold start (~50s)
-        const timeout = i === 0 ? 12000 : i < 3 ? 25000 : 55000;
+        const timeout = i === 0 ? 8000 : 12000;
         return await fetchJson(`${BASE}/api/menu`, timeout);
       } catch (e) {
         lastErr = e;
-        await new Promise((r) => setTimeout(r, Math.min(10000, 700 * Math.pow(2, i))));
+        await new Promise((r) => setTimeout(r, 600 * (i + 1)));
       }
     }
     throw lastErr || new Error('menu fetch failed');
@@ -1034,9 +1034,23 @@ function startMenuVisit(choice) {
       }
     }
 
+    const dismissBtn = document.getElementById('apiWakeDismiss');
+    if (dismissBtn) {
+      dismissBtn.addEventListener('click', () => {
+        hideWake();
+        toast('Показано локальное меню');
+      });
+    }
+
+    // Never keep the overlay longer than ~10s, even if fetch retries continue
     scheduleWake();
+    const hardHide = setTimeout(() => hideWake(), 10000);
+
     try {
-      const payload = await fetchMenuWithRetry();
+      const payload = await Promise.race([
+        fetchMenuWithRetry(),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('wake timeout')), 10000)),
+      ]);
       const itemCount = Array.isArray(payload.sections)
         ? payload.sections.reduce((n, s) => n + ((s && s.items && s.items.length) || 0), 0)
         : 0;
@@ -1048,8 +1062,21 @@ function startMenuVisit(choice) {
     } catch (e) {
       console.warn('[friendly-live] API unavailable', e && e.message ? e.message : e);
       if (cached) toast('Сервер недоступен — показано сохранённое меню');
-      else toast('Сервер просыпается медленно — показано локальное меню');
+      else toast('Сервер недоступен — показано локальное меню');
+      // Keep trying quietly in background; update if server wakes later
+      fetchMenuWithRetry()
+        .then((payload) => {
+          const n = Array.isArray(payload.sections)
+            ? payload.sections.reduce((c, s) => c + ((s && s.items && s.items.length) || 0), 0)
+            : 0;
+          if (n > 0) {
+            apply(payload);
+            toast('Меню обновлено с сервера');
+          }
+        })
+        .catch(() => {});
     } finally {
+      clearTimeout(hardHide);
       hideWake();
     }
     connectRealtime();
