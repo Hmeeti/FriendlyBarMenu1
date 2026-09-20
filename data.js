@@ -1011,7 +1011,7 @@ window.ITEM_DETAILS = {
   "301": {
     "name": "Мясо по аджарски",
     "price": 4890,
-    "img": "image/nono.png",
+    "img": "image/odjarscimeat.jpg",
     "desc": ""
   },
   "302": {
@@ -1123,7 +1123,7 @@ window.MENU_SECTIONS = [
         "name": "Мясо по аджарски",
         "price": 4890,
         "priceDisplay": "4890тг",
-        "img": null
+        "img": "image/odjarscimeat.jpg"
       },
       {
         "id": 302,
@@ -5170,7 +5170,7 @@ window.MENU_ITEMS = {
   "301": {
     "name": "Мясо по аджарски",
     "price": 4890,
-    "img": "image/nono.png",
+    "img": "image/odjarscimeat.jpg",
     "desc": ""
   },
   "302": {
