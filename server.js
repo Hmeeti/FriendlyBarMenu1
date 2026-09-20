@@ -12,6 +12,12 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { Server } from 'socket.io';
 import { PrismaClient } from '@prisma/client';
+import {
+  buildStaticMenuFiles,
+  pushFilesToGitHub,
+  pushBinaryToGitHub,
+  getGitHubSyncStatus,
+} from './lib/githubMenuSync.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -203,7 +209,6 @@ const corsOpts = {
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { cors: corsOpts });
-const bump = (event, payload = {}) => io.emit('menu:changed', { event, at: new Date().toISOString(), ...payload });
 
 app.set('trust proxy', 1);
 app.use(cors(corsOpts));
@@ -343,13 +348,19 @@ app.get('/api/health', async (_req, res) => {
   try {
     await prisma.$queryRaw`SELECT 1`;
     const categories = await prisma.category.count();
-    res.json({ ok: true, db: true, categories, at: new Date().toISOString() });
+    res.json({
+      ok: true,
+      db: true,
+      categories,
+      githubSync: getGitHubSyncStatus(),
+      at: new Date().toISOString(),
+    });
   } catch (e) {
     res.status(503).json({ ok: false, db: false, error: 'db_unavailable' });
   }
 });
 
-app.get('/api/menu', async (_req, res) => {
+async function buildMenuPayload() {
   const categories = await prisma.category.findMany({
     where: { isActive: true },
     orderBy: [{ sortOrder: 'asc' }, { title: 'asc' }],
@@ -379,7 +390,12 @@ app.get('/api/menu', async (_req, res) => {
       img: item.imageUrl,
       desc: item.description,
       availability: item.availability,
-      variants: item.variants.map((v) => ({ id: v.id, name: v.name, priceDelta: v.priceDelta, availability: v.availability })),
+      variants: item.variants.map((v) => ({
+        id: v.id,
+        name: v.name,
+        priceDelta: v.priceDelta,
+        availability: v.availability,
+      })),
       modifiers: item.modifiers.map((m) => ({
         id: m.modifier.id,
         name: m.modifier.name,
@@ -395,11 +411,92 @@ app.get('/api/menu', async (_req, res) => {
   for (const s of sections) {
     for (const it of s.items) {
       const k = String(it.id);
-      items[k] = { name: it.name, price: it.price, img: it.img, desc: it.desc, availability: it.availability };
+      items[k] = {
+        name: it.name,
+        price: it.price,
+        img: it.img,
+        desc: it.desc,
+        availability: it.availability,
+      };
       details[k] = { name: it.name, price: it.price, img: it.img, desc: it.desc };
     }
   }
-  res.set('Cache-Control', 'no-store').json({ updatedAt: new Date().toISOString(), sections, items, details });
+  return { updatedAt: new Date().toISOString(), sections, items, details };
+}
+
+let githubSyncTimer = null;
+let githubSyncInFlight = null;
+let lastGithubSync = null;
+
+async function runGitHubMenuSync(reason = 'menu.changed') {
+  const status = getGitHubSyncStatus();
+  if (!status.configured) {
+    lastGithubSync = { ok: false, skipped: true, reason: 'GITHUB_TOKEN not set', at: new Date().toISOString() };
+    return lastGithubSync;
+  }
+  if (githubSyncInFlight) return githubSyncInFlight;
+
+  githubSyncInFlight = (async () => {
+    try {
+      const menu = await buildMenuPayload();
+      const files = buildStaticMenuFiles(menu);
+      const result = await pushFilesToGitHub(
+        files,
+        `chore(menu): sync from admin (${reason})`
+      );
+      lastGithubSync = {
+        ok: true,
+        at: new Date().toISOString(),
+        reason,
+        repo: result.repo,
+        branch: result.branch,
+        results: result.results,
+      };
+      console.log('[github-sync] pushed menu files', lastGithubSync);
+      return lastGithubSync;
+    } catch (err) {
+      lastGithubSync = {
+        ok: false,
+        at: new Date().toISOString(),
+        reason,
+        error: err?.message || String(err),
+      };
+      console.error('[github-sync] failed', err?.message || err);
+      return lastGithubSync;
+    } finally {
+      githubSyncInFlight = null;
+    }
+  })();
+
+  return githubSyncInFlight;
+}
+
+function scheduleGitHubMenuSync(reason) {
+  clearTimeout(githubSyncTimer);
+  githubSyncTimer = setTimeout(() => {
+    runGitHubMenuSync(reason).catch(() => {});
+  }, 2500);
+}
+
+const bump = (event, payload = {}) => {
+  io.emit('menu:changed', { event, at: new Date().toISOString(), ...payload });
+  scheduleGitHubMenuSync(event);
+};
+
+app.get('/api/menu', async (_req, res) => {
+  const payload = await buildMenuPayload();
+  res.set('Cache-Control', 'no-store').json(payload);
+});
+
+app.get('/api/admin/github-sync', auth, role('SUPER_ADMIN', 'MANAGER'), (_req, res) => {
+  res.json({ status: getGitHubSyncStatus(), last: lastGithubSync });
+});
+
+app.post('/api/admin/github-sync', auth, role('SUPER_ADMIN', 'MANAGER'), async (req, res) => {
+  const result = await runGitHubMenuSync(req.body?.reason || 'manual');
+  if (result?.skipped) return res.status(503).json(result);
+  if (result?.ok === false) return res.status(502).json(result);
+  res.json(result);
 });
 
 // ——— Auth ———
@@ -642,8 +739,29 @@ app.delete('/api/admin/variants/:id', auth, role('SUPER_ADMIN', 'MANAGER'), asyn
 
 app.post('/api/admin/upload', auth, role('SUPER_ADMIN', 'MANAGER'), upload.single('image'), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No file' });
-  const imageUrl = `/uploads/${req.file.filename}`;
-  await audit({ admin: req.admin, action: 'CREATE', entityType: 'Upload', entityId: req.file.filename, entityLabel: req.file.originalname, summary: `${req.admin.name} uploaded image ${req.file.originalname}`, after: { imageUrl, size: req.file.size }, req });
+  const localPath = req.file.path || path.join(__dirname, 'uploads', req.file.filename);
+  let imageUrl = `/uploads/${req.file.filename}`;
+
+  // Prefer a GitHub Pages–friendly path so all phones can load the photo
+  try {
+    const dest = `image/admin/${req.file.filename}`;
+    const buf = fs.readFileSync(localPath);
+    const pushed = await pushBinaryToGitHub(dest, buf, `chore(menu): upload ${req.file.originalname || req.file.filename}`);
+    if (pushed?.ok) imageUrl = dest;
+  } catch (err) {
+    console.warn('[github-sync] upload push failed, keeping /uploads path', err?.message || err);
+  }
+
+  await audit({
+    admin: req.admin,
+    action: 'CREATE',
+    entityType: 'Upload',
+    entityId: req.file.filename,
+    entityLabel: req.file.originalname,
+    summary: `${req.admin.name} uploaded image ${req.file.originalname}`,
+    after: { imageUrl, size: req.file.size },
+    req,
+  });
   res.status(201).json({ imageUrl });
 });
 

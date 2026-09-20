@@ -1193,6 +1193,25 @@ function startMenuVisit(choice) {
       .catch((e) => console.warn('[friendly-live] socket unavailable', e));
   }
 
+  async function refreshMenuQuiet() {
+    try {
+      const payload = await fetchJson(`${BASE}/api/menu`, 12000);
+      const n = Array.isArray(payload.sections)
+        ? payload.sections.reduce((c, s) => c + ((s && s.items && s.items.length) || 0), 0)
+        : 0;
+      if (n > 0) apply(payload);
+    } catch (_) {}
+  }
+
+  function startMenuPolling() {
+    // Backup when sockets fail / Render wakes slowly — keeps all phones aligned
+    setInterval(refreshMenuQuiet, 45000);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') refreshMenuQuiet();
+    });
+    window.addEventListener('focus', refreshMenuQuiet);
+  }
+
   async function boot() {
     // Prefer cache immediately if API is slow / asleep
     const cached = readCache();
@@ -1250,6 +1269,7 @@ function startMenuVisit(choice) {
       hideWake();
     }
     connectRealtime();
+    startMenuPolling();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);

@@ -424,6 +424,39 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     els.editForm.reset();
   }
 
+  async function syncGithubQuiet(reason) {
+    if (!els.liveStatus) return;
+    const prev = els.liveStatus.textContent;
+    els.liveStatus.textContent = 'Синхрон…';
+    try {
+      const data = await api('/api/admin/github-sync', {
+        method: 'POST',
+        body: { reason: reason || 'admin-ui' },
+      });
+      if (data?.ok) {
+        els.liveStatus.textContent = 'GitHub OK';
+        els.liveStatus.classList.remove('is-off');
+        setTimeout(() => {
+          els.liveStatus.textContent = 'API online';
+        }, 2500);
+      } else if (data?.skipped) {
+        els.liveStatus.textContent = 'Нет GITHUB_TOKEN';
+        els.liveStatus.classList.add('is-off');
+        setTimeout(() => {
+          els.liveStatus.textContent = prev || 'API online';
+          els.liveStatus.classList.remove('is-off');
+        }, 4000);
+      } else {
+        els.liveStatus.textContent = 'Sync fail';
+        els.liveStatus.classList.add('is-off');
+      }
+    } catch (err) {
+      els.liveStatus.textContent = 'Sync fail';
+      els.liveStatus.classList.add('is-off');
+      console.warn('[admin] github sync', err);
+    }
+  }
+
   async function saveEdit(e) {
     e.preventDefault();
     const f = els.editForm;
@@ -448,6 +481,8 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
       else state.items.push(item);
       renderAll();
       closeEdit();
+      // Server also auto-syncs; nudge status so admin sees feedback
+      syncGithubQuiet('item.updated').catch(() => {});
     } catch (err) {
       els.editError.hidden = false;
       els.editError.textContent = err.message || 'Ошибка сохранения';
@@ -466,6 +501,7 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     });
     Object.assign(item, updated);
     renderItems();
+    syncGithubQuiet('item.stock').catch(() => {});
   }
 
   async function uploadImage(file) {

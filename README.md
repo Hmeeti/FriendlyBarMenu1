@@ -1,7 +1,5 @@
 # Friendly Menu
 
-
-<<<<<<< HEAD
 ## Запуск
 
 ```bash
@@ -20,10 +18,17 @@ npm run dev
 API (Render): `https://friendlybarmenu1admin.onrender.com`  
 (задаётся в `config.js`)
 
-На Render в Environment добавьте:
-- `CLIENT_ORIGIN` = URL вашего GitHub Pages (и localhost при необходимости)
+## Render Environment
+
+Обязательно:
+- `CLIENT_ORIGIN` = `https://hmeeti.github.io` (+ localhost при необходимости)
 - `COOKIE_SECURE=true`
 - `JWT_SECRET` = длинная случайная строка
 - `ADMIN_USERNAME` / `ADMIN_PASSWORD`
-=======
->>>>>>> 09f00c50eaedeb2dac85e3c8d811db4d87d8dc90
+
+Чтобы правки из админки попадали на **все телефоны** через GitHub Pages, добавьте:
+- `GITHUB_TOKEN` = Personal Access Token с правом **Contents: Read and write** на репозиторий
+- `GITHUB_REPO` = `Hmeeti/FriendlyBarMenu1` (по умолчанию)
+- `GITHUB_BRANCH` = `main`
+
+После сохранения блюда сервер сам коммитит обновлённые `data.js` и `data/menu-export.json` в GitHub.
