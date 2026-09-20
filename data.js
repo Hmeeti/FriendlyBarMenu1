@@ -45,7 +45,7 @@ window.ITEM_DETAILS = {
   "19": {
     "name": "Салат по Имеретински",
     "price": 2890,
-    "img": "image/nono.png",
+    "img": "image/salat_po_imeretinski.jpg",
     "desc": "Помидоры,огурцы,карсный лук,сметана,зелень,орехи"
   },
   "20": {
@@ -213,7 +213,7 @@ window.ITEM_DETAILS = {
   "48": {
     "name": "Мимино",
     "price": 4890,
-    "img": "image/mimino.JPG",
+    "img": "image/new_mimino.JPG",
     "desc": "Шампиньоны,грибной соус"
   },
   "50": {
@@ -225,7 +225,7 @@ window.ITEM_DETAILS = {
   "51": {
     "name": "Ребра Батхани",
     "price": 5390,
-    "img": "image/rebrabathani.jpg",
+    "img": "image/rebra_bathani.jpg",
     "desc": "Барань ребра,винный соус,картофель"
   },
   "52": {
@@ -374,7 +374,7 @@ window.ITEM_DETAILS = {
   },
   "77": {
     "name": "Пивной сет",
-    "price": 13000,
+    "price": 14000,
     "img": "image/pivnoiset.JPG",
     "desc": "Чечил жаренный,бараньи семечки,копченная сырная палочка,луковые кольца,пивные креветки,сосиски,пельмени жаренные,фри,3 вида соуса"
   },
@@ -1081,7 +1081,7 @@ window.MENU_SECTIONS = [
         "name": "Мимино",
         "price": 4890,
         "priceDisplay": "4890тг",
-        "img": "image/mimino.JPG"
+        "img": "image/new_mimino.JPG"
       },
       {
         "id": 50,
@@ -1095,7 +1095,7 @@ window.MENU_SECTIONS = [
         "name": "Ребра Батхани",
         "price": 5390,
         "priceDisplay": "5390тг",
-        "img": "image/rebrabathani.jpg"
+        "img": "image/rebra_bathani.jpg"
       },
       {
         "id": 52,
@@ -1150,7 +1150,7 @@ window.MENU_SECTIONS = [
         "name": "Салат по Имеретински",
         "price": 2890,
         "priceDisplay": "2890тг",
-        "img": "image/nono.png"
+        "img": "image/salat_po_imeretinski.jpg"
       },
       {
         "id": 20,
@@ -1376,8 +1376,8 @@ window.MENU_SECTIONS = [
       {
         "id": 77,
         "name": "Пивной сет",
-        "price": 13000,
-        "priceDisplay": "13000тг",
+        "price": 14000,
+        "priceDisplay": "14000тг",
         "img": "image/pivnoiset.JPG"
       }
     ]
@@ -1622,7 +1622,7 @@ window.MENU_SECTIONS = [
         "name": "Фирменное блюдо Friendly",
         "price": 30000,
         "priceDisplay": "30000тг",
-        "img": "image/nono.png"
+        "img": "image/firmenoe.JPG"
       }
     ]
   },
@@ -3496,8 +3496,8 @@ window.MENU_ITEMS = {
   "19": {
     "name": "Салат по Имеретински",
     "price": 2890,
-    "img": "image/nono.png",
-    "desc": ""
+    "img": "image/salat_po_imeretinski.jpg",
+    "desc": "Помидоры,огурцы,карсный лук,сметана,зелень,орехи"
   },
   "20": {
     "name": "Глехури",
@@ -3664,7 +3664,7 @@ window.MENU_ITEMS = {
   "48": {
     "name": "Мимино",
     "price": 4890,
-    "img": "image/mimino.JPG",
+    "img": "image/new_mimino.JPG",
     "desc": ""
   },
   "50": {
@@ -3676,7 +3676,7 @@ window.MENU_ITEMS = {
   "51": {
     "name": "Ребра Батхани",
     "price": 5390,
-    "img": "image/rebrabathani.jpg",
+    "img": "image/rebra_bathani.jpg",
     "desc": ""
   },
   "52": {
@@ -3831,7 +3831,7 @@ window.MENU_ITEMS = {
   },
   "77": {
     "name": "Пивной сет",
-    "price": 13000,
+    "price": 14000,
     "img": "image/pivnoiset.JPG",
     "desc": ""
   },
@@ -3904,7 +3904,7 @@ window.MENU_ITEMS = {
   "89": {
     "name": "Фирменное блюдо Friendly",
     "price": 30000,
-    "img": "image/nono.png",
+    "img": "image/firmenoe.JPG",
     "desc": ""
   },
   "90": {
