@@ -346,16 +346,103 @@ function updateCart() {
     totalPriceEl.textContent = formatTg(grandTotal);
 }
 
+let bodyScrollLockCount = 0;
+let bodyScrollLockY = 0;
+
+function acquireBodyScrollLock() {
+    if (bodyScrollLockCount === 0) {
+        bodyScrollLockY = getScrollY();
+        document.body.classList.add('lock-scroll');
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${bodyScrollLockY}px`;
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.width = '100%';
+    }
+    bodyScrollLockCount += 1;
+}
+
+function releaseBodyScrollLock() {
+    bodyScrollLockCount = Math.max(0, bodyScrollLockCount - 1);
+    if (bodyScrollLockCount > 0) return;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    const welcome = document.getElementById('welcome-screen');
+    const welcomeOpen = welcome && welcome.style.display !== 'none' && getComputedStyle(welcome).display !== 'none';
+    if (!welcomeOpen) document.body.classList.remove('lock-scroll');
+    setScrollY(bodyScrollLockY);
+}
+
+function isCartOpen() {
+    const panel = document.getElementById('cartPanel');
+    return !!(panel && panel.classList.contains('active'));
+}
+
+function setCartOpen(open) {
+    const panel = document.getElementById('cartPanel');
+    const backdrop = document.getElementById('cartBackdrop');
+    if (!panel) return;
+
+    const wasOpen = panel.classList.contains('active');
+    if (open === wasOpen) return;
+
+    panel.classList.toggle('active', open);
+    panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    document.body.classList.toggle('cart-open', open);
+
+    if (backdrop) {
+        if (open) {
+            backdrop.hidden = false;
+            backdrop.setAttribute('aria-hidden', 'false');
+            requestAnimationFrame(() => backdrop.classList.add('is-open'));
+        } else {
+            backdrop.classList.remove('is-open');
+            backdrop.setAttribute('aria-hidden', 'true');
+            const hide = () => {
+                if (!isCartOpen()) backdrop.hidden = true;
+            };
+            backdrop.addEventListener('transitionend', hide, { once: true });
+            setTimeout(hide, 320);
+        }
+    }
+
+    if (open) acquireBodyScrollLock();
+    else releaseBodyScrollLock();
+}
+
 function toggleCart() {
-    document.getElementById('cartPanel').classList.toggle('active');
+    setCartOpen(!isCartOpen());
 }
 
 function hideCart() {
-    document.getElementById('cartPanel').classList.remove('active');
+    setCartOpen(false);
 }
 
 function showCart() {
-    document.getElementById('cartPanel').classList.add('active');
+    setCartOpen(true);
+}
+
+function initCartChrome() {
+    const backdrop = document.getElementById('cartBackdrop');
+    if (backdrop && backdrop.dataset.bound !== '1') {
+        backdrop.dataset.bound = '1';
+        backdrop.addEventListener('click', hideCart);
+    }
+    if (document.documentElement.dataset.cartEscBound === '1') return;
+    document.documentElement.dataset.cartEscBound = '1';
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        if (isCartOpen()) {
+            hideCart();
+            return;
+        }
+        const modal = document.getElementById('modal');
+        if (modal && modal.classList.contains('active')) closeModal();
+    });
 }
 
 function openModal(itemId) {
@@ -373,14 +460,18 @@ function openModal(itemId) {
         trItemDesc(id, item.desc || '') || tr('modal.fallbackDesc', 'Состав уточняйте у персонала.');
     document.getElementById('modalPrice').textContent = item.price + 'тг';
 
-    document.getElementById('modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    const modal = document.getElementById('modal');
+    const alreadyOpen = modal.classList.contains('active');
+    modal.classList.add('active');
+    if (!alreadyOpen) acquireBodyScrollLock();
 }
 
 function closeModal() {
-    document.getElementById('modal').classList.remove('active');
-    document.body.style.overflow = 'auto';
+    const modal = document.getElementById('modal');
+    if (!modal.classList.contains('active')) return;
+    modal.classList.remove('active');
     currentModalItem = null;
+    releaseBodyScrollLock();
 }
 
 function closeModalOnBackdrop(event) {
@@ -788,6 +879,7 @@ function init() {
     initToTopButtons();
     initThemeToggle();
     initModalImageFallback();
+    initCartChrome();
     updateCart();
 }
 

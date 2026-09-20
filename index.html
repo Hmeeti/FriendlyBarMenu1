@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./image/favicon.png">
     <title>Friendly — Меню</title>
-    <link rel="stylesheet" href="style.css?v=audit8">
+    <link rel="stylesheet" href="style.css?v=audit9">
 </head>
 
 <body>
@@ -67,31 +67,33 @@
 
         <main id="menu-root" class="menu-root"></main>
 
-        <div class="cart-panel" id="cartPanel">
-            <div class="cart-header">
-                <div class="cart-title" data-i18n="cart.title">Ваш заказ</div>
-                <button type="button" class="close-cart" onclick="hideCart()" data-i18n-aria="cart.close" aria-label="Закрыть корзину">×</button>
-            </div>
-            <div class="cart-items" id="cartItems"></div>
-            <div class="cart-summary">
-                <div class="cart-row"><span data-i18n="cart.subtotal">Сумма позиций</span><span id="subtotalPrice">0 тг</span></div>
-                <div class="cart-row cart-row--muted"><span data-i18n="cart.service">Обслуживание 15%</span><span id="servicePrice">0 тг</span>
-                </div>
-                <div class="cart-total"><span data-i18n="cart.total">Итого к оплате</span><span id="totalPrice">0 тг</span></div>
-            </div>
-        </div>
+    </div>
 
-        <div class="modal" id="modal" onclick="closeModalOnBackdrop(event)">
-            <div class="modal-content" onclick="event.stopPropagation()">
-                <img src="https://placehold.co/176x140" alt="" class="modal-image" id="modalImage">
-                <div class="modal-body">
-                    <div class="modal-name" id="modalName">Маргарита</div>
-                    <div class="modal-description" id="modalDescription"></div>
-                    <div class="modal-price" id="modalPrice">490тг</div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="close-modal-btn" onclick="closeModal()" data-i18n="modal.close">Закрыть</button>
-                </div>
+    <div class="cart-backdrop" id="cartBackdrop" hidden aria-hidden="true"></div>
+    <div class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+        <div class="cart-header">
+            <div class="cart-title" id="cartTitle" data-i18n="cart.title">Ваш заказ</div>
+            <button type="button" class="close-cart" onclick="hideCart()" data-i18n-aria="cart.close" aria-label="Закрыть корзину">×</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-summary">
+            <div class="cart-row"><span data-i18n="cart.subtotal">Сумма позиций</span><span id="subtotalPrice">0 тг</span></div>
+            <div class="cart-row cart-row--muted"><span data-i18n="cart.service">Обслуживание 15%</span><span id="servicePrice">0 тг</span>
+            </div>
+            <div class="cart-total"><span data-i18n="cart.total">Итого к оплате</span><span id="totalPrice">0 тг</span></div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal" onclick="closeModalOnBackdrop(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img src="https://placehold.co/176x140" alt="" class="modal-image" id="modalImage">
+            <div class="modal-body">
+                <div class="modal-name" id="modalName">Маргарита</div>
+                <div class="modal-description" id="modalDescription"></div>
+                <div class="modal-price" id="modalPrice">490тг</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close-modal-btn" onclick="closeModal()" data-i18n="modal.close">Закрыть</button>
             </div>
         </div>
     </div>
@@ -127,11 +129,11 @@
     </div>
 </div> 
 
-    <script src="config.js?v=audit8"></script>
-    <script src="i18n.js?v=audit8"></script>
-    <script src="i18n-menu.js?v=audit8"></script>
-    <script src="data.js?v=audit8"></script>
-    <script src="app.js?v=audit8"></script>
+    <script src="config.js?v=audit9"></script>
+    <script src="i18n.js?v=audit9"></script>
+    <script src="i18n-menu.js?v=audit9"></script>
+    <script src="data.js?v=audit9"></script>
+    <script src="app.js?v=audit9"></script>
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-info">
