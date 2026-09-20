@@ -5,6 +5,14 @@ const MENU_CACHE_KEY = 'fm_menu_cache_v1';
 let cart = [];
 let currentModalItem = null;
 let items = {};
+let menuMounted = false;
+let menuMountQueued = false;
+
+const IS_IOS =
+    /iP(hone|od|ad)/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const IS_SAFARI = /^((?!chrome|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent || '');
+const PREFER_NATIVE_SCROLL = IS_IOS || IS_SAFARI;
 
 function formatTg(amount) {
     return Math.round(amount) + ' тг';
@@ -190,6 +198,7 @@ function renderMenu() {
     const root = document.getElementById('menu-root');
     if (!root || !window.MENU_SECTIONS) return;
 
+    let globalIdx = 0;
     const html = window.MENU_SECTIONS.map((section) => {
         const sectionId = getSectionId(section);
         const idAttr = sectionId ? ` id="${escapeHtml(sectionId)}"` : '';
@@ -197,10 +206,16 @@ function renderMenu() {
         const title = escapeHtml(trSection(titleRu));
         const titleClass = titleRu === 'Меню Грузия' || titleRu === 'Меню Европа' ? 'title__menu title__menu--hero' : 'title__menu';
         if (!section.items || section.items.length === 0) {
-            return `<h2 class="${titleClass}"${idAttr} data-i18n-section="${escapeHtml(titleRu)}">${title}</h2>`;
+            return `<section class="menu-section"><h2 class="${titleClass}"${idAttr} data-i18n-section="${escapeHtml(titleRu)}">${title}</h2></section>`;
         }
-        const itemsHtml = section.items.map((it, idx) => renderMenuItemCard(it, idx)).join('');
-        return `<h2 class="${titleClass}"${idAttr} data-i18n-section="${escapeHtml(titleRu)}">${title}</h2><div class="menu-grid">${itemsHtml}</div>`;
+        const itemsHtml = section.items
+            .map((it) => {
+                const card = renderMenuItemCard(it, globalIdx);
+                globalIdx += 1;
+                return card;
+            })
+            .join('');
+        return `<section class="menu-section"><h2 class="${titleClass}"${idAttr} data-i18n-section="${escapeHtml(titleRu)}">${title}</h2><div class="menu-grid">${itemsHtml}</div></section>`;
     }).join('');
 
     root.innerHTML = html;
@@ -209,6 +224,7 @@ function renderMenu() {
     applySearchFilter();
     syncHeaderOffset();
     if (i18n()) i18n().applyStatic();
+    menuMounted = true;
 }
 
 function renderMenuItemCard(it, idx) {
@@ -219,10 +235,10 @@ function renderMenuItemCard(it, idx) {
     const out = it.availability === 'OUT_OF_STOCK';
     const imgPath = it.img ? imgSrcForPage(it.img) : '';
     const imgBlock = imgPath
-        ? `<div class="item-image-wrap"><img src="${escapeAttr(imgPath)}" alt="" class="item-image" loading="lazy" width="400" height="280" decoding="async"></div>`
+        ? `<div class="item-image-wrap"><img src="${escapeAttr(imgPath)}" alt="" class="item-image" loading="lazy" decoding="async" width="400" height="280" sizes="(max-width: 560px) 46vw, (max-width: 800px) 30vw, 280px"${(Number(idx) || 0) < 4 ? ' fetchpriority="low"' : ''}></div>`
         : '';
     // Animate only the first few cards — animating hundreds crashes Safari iOS
-    const animate = (Number(idx) || 0) < 8;
+    const animate = !IS_IOS && (Number(idx) || 0) < 6;
     const delay = animate ? (Number(idx) || 0) * 28 : 0;
     const itemClass =
         (imgPath ? 'menu-item' : 'menu-item menu-item--no-image') +
@@ -321,12 +337,12 @@ function updateCart() {
     if (cart.length === 0) {
         cartItems.innerHTML = `<p class="cart-empty">${escapeHtml(tr('cart.empty', 'Добавьте блюда кнопкой «+»'))}</p>`;
     } else {
+        const rows = [];
         cart.forEach((item) => {
             subtotal += item.price * item.quantity;
             count += item.quantity;
             const shownName = trItemName(item.id, item.name);
-
-            cartItems.innerHTML += `
+            rows.push(`
                 <div class="cart-item">
                     <div class="cart-item-name">${escapeHtml(shownName)}</div>
                     <div class="cart-item-controls">
@@ -335,8 +351,9 @@ function updateCart() {
                         <button type="button" class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
                     </div>
                 </div>
-            `;
+            `);
         });
+        cartItems.innerHTML = rows.join('');
     }
 
     const service = Math.round(subtotal * SERVICE_RATE);
@@ -537,6 +554,20 @@ function smoothScrollY(toY) {
         return Promise.resolve();
     }
 
+    // Safari/iOS: multi-second rAF scrolling is janky and can trigger WebKit crashes.
+    // Prefer short native smooth scroll (or instant jump).
+    if (PREFER_NATIVE_SCROLL) {
+        cancelAnimationFrame(scrollAnimFrame);
+        clearScrollUserCancel();
+        try {
+            window.scrollTo({ top: target, left: 0, behavior: 'smooth' });
+        } catch (_) {
+            setScrollY(target);
+        }
+        categoryNavLockUntil = Date.now() + 520;
+        return new Promise((resolve) => setTimeout(resolve, IS_IOS ? 380 : 280));
+    }
+
     const startY = getScrollY();
     const delta = target - startY;
     if (Math.abs(delta) < 1) return Promise.resolve();
@@ -590,7 +621,7 @@ function smoothScrollY(toY) {
 function smoothScrollX(el, toX) {
     if (!el) return;
     const target = Math.max(0, toX);
-    if (prefersReducedMotion()) {
+    if (prefersReducedMotion() || IS_IOS) {
         el.scrollLeft = target;
         return;
     }
@@ -646,7 +677,7 @@ function scrollCategoryIntoNav(activeLink) {
 }
 
 function pulseSectionArrival(target) {
-    if (!target || prefersReducedMotion()) return;
+    if (!target || prefersReducedMotion() || IS_IOS) return;
     target.classList.remove('section-arrive');
     void target.offsetWidth; // restart animation on repeated clicks
     target.classList.add('section-arrive');
@@ -740,7 +771,7 @@ function initCategoryNav() {
                 if (window.history && window.history.replaceState) {
                     window.history.replaceState(null, '', `#${id}`);
                 }
-            }, 90);
+            }, IS_IOS ? 160 : 90);
         },
         {
             rootMargin: '-120px 0px -55% 0px',
@@ -857,10 +888,27 @@ function initLangSwitch() {
     });
 }
 
+function isWelcomeOpen() {
+    const welcome = document.getElementById('welcome-screen');
+    if (!welcome) return false;
+    if (welcome.style.display === 'none') return false;
+    return getComputedStyle(welcome).display !== 'none';
+}
+
+function queueMenuMount() {
+    menuMountQueued = true;
+}
+
+function mountMenuNow() {
+    menuMountQueued = false;
+    renderMenu();
+    updateCart();
+    syncHeaderOffset();
+}
+
 function init() {
     items = buildItemsCatalog();
     initLangSwitch();
-    renderMenu();
 
     const menuRoot = document.getElementById('menu-root');
     if (menuRoot) {
@@ -883,6 +931,18 @@ function init() {
     initModalImageFallback();
     initCartChrome();
     updateCart();
+
+    // Defer heavy DOM until welcome is dismissed — avoids Safari loading
+    // hundreds of images/layers under the overlay.
+    if (isWelcomeOpen()) {
+        queueMenuMount();
+        const root = document.getElementById('menu-root');
+        if (root && !root.innerHTML.trim()) {
+            root.innerHTML = `<p class="menu-boot-hint">${escapeHtml(tr('cart.empty', 'Загрузка меню…'))}</p>`;
+        }
+    } else {
+        mountMenuNow();
+    }
 }
 
 if (document.readyState === 'loading') {
@@ -891,10 +951,9 @@ if (document.readyState === 'loading') {
     init();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.body.classList.add('lock-scroll');
+document.addEventListener('DOMContentLoaded', function () {
+    if (isWelcomeOpen()) document.body.classList.add('lock-scroll');
 });
-
 
 window.FriendlyMenu = {
     applyLiveMenu(payload) {
@@ -911,19 +970,32 @@ window.FriendlyMenu = {
         if (payload.items && Object.keys(payload.items).length) window.MENU_ITEMS = payload.items;
         if (payload.details) window.ITEM_DETAILS = Object.assign({}, window.ITEM_DETAILS || {}, payload.details);
         items = buildItemsCatalog();
-        renderMenu();
-        updateCart();
+        if (menuMounted || !isWelcomeOpen()) {
+            renderMenu();
+            updateCart();
+        } else {
+            queueMenuMount();
+        }
         try {
             localStorage.setItem(
                 MENU_CACHE_KEY,
-                JSON.stringify({ at: Date.now(), payload: { sections: window.MENU_SECTIONS, items: window.MENU_ITEMS, details: window.ITEM_DETAILS, updatedAt: payload.updatedAt || null } })
+                JSON.stringify({
+                    at: Date.now(),
+                    payload: {
+                        sections: window.MENU_SECTIONS,
+                        items: window.MENU_ITEMS,
+                        details: window.ITEM_DETAILS,
+                        updatedAt: payload.updatedAt || null,
+                    },
+                })
             );
         } catch (_) {}
     },
     reload() {
         items = buildItemsCatalog();
-        renderMenu();
-    }
+        if (menuMounted || !isWelcomeOpen()) renderMenu();
+        else queueMenuMount();
+    },
 };
 
 function closePopup(choice) {
@@ -933,9 +1005,13 @@ function closePopup(choice) {
     setTimeout(() => {
         screen.style.display = 'none';
         document.body.classList.remove('lock-scroll');
-        if (choice === 'hookah') window.location.href = 'hookah.html';
-        else startMenuVisit(choice || 'kitchen');
-    }, 400);
+        if (choice === 'hookah') {
+            window.location.href = 'hookah.html';
+            return;
+        }
+        if (menuMountQueued || !menuMounted) mountMenuNow();
+        startMenuVisit(choice || 'kitchen');
+    }, IS_IOS ? 180 : 320);
 }
 
 /** Fire-and-forget guest session: count visits + time on menu. */

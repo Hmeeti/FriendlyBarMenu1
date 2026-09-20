@@ -1130,7 +1130,7 @@ body.cart-open {
             #e8d5a3 82%,
             #6b5420 100%
         ) border-box;
-    background-size: auto, 240% 240%;
+    background-size: auto, 100% 100%;
     border: 1.5px solid transparent;
     border-radius: 20px;
     overflow: hidden;
@@ -1140,7 +1140,7 @@ body.cart-open {
         0 0 0 1px rgba(212, 168, 90, 0.22),
         0 16px 40px var(--color-shadow),
         0 0 28px rgba(212, 168, 90, 0.14);
-    animation: gold-rim-flow 5.5s linear infinite;
+    animation: none;
 }
 
 .menu-item:hover {
@@ -1725,7 +1725,7 @@ body {
             #e8d5a3 82%,
             #6b5420 100%
         ) border-box;
-    background-size: auto, 240% 240%;
+    background-size: auto, 100% 100%;
     border: 1.5px solid transparent;
     border-radius: 20px;
     box-shadow:
@@ -1734,7 +1734,7 @@ body {
         0 0 28px rgba(212, 168, 90, 0.14);
     overflow: hidden;
     transition: transform 0.28s ease, box-shadow 0.28s ease;
-    animation: gold-rim-flow 5.5s linear infinite;
+    animation: none;
 }
 
 @keyframes gold-rim-flow {
@@ -1761,6 +1761,14 @@ body {
     .menu-item {
         animation: none;
         background-size: auto, 100% 100%;
+    }
+}
+
+/* Desktop-only gold rim motion — phones never run infinite per-card animations */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .menu-item {
+        background-size: auto, 240% 240%;
+        animation: gold-rim-flow 5.5s linear infinite;
     }
 }
 
@@ -3023,4 +3031,175 @@ body {
   .api-wake__spinner {
     animation: none;
   }
+}
+
+/* —— Safari / iPhone performance (guest menu) —— */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+}
+
+.page-shell {
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+button,
+.category,
+.add-btn,
+.cart-btn,
+.lang-switch__btn,
+.close-cart,
+.close-modal-btn,
+.menu-choice-btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.menu-grid {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 720px;
+}
+
+.item-image {
+    content-visibility: auto;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Kill per-card infinite GPU animations on phones / touch — Safari crash source */
+@media (hover: none), (pointer: coarse), (max-width: 920px) {
+    .menu-item {
+        animation: none !important;
+        background-size: auto, 100% 100% !important;
+        transition: none !important;
+        box-shadow:
+            0 0 0 1px rgba(212, 168, 90, 0.28),
+            0 10px 24px rgba(0, 0, 0, 0.32) !important;
+        transform: none !important;
+    }
+
+    .menu-item:hover,
+    .menu-item:active,
+    .menu-item:focus-visible {
+        transform: none !important;
+        box-shadow:
+            0 0 0 1px rgba(212, 168, 90, 0.34),
+            0 10px 24px rgba(0, 0, 0, 0.32) !important;
+    }
+
+    .header {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: #0c0a0b !important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .to-top {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        transition: opacity 0.2s ease, visibility 0.2s ease !important;
+        transform: none !important;
+    }
+
+    .to-top:hover,
+    .to-top:active {
+        transform: none !important;
+    }
+
+    .scene-bg__grain,
+    .scene-bg__mark {
+        display: none !important;
+    }
+
+    .category {
+        transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease !important;
+        box-shadow: none !important;
+    }
+
+    .category:hover,
+    .category.active {
+        transform: none !important;
+    }
+
+    .title__menu.section-arrive {
+        animation: none !important;
+        text-shadow: none !important;
+    }
+
+    .menu-item--enter {
+        animation: none !important;
+    }
+
+    .modal-content {
+        animation-duration: 0.28s !important;
+    }
+
+    .cart-panel {
+        transition: transform 0.28s ease !important;
+    }
+
+    .popup-box {
+        animation: none !important;
+    }
+
+    .item-image-wrap,
+    .item-image {
+        transform: none !important;
+    }
+}
+
+/* Extra iOS Safari guard (includes iPad desktop-mode UA) */
+@supports (-webkit-touch-callout: none) {
+    .menu-item {
+        animation: none !important;
+        background-size: auto, 100% 100% !important;
+    }
+
+    .header {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: #0c0a0b !important;
+    }
+
+    .scene-bg__grain {
+        display: none !important;
+    }
+
+    .api-wake,
+    .cart-backdrop {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menu-item,
+    .menu-item--enter,
+    .popup-box,
+    .modal-content,
+    .cart-panel,
+    .title__menu.section-arrive,
+    .to-top,
+    .category {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+.menu-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 900px;
+}
+
+.menu-boot-hint {
+    margin: 48px 16px;
+    text-align: center;
+    color: var(--color-muted, #b3a59a);
+    font-family: var(--font-sans, Montserrat, sans-serif);
+    font-size: 0.95rem;
 }
