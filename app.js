@@ -221,16 +221,18 @@ function renderMenuItemCard(it, idx) {
     const imgBlock = imgPath
         ? `<div class="item-image-wrap"><img src="${escapeAttr(imgPath)}" alt="" class="item-image" loading="lazy" width="400" height="280" decoding="async"></div>`
         : '';
-    const delay = Math.min(12, Number(idx) || 0) * 28;
+    // Animate only the first few cards — animating hundreds crashes Safari iOS
+    const animate = (Number(idx) || 0) < 8;
+    const delay = animate ? (Number(idx) || 0) * 28 : 0;
     const itemClass =
         (imgPath ? 'menu-item' : 'menu-item menu-item--no-image') +
         (out ? ' menu-item--oos' : '') +
-        ' menu-item--enter';
+        (animate ? ' menu-item--enter' : '');
     const addBtn = out
         ? `<span class="badge badge--oos">${escapeHtml(tr('oos', 'нет в наличии'))}</span>`
         : `<button type="button" class="add-btn" data-add="${id}" aria-label="${escapeHtml(tr('add', 'Добавить в заказ'))}">+</button>`;
     return `
-        <div class="${itemClass}" data-item-id="${id}" data-name-ru="${escapeHtml(nameRu)}" role="button" tabindex="0" style="--enter-delay:${delay}ms">
+        <div class="${itemClass}" data-item-id="${id}" data-name-ru="${escapeHtml(nameRu)}" role="button" tabindex="0"${animate ? ` style="--enter-delay:${delay}ms"` : ''}>
             ${imgBlock}
             <div class="item-content">
                 <div class="item-name">${name}</div>

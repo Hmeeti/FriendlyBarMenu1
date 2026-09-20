@@ -373,9 +373,10 @@ body.admin-login-open {
 .scene-bg__grain {
     position: absolute;
     inset: 0;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 180px 180px;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.35) 0.5px, transparent 0.5px);
+    background-size: 3px 3px;
     mix-blend-mode: soft-light;
 }
 
@@ -560,9 +561,7 @@ body.admin-login-open {
     position: fixed;
     inset: 0;
     z-index: 2400;
-    background: rgba(8, 6, 7, 0.55);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: rgba(8, 6, 7, 0.62);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.28s ease;
@@ -2879,37 +2878,33 @@ body {
 }
 
 /* —— Performance + wake UI —— */
-/* NOTE: never set a literal `transform` here — .cart-panel / .to-top / .category
-   already animate their own `transform` for open/close + hover states, and a
-   same-specificity `transform: translateZ(0)` declared later in the cascade
-   would silently win and permanently cancel their hidden/closed position. */
-.menu-item,
-.category,
+/* Do NOT promote every card to its own compositor layer — Safari iOS
+   crashes ("A problem repeatedly occurred") with hundreds of will-change /
+   translateZ layers. Keep transforms only on elements that actually move. */
 .modal-content,
-.to-top,
-.cart-panel {
-  will-change: transform;
+.to-top {
   backface-visibility: hidden;
 }
 
-.menu-item {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
-
 .menu-item--enter {
-  animation: cardEnter 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: cardEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: var(--enter-delay, 0ms);
 }
 
 @keyframes cardEnter {
   from {
     opacity: 0;
-    transform: translate3d(0, 14px, 0) scale(0.985);
+    transform: translate3d(0, 10px, 0);
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-item--enter {
+    animation: none;
   }
 }
 
@@ -2929,9 +2924,7 @@ body {
   z-index: 100000;
   display: grid;
   place-items: center;
-  background: rgba(8, 6, 7, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(8, 6, 7, 0.72);
   pointer-events: auto;
 }
 
