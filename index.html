@@ -1,185 +1,329 @@
 <!DOCTYPE html>
-<html lang="ru" data-lang="ru" data-theme="dark">
-
+<html lang="ru" data-lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#0c0a0b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="icon" href="./image/favicon.png">
-    <title>Friendly — Меню</title>
-    <link rel="stylesheet" href="style.css?v=audit11">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Friendly — Меню</title>
+<meta name="description" content="Меню Friendly Bar: грузинская и европейская кухня, стейки, роллы, пицца, шашлыки, десерты и барная карта. Цены в тенге. Соберите заказ на телефоне и покажите официанту.">
+<meta name="theme-color" content="#0c0a0b">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Friendly">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://hmeeti.github.io/FriendlyBarMenu1/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Friendly Bar">
+<meta property="og:title" content="Friendly Bar — меню">
+<meta property="og:description" content="Грузинская и европейская кухня, стейки, роллы, пицца и барная карта. Цены в тенге.">
+<meta property="og:url" content="https://hmeeti.github.io/FriendlyBarMenu1/">
+<meta property="og:image" content="https://hmeeti.github.io/FriendlyBarMenu1/icons/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="kk_KZ">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Friendly Bar — меню">
+<meta name="twitter:description" content="Грузинская и европейская кухня, стейки, роллы, пицца и барная карта.">
+<meta name="twitter:image" content="https://hmeeti.github.io/FriendlyBarMenu1/icons/og-image.jpg">
+<link rel="icon" href="icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preload" href="fonts/cormorant-600-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="menu.json" as="fetch" crossorigin>
+<script>
+(function(d){var r=d.documentElement;try{var l=localStorage.getItem('fm_lang');if(l==='kk'||l==='en'){r.lang=l;r.setAttribute('data-lang',l)}if(!localStorage.getItem('fm_welcome_v2'))r.classList.add('show-welcome')}catch(e){r.classList.add('show-welcome')}})(document);
+</script>
+<style>
+@font-face{font-family:Cormorant;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/cormorant-600-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Cormorant;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/cormorant-600-cyrillic-ext.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+@font-face{font-family:Cormorant;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/cormorant-600-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Cormorant;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/cormorant-600-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Cormorant Fallback";src:local("Georgia"),local("Times New Roman");size-adjust:88%;ascent-override:96%;descent-override:30%}
+@font-face{font-family:"Great Vibes";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/great-vibes-logo.woff2) format("woff2")}
+:root{--bg:#0c0a0b;--surface:#171314;--surface-2:#211a1b;--line:rgba(246,238,228,.12);--text:#f6eee4;--muted:#c4b7ab;--muted-2:#a99a8d;--gold:#d4a85a;--gold-soft:#e8cf98;--on-gold:#1a1210;--wine:#6b1d28;--serif:Cormorant,"Cormorant Fallback",Georgia,"Times New Roman",serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--brand-h:60px;--sticky-h:112px;--ease:cubic-bezier(.2,.8,.2,1)}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--bg)}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse 80% 40% at 50% 0,rgba(212,168,90,.07),transparent 70%) no-repeat,var(--bg);color:var(--text);font:400 1rem/1.45 var(--sans);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+.show-welcome body{overflow:hidden}
+body.is-locked{position:fixed;left:0;right:0;width:100%;overflow:hidden}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0;list-style:none}
+button,input,a,summary{font:inherit;color:inherit;touch-action:manipulation}
+button{cursor:pointer;background:none;border:0;padding:0}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+.sr-only{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip-link{position:fixed;left:12px;top:-60px;z-index:100;padding:12px 16px;border-radius:10px;background:var(--gold);color:var(--on-gold);font-weight:600;text-decoration:none}
+.skip-link:focus{top:max(12px,env(safe-area-inset-top))}
+.hdr{position:sticky;top:calc(-1 * var(--brand-h));z-index:20;padding-top:env(safe-area-inset-top);background:rgba(12,10,11,.97);border-bottom:1px solid var(--line)}
+.hdr__brand{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px max(12px,env(safe-area-inset-right)) 2px max(14px,env(safe-area-inset-left));min-height:56px}
+.logo{font:400 2.1rem/1 "Great Vibes",cursive;color:var(--gold);letter-spacing:.02em;white-space:nowrap}
+.lang{display:flex;gap:4px;padding:3px;border:1px solid var(--line);border-radius:999px}
+.lang-switch__btn{min-width:44px;min-height:40px;padding:0 8px;border-radius:999px;font:600 .8rem/1 var(--sans);letter-spacing:.06em;color:var(--muted)}
+.lang-switch__btn.is-active{background:var(--gold);color:var(--on-gold)}
+.hdr__sticky{padding:6px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left))}
+.search{position:relative;max-width:640px;margin:0 auto}
+.search__input{width:100%;height:44px;padding:0 48px 0 44px;border:1px solid var(--line);border-radius:999px;background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%23c4b7ab' stroke-width='2' stroke-linecap='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 14px 50%;color:var(--text);font-size:16px;outline:none;-webkit-appearance:none;appearance:none}
+.search__input::placeholder{color:var(--muted-2)}
+.search__input::-webkit-search-cancel-button{display:none}
+.search__input:focus{border-color:rgba(212,168,90,.6)}
+.search__clear{position:absolute;right:0;top:0;width:48px;height:44px;display:grid;place-items:center;color:var(--muted);font-size:1.25rem}
+.tabs{margin:8px calc(-1 * max(12px,env(safe-area-inset-left))) 0;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scroll-padding-inline:12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tabs__track{display:flex;gap:6px;width:max-content;padding:0 12px}
+.tab{display:flex;align-items:center;min-height:44px;padding:0 15px;border:1px solid var(--line);border-radius:999px;scroll-snap-align:start;font:600 .78rem/1 var(--sans);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;text-decoration:none;color:var(--text)}
+.tab.is-active{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}
+.menu{display:block;max-width:1200px;margin:0 auto;padding:4px max(12px,env(safe-area-inset-right)) 32px max(12px,env(safe-area-inset-left));outline:none}
+.has-order .menu{padding-bottom:96px}
+.sec{content-visibility:auto;contain-intrinsic-size:auto 900px;scroll-margin-top:calc(var(--sticky-h) + 8px)}
+.hero{scroll-margin-top:calc(var(--sticky-h) + 8px);padding:26px 0 2px;text-align:center}
+.hero__title{font:600 1.75rem/1.15 var(--serif);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sec__title{display:flex;align-items:center;justify-content:center;gap:12px;margin:26px 0 14px;font:600 1.45rem/1.2 var(--serif);letter-spacing:.08em;text-transform:uppercase;text-align:center;text-wrap:balance}
+.sec__title::before,.sec__title::after{content:"";flex:1 1 16px;max-width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.rows{display:grid;gap:8px}
+.card{position:relative;display:flex;flex-direction:column;min-width:0;border:1px solid transparent;border-radius:16px;background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(135deg,rgba(232,213,163,.55),rgba(212,168,90,.16) 38%,rgba(212,168,90,.16) 62%,rgba(232,213,163,.5)) border-box;overflow:hidden}
+.card__media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface-2)}
+.card__media::before,.skel__media::before,.skel__line::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 20%,rgba(246,238,228,.07) 50%,transparent 80%);transform:translateX(-100%);animation:shimmer 1.4s ease-in-out infinite}
+.card__media img{position:relative;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease}
+.card__media img.is-loaded{opacity:1}
+.card__body{display:flex;flex:1;flex-direction:column;gap:4px;padding:10px 12px 12px}
+.card__name{font:600 1.14rem/1.15 var(--serif);letter-spacing:.01em;overflow-wrap:anywhere}
+.card__open{text-align:left;padding:0}
+.card__open::after{content:"";position:absolute;inset:0;border-radius:inherit}
+.card__desc{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:.84rem;line-height:1.35;color:var(--muted)}
+.card__weight{font-size:.78rem;color:var(--muted-2)}
+.card__foot{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:auto;padding-top:6px}
+.card__price{font:700 1rem/1.1 var(--sans);font-variant-numeric:tabular-nums;color:var(--gold);white-space:nowrap}
+.add{position:relative;z-index:1;flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--on-gold)}
+.add::before,.add::after{content:"";position:absolute;width:16px;height:2.5px;border-radius:2px;background:currentColor}
+.add::after{transform:rotate(90deg)}
+.add__qty{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--text);color:var(--on-gold);font:700 .72rem/20px var(--sans);text-align:center}
+.oos{font-size:.78rem;font-weight:600;color:#f0b9a8;white-space:nowrap}
+.card--oos .card__media,.card--oos .card__name{opacity:.55}
+.row{flex-direction:row;align-items:center;gap:10px;padding:10px 10px 10px 14px;border-radius:14px}
+.row .card__body{padding:0;gap:3px}
+.row__side{display:flex;align-items:center;gap:10px;flex:none}
+.skel{padding-top:20px;min-height:150vh}
+.skel__title{width:46%;height:22px;margin:6px auto 18px;border-radius:8px;background:var(--surface-2)}
+.skel__card{border-radius:16px;background:var(--surface);overflow:hidden;border:1px solid var(--line)}
+.skel__media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface-2)}
+.skel__line{position:relative;height:12px;margin:12px;border-radius:6px;background:var(--surface-2);overflow:hidden}
+.skel__line--short{width:45%;margin-top:0}
+@keyframes shimmer{to{transform:translateX(100%)}}
+.welcome{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:max(14px,env(safe-area-inset-top)) 14px max(14px,env(safe-area-inset-bottom));background:rgba(8,6,7,.88);transition:opacity .25s ease}
+.show-welcome .welcome{display:flex}
+.welcome.is-leaving{opacity:0}
+.welcome__box{position:relative;width:min(100%,400px);max-height:100%;overflow-y:auto;overscroll-behavior:contain;padding:22px 18px 16px;border:1px solid rgba(212,168,90,.32);border-radius:20px;background:linear-gradient(180deg,rgba(212,168,90,.1),transparent 45%),#1a1415;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.welcome__top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.welcome__eyebrow{font:700 .72rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.welcome h2{font:600 2rem/1.1 var(--serif);margin-bottom:14px}
+.welcome__info{padding:12px 14px;border:1px solid rgba(212,168,90,.2);border-radius:14px;background:rgba(255,255,255,.04);text-align:left;font-size:.95rem;color:#ddd2c6}
+.welcome__info p+p{margin-top:6px}
+.welcome strong,.rules strong{color:var(--gold-soft)}
+.rules{margin-top:10px;border:1px solid var(--line);border-radius:14px;text-align:left}
+.rules summary{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:0 14px;cursor:pointer;list-style:none;font:600 .82rem/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+.rules summary::-webkit-details-marker{display:none}
+.rules summary::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .2s ease}
+.rules[open] summary::after{transform:rotate(-135deg) translateX(-2px)}
+.rules p{padding:0 14px 14px;font-size:.88rem;line-height:1.6;color:var(--muted)}
+.welcome__subtitle{margin:16px 0 10px;font:700 .75rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.welcome__go{display:flex;flex-direction:column;align-items:flex-start;gap:4px;width:100%;min-height:64px;padding:14px 18px;border:1px solid rgba(212,168,90,.45);border-radius:14px;background:linear-gradient(135deg,var(--wine),#4a121a);color:#fff8ef;text-align:left}
+.welcome__go-title{font:600 1.25rem/1.1 var(--serif);letter-spacing:.06em;text-transform:uppercase}
+.welcome__go-desc{font-size:.86rem;color:rgba(246,238,228,.82)}
+.welcome__notice{margin-top:12px;font-size:.78rem;line-height:1.4;color:var(--muted-2)}
+.orderbar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:0 max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));pointer-events:none;opacity:0;visibility:hidden;transform:translate3d(0,120%,0);transition:transform .35s var(--ease),opacity .25s ease,visibility 0s linear .35s}
+.orderbar.is-visible{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.orderbar__btn{pointer-events:auto;display:flex;align-items:center;gap:8px;width:min(100%,560px);min-height:56px;margin:0 auto;padding:6px 6px 6px 18px;border-radius:16px;background:var(--gold);color:var(--on-gold);font:600 1rem/1.2 var(--sans);text-align:left;box-shadow:0 10px 30px rgba(0,0,0,.55)}
+.orderbar__text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.orderbar__count{display:inline-block}
+.orderbar__sum{flex:none;padding:10px 12px;border-radius:12px;background:rgba(26,18,16,.14);font-weight:700;font-variant-numeric:tabular-nums}
+.totop{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));z-index:25;display:grid;place-items:center;width:48px;height:48px;border:1px solid rgba(212,168,90,.45);border-radius:50%;background:rgba(23,19,20,.94);color:var(--gold);opacity:0;visibility:hidden;transform:translate3d(0,12px,0);transition:transform .3s var(--ease),opacity .2s ease,visibility 0s linear .3s}
+.totop.is-visible{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.has-order .totop{bottom:calc(82px + env(safe-area-inset-bottom))}
+@media (min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.rows{grid-template-columns:repeat(2,minmax(0,1fr))}.hdr__brand,.hdr__sticky{padding-left:20px;padding-right:20px}.menu{padding-left:20px;padding-right:20px}}
+@media (min-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.tabs__track{margin:0 auto}}
+@media (max-width:359px){.card__body{padding:9px 10px 10px}.card__name{font-size:1.05rem}.card__price{font-size:.92rem}.logo{font-size:1.85rem}.lang-switch__btn{min-width:44px;padding:0 6px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+<link rel="preload" href="menu.css?v=__BUILD__" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="menu.css?v=__BUILD__"></noscript>
+<script src="i18n.js?v=__BUILD__" defer></script>
+<script src="app.js?v=__BUILD__" defer></script>
 </head>
-
 <body>
-    <div class="scene-bg" aria-hidden="true">
-        <div class="scene-bg__wash"></div>
-        <div class="scene-bg__grain"></div>
-        <p class="scene-bg__mark">Friendly Bar</p>
+<a class="skip-link" href="#menu" data-i18n="skip">Перейти к меню</a>
+
+<header class="hdr" id="hdr">
+  <div class="hdr__brand" id="hdrBrand">
+    <h1 class="logo"><span aria-hidden="true">Friendly</span><span class="sr-only" data-i18n="doc.title">Friendly — Меню</span></h1>
+    <div class="lang" role="group" data-i18n-aria="lang.label" aria-label="Язык">
+      <button type="button" class="lang-switch__btn is-active" data-action="lang" data-lang="ru" aria-pressed="true" lang="ru">RU</button>
+      <button type="button" class="lang-switch__btn" data-action="lang" data-lang="kk" aria-pressed="false" lang="kk">KZ</button>
+      <button type="button" class="lang-switch__btn" data-action="lang" data-lang="en" aria-pressed="false" lang="en">EN</button>
     </div>
-
-    <div class="page-shell">
-        <header class="header">
-            <div class="header-top">
-                <div class="header-brand-row">
-                    <div class="logo">Friendly</div>
-                    <div class="header-tools">
-                        <div class="lang-switch" role="group" aria-label="Language">
-                            <button type="button" class="lang-switch__btn is-active" data-lang="ru" aria-pressed="true">RU</button>
-                            <button type="button" class="lang-switch__btn" data-lang="kk" aria-pressed="false">KZ</button>
-                            <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false">EN</button>
-                        </div>
-                        <a href="admin.html" class="header-admin-btn" data-i18n-title="admin.title" title="Админ-панель" target="_blank" rel="noopener noreferrer">Admin</a>
-                        <button type="button" class="cart-btn" onclick="toggleCart()" data-i18n-aria="cart.aria" aria-label="Список заказа">
-                            <span data-i18n="cart.btn">Заказ</span>
-                            <span class="cart-count">0</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="search">
-                    <input type="search" class="search-input" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.aria" placeholder="Поиск блюда…" aria-label="Поиск по меню" enterkeyhint="search" autocomplete="off">
-                </div>
-            </div>
-            <nav class="categories" data-i18n-aria="nav.aria" aria-label="Категории меню">
-                <a href="#" class="category active" data-i18n="nav.all">Все</a>
-                <a href="#menu-gruziya" class="category" data-i18n-section="Меню Грузия">Меню Грузия</a>
-                <a href="#main-courses" class="category" data-i18n-section="Основные блюда">Основные блюда</a>
-                <a href="#salaty-gruziya" class="category" data-i18n-section="Салаты Грузия">Салаты Грузия</a>
-                <a href="#soup" class="category" data-i18n-section="Супы">Супы</a>
-                <a href="#khachapuri" class="category" data-i18n-section="Хачапури">Хачапури</a>
-                <a href="#goryachie-zakuski" class="category" data-i18n-section="Горячие закуски">Горячие закуски</a>
-                <a href="#holodnye-zakuski" class="category" data-i18n-section="Холодные закуски">Холодные закуски</a>
-                <a href="#menu-evropa" class="category" data-i18n-section="Меню Европа">Меню Европа</a>
-                <a href="#salaty-evropa" class="category" data-i18n-section="Салаты Европа">Салаты Европа</a>
-                <a href="#beef" class="category" data-i18n-section="Стейки">Стейки</a>
-                <a href="#fisheat" class="category" data-i18n-section="Блюда из рыбы">Блюда из рыбы</a>
-                <a href="#chikenaet" class="category" data-i18n-section="Блюда из курицы">Блюда из курицы</a>
-                <a href="#alleat" class="category" data-i18n-section="Блюда на компанию">Блюда на компанию</a>
-                <a href="#pasties" class="category" data-i18n-section="Пасты">Пасты</a>
-                <a href="#rolls" class="category" data-i18n-section="Роллы">Роллы</a>
-                <a href="#sets" class="category" data-i18n-section="Сеты">Сеты</a>
-                <a href="#pizza" class="category" data-i18n-section="Пиццы">Пиццы</a>
-                <a href="#meat" class="category" data-i18n-section="Шашлыки">Шашлыки</a>
-                <a href="#garnirs" class="category" data-i18n-section="Гарниры">Гарниры</a>
-                <a href="#souls" class="category" data-i18n-section="Соусы">Соусы</a>
-                <a href="#candy" class="category" data-i18n-section="Десерты">Десерты</a>
-                <a href="#bar" class="category" data-i18n-section="Барное меню">Барное меню</a>
-            </nav>
-        </header>
-
-        <main id="menu-root" class="menu-root"></main>
-
+  </div>
+  <div class="hdr__sticky">
+    <div class="search" role="search">
+      <label class="sr-only" for="q" data-i18n="search.aria">Поиск по меню</label>
+      <input id="q" type="search" class="search__input" data-i18n-placeholder="search.placeholder" placeholder="Поиск блюда…" enterkeyhint="search" autocomplete="off" autocorrect="off" spellcheck="false" aria-controls="menu">
+      <button type="button" class="search__clear" data-action="search-clear" data-i18n-aria="search.clear" aria-label="Сбросить поиск" hidden>✕</button>
     </div>
+    <nav class="tabs" id="tabs" data-i18n-aria="nav.aria" aria-label="Категории меню">
+      <div class="tabs__track">
+        <a href="#" class="tab is-active" aria-current="true" data-i18n="nav.all">Все</a>
+        <a href="#menu-gruziya" class="tab" data-i18n-section="Меню Грузия">Меню Грузия</a>
+        <a href="#main-courses" class="tab" data-i18n-section="Основные блюда">Основные блюда</a>
+        <a href="#salaty-gruziya" class="tab" data-i18n-section="Салаты Грузия">Салаты Грузия</a>
+        <a href="#soup" class="tab" data-i18n-section="Супы">Супы</a>
+        <a href="#khachapuri" class="tab" data-i18n-section="Хачапури">Хачапури</a>
+        <a href="#goryachie-zakuski" class="tab" data-i18n-section="Горячие закуски">Горячие закуски</a>
+        <a href="#holodnye-zakuski" class="tab" data-i18n-section="Холодные закуски">Холодные закуски</a>
+        <a href="#menu-evropa" class="tab" data-i18n-section="Меню Европа">Меню Европа</a>
+        <a href="#salaty-evropa" class="tab" data-i18n-section="Салаты Европа">Салаты Европа</a>
+        <a href="#beef" class="tab" data-i18n-section="Стейки">Стейки</a>
+        <a href="#fisheat" class="tab" data-i18n-section="Блюда из рыбы">Блюда из рыбы</a>
+        <a href="#chikenaet" class="tab" data-i18n-section="Блюда из курицы">Блюда из курицы</a>
+        <a href="#alleat" class="tab" data-i18n-section="Блюда на компанию">Блюда на компанию</a>
+        <a href="#pasties" class="tab" data-i18n-section="Пасты">Пасты</a>
+        <a href="#rolls" class="tab" data-i18n-section="Роллы">Роллы</a>
+        <a href="#sets" class="tab" data-i18n-section="Сеты">Сеты</a>
+        <a href="#pizza" class="tab" data-i18n-section="Пиццы">Пиццы</a>
+        <a href="#meat" class="tab" data-i18n-section="Шашлыки">Шашлыки</a>
+        <a href="#garnirs" class="tab" data-i18n-section="Гарниры">Гарниры</a>
+        <a href="#souls" class="tab" data-i18n-section="Соусы">Соусы</a>
+        <a href="#candy" class="tab" data-i18n-section="Десерты">Десерты</a>
+        <a href="#bar" class="tab" data-i18n-section="Барное меню">Барное меню</a>
+      </div>
+    </nav>
+  </div>
+</header>
 
-    <div class="cart-backdrop" id="cartBackdrop" hidden aria-hidden="true"></div>
-    <div class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
-        <div class="cart-header">
-            <div class="cart-title" id="cartTitle" data-i18n="cart.title">Ваш заказ</div>
-            <button type="button" class="close-cart" onclick="hideCart()" data-i18n-aria="cart.close" aria-label="Закрыть корзину">×</button>
-        </div>
-        <div class="cart-items" id="cartItems"></div>
-        <div class="cart-summary">
-            <div class="cart-row"><span data-i18n="cart.subtotal">Сумма позиций</span><span id="subtotalPrice">0 тг</span></div>
-            <div class="cart-row cart-row--muted"><span data-i18n="cart.service">Обслуживание 15%</span><span id="servicePrice">0 тг</span>
-            </div>
-            <div class="cart-total"><span data-i18n="cart.total">Итого к оплате</span><span id="totalPrice">0 тг</span></div>
-        </div>
+<main id="menu" class="menu" tabindex="-1" aria-busy="true">
+  <div class="skel" aria-hidden="true">
+    <div class="skel__title"></div>
+    <div class="grid">
+      <div class="skel__card"><div class="skel__media"></div><div class="skel__line"></div><div class="skel__line skel__line--short"></div></div>
+      <div class="skel__card"><div class="skel__media"></div><div class="skel__line"></div><div class="skel__line skel__line--short"></div></div>
+      <div class="skel__card"><div class="skel__media"></div><div class="skel__line"></div><div class="skel__line skel__line--short"></div></div>
+      <div class="skel__card"><div class="skel__media"></div><div class="skel__line"></div><div class="skel__line skel__line--short"></div></div>
     </div>
+  </div>
+  <p class="sr-only" data-i18n="menu.loading">Загрузка меню…</p>
+</main>
 
-    <div class="modal" id="modal" onclick="closeModalOnBackdrop(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <img src="https://placehold.co/176x140" alt="" class="modal-image" id="modalImage">
-            <div class="modal-body">
-                <div class="modal-name" id="modalName">Маргарита</div>
-                <div class="modal-description" id="modalDescription"></div>
-                <div class="modal-price" id="modalPrice">490тг</div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="close-modal-btn" onclick="closeModal()" data-i18n="modal.close">Закрыть</button>
-            </div>
-        </div>
-    </div>
+<div class="state" id="searchEmpty" hidden>
+  <p class="state__title" data-i18n="search.empty">Ничего не найдено</p>
+  <p class="state__hint" data-i18n="search.emptyHint">Попробуйте другое название или ингредиент</p>
+  <button type="button" class="btn-ghost" data-action="search-clear" data-i18n="search.reset">Показать всё меню</button>
+</div>
 
-    <div class="float-controls" aria-label="Quick actions">
-        <button type="button" id="toTopRight" class="to-top to-top--right hidden" data-i18n-aria="top" data-i18n-title="top" aria-label="Наверх" title="Наверх">↑</button>
-    </div>
-
-    <div id="welcome-screen" class="popup-overlay">
-    <div class="popup-box">
-        <div class="popup-brand">
-            <p class="popup-eyebrow" data-i18n="welcome.eyebrow">Friendly Bar</p>
-            <h2 data-i18n="welcome.title">Добро пожаловать</h2>
-        </div>
-        
-        <div class="popup-info-card">
-            <p data-i18n="welcome.service" data-i18n-html>Обслуживание в заведении — <strong>15%</strong>.</p>
-            <p data-i18n="welcome.karaoke" data-i18n-html>Караоке — <strong>1 000 тг</strong> с гостя.</p>
-        </div>
-
-        <p class="popup-subtitle" data-i18n="welcome.subtitle">Выберите меню</p>
-        
-        <div class="menu-selection-box">
-            <button class="menu-choice-btn kitchen-theme" onclick="closePopup('kitchen')">
-                <div class="btn-text">
-                    <span class="btn-title" data-i18n="welcome.kitchen">Кухня и бар</span>
-                    <span class="btn-desc" data-i18n="welcome.kitchenDesc">Блюда, напитки, десерты</span>
-                </div>
-            </button>
-        </div>
-        
-        <p class="popup-bottom-notice" data-i18n="welcome.notice">Продолжая, вы принимаете правила заведения.</p>
-    </div>
-</div> 
-
-    <script src="config.js?v=audit11"></script>
-    <script src="i18n.js?v=audit11"></script>
-    <script src="i18n-menu.js?v=audit11"></script>
-    <script src="data.js?v=audit11"></script>
-    <script src="app.js?v=audit11"></script>
-<footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-info">
-            <p class="footer-alert">
-                <span class="alert-icon">⚠️</span>
-                <span data-i18n="footer.alert" data-i18n-html>Обращаем ваше внимание: обслуживание — <strong>15%</strong>. Стоимость караоке — <strong>1 000 тг</strong> с человека.</span>
-            </p>
-        </div>
-
-        <hr class="footer-divider">
-
-        <div class="footer-bottom">
-            <p class="footer-protection">
-                <span class="shield-icon">🛡️</span>
-                <span data-i18n="footer.protect">Сайт полностью защищен безопасным соединением.</span>
-            </p>
-            <p class="footer__creator" data-i18n="footer.developer">Разработчик сайта — hmeeti</p>
-            <p class="footer-copyright" data-i18n="footer.copy">
-                &copy; 2026 Все права защищены. Копирование материалов запрещено.
-            </p>
-            <a href="admin.html" class="footer-admin-link" title="Админ" target="_blank" rel="noopener noreferrer">·</a>
-        </div>
-
-        <hr class="footer-divider">
-
-        <div class="footer-rules">
-            <p class="footer-rules__title" data-i18n="footer.rulesTitle">Правила посещения заведения</p>
-            <p class="footer-rules__text" data-i18n="footer.rules" data-i18n-html>
-                В заведении запрещено курение и распитие принесённых с собой напитков. Алкогольная и табачная продукция, а также обслуживание в баре не предоставляются гостям младше <strong>21 года</strong>. Администрация вправе отказать в обслуживании гостям в состоянии сильного алкогольного опьянения или при нарушении общественного порядка. Просим уважать покой других гостей и персонала. Заведение не несёт ответственности за личные вещи, оставленные без присмотра.
-            </p>
-        </div>
-    </div>
+<footer class="foot" id="foot">
+  <p class="foot__alert"><span data-i18n="footer.alert" data-i18n-html>Обращаем ваше внимание: обслуживание — <strong>15%</strong>. Стоимость караоке — <strong>1 000 тг</strong> с человека.</span></p>
+  <details class="rules foot__rules">
+    <summary data-i18n="footer.rulesTitle">Правила посещения заведения</summary>
+    <p data-i18n="footer.rules" data-i18n-html>В заведении запрещено курение и распитие принесённых с собой напитков. Алкогольная и табачная продукция, а также обслуживание в баре не предоставляются гостям младше <strong>21 года</strong>. Администрация вправе отказать в обслуживании гостям в состоянии сильного алкогольного опьянения или при нарушении общественного порядка. Просим уважать покой других гостей и персонала. Заведение не несёт ответственности за личные вещи, оставленные без присмотра.</p>
+  </details>
+  <p class="foot__note" data-i18n="footer.note">Цены указаны в тенге. Наличие блюд уточняйте у официанта.</p>
+  <p class="foot__meta"><span data-i18n="footer.developer">Разработчик сайта — hmeeti</span><br><span data-i18n="footer.copy">© 2026 Все права защищены. Копирование материалов запрещено.</span></p>
 </footer>
 
-    <div id="apiWakeOverlay" class="api-wake" hidden>
-        <div class="api-wake__card" role="dialog" aria-labelledby="apiWakeTitle">
-            <div class="api-wake__spinner" aria-hidden="true"></div>
-            <p id="apiWakeTitle" class="api-wake__title">Подключаем меню…</p>
-            <p class="api-wake__hint">Сервер просыпается. Меню уже доступно локально.</p>
-            <button type="button" id="apiWakeDismiss" class="api-wake__btn">Показать меню</button>
-        </div>
-    </div>
-    <div id="toastHost" class="toast-host" aria-live="polite"></div>
-</body>
+<div class="orderbar" id="orderBar">
+  <button type="button" class="orderbar__btn" data-action="cart-open" aria-haspopup="dialog" aria-controls="cartSheet">
+    <span class="orderbar__text"><span data-i18n="cart.btn">Заказ</span> · <span class="orderbar__count" id="obCount">0</span></span>
+    <span class="orderbar__sum" id="obSum">0 тг</span>
+  </button>
+</div>
 
+<button type="button" class="totop" id="toTop" data-action="top" data-i18n-aria="top" aria-label="Наверх">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div class="sheet" id="cartSheet" hidden>
+  <div class="sheet__backdrop" data-action="close"></div>
+  <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle" tabindex="-1">
+    <div class="sheet__grip" aria-hidden="true"></div>
+    <div class="sheet__head">
+      <h2 class="sheet__title" id="cartTitle" data-i18n="cart.title">Ваш заказ</h2>
+      <span class="table-chip" id="tableChip" hidden></span>
+      <button type="button" class="icon-btn" data-action="close" data-i18n-aria="cart.close" aria-label="Закрыть корзину">✕</button>
+    </div>
+    <div class="sheet__scroll">
+      <ul class="cart-list" id="cartItems"></ul>
+      <div class="state state--cart" id="cartEmpty">
+        <p class="state__title" data-i18n="cart.emptyTitle">Заказ пока пуст</p>
+        <p class="state__hint" data-i18n="cart.empty">Добавьте блюда кнопкой «+»</p>
+      </div>
+    </div>
+    <div class="sheet__foot" id="cartSum" hidden>
+      <div class="cart-row"><span data-i18n="cart.subtotal">Сумма позиций</span><span id="subtotalPrice">0 тг</span></div>
+      <div class="cart-row cart-row--muted"><span data-i18n="cart.service">Обслуживание 15%</span><span id="servicePrice">0 тг</span></div>
+      <div class="cart-total"><span data-i18n="cart.total">Итого к оплате</span><span id="totalPrice">0 тг</span></div>
+      <p class="cart-hint" data-i18n="cart.hint">Покажите этот список официанту</p>
+      <button type="button" class="btn-ghost btn-ghost--small" data-action="cart-clear" data-i18n="cart.clear">Очистить заказ</button>
+    </div>
+  </div>
+</div>
+
+<div class="sheet sheet--dish" id="dishSheet" hidden>
+  <div class="sheet__backdrop" data-action="close"></div>
+  <div class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="dishName" tabindex="-1">
+    <div class="sheet__grip" aria-hidden="true"></div>
+    <button type="button" class="icon-btn icon-btn--float" data-action="close" data-i18n-aria="modal.close" aria-label="Закрыть">✕</button>
+    <div class="sheet__scroll">
+      <div class="dish__media" id="dishMedia"><img id="dishImg" alt="" width="800" height="600" decoding="async"></div>
+      <div class="dish__body">
+        <h2 class="dish__name" id="dishName"></h2>
+        <p class="dish__desc" id="dishDesc"></p>
+        <p class="dish__weight" id="dishWeight" hidden></p>
+      </div>
+    </div>
+    <div class="sheet__foot dish__foot">
+      <span class="dish__price" id="dishPrice"></span>
+      <span class="oos" id="dishOos" data-i18n="oos" hidden>нет в наличии</span>
+      <button type="button" class="btn-gold" id="dishAdd" data-action="dish-add" data-i18n="add">Добавить в заказ</button>
+      <div class="stepper" id="dishStepper" hidden>
+        <button type="button" class="qty-btn" data-action="dec" data-i18n-aria="qty.dec" aria-label="Убрать одну порцию">−</button>
+        <output class="stepper__val" id="dishQty" aria-live="polite">1</output>
+        <button type="button" class="qty-btn" data-action="inc" data-i18n-aria="qty.inc" aria-label="Добавить ещё одну">+</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+  <div class="welcome__box">
+    <div class="welcome__top">
+      <p class="welcome__eyebrow" data-i18n="welcome.eyebrow">Friendly Bar</p>
+      <div class="lang" role="group" data-i18n-aria="lang.label" aria-label="Язык">
+        <button type="button" class="lang-switch__btn is-active" data-action="lang" data-lang="ru" aria-pressed="true" lang="ru">RU</button>
+        <button type="button" class="lang-switch__btn" data-action="lang" data-lang="kk" aria-pressed="false" lang="kk">KZ</button>
+        <button type="button" class="lang-switch__btn" data-action="lang" data-lang="en" aria-pressed="false" lang="en">EN</button>
+      </div>
+    </div>
+    <h2 id="welcomeTitle" data-i18n="welcome.title">Добро пожаловать</h2>
+    <div class="welcome__info">
+      <p data-i18n="welcome.service" data-i18n-html>Обслуживание в заведении — <strong>15%</strong>.</p>
+      <p data-i18n="welcome.karaoke" data-i18n-html>Караоке — <strong>1 000 тг</strong> с гостя.</p>
+    </div>
+    <details class="rules">
+      <summary data-i18n="footer.rulesTitle">Правила посещения заведения</summary>
+      <p data-i18n="footer.rules" data-i18n-html>В заведении запрещено курение и распитие принесённых с собой напитков. Алкогольная и табачная продукция, а также обслуживание в баре не предоставляются гостям младше <strong>21 года</strong>. Администрация вправе отказать в обслуживании гостям в состоянии сильного алкогольного опьянения или при нарушении общественного порядка. Просим уважать покой других гостей и персонала. Заведение не несёт ответственности за личные вещи, оставленные без присмотра.</p>
+    </details>
+    <p class="welcome__subtitle" data-i18n="welcome.subtitle">Выберите меню</p>
+    <button type="button" class="welcome__go" data-action="welcome-go">
+      <span class="welcome__go-title" data-i18n="welcome.kitchen">Кухня и бар</span>
+      <span class="welcome__go-desc" data-i18n="welcome.kitchenDesc">Блюда, напитки, десерты</span>
+    </button>
+    <p class="welcome__notice" data-i18n="welcome.notice">Продолжая, вы принимаете правила заведения.</p>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="true"></div>
+<p class="sr-only" id="srLive" aria-live="polite"></p>
+</body>
 </html>
