@@ -20,7 +20,6 @@
       'cart.total': 'Итого к оплате',
       'nav.all': 'Все',
       'nav.aria': 'Категории меню',
-      'admin.title': 'Админ-панель',
       'welcome.eyebrow': 'Friendly Bar',
       'welcome.title': 'Добро пожаловать',
       'welcome.service': 'Обслуживание в заведении — <strong>15%</strong>.',
@@ -33,16 +32,32 @@
       'modal.fallbackDesc': 'Состав уточняйте у персонала.',
       'oos': 'нет в наличии',
       'add': 'Добавить в заказ',
-      'theme.light': 'Светлая тема',
-      'theme.dark': 'Тёмная тема',
       'top': 'Наверх',
       'footer.alert': 'Обращаем ваше внимание: обслуживание — <strong>15%</strong>. Стоимость караоке — <strong>1 000 тг</strong> с человека.',
-      'footer.protect': 'Сайт полностью защищен безопасным соединением.',
+      'footer.note': 'Цены указаны в тенге. Наличие блюд уточняйте у официанта.',
       'footer.developer': 'Разработчик сайта — hmeeti',
       'footer.copy': '© 2026 Все права защищены. Копирование материалов запрещено.',
       'footer.rulesTitle': 'Правила посещения заведения',
       'footer.rules': 'В заведении запрещено курение и распитие принесённых с собой напитков. Алкогольная и табачная продукция, а также обслуживание в баре не предоставляются гостям младше <strong>21 года</strong>. Администрация вправе отказать в обслуживании гостям в состоянии сильного алкогольного опьянения или при нарушении общественного порядка. Просим уважать покой других гостей и персонала. Заведение не несёт ответственности за личные вещи, оставленные без присмотра.',
       'lang.label': 'Язык',
+      'skip': 'Перейти к меню',
+      'search.clear': 'Сбросить поиск',
+      'search.empty': 'Ничего не найдено',
+      'search.emptyHint': 'Попробуйте другое название или ингредиент',
+      'search.reset': 'Показать всё меню',
+      'cart.open': 'Открыть заказ',
+      'cart.emptyTitle': 'Заказ пока пуст',
+      'cart.hint': 'Покажите этот список официанту',
+      'cart.clear': 'Очистить заказ',
+      'cart.table': 'Стол',
+      'qty.dec': 'Убрать одну порцию',
+      'qty.inc': 'Добавить ещё одну',
+      'added': 'Добавлено в заказ',
+      'menu.loading': 'Загрузка меню…',
+      'menu.updated': 'Меню обновлено',
+      'menu.offline': 'Нет сети — показано сохранённое меню',
+      'menu.error': 'Не удалось загрузить меню. Проверьте интернет.',
+      'menu.retry': 'Повторить',
     },
     kk: {
       'doc.title': 'Friendly — Мәзір',
@@ -58,7 +73,6 @@
       'cart.total': 'Төлеуге барлығы',
       'nav.all': 'Барлығы',
       'nav.aria': 'Мәзір санаттары',
-      'admin.title': 'Админ панелі',
       'welcome.eyebrow': 'Friendly Bar',
       'welcome.title': 'Қош келдіңіз',
       'welcome.service': 'Мекемеде қызмет көрсету — <strong>15%</strong>.',
@@ -71,16 +85,32 @@
       'modal.fallbackDesc': 'Құрамын қызметкерлерден нақтылаңыз.',
       'oos': 'қолда жоқ',
       'add': 'Тапсырысқа қосу',
-      'theme.light': 'Жарық тема',
-      'theme.dark': 'Қараңғы тема',
       'top': 'Жоғары',
       'footer.alert': 'Назар аударыңыз: қызмет көрсету — <strong>15%</strong>. Караоке құны — бір адамға <strong>1 000 тг</strong>.',
-      'footer.protect': 'Сайт қауіпсіз байланыспен толық қорғалған.',
+      'footer.note': 'Бағалар теңгемен көрсетілген. Тағамның бар-жоғын даяшыдан нақтылаңыз.',
       'footer.developer': 'Сайт әзірлеушісі — hmeeti',
       'footer.copy': '© 2026 Барлық құқықтар қорғалған. Материалдарды көшіруге тыйым салынады.',
       'footer.rulesTitle': 'Мекемеге келу ережелері',
       'footer.rules': 'Мекемеде темекі шегуге және өзімен алып келген сусындарды ішуге тыйым салынады. Алкоголь мен темекі өнімдері, сондай-ақ барда қызмет көрсету <strong>21 жасқа</strong> толмаған қонақтарға берілмейді. Әкімшілік қатты мас күйдегі немесе қоғамдық тәртіпті бұзған қонақтарға қызмет көрсетуден бас тарту құқығын өзінде қалдырады. Басқа қонақтар мен қызметкерлердің тыныштығын құрметтеуіңізді сұраймыз. Мекеме қараусыз қалдырылған жеке заттар үшін жауапкершілік көтермейді.',
       'lang.label': 'Тіл',
+      'skip': 'Мәзірге өту',
+      'search.clear': 'Іздеуді тазалау',
+      'search.empty': 'Ештеңе табылмады',
+      'search.emptyHint': 'Басқа атауды немесе құрамды көріңіз',
+      'search.reset': 'Бүкіл мәзірді көрсету',
+      'cart.open': 'Тапсырысты ашу',
+      'cart.emptyTitle': 'Тапсырыс әзірге бос',
+      'cart.hint': 'Бұл тізімді даяшыға көрсетіңіз',
+      'cart.clear': 'Тапсырысты тазалау',
+      'cart.table': 'Үстел',
+      'qty.dec': 'Бір порцияны алып тастау',
+      'qty.inc': 'Тағы біреуін қосу',
+      'added': 'Тапсырысқа қосылды',
+      'menu.loading': 'Мәзір жүктелуде…',
+      'menu.updated': 'Мәзір жаңартылды',
+      'menu.offline': 'Желі жоқ — сақталған мәзір көрсетілді',
+      'menu.error': 'Мәзірді жүктеу мүмкін болмады. Интернетті тексеріңіз.',
+      'menu.retry': 'Қайталау',
     },
     en: {
       'doc.title': 'Friendly — Menu',
@@ -96,7 +126,6 @@
       'cart.total': 'Total due',
       'nav.all': 'All',
       'nav.aria': 'Menu categories',
-      'admin.title': 'Admin panel',
       'welcome.eyebrow': 'Friendly Bar',
       'welcome.title': 'Welcome',
       'welcome.service': 'Service charge is <strong>15%</strong>.',
@@ -109,17 +138,39 @@
       'modal.fallbackDesc': 'Ask staff for ingredients.',
       'oos': 'sold out',
       'add': 'Add to order',
-      'theme.light': 'Light theme',
-      'theme.dark': 'Dark theme',
       'top': 'Back to top',
       'footer.alert': 'Please note: service charge is <strong>15%</strong>. Karaoke is <strong>1,000 ₸</strong> per person.',
-      'footer.protect': 'This site is protected by a secure connection.',
+      'footer.note': 'Prices are in tenge. Please check availability with your waiter.',
       'footer.developer': 'Website developer — hmeeti',
       'footer.copy': '© 2026 All rights reserved. Copying materials is prohibited.',
       'footer.rulesTitle': 'House rules',
       'footer.rules': 'Smoking and consuming your own beverages on the premises is prohibited. Alcohol, tobacco products and bar service are not provided to guests under <strong>21 years old</strong>. Management reserves the right to refuse service to guests who are heavily intoxicated or disrupt public order. Please respect the peace of other guests and staff. The venue is not responsible for personal belongings left unattended.',
       'lang.label': 'Language',
+      'skip': 'Skip to menu',
+      'search.clear': 'Clear search',
+      'search.empty': 'Nothing found',
+      'search.emptyHint': 'Try another name or ingredient',
+      'search.reset': 'Show full menu',
+      'cart.open': 'Open order',
+      'cart.emptyTitle': 'Your order is empty',
+      'cart.hint': 'Show this list to your waiter',
+      'cart.clear': 'Clear order',
+      'cart.table': 'Table',
+      'qty.dec': 'Remove one',
+      'qty.inc': 'Add one more',
+      'added': 'Added to order',
+      'menu.loading': 'Loading menu…',
+      'menu.updated': 'Menu updated',
+      'menu.offline': 'Offline — showing the saved menu',
+      'menu.error': 'Could not load the menu. Check your connection.',
+      'menu.retry': 'Try again',
     },
+  };
+
+  const COUNT_FORMS = {
+    ru: ['позиция', 'позиции', 'позиций'],
+    kk: ['позиция', 'позиция', 'позиция'],
+    en: ['item', 'items', 'items'],
   };
 
   const SECTIONS = {
@@ -299,6 +350,39 @@
     return row[key] || fallback;
   }
 
+  function countItems(n) {
+    const forms = COUNT_FORMS[getLang()] || COUNT_FORMS.ru;
+    const abs = Math.abs(n) % 100;
+    const last = abs % 10;
+    let form = 2;
+    if (getLang() === 'en') form = n === 1 ? 0 : 1;
+    else if (abs > 10 && abs < 20) form = 2;
+    else if (last === 1) form = 0;
+    else if (last >= 2 && last <= 4) form = 1;
+    return `${n} ${forms[form]}`;
+  }
+
+  let menuI18nPromise = null;
+  /** Dish-name translations (~90 KB) are only needed for KZ / EN. */
+  function ensureMenuI18n() {
+    if (getLang() === 'ru' || window.FRIENDLY_MENU_I18N) return Promise.resolve(false);
+    if (menuI18nPromise) return menuI18nPromise;
+    menuI18nPromise = new Promise((resolve) => {
+      const s = document.createElement('script');
+      const own = document.querySelector('script[src*="i18n.js"]');
+      const v = own && /[?&]v=([^&]+)/.exec(own.getAttribute('src'));
+      s.src = `i18n-menu.js${v ? `?v=${v[1]}` : ''}`;
+      s.async = true;
+      s.onload = () => resolve(true);
+      s.onerror = () => {
+        menuI18nPromise = null;
+        resolve(false);
+      };
+      document.head.appendChild(s);
+    });
+    return menuI18nPromise;
+  }
+
   function applyStatic() {
     document.title = t('doc.title');
     document.querySelectorAll('[data-i18n]').forEach((el) => {
@@ -337,6 +421,8 @@
     translateItemName,
     translateItemDesc,
     applyStatic,
+    countItems,
+    ensureMenuI18n,
   };
 
   // initial
