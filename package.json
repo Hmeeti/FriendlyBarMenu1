@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "node --watch server.js",
     "start": "node server.js",
@@ -11,7 +13,9 @@
     "db:push": "prisma db push",
     "db:seed": "node prisma/seed.js",
     "setup": "npm install && npm run db:push && npm run db:seed",
-    "test:security": "node scripts/security-selftest.mjs"
+    "test:security": "node scripts/security-selftest.mjs",
+    "images": "node scripts/optimize-images.mjs",
+    "menu:json": "node scripts/build-menu-json.mjs"
   },
   "dependencies": {
     "@prisma/client": "^6.9.0",
@@ -25,6 +29,7 @@
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
-    "prisma": "^6.9.0"
+    "prisma": "^6.9.0",
+    "sharp": "^0.34.5"
   }
 }
