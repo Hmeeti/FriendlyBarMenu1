@@ -82,13 +82,28 @@ async function menuStaleWhileRevalidate(event) {
   return (await network) || Response.error();
 }
 
-async function shellCacheFirst(request) {
+/**
+ * CSS/JS/fonts/icons. Versioned URLs from a stamped build never change, so they are cache-first.
+ * Without a build (Pages serving the branch as is) URLs stay the same between releases,
+ * so serve the cached copy but refresh it in the background.
+ */
+async function shellAsset(event, url) {
+  const { request } = event;
   const cache = await caches.open(SHELL);
   const cached = await cache.match(request);
-  if (cached) return cached;
-  const res = await fetch(request);
-  if (res.ok) cache.put(request, res.clone());
-  return res;
+  const immutable = VERSION.indexOf('BUILD') === -1 && (url.searchParams.has('v') || url.pathname.endsWith('.woff2'));
+  if (cached && immutable) return cached;
+  const network = fetch(request, cached ? { cache: 'no-cache' } : undefined)
+    .then((res) => {
+      if (res.ok) return cache.put(request, res.clone()).then(() => res);
+      return res;
+    })
+    .catch(() => null);
+  if (cached) {
+    event.waitUntil(network);
+    return cached;
+  }
+  return (await network) || Response.error();
 }
 
 async function trimPhotos(cache) {
@@ -144,5 +159,5 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(photoCacheFirst(event));
     return;
   }
-  if (/\.(css|js|woff2|png|webmanifest)$/.test(path)) event.respondWith(shellCacheFirst(request));
+  if (/\.(css|js|woff2|png|webmanifest)$/.test(path)) event.respondWith(shellAsset(event, url));
 });
