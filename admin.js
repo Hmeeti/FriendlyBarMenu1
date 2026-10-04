@@ -125,7 +125,13 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
     }
   }
 
+  const API_TIMEOUT_MS = 45000;
+  const API_RETRIES = 2;
+  const RETRY_STATUS = new Set([502, 503, 504]);
+
   async function api(path, options = {}) {
+    const method = (options.method || 'GET').toUpperCase();
+    const canRetry = method === 'GET';
     const headers = {
       ...(options.body && !(options.body instanceof FormData)
         ? { 'Content-Type': 'application/json' }
@@ -133,18 +139,47 @@ window.FRIENDLY_CONFIG = window.FRIENDLY_CONFIG || {
       ...(state.token ? { Authorization: `Bearer ${state.token}` } : {}),
       ...options.headers,
     };
-    const res = await fetch(`${API}${path}`, {
-      credentials: 'include',
-      ...options,
-      headers,
-      body:
-        options.body && !(options.body instanceof FormData)
-          ? JSON.stringify(options.body)
-          : options.body,
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new Error(data.error || res.statusText || 'Request failed');
-    return data;
+    const body =
+      options.body && !(options.body instanceof FormData) ? JSON.stringify(options.body) : options.body;
+
+    for (let attempt = 0; ; attempt++) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), API_TIMEOUT_MS);
+      let res;
+      try {
+        res = await fetch(`${API}${path}`, {
+          credentials: 'include',
+          ...options,
+          headers,
+          body,
+          signal: controller.signal,
+        });
+      } catch (err) {
+        clearTimeout(timer);
+        if (canRetry && attempt < API_RETRIES) {
+          await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+          continue;
+        }
+        throw new Error(
+          err && err.name === 'AbortError'
+            ? 'Сервер не ответил за 45 секунд. Возможно, он просыпается после простоя — подождите минуту и повторите.'
+            : 'Нет связи с сервером. Проверьте интернет и повторите попытку.',
+        );
+      }
+      clearTimeout(timer);
+      if (canRetry && RETRY_STATUS.has(res.status) && attempt < API_RETRIES) {
+        await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+        continue;
+      }
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        if (RETRY_STATUS.has(res.status)) {
+          throw new Error('Сервер временно недоступен (просыпается или перезапускается). Повторите через минуту.');
+        }
+        throw new Error(data.error || res.statusText || `Ошибка запроса (${res.status})`);
+      }
+      return data;
+    }
   }
 
   async function loginToApi(login, password) {
