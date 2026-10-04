@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /FriendlyBarMenu1/admin.html
+Disallow: /admin.html
+
+Sitemap: https://hmeeti.github.io/FriendlyBarMenu1/sitemap.xml
