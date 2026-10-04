@@ -8,6 +8,7 @@ prisma/*.db-journal
 uploads/*
 !uploads/.gitkeep
 dist/
+_site/
 *.log
 .DS_Store
 Thumbs.db

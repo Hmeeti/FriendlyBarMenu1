@@ -15,7 +15,9 @@
     "setup": "npm install && npm run db:push && npm run db:seed",
     "test:security": "node scripts/security-selftest.mjs",
     "images": "node scripts/optimize-images.mjs",
-    "menu:json": "node scripts/build-menu-json.mjs"
+    "menu:json": "node scripts/build-menu-json.mjs",
+    "build": "node scripts/build-site.mjs",
+    "icons": "node scripts/build-icons.mjs"
   },
   "dependencies": {
     "@prisma/client": "^6.9.0",
@@ -29,6 +31,7 @@
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
+    "esbuild": "^0.25.12",
     "prisma": "^6.9.0",
     "sharp": "^0.34.5"
   }
