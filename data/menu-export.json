@@ -751,8 +751,8 @@
         {
           "id": 117,
           "name": "Антрекот",
-          "price": 3900,
-          "priceDisplay": "3900тг",
+          "price": 4190,
+          "priceDisplay": "4190тг",
           "img": null
         },
         {
@@ -784,13 +784,6 @@
           "img": null
         },
         {
-          "id": 122,
-          "name": "Семечки",
-          "price": 2200,
-          "priceDisplay": "2200тг",
-          "img": null
-        },
-        {
           "id": 123,
           "name": "Овощи на гриле",
           "price": 1900,
@@ -807,15 +800,15 @@
         {
           "id": 125,
           "name": "Маленький сет",
-          "price": 18000,
-          "priceDisplay": "18000тг",
+          "price": 19000,
+          "priceDisplay": "19000тг",
           "img": null
         },
         {
           "id": 126,
           "name": "Большой сет",
-          "price": 25000,
-          "priceDisplay": "25000тг",
+          "price": 26000,
+          "priceDisplay": "26000тг",
           "img": null
         }
       ]

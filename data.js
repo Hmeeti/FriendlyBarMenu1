@@ -566,7 +566,7 @@ window.ITEM_DETAILS = {
   },
   "117": {
     "name": "Антрекот",
-    "price": 3990,
+    "price": 4190,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -591,12 +591,6 @@ window.ITEM_DETAILS = {
   "121": {
     "name": "Люля-кебаб",
     "price": 2790,
-    "img": "image/nono.png",
-    "desc": ""
-  },
-  "122": {
-    "name": "Семечки",
-    "price": 2290,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -1853,8 +1847,8 @@ window.MENU_SECTIONS = [
       {
         "id": 117,
         "name": "Антрекот",
-        "price": 3990,
-        "priceDisplay": "3990тг",
+        "price": 4190,
+        "priceDisplay": "4190тг",
         "img": null
       },
       {
@@ -1886,13 +1880,6 @@ window.MENU_SECTIONS = [
         "img": null
       },
       {
-        "id": 122,
-        "name": "Семечки",
-        "price": 2290,
-        "priceDisplay": "2290тг",
-        "img": null
-      },
-      {
         "id": 123,
         "name": "Овощи на гриле",
         "price": 1990,
@@ -1909,15 +1896,15 @@ window.MENU_SECTIONS = [
       {
         "id": 125,
         "name": "Маленький сет",
-        "price": 18000,
-        "priceDisplay": "18000тг",
+        "price": 19000,
+        "priceDisplay": "19000тг",
         "img": null
       },
       {
         "id": 126,
         "name": "Большой сет",
-        "price": 25000,
-        "priceDisplay": "25000тг",
+        "price": 26000,
+        "priceDisplay": "26000тг",
         "img": null
       }
     ]
@@ -4071,7 +4058,7 @@ window.MENU_ITEMS = {
   },
   "117": {
     "name": "Антрекот",
-    "price": 3990,
+    "price": 4190,
     "img": "image/nono.png",
     "desc": ""
   },
@@ -4099,12 +4086,6 @@ window.MENU_ITEMS = {
     "img": "image/nono.png",
     "desc": ""
   },
-  "122": {
-    "name": "Семечки",
-    "price": 2290,
-    "img": "image/nono.png",
-    "desc": ""
-  },
   "123": {
     "name": "Овощи на гриле",
     "price": 1990,
@@ -4119,13 +4100,13 @@ window.MENU_ITEMS = {
   },
   "125": {
     "name": "Маленький сет",
-    "price": 18000,
+    "price": 19000,
     "img": "image/nono.png",
     "desc": ""
   },
   "126": {
     "name": "Большой сет",
-    "price": 25000,
+    "price": 26000,
     "img": "image/nono.png",
     "desc": ""
   },
