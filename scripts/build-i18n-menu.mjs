@@ -534,9 +534,11 @@ for (const sec of sections) {
     let row;
     if (old && (old.ru === undefined || old.ru === name)) {
       row = old;
+      // Description edited in the admin: drop the stale translation (the page falls back to Russian).
+      if (old.ruDesc !== undefined && old.ruDesc !== desc) row = { ...old, ruDesc: desc, enDesc: '', kkDesc: '' };
       kept++;
     } else {
-      row = { ru: name, en: translate(name, 'en'), kk: translate(name, 'kk'), enDesc: desc, kkDesc: desc };
+      row = { ru: name, en: translate(name, 'en'), kk: translate(name, 'kk'), ruDesc: desc, enDesc: '', kkDesc: '' };
       generated++;
     }
     items[id] = row;

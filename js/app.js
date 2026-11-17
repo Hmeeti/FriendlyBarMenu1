@@ -25,6 +25,7 @@
     'Холодные закуски': 'holodnye-zakuski',
     'Меню Европа': 'menu-evropa',
     'Салаты Европа': 'salaty-evropa',
+    'Бургеры': 'burgers',
     'Стейки': 'beef',
     'Блюда из рыбы': 'fisheat',
     'Блюда из курицы': 'chikenaet',
@@ -281,13 +282,14 @@
   function renderMenu() {
     const frag = document.createDocumentFragment();
     const used = new Set();
-    const navTargets = new Set(Array.from(dom.tabs.querySelectorAll('a.tab')).map((a) => a.hash.slice(1)));
+    const navTargets = new Set(Array.from(dom.tabs.querySelectorAll('a.tab')).map((a) => hashId(a)));
     state.items.clear();
     state.cards.clear();
     state.searchIndex = [];
     let navId = '';
     let photoIndex = 0;
     let barAdded = false;
+    const barSubs = [];
 
     for (const sec of state.menu.sections) {
       const title = String(sec.title || '');
@@ -329,7 +331,9 @@
       }
       section.append(h, list);
       frag.appendChild(section);
+      if (navId === BAR.id) barSubs.push({ id, title });
     }
+    renderSubtabs(barSubs);
 
     dom.menu.textContent = '';
     dom.menu.appendChild(frag);
@@ -491,6 +495,7 @@
   let observer = null;
   let navLockUntil = 0;
   let activeNav = null;
+  let activeSub = null;
   let scrollFixTimer = 0;
   const visibleSections = new Set();
 
@@ -504,23 +509,71 @@
     root.setProperty('--sticky-h', `${stickyHeight()}px`);
   }
 
-  function setActiveTab(id) {
-    if (id === activeNav) return;
-    activeNav = id;
+  /** Section id from a link; bar sections have Cyrillic ids, which `hash` returns percent-encoded. */
+  function hashId(a) {
+    try {
+      return decodeURIComponent(a.hash.slice(1));
+    } catch (_) {
+      return a.hash.slice(1);
+    }
+  }
+
+  /** Second row of chips (bar sections) — shown only while the bar part of the menu is on screen. */
+  function renderSubtabs(subs) {
+    const track = $('.tabs__track', dom.subtabs);
+    track.textContent = '';
+    for (const sub of subs) {
+      const a = el('a', 'tab', trSection(sub.title));
+      a.href = `#${sub.id}`;
+      a.dataset.i18nSection = sub.title;
+      track.appendChild(a);
+    }
+    activeSub = null;
+    dom.subtabs.hidden = activeNav !== BAR.id || !subs.length;
+  }
+
+  function centerChip(nav, chip) {
+    const left = chip.offsetLeft - (nav.clientWidth - chip.offsetWidth) / 2;
+    const max = nav.scrollWidth - nav.clientWidth;
+    nav.scrollTo({ left: Math.max(0, Math.min(max, left)), behavior: reducedMotion() ? 'auto' : 'smooth' });
+  }
+
+  function setActiveSub(id) {
+    if (id === activeSub || dom.subtabs.hidden) return;
+    activeSub = id;
     let active = null;
-    dom.tabs.querySelectorAll('a.tab').forEach((a) => {
-      const on = a.hash.slice(1) === id || (!id && (a.getAttribute('href') === '#'));
+    dom.subtabs.querySelectorAll('a.tab').forEach((a) => {
+      const on = hashId(a) === id;
       a.classList.toggle('is-active', on);
       if (on) {
         a.setAttribute('aria-current', 'true');
         active = a;
       } else a.removeAttribute('aria-current');
     });
-    if (!active) return;
-    const nav = dom.tabs;
-    const left = active.offsetLeft - (nav.clientWidth - active.offsetWidth) / 2;
-    const max = nav.scrollWidth - nav.clientWidth;
-    nav.scrollTo({ left: Math.max(0, Math.min(max, left)), behavior: reducedMotion() ? 'auto' : 'smooth' });
+    if (active) centerChip(dom.subtabs, active);
+  }
+
+  /** Height covered by the sticky header (plus the bar chips when they are showing). */
+  function navOffset() {
+    return stickyHeight() + (dom.subtabs.hidden ? 0 : dom.subtabs.offsetHeight);
+  }
+
+  function setActiveTab(id) {
+    if (id === activeNav) return;
+    activeNav = id;
+    const inBar = id === BAR.id && dom.subtabs.querySelector('a.tab');
+    dom.subtabs.hidden = !inBar;
+    if (!inBar) activeSub = null;
+    let active = null;
+    dom.tabs.querySelectorAll('a.tab').forEach((a) => {
+      const on = hashId(a) === id || (!id && (a.getAttribute('href') === '#'));
+      a.classList.toggle('is-active', on);
+      if (on) {
+        a.setAttribute('aria-current', 'true');
+        active = a;
+      } else a.removeAttribute('aria-current');
+    });
+    if (active) centerChip(dom.tabs, active);
   }
 
   function observeSections() {
@@ -557,24 +610,30 @@
         first = node;
       }
     }
-    if (first) setActiveTab(first.dataset.nav || first.id);
+    if (!first) return;
+    setActiveTab(first.dataset.nav || first.id);
+    if (first.dataset.nav === BAR.id && first.id !== BAR.id) setActiveSub(first.id);
   }
 
   function scrollToSection(id) {
     const target = document.getElementById(id);
     if (!target) return;
     navLockUntil = Date.now() + 1000;
-    setActiveTab(id);
+    setActiveTab(target.dataset.nav || id);
+    if (target.dataset.nav === BAR.id) {
+      const firstSub = dom.subtabs.querySelector('a.tab');
+      setActiveSub(id === BAR.id && firstSub ? hashId(firstSub) : id);
+    }
     const smooth = !reducedMotion();
     const go = (behavior) => {
-      const top = target.getBoundingClientRect().top + window.scrollY - stickyHeight() - 6;
+      const top = target.getBoundingClientRect().top + window.scrollY - navOffset() - 6;
       window.scrollTo({ top: Math.max(0, top), behavior });
     };
     go(smooth ? 'smooth' : 'auto');
     clearTimeout(scrollFixTimer);
     // content-visibility:auto sections above the target change height once rendered.
     scrollFixTimer = setTimeout(() => {
-      const offset = target.getBoundingClientRect().top - stickyHeight() - 6;
+      const offset = target.getBoundingClientRect().top - navOffset() - 6;
       if (Math.abs(offset) > 4) go('auto');
     }, smooth ? 750 : 80);
   }
@@ -584,7 +643,7 @@
     if (!link) return;
     e.preventDefault();
     clearSearch(false);
-    const id = link.hash.slice(1);
+    const id = hashId(link);
     if (!id) {
       scrollToTop();
       return;
@@ -1152,6 +1211,7 @@
       obCount: $('#obCount'),
       obSum: $('#obSum'),
       toTop: $('#toTop'),
+      subtabs: $('#subtabs'),
       cartSheet: $('#cartSheet'),
       cartItems: $('#cartItems'),
       cartEmpty: $('#cartEmpty'),
@@ -1181,6 +1241,7 @@
     document.addEventListener('click', onClick);
     document.addEventListener('keydown', onKeydown);
     dom.tabs.addEventListener('click', onTabClick);
+    dom.subtabs.addEventListener('click', onTabClick);
     dom.search.addEventListener('input', () => {
       clearTimeout(searchTimer);
       searchTimer = setTimeout(() => applySearch(true), 120);

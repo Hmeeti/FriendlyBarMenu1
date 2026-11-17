@@ -34,7 +34,9 @@
     if ('price' in f) item.price = Math.max(0, Math.round(Number(f.price) || 0));
     for (const [k, max] of [['fullName', 160], ['desc', 600], ['weight', 40]]) {
       if (!(k in f)) continue;
-      const v = clean(f[k], max);
+      let v = clean(f[k], max);
+      // "тесто,сыр" → "тесто, сыр": without spaces long lists cannot wrap on phones
+      if (k === 'desc') v = v.replace(/\s*,\s*/g, ', ').replace(/^[,\s]+|[,\s]+$/g, '');
       item[k] = v && !(k === 'fullName' && v === item.name) ? v : undefined;
     }
     if ('img' in f) {

@@ -77,6 +77,11 @@ img{display:block;max-width:100%}
 .tabs__track{display:flex;gap:6px;width:max-content;padding:0 12px}
 .tab{display:flex;align-items:center;min-height:44px;padding:0 15px;border:1px solid var(--line);border-radius:999px;scroll-snap-align:start;font:600 .78rem/1 var(--sans);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;text-decoration:none;color:var(--text)}
 .tab.is-active{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}
+.subtabs{position:absolute;left:0;right:0;top:100%;padding:6px 0 8px;background:rgba(12,10,11,.97);border-bottom:1px solid var(--line);overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.subtabs::-webkit-scrollbar{display:none}
+.subtabs .tab{min-height:36px;padding:0 13px;font-size:.7rem;border-color:transparent;background:rgba(246,238,228,.06)}
+.subtabs .tab.is-active{background:transparent;border-color:var(--gold);color:var(--gold)}
+.is-searching .subtabs{display:none}
 .menu{display:block;max-width:1200px;margin:0 auto;padding:4px max(12px,env(safe-area-inset-right)) 32px max(12px,env(safe-area-inset-left));outline:none}
 .has-order .menu{padding-bottom:96px}
 .sec{content-visibility:auto;contain-intrinsic-size:auto 900px;scroll-margin-top:calc(var(--sticky-h) + 8px)}
@@ -95,7 +100,7 @@ img{display:block;max-width:100%}
 .card__name{font:600 1.14rem/1.15 var(--serif);letter-spacing:.01em;overflow-wrap:anywhere}
 .card__open{text-align:left;padding:0}
 .card__open::after{content:"";position:absolute;inset:0;border-radius:inherit}
-.card__desc{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;font-size:.84rem;line-height:1.35;color:var(--muted)}
+.card__desc{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere;font-size:.84rem;line-height:1.35;color:var(--muted)}
 .card__weight{font-size:.78rem;color:var(--muted-2)}
 .card__foot{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:auto;padding-top:6px}
 .card__price{font:700 1rem/1.1 var(--sans);font-variant-numeric:tabular-nums;color:var(--gold);white-space:nowrap}
@@ -142,7 +147,7 @@ img{display:block;max-width:100%}
 .orderbar__text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .orderbar__count{display:inline-block}
 .orderbar__sum{flex:none;padding:10px 12px;border-radius:12px;background:rgba(26,18,16,.14);font-weight:700;font-variant-numeric:tabular-nums}
-.totop{position:fixed;right:max(14px,env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));z-index:25;display:grid;place-items:center;width:48px;height:48px;border:1px solid rgba(212,168,90,.45);border-radius:50%;background:rgba(23,19,20,.94);color:var(--gold);opacity:0;visibility:hidden;transform:translate3d(0,12px,0);transition:transform .3s var(--ease),opacity .2s ease,visibility 0s linear .3s}
+.totop{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(16px + env(safe-area-inset-bottom));z-index:25;display:grid;place-items:center;width:48px;height:48px;border:1px solid rgba(212,168,90,.45);border-radius:50%;background:rgba(23,19,20,.94);color:var(--gold);opacity:0;visibility:hidden;transform:translate3d(0,12px,0);transition:transform .3s var(--ease),opacity .2s ease,visibility 0s linear .3s}
 .totop.is-visible{opacity:1;visibility:visible;transform:none;transition-delay:0s}
 .has-order .totop{bottom:calc(82px + env(safe-area-inset-bottom))}
 @media (min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.rows{grid-template-columns:repeat(2,minmax(0,1fr))}.hdr__brand,.hdr__sticky{padding-left:20px;padding-right:20px}.menu{padding-left:20px;padding-right:20px}}
@@ -185,7 +190,8 @@ img{display:block;max-width:100%}
         <a href="#holodnye-zakuski" class="tab" data-i18n-section="Холодные закуски">Холодные закуски</a>
         <a href="#menu-evropa" class="tab" data-i18n-section="Меню Европа">Меню Европа</a>
         <a href="#salaty-evropa" class="tab" data-i18n-section="Салаты Европа">Салаты Европа</a>
-        <a href="#beef" class="tab" data-i18n-section="Стейки">Стейки</a>
+        <a href="#burgers" class="tab" data-i18n-section="Бургеры">Бургеры</a>
+<a href="#beef" class="tab" data-i18n-section="Стейки">Стейки</a>
         <a href="#fisheat" class="tab" data-i18n-section="Блюда из рыбы">Блюда из рыбы</a>
         <a href="#chikenaet" class="tab" data-i18n-section="Блюда из курицы">Блюда из курицы</a>
         <a href="#alleat" class="tab" data-i18n-section="Блюда на компанию">Блюда на компанию</a>
@@ -200,6 +206,7 @@ img{display:block;max-width:100%}
         <a href="#bar" class="tab" data-i18n-section="Барное меню">Барное меню</a>
       </div>
     </nav>
+<nav class="subtabs" id="subtabs" aria-label="Разделы бара" data-i18n-aria="nav.bar" hidden><div class="tabs__track"></div></nav>
   </div>
 </header>
 
