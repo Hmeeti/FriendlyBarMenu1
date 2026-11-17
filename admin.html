@@ -4,33 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#12100e" />
   <link rel="icon" href="icons/favicon-32.png" type="image/png" />
   <title>Admin — Friendly Menu</title>
-    <link rel="stylesheet" href="admin.css?v=audit12" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
+  <link rel="preconnect" href="https://api.github.com" crossorigin />
+  <link rel="stylesheet" href="css/admin.css?v=__BUILD__" />
 </head>
 <body class="admin-body">
   <div class="admin-ambient" aria-hidden="true"></div>
 
-  <!-- Login gate -->
+  <!-- Sign-in: a GitHub token with write access to the menu repository -->
   <div id="adminGate" class="admin-gate">
-    <form id="adminGateForm" class="admin-gate__card" autocomplete="on">
+    <form id="adminGateForm" class="admin-gate__card" autocomplete="off">
       <p class="admin-eyebrow">Friendly Bar</p>
       <h1 class="admin-gate__title">Панель меню</h1>
-      <p class="admin-gate__hint">Войдите, чтобы править блюда, цены и наличие</p>
+      <p class="admin-gate__hint">Правки сохраняются прямо в GitHub, и через 1–2 минуты они на сайте у всех гостей</p>
       <label class="admin-field">
-        <span>Логин</span>
-        <input name="login" type="text" required autocomplete="username" placeholder="Ваш логин" />
+        <span>Ключ доступа (токен GitHub)</span>
+        <input name="token" type="password" required spellcheck="false" placeholder="github_pat_…" />
       </label>
-      <label class="admin-field">
-        <span>Пароль</span>
-        <input name="password" type="password" required autocomplete="current-password" placeholder="••••••••" />
+      <label class="admin-check">
+        <input name="remember" type="checkbox" checked />
+        Запомнить на этом устройстве
       </label>
+      <details class="admin-help">
+        <summary>Где взять ключ?</summary>
+        <ol>
+          <li>Откройте <a id="tokenLink" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">новый токен на GitHub</a> (войдите в аккаунт с доступом к репозиторию).</li>
+          <li>Repository access → <b>Only select repositories</b> → <code id="repoName">репозиторий меню</code>.</li>
+          <li>Permissions → Repository: <b>Contents — Read and write</b>, <b>Actions — Read-only</b>.</li>
+          <li>Нажмите Generate token и вставьте его сюда.</li>
+        </ol>
+      </details>
       <p id="adminGateError" class="admin-error" hidden></p>
       <button type="submit" class="admin-btn admin-btn--primary">Войти</button>
-      <a class="admin-gate__back" href="index.html">← К гостевому меню</a>
+      <a class="admin-gate__back" href="./">← К гостевому меню</a>
     </form>
   </div>
 
@@ -45,11 +53,10 @@
       <div class="admin-top__actions">
         <nav class="admin-tabs" aria-label="Разделы админки">
           <button type="button" class="admin-tab is-active" data-tab="menu">Меню</button>
-          <button type="button" class="admin-tab" data-tab="analytics" id="adminAnalyticsTab" hidden>Аналитика</button>
-          <button type="button" class="admin-tab" data-tab="logs" id="adminLogsTab" hidden>Логи</button>
+          <button type="button" class="admin-tab" data-tab="logs">Журнал</button>
         </nav>
-        <span id="adminLiveStatus" class="admin-pill">API</span>
-        <a class="admin-btn admin-btn--ghost" href="index.html">Сайт</a>
+        <span id="adminLiveStatus" class="admin-pill" role="status">Готово</span>
+        <a class="admin-btn admin-btn--ghost" href="./" target="_blank" rel="noopener">Сайт</a>
         <button type="button" id="adminLogoutBtn" class="admin-btn admin-btn--ghost">Выйти</button>
       </div>
     </header>
@@ -70,10 +77,11 @@
           <div class="admin-main__tools">
             <input id="itemSearch" class="admin-input" type="search" placeholder="Найти блюдо…" />
             <span id="itemCount" class="admin-muted"></span>
+            <button type="button" id="addItemBtn" class="admin-btn admin-btn--primary admin-btn--small">+ Блюдо</button>
           </div>
         </div>
 
-        <div id="itemsTableWrap" class="card-panel admin-table-wrap">
+        <div class="card-panel admin-table-wrap">
           <table class="admin-table">
             <thead>
               <tr>
@@ -95,18 +103,10 @@
       <div class="admin-main__toolbar card-panel">
         <div>
           <p class="admin-eyebrow">Журнал</p>
-          <h2>Действия в админке</h2>
+          <h2>История изменений меню</h2>
         </div>
         <div class="admin-main__tools">
-          <input id="logSearch" class="admin-input" type="search" placeholder="Поиск по логам…" />
-          <select id="logActionFilter" class="admin-input">
-            <option value="">Все действия</option>
-            <option value="LOGIN">Вход</option>
-            <option value="LOGOUT">Выход</option>
-            <option value="CREATE">Создание</option>
-            <option value="UPDATE">Изменение</option>
-            <option value="DELETE">Удаление</option>
-          </select>
+          <input id="logSearch" class="admin-input" type="search" placeholder="Поиск по журналу…" />
           <button type="button" id="logRefreshBtn" class="admin-btn admin-btn--ghost">Обновить</button>
           <span id="logCount" class="admin-muted"></span>
         </div>
@@ -117,38 +117,12 @@
             <tr>
               <th>Время</th>
               <th>Кто</th>
-              <th>Действие</th>
-              <th>Что</th>
-              <th>Описание</th>
+              <th>Что изменилось</th>
             </tr>
           </thead>
           <tbody id="logsBody"></tbody>
         </table>
         <p id="logsEmpty" class="admin-empty" hidden>Пока нет записей.</p>
-      </div>
-    </div>
-
-    <div id="adminAnalyticsView" class="admin-analytics" hidden>
-      <div class="admin-main__toolbar card-panel">
-        <div>
-          <p class="admin-eyebrow">Гости</p>
-          <h2>Аналитика меню</h2>
-        </div>
-        <div class="admin-main__tools">
-          <select id="analyticsDays" class="admin-input">
-            <option value="7">7 дней</option>
-            <option value="14">14 дней</option>
-            <option value="30" selected>30 дней</option>
-            <option value="90">90 дней</option>
-          </select>
-          <button type="button" id="analyticsRefreshBtn" class="admin-btn admin-btn--ghost">Обновить</button>
-        </div>
-      </div>
-      <div class="admin-stats" id="analyticsStats"></div>
-      <div class="card-panel">
-        <h3 class="admin-analytics__chart-title">Заходы по дням</h3>
-        <div id="analyticsChart" class="admin-chart" aria-label="График заходов"></div>
-        <p id="analyticsEmpty" class="admin-empty" hidden>Пока нет данных. Откройте гостевое меню — сессии появятся здесь.</p>
       </div>
     </div>
   </div>
@@ -158,35 +132,38 @@
     <div class="admin-modal__backdrop" data-close-edit></div>
     <form id="editForm" class="admin-modal__panel" autocomplete="off">
       <button type="button" class="admin-modal__close" data-close-edit aria-label="Закрыть">×</button>
-      <p class="admin-eyebrow">Редактирование</p>
+      <p class="admin-eyebrow" id="editEyebrow">Редактирование</p>
       <h2 id="editTitle">Блюдо</h2>
-
-      <input type="hidden" name="id" />
 
       <label class="admin-field">
         <span>Название</span>
-        <input name="name" type="text" required />
+        <input name="name" type="text" required maxlength="120" />
+      </label>
+
+      <label class="admin-field">
+        <span>Полное название в карточке (необязательно)</span>
+        <input name="fullName" type="text" maxlength="160" />
       </label>
 
       <label class="admin-field">
         <span>Категория</span>
-        <select name="categoryId" id="editCategorySelect" required></select>
+        <select name="section" id="editCategorySelect" required></select>
       </label>
 
       <div class="admin-grid-2">
         <label class="admin-field">
           <span>Цена (тг)</span>
-          <input name="price" type="number" min="0" step="1" required />
+          <input name="price" type="number" min="0" step="1" inputmode="numeric" required />
         </label>
         <label class="admin-field">
-          <span>Вес</span>
-          <input name="weight" type="text" placeholder="например 350 г" />
+          <span>Вес / объём</span>
+          <input name="weight" type="text" maxlength="40" placeholder="например 350 г" />
         </label>
       </div>
 
       <label class="admin-field">
         <span>Описание</span>
-        <textarea name="description" rows="3"></textarea>
+        <textarea name="desc" rows="3" maxlength="600"></textarea>
       </label>
 
       <div class="admin-grid-2">
@@ -199,13 +176,13 @@
         </label>
         <label class="admin-field admin-field--check">
           <span>Показывать в меню</span>
-          <input name="isActive" type="checkbox" />
+          <input name="visible" type="checkbox" />
         </label>
       </div>
 
       <label class="admin-field">
-        <span>Путь / URL изображения</span>
-        <input name="imageUrl" type="text" />
+        <span>Фото (путь в репозитории)</span>
+        <input name="img" type="text" maxlength="200" placeholder="image/…" />
       </label>
 
       <div class="admin-image-row">
@@ -218,13 +195,16 @@
 
       <p id="editError" class="admin-error" hidden></p>
       <div class="admin-modal__actions">
+        <button type="button" class="admin-btn admin-btn--danger" id="editDeleteBtn">Удалить</button>
         <button type="button" class="admin-btn admin-btn--ghost" data-close-edit>Отмена</button>
         <button type="submit" class="admin-btn admin-btn--primary" id="editSaveBtn">Сохранить</button>
       </div>
     </form>
   </div>
 
-  <script src="config.js?v=audit6"></script>
-  <script src="admin.js?v=audit11"></script>
+  <div id="adminToast" class="admin-toast" role="alert" hidden></div>
+
+  <script src="js/config.js?v=__BUILD__"></script>
+  <script src="js/admin.js?v=__BUILD__"></script>
 </body>
 </html>

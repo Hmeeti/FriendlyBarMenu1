@@ -9,9 +9,9 @@ const scoped = (path) => new URL(path, SCOPE).href;
 
 const PRECACHE = [
   './',
-  `menu.css?v=${VERSION}`,
-  `app.js?v=${VERSION}`,
-  `i18n.js?v=${VERSION}`,
+  `css/menu.css?v=${VERSION}`,
+  `js/app.js?v=${VERSION}`,
+  `js/i18n.js?v=${VERSION}`,
   'menu.json',
   'manifest.webmanifest',
   'fonts/cormorant-600-cyrillic.woff2',
@@ -150,7 +150,7 @@ self.addEventListener('fetch', (event) => {
     if (path === '' || path === 'index.html') event.respondWith(pageStaleWhileRevalidate(event));
     return;
   }
-  if (path.startsWith('admin') || path === 'config.js' || path === 'sw.js') return;
+  if (path.startsWith('admin') || path === 'js/admin.js' || path === 'css/admin.css' || path === 'js/config.js' || path === 'sw.js') return;
   if (path === 'menu.json') {
     event.respondWith(menuStaleWhileRevalidate(event));
     return;

@@ -1,19 +1,10 @@
 node_modules/
-# Local secrets & DB are recreated on `npm run dev` (see server.js ensureDatabaseAndAdmin)
+_site/
 .env
 .env.*
-!.env.example
-prisma/*.db
-prisma/*.db-journal
-uploads/*
-!uploads/.gitkeep
-dist/
-_site/
 *.log
+*.tmp
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
-.cache/
-*.tmp
-backend/

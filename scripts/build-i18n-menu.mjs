@@ -1,6 +1,8 @@
 /**
- * Build full EN/KK dish name translations.
- * Usage: node scripts/build-i18n-menu.mjs
+ * EN/KK dish translations for js/i18n-menu.js, from menu.json.
+ * Existing (hand-checked) entries are kept; dishes that are new or renamed in the admin
+ * get an automatic translation. Runs on every site build.
+ *   node scripts/build-i18n-menu.mjs
  */
 import fs from 'fs';
 import path from 'path';
@@ -10,12 +12,8 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 
-const code = fs.readFileSync(path.join(root, 'data.js'), 'utf8');
-const sandbox = { window: {} };
-vm.createContext(sandbox);
-vm.runInContext(code, sandbox, { timeout: 15000 });
-const sections = sandbox.window.MENU_SECTIONS || [];
-const details = sandbox.window.ITEM_DETAILS || {};
+const menu = JSON.parse(fs.readFileSync(path.join(root, 'menu.json'), 'utf8'));
+const sections = menu.sections || [];
 
 /** Exact overrides (highest priority) */
 const exact = {
@@ -513,30 +511,42 @@ function translate(name, lang) {
   return out || name;
 }
 
+const outFile = path.join(root, 'js', 'i18n-menu.js');
+const previous = {};
+try {
+  const sandbox = { window: {} };
+  vm.runInNewContext(fs.readFileSync(outFile, 'utf8'), sandbox, { timeout: 15000 });
+  Object.assign(previous, sandbox.window.FRIENDLY_MENU_I18N || {});
+} catch {}
+
 const items = {};
 const byName = {};
-let changedEn = 0;
-let changedKk = 0;
+let kept = 0;
+let generated = 0;
 
 for (const sec of sections) {
   for (const it of sec.items || []) {
     const id = String(it.id);
-    const d = details[id] || {};
-    const name = it.name || d.name || '';
-    const desc = d.desc || it.desc || '';
-    const en = translate(name, 'en');
-    const kk = translate(name, 'kk');
-    if (en !== name) changedEn++;
-    if (kk !== name) changedKk++;
-    const row = { en, kk, enDesc: desc, kkDesc: desc };
+    const name = it.name || '';
+    const desc = it.desc || '';
+    const old = previous[id];
+    // Old entries have no `ru`; trust them. New ones remember the source name to catch renames.
+    let row;
+    if (old && (old.ru === undefined || old.ru === name)) {
+      row = old;
+      kept++;
+    } else {
+      row = { ru: name, en: translate(name, 'en'), kk: translate(name, 'kk'), enDesc: desc, kkDesc: desc };
+      generated++;
+    }
     items[id] = row;
     if (name) byName[name] = row;
   }
 }
 
-const out = `/* Auto-generated dish translations — run: node scripts/build-i18n-menu.mjs */
+const out = `/* Dish translations — updated by scripts/build-i18n-menu.mjs */
 window.FRIENDLY_MENU_I18N = ${JSON.stringify(items, null, 2)};
 window.FRIENDLY_MENU_I18N_BY_NAME = ${JSON.stringify(byName, null, 2)};
 `;
-fs.writeFileSync(path.join(root, 'i18n-menu.js'), out, 'utf8');
-console.log(`Wrote i18n-menu.js items=${Object.keys(items).length} changedEn=${changedEn} changedKk=${changedKk}`);
+fs.writeFileSync(outFile, out, 'utf8');
+console.log(`i18n-menu.js: ${kept} kept, ${generated} generated`);

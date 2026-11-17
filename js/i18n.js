@@ -371,7 +371,7 @@
       const s = document.createElement('script');
       const own = document.querySelector('script[src*="i18n.js"]');
       const v = own && /[?&]v=([^&]+)/.exec(own.getAttribute('src'));
-      s.src = `i18n-menu.js${v ? `?v=${v[1]}` : ''}`;
+      s.src = `js/i18n-menu.js${v ? `?v=${v[1]}` : ''}`;
       s.async = true;
       s.onload = () => resolve(true);
       s.onerror = () => {

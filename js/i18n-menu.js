@@ -1,4 +1,4 @@
-/* Auto-generated dish translations — run: node scripts/build-i18n-menu.mjs */
+/* Dish translations — updated by scripts/build-i18n-menu.mjs */
 window.FRIENDLY_MENU_I18N = {
   "12": {
     "en": "Caucasus platter",
@@ -642,12 +642,6 @@ window.FRIENDLY_MENU_I18N = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "122": {
-    "en": "Seeds",
-    "kk": "Тұқымдар",
-    "enDesc": "",
-    "kkDesc": ""
-  },
   "123": {
     "en": "Grilled vegetables",
     "kk": "Грильдегі көкөністер",
@@ -711,6 +705,48 @@ window.FRIENDLY_MENU_I18N = {
   "133": {
     "en": "Chocolate",
     "kk": "Шоколад",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "136": {
+    "ru": "Ташкентский",
+    "en": "Tashkentskiy",
+    "kk": "Ташкентский",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "137": {
+    "ru": "Ягодный",
+    "en": "Yagodnyy",
+    "kk": "Ягодный",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "138": {
+    "ru": "Имбирь мед",
+    "en": "Imbir med",
+    "kk": "Имбирь мед",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "139": {
+    "ru": "Малина мята",
+    "en": "Malina myata",
+    "kk": "Малина мята",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "140": {
+    "ru": "Марокканский",
+    "en": "Marokkanskiy",
+    "kk": "Марокканский",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "141": {
+    "ru": "Облепиховый",
+    "en": "Oblepikhovyy",
+    "kk": "Облепиховый",
     "enDesc": "",
     "kkDesc": ""
   },
@@ -915,30 +951,6 @@ window.FRIENDLY_MENU_I18N = {
   "179": {
     "en": "rich juice 0.2L",
     "kk": "«rich» шырыны 0.2л",
-    "enDesc": "",
-    "kkDesc": ""
-  },
-  "180": {
-    "en": "Tassay Excellent 0,75 l",
-    "kk": "Тассай Excellent 0,75 л",
-    "enDesc": "",
-    "kkDesc": ""
-  },
-  "181": {
-    "en": "Tassay Emrald 0,75 l",
-    "kk": "Тассай Emrald 0,75 л",
-    "enDesc": "",
-    "kkDesc": ""
-  },
-  "182": {
-    "en": "Tassay 1l",
-    "kk": "Тассай 1л",
-    "enDesc": "",
-    "kkDesc": ""
-  },
-  "183": {
-    "en": "Tassay steklo 0,5l",
-    "kk": "Тассай стекло 0,5л",
     "enDesc": "",
     "kkDesc": ""
   },
@@ -1613,6 +1625,181 @@ window.FRIENDLY_MENU_I18N = {
     "kk": "Bud",
     "enDesc": "",
     "kkDesc": ""
+  },
+  "298": {
+    "ru": "Samal/Turan 1л",
+    "en": "Samal/Turan 1l",
+    "kk": "Samal/Turan 1л",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "299": {
+    "ru": "Samal 0.5",
+    "en": "Samal 0.5",
+    "kk": "Samal 0.5",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "300": {
+    "ru": "Колба 3л",
+    "en": "Kolba 3l",
+    "kk": "Колба 3л",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "301": {
+    "ru": "Мясо по аджарски",
+    "en": "Myaso Adjarian",
+    "kk": "Мясо аджарша",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "302": {
+    "ru": "Тевзи мефурат",
+    "en": "Tevzi mefurat",
+    "kk": "Тевзи мефурат",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "303": {
+    "ru": "Запеченный лосось",
+    "en": "Zapechennyy losos",
+    "kk": "Запеченный лосось",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "304": {
+    "ru": "Запеченный угорь",
+    "en": "Zapechennyy ugor",
+    "kk": "Запеченный угорь",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "305": {
+    "ru": "Фукуока ролл",
+    "en": "Fukuoka roll",
+    "kk": "Фукуока ролл",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "306": {
+    "ru": "Окаяма ролл",
+    "en": "Okayama roll",
+    "kk": "Окаяма ролл",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "307": {
+    "ru": "Френдли ролл",
+    "en": "Frendli roll",
+    "kk": "Френдли ролл",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "400": {
+    "ru": "Бургер Говяжий",
+    "en": "Burger Beef",
+    "kk": "Бургер Сиыр",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "401": {
+    "ru": "Бургер Куриный",
+    "en": "Burger Chicken",
+    "kk": "Бургер Тауық",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "402": {
+    "ru": "Каре ягненка с чесночным картофелем и пеппер соусом",
+    "en": "Kare yagnenka s chesnochnym kartofelem i pepper sousom",
+    "kk": "Каре ягненка с чесночным картофелем и пеппер соусом",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "403": {
+    "ru": "Страчетти",
+    "en": "Strachetti",
+    "kk": "Страчетти",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "404": {
+    "ru": "Брокколи жаренная",
+    "en": "Brokkoli zharennaya",
+    "kk": "Брокколи жаренная",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "405": {
+    "ru": "Баурсаки 500гр.",
+    "en": "Baursaki 500g.",
+    "kk": "Баурсаки 500гр.",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "406": {
+    "ru": "Пахлава",
+    "en": "Pakhlava",
+    "kk": "Пахлава",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "407": {
+    "ru": "Хлебная корзина мал.",
+    "en": "Khlebnaya korzina mal.",
+    "kk": "Хлебная корзина мал.",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "408": {
+    "ru": "Хлебное ассорти",
+    "en": "Khlebnoe assortment",
+    "kk": "Хлебное ассорти",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "409": {
+    "ru": "Сырный борт",
+    "en": "Cheese bort",
+    "kk": "Ірімшік борт",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "410": {
+    "ru": "Снежный краб",
+    "en": "Snezhnyy krab",
+    "kk": "Снежный краб",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "411": {
+    "ru": "Салат с мясными деликатесами",
+    "en": "Salad s myasnymi delikatesami",
+    "kk": "Салат с мясными деликатесами",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "412": {
+    "ru": "Теплый салат с баклажанами в восточном стиле",
+    "en": "Teplyy salat s baklazhanami v vostochnom stile",
+    "kk": "Теплый салат с баклажанами в восточном стиле",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "413": {
+    "ru": "Теплый салат с кониной BBQ",
+    "en": "Teplyy salat s koninoy BBQ",
+    "kk": "Теплый салат с кониной BBQ",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "414": {
+    "ru": "Фермерский салат с чечелом",
+    "en": "Fermerskiy salat s chechelom",
+    "kk": "Фермерский салат с чечелом",
+    "enDesc": "",
+    "kkDesc": ""
   }
 };
 window.FRIENDLY_MENU_I18N_BY_NAME = {
@@ -1663,6 +1850,20 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "kk": "Шкмерули",
     "enDesc": "Цыплята в сливочном соусе",
     "kkDesc": "Цыплята в сливочном соусе"
+  },
+  "Мясо по аджарски": {
+    "ru": "Мясо по аджарски",
+    "en": "Myaso Adjarian",
+    "kk": "Мясо аджарша",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Тевзи мефурат": {
+    "ru": "Тевзи мефурат",
+    "en": "Tevzi mefurat",
+    "kk": "Тевзи мефурат",
+    "enDesc": "",
+    "kkDesc": ""
   },
   "Салат Сулико": {
     "en": "Suliko salad",
@@ -1958,6 +2159,48 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "Семга,айсберг,перепилинное яйцо, черри, сухари, соус цезарь",
     "kkDesc": "Семга,айсберг,перепилинное яйцо, черри, сухари, соус цезарь"
   },
+  "Салат с мясными деликатесами": {
+    "ru": "Салат с мясными деликатесами",
+    "en": "Salad s myasnymi delikatesami",
+    "kk": "Салат с мясными деликатесами",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Теплый салат с баклажанами в восточном стиле": {
+    "ru": "Теплый салат с баклажанами в восточном стиле",
+    "en": "Teplyy salat s baklazhanami v vostochnom stile",
+    "kk": "Теплый салат с баклажанами в восточном стиле",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Теплый салат с кониной BBQ": {
+    "ru": "Теплый салат с кониной BBQ",
+    "en": "Teplyy salat s koninoy BBQ",
+    "kk": "Теплый салат с кониной BBQ",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Фермерский салат с чечелом": {
+    "ru": "Фермерский салат с чечелом",
+    "en": "Fermerskiy salat s chechelom",
+    "kk": "Фермерский салат с чечелом",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Бургер Говяжий": {
+    "ru": "Бургер Говяжий",
+    "en": "Burger Beef",
+    "kk": "Бургер Сиыр",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Бургер Куриный": {
+    "ru": "Бургер Куриный",
+    "en": "Burger Chicken",
+    "kk": "Бургер Тауық",
+    "enDesc": "",
+    "kkDesc": ""
+  },
   "Рибай": {
     "en": "Ribeye",
     "kk": "Рибай",
@@ -1987,6 +2230,20 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "kk": "Стриплойн",
     "enDesc": "Говядина,баклажаны,болгарский перец,мини морковь,черри,соус авторский",
     "kkDesc": "Говядина,баклажаны,болгарский перец,мини морковь,черри,соус авторский"
+  },
+  "Каре ягненка с чесночным картофелем и пеппер соусом": {
+    "ru": "Каре ягненка с чесночным картофелем и пеппер соусом",
+    "en": "Kare yagnenka s chesnochnym kartofelem i pepper sousom",
+    "kk": "Каре ягненка с чесночным картофелем и пеппер соусом",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Страчетти": {
+    "ru": "Страчетти",
+    "en": "Strachetti",
+    "kk": "Страчетти",
+    "enDesc": "",
+    "kkDesc": ""
   },
   "Лосось по католонски": {
     "en": "Catalan-style salmon",
@@ -2097,8 +2354,50 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "kkDesc": ""
   },
   "Дракон": {
-    "en": "Dragon",
-    "kk": "Дракон",
+    "en": "BBQ sauce",
+    "kk": "BBQ соусы",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Запеченный лосось": {
+    "ru": "Запеченный лосось",
+    "en": "Zapechennyy losos",
+    "kk": "Запеченный лосось",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Запеченный угорь": {
+    "ru": "Запеченный угорь",
+    "en": "Zapechennyy ugor",
+    "kk": "Запеченный угорь",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Фукуока ролл": {
+    "ru": "Фукуока ролл",
+    "en": "Fukuoka roll",
+    "kk": "Фукуока ролл",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Окаяма ролл": {
+    "ru": "Окаяма ролл",
+    "en": "Okayama roll",
+    "kk": "Окаяма ролл",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Френдли ролл": {
+    "ru": "Френдли ролл",
+    "en": "Frendli roll",
+    "kk": "Френдли ролл",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Снежный краб": {
+    "ru": "Снежный краб",
+    "en": "Snezhnyy krab",
+    "kk": "Снежный краб",
     "enDesc": "",
     "kkDesc": ""
   },
@@ -2150,6 +2449,13 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "Сыр,лосось,соус трюфельный,руколла",
     "kkDesc": "Сыр,лосось,соус трюфельный,руколла"
   },
+  "Сырный борт": {
+    "ru": "Сырный борт",
+    "en": "Cheese bort",
+    "kk": "Ірімшік борт",
+    "enDesc": "",
+    "kkDesc": ""
+  },
   "Мякоть баранины": {
     "en": "Lamb meat",
     "kk": "Қой еті",
@@ -2186,12 +2492,6 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Семечки": {
-    "en": "Seeds",
-    "kk": "Тұқымдар",
-    "enDesc": "",
-    "kkDesc": ""
-  },
   "Овощи на гриле": {
     "en": "Grilled vegetables",
     "kk": "Грильдегі көкөністер",
@@ -2211,8 +2511,8 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "kkDesc": ""
   },
   "Большой сет": {
-    "en": "Large set",
-    "kk": "Үлкен сет",
+    "en": "Snickers",
+    "kk": "Сникерс",
     "enDesc": "",
     "kkDesc": ""
   },
@@ -2243,6 +2543,13 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
   "Фри": {
     "en": "French fries",
     "kk": "Фри",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Брокколи жаренная": {
+    "ru": "Брокколи жаренная",
+    "en": "Brokkoli zharennaya",
+    "kk": "Брокколи жаренная",
     "enDesc": "",
     "kkDesc": ""
   },
@@ -2289,32 +2596,32 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "kkDesc": ""
   },
   "Испанский чизкейк": {
-    "en": "Spanish cheesecake",
-    "kk": "Испан чизкейкі",
+    "en": "Fruit assortment (mini)",
+    "kk": "Жеміс ассорти (мини)",
     "enDesc": "",
     "kkDesc": ""
   },
   "Классический чизкейк": {
-    "en": "Classic cheesecake",
-    "kk": "Классикалық чизкейк",
+    "en": "Fruit assortment (large)",
+    "kk": "Жеміс ассорти (үлкен)",
     "enDesc": "",
     "kkDesc": ""
   },
   "Меренговый рулет": {
-    "en": "Meringue roll",
-    "kk": "Меренга рулеті",
+    "en": "Lemon",
+    "kk": "Лимон",
     "enDesc": "",
     "kkDesc": ""
   },
   "Молочная девочка": {
-    "en": "Milk Girl cake",
-    "kk": "Сүт қыз торт",
+    "en": "Lime",
+    "kk": "Лайм",
     "enDesc": "",
     "kkDesc": ""
   },
   "Наполеон": {
-    "en": "Napoleon",
-    "kk": "Наполеон",
+    "en": "Honey",
+    "kk": "Бал",
     "enDesc": "",
     "kkDesc": ""
   },
@@ -2333,6 +2640,76 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
   "Фруктовое ассорти(большое)": {
     "en": "Fruit assortment (large)",
     "kk": "Жеміс ассорти (үлкен)",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Пахлава": {
+    "ru": "Пахлава",
+    "en": "Pakhlava",
+    "kk": "Пахлава",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Баурсаки 500гр.": {
+    "ru": "Баурсаки 500гр.",
+    "en": "Baursaki 500g.",
+    "kk": "Баурсаки 500гр.",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Хлебная корзина мал.": {
+    "ru": "Хлебная корзина мал.",
+    "en": "Khlebnaya korzina mal.",
+    "kk": "Хлебная корзина мал.",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Хлебное ассорти": {
+    "ru": "Хлебное ассорти",
+    "en": "Khlebnoe assortment",
+    "kk": "Хлебное ассорти",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Ташкентский": {
+    "ru": "Ташкентский",
+    "en": "Tashkentskiy",
+    "kk": "Ташкентский",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Ягодный": {
+    "ru": "Ягодный",
+    "en": "Yagodnyy",
+    "kk": "Ягодный",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Имбирь мед": {
+    "ru": "Имбирь мед",
+    "en": "Imbir med",
+    "kk": "Имбирь мед",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Малина мята": {
+    "ru": "Малина мята",
+    "en": "Malina myata",
+    "kk": "Малина мята",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Марокканский": {
+    "ru": "Марокканский",
+    "en": "Marokkanskiy",
+    "kk": "Марокканский",
+    "enDesc": "",
+    "kkDesc": ""
+  },
+  "Облепиховый": {
+    "ru": "Облепиховый",
+    "en": "Oblepikhovyy",
+    "kk": "Облепиховый",
     "enDesc": "",
     "kkDesc": ""
   },
@@ -2522,69 +2899,59 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Coca-Cola/ Fanta/Sprite 0.25л (стекло)": {
+  "Кола 0.25 стекло": {
     "en": "Coca-Cola/ Fanta/Sprite 0.25l (steklo)",
     "kk": "Coca-Cola/ Fanta/Sprite 0.25л (стекло)",
     "enDesc": "",
     "kkDesc": ""
   },
-  "Сок Ріко в асортименте Іл": {
+  "Сок Piko в ассортименте": {
     "en": "Riko juice assortment 1L",
     "kk": "Riko шырын ассорти 1л",
     "enDesc": "",
     "kkDesc": ""
   },
-  "Минеральная вода Borjomi 0,5л(стекло)": {
+  "Borjomi 0.5": {
     "en": "Borjomi mineral water 0.5L (glass)",
     "kk": "Borjomi минералды су 0,5л (шыны)",
     "enDesc": "",
     "kkDesc": ""
   },
-  "Red Bull 0,25лl": {
+  "Red Bull": {
     "en": "Red Bull 0,25ll",
     "kk": "Red Bull 0,25лl",
     "enDesc": "",
     "kkDesc": ""
   },
-  "Schweppes 0,35л": {
+  "Schweppes 0.5": {
     "en": "Schweppes 0,35l",
     "kk": "Schweppes 0,35л",
     "enDesc": "",
     "kkDesc": ""
   },
-  "Turan вода (газ, негаз) 0,5л": {
+  "Turan вода 0.5": {
     "en": "Turan voda (gaz, negaz) 0,5l",
     "kk": "Turan вода (газ, негаз) 0,5л",
     "enDesc": "",
     "kkDesc": ""
   },
-  "Сок «rich» 02л": {
+  "Сок Rich": {
     "en": "rich juice 0.2L",
     "kk": "«rich» шырыны 0.2л",
     "enDesc": "",
     "kkDesc": ""
   },
-  "Тассай Excellent 0,75 л": {
-    "en": "Tassay Excellent 0,75 l",
-    "kk": "Тассай Excellent 0,75 л",
+  "Samal/Turan 1л": {
+    "ru": "Samal/Turan 1л",
+    "en": "Samal/Turan 1l",
+    "kk": "Samal/Turan 1л",
     "enDesc": "",
     "kkDesc": ""
   },
-  "Тассай Emrald 0,75 л": {
-    "en": "Tassay Emrald 0,75 l",
-    "kk": "Тассай Emrald 0,75 л",
-    "enDesc": "",
-    "kkDesc": ""
-  },
-  "Тассай 1л": {
-    "en": "Tassay 1l",
-    "kk": "Тассай 1л",
-    "enDesc": "",
-    "kkDesc": ""
-  },
-  "Тассай стекло 0,5л": {
-    "en": "Tassay steklo 0,5l",
-    "kk": "Тассай стекло 0,5л",
+  "Samal 0.5": {
+    "ru": "Samal 0.5",
+    "en": "Samal 0.5",
+    "kk": "Samal 0.5",
     "enDesc": "",
     "kkDesc": ""
   },
@@ -2594,7 +2961,7 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Line Brew 0.5": {
+  "Line brue 0.5": {
     "en": "Line Brew 0.5",
     "kk": "Line Brew 0.5",
     "enDesc": "",
@@ -2606,13 +2973,20 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
+  "Колба 3л": {
+    "ru": "Колба 3л",
+    "en": "Kolba 3l",
+    "kk": "Колба 3л",
+    "enDesc": "",
+    "kkDesc": ""
+  },
   "Corona Extra 0.33": {
     "en": "Corona Extra 0.33",
     "kk": "Corona Extra 0.33",
     "enDesc": "",
     "kkDesc": ""
   },
-  "Tsingtao 0": {
+  "Tsingtao 0.33": {
     "en": "Tsingtao 0",
     "kk": "Tsingtao 0",
     "enDesc": "",
@@ -2624,7 +2998,7 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Guinness 0.44": {
+  "Guinness": {
     "en": "Guinness 0.44",
     "kk": "Guinness 0.44",
     "enDesc": "",
@@ -2660,7 +3034,7 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Чечил жаренный": {
+  "Чечил жареный": {
     "en": "Fried chechil",
     "kk": "Қуырылған чечил",
     "enDesc": "",
@@ -2685,20 +3059,20 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "kkDesc": ""
   },
   "Финляндия 50мл": {
-    "en": "Finlandia 50ml",
-    "kk": "Финляндия 50мл",
+    "en": "Khortytsa Ice 50ml",
+    "kk": "Хортица Ice 50мл",
     "enDesc": "",
     "kkDesc": ""
   },
   "Кызыл Жар 50мл": {
-    "en": "Kyzyl Zhar 50ml",
-    "kk": "Қызыл Жар 50мл",
+    "en": "Khortytsa Ice 50ml",
+    "kk": "Хортица Ice 50мл",
     "enDesc": "",
     "kkDesc": ""
   },
   "Архангельская 50мл": {
-    "en": "Arkhangelskaya 50ml",
-    "kk": "Архангельская 50мл",
+    "en": "Khortytsa Ice 50ml",
+    "kk": "Хортица Ice 50мл",
     "enDesc": "",
     "kkDesc": ""
   },
@@ -2726,7 +3100,7 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Chivas Regal 12YO 50 мл": {
+  "Chivas Regal 12": {
     "en": "Chivas Regal 12YO 50 ml",
     "kk": "Chivas Regal 12YO 50 мл",
     "enDesc": "",
@@ -2804,13 +3178,13 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Jameson Black Barell": {
+  "Jameson Black Barrel": {
     "en": "Jameson Black Barell",
     "kk": "Jameson Black Barell",
     "enDesc": "",
     "kkDesc": ""
   },
-  "Jameson Original": {
+  "Jameson": {
     "en": "Jameson Original",
     "kk": "Jameson Original",
     "enDesc": "",
@@ -2852,7 +3226,7 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Глинтвейн классический 0.33л": {
+  "Глинтвейн": {
     "en": "Classic mulled wine 0.33L",
     "kk": "Классикалық глинтвейн 0.33л",
     "enDesc": "",
@@ -2912,7 +3286,7 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Bombay Sapphire 50мл": {
+  "Bombay": {
     "en": "Bombay Sapphire 50ml",
     "kk": "Bombay Sapphire 50мл",
     "enDesc": "",
@@ -3056,7 +3430,7 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Olmeca Blanco 50мл": {
+  "Olmeca Blanca": {
     "en": "Olmeca Blanco 50ml",
     "kk": "Olmeca Blanco 50мл",
     "enDesc": "",
@@ -3098,7 +3472,7 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Martini Asti DOCG": {
+  "Martini Asti": {
     "en": "Martini Asti DOCG",
     "kk": "Martini Asti DOCG",
     "enDesc": "",
@@ -3110,7 +3484,7 @@ window.FRIENDLY_MENU_I18N_BY_NAME = {
     "enDesc": "",
     "kkDesc": ""
   },
-  "Martini Prosecco DOCG": {
+  "Martini Prosecco": {
     "en": "Martini Prosecco DOCG",
     "kk": "Martini Prosecco DOCG",
     "enDesc": "",

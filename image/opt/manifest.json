@@ -314,6 +314,21 @@
       }
     }
   },
+  "image/fermerskyi.PNG": {
+    "hash": "459d9f5b01c6ead8",
+    "width": 1312,
+    "height": 1199,
+    "out": {
+      "400": {
+        "bytes": 33988,
+        "quality": 75
+      },
+      "800": {
+        "bytes": 103028,
+        "quality": 75
+      }
+    }
+  },
   "image/fila.jpg": {
     "hash": "4aed0a42a691a125",
     "width": 1264,
@@ -764,6 +779,21 @@
       }
     }
   },
+  "image/mysnoydeli.PNG": {
+    "hash": "5e527c5f2403fa23",
+    "width": 1312,
+    "height": 1199,
+    "out": {
+      "400": {
+        "bytes": 24710,
+        "quality": 75
+      },
+      "800": {
+        "bytes": 72708,
+        "quality": 75
+      }
+    }
+  },
   "image/new_mimino.JPG": {
     "hash": "7c4c1605d1a410fe",
     "width": 896,
@@ -1109,6 +1139,21 @@
       }
     }
   },
+  "image/samuraiiii.jpeg": {
+    "hash": "5d69ea4d9660870e",
+    "width": 1448,
+    "height": 1086,
+    "out": {
+      "400": {
+        "bytes": 22022,
+        "quality": 75
+      },
+      "800": {
+        "bytes": 72258,
+        "quality": 75
+      }
+    }
+  },
   "image/shorpa.JPG": {
     "hash": "0f79e4304ff38100",
     "width": 880,
@@ -1180,6 +1225,36 @@
       },
       "800": {
         "bytes": 34802,
+        "quality": 75
+      }
+    }
+  },
+  "image/teplyibaklashan.PNG": {
+    "hash": "3ba88359194f32a9",
+    "width": 1312,
+    "height": 1199,
+    "out": {
+      "400": {
+        "bytes": 28424,
+        "quality": 75
+      },
+      "800": {
+        "bytes": 92320,
+        "quality": 75
+      }
+    }
+  },
+  "image/teplyskoninoy.PNG": {
+    "hash": "bcb503212cd23815",
+    "width": 1312,
+    "height": 1199,
+    "out": {
+      "400": {
+        "bytes": 28380,
+        "quality": 75
+      },
+      "800": {
+        "bytes": 93438,
         "quality": 75
       }
     }

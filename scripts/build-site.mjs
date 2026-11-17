@@ -1,9 +1,9 @@
 /**
- * Build the GitHub Pages bundle into _site/:
- *   1. compress new/changed photos (scripts/optimize-images.mjs)
- *   2. regenerate menu.json from data.js
- *   3. minify HTML (inline CSS/JS), CSS and JS, stamp a cache-busting build id
- *   4. copy fonts, icons, photos and the admin panel
+ * Build the GitHub Pages bundle into _site/ (run by .github/workflows/deploy-pages.yml):
+ *   1. compress new/changed photos into image/opt (WebP 400/800)
+ *   2. add translations for dishes that are new or renamed in the admin
+ *   3. minify HTML/CSS/JS and menu.json (hidden dishes removed), stamp a cache-busting build id
+ *   4. copy fonts, icons and photos
  *
  *   node scripts/build-site.mjs          # full build
  *   node scripts/build-site.mjs --fast   # skip photo compression
@@ -49,11 +49,18 @@ async function minHtml(html) {
   return outHtml.replace(/\n\s+/g, '\n').replace(/\n{2,}/g, '\n');
 }
 
+/** Guests get a compact menu without hidden dishes. */
+function guestMenu() {
+  const menu = JSON.parse(read('menu.json'));
+  for (const sec of menu.sections || []) sec.items = (sec.items || []).filter((it) => it && !it.hidden);
+  return `${JSON.stringify(menu)}\n`;
+}
+
 async function main() {
   if (!FAST) run('optimize-images.mjs');
-  run('build-menu-json.mjs');
+  run('build-i18n-menu.mjs');
 
-  const sources = ['index.html', 'menu.css', 'app.js', 'i18n.js', 'i18n-menu.js', 'sw.js'];
+  const sources = ['index.html', 'css/menu.css', 'js/app.js', 'js/i18n.js', 'js/i18n-menu.js', 'sw.js', 'admin.html', 'css/admin.css', 'js/admin.js', 'js/config.js'];
   const build = crypto
     .createHash('sha1')
     .update(sources.map(read).join('\n'))
@@ -69,24 +76,22 @@ async function main() {
   };
 
   write('index.html', await minHtml(stamp(read('index.html'))));
-  write('menu.css', await minCss(read('menu.css')));
-  for (const f of ['app.js', 'i18n.js', 'i18n-menu.js', 'admin.js', 'config.js']) write(f, await minJs(read(f)));
+  write('admin.html', stamp(read('admin.html')));
   write('sw.js', await minJs(stamp(read('sw.js'))));
-  write('admin.css', await minCss(read('admin.css')));
-  for (const f of ['admin.html', 'menu.json', 'manifest.webmanifest', 'robots.txt', 'sitemap.xml']) {
-    fs.copyFileSync(path.join(root, f), path.join(out, f));
-  }
+  write('menu.json', guestMenu());
+  for (const f of ['css/menu.css', 'css/admin.css']) write(f, await minCss(read(f)));
+  for (const f of ['js/app.js', 'js/i18n.js', 'js/i18n-menu.js', 'js/admin.js', 'js/config.js']) write(f, await minJs(read(f)));
+  for (const f of ['manifest.webmanifest', 'robots.txt', 'sitemap.xml']) write(f, read(f));
   write('.nojekyll', '');
   copyDir(path.join(root, 'fonts'), path.join(out, 'fonts'));
   copyDir(path.join(root, 'icons'), path.join(out, 'icons'));
   copyDir(path.join(root, 'image'), path.join(out, 'image'), (from, entry) =>
     entry.name === '.DS_Store' || from.endsWith(path.join('opt', 'manifest.json')),
   );
-  fs.mkdirSync(path.join(out, 'uploads'), { recursive: true });
 
-  const report = ['index.html', 'menu.css', 'app.js', 'i18n.js', 'menu.json'].map((f) => {
+  const report = ['index.html', 'css/menu.css', 'js/app.js', 'js/i18n.js', 'menu.json'].map((f) => {
     const buf = fs.readFileSync(path.join(out, f));
-    return `${f.padEnd(12)} ${String(Math.round(buf.length / 102.4) / 10).padStart(6)} KB  gzip ${String(Math.round(zlib.gzipSync(buf).length / 102.4) / 10).padStart(5)} KB`;
+    return `${f.padEnd(14)} ${String(Math.round(buf.length / 102.4) / 10).padStart(6)} KB  gzip ${String(Math.round(zlib.gzipSync(buf).length / 102.4) / 10).padStart(5)} KB`;
   });
   console.log(`\nBuild ${build} → _site/\n${report.join('\n')}`);
 }

@@ -8,7 +8,6 @@
   const CART_TTL_MS = 12 * 3600e3;
   const WELCOME_KEY = 'fm_welcome_v2';
   const TABLE_KEY = 'fm_table';
-  const API_BASE = 'https://friendlybarmenu1admin.onrender.com';
   const EAGER_IMAGES = 3;
   const REFRESH_AFTER_MS = 60e3;
   const NO_PHOTO = /(^|\/)nono\.png$/i;
@@ -99,7 +98,6 @@
   function originalSrc(src) {
     const p = cleanPath(src);
     if (/^https?:\/\//i.test(p)) return p;
-    if (p.startsWith('/uploads/')) return API_BASE + p;
     const rel = p.replace(/^\/+/, '').replace(/^image\/image\//i, 'image/');
     return /^image\//i.test(rel) ? rel : `image/${rel}`;
   }
@@ -401,6 +399,10 @@
   }
 
   function applyMenu(data, text) {
+    // Dishes hidden in the admin stay in menu.json but never reach guests.
+    data.sections.forEach((s) => {
+      if (Array.isArray(s.items)) s.items = s.items.filter((it) => it && !it.hidden);
+    });
     state.menu = data;
     state.menuText = text;
     renderMenu();
@@ -990,10 +992,7 @@
   /* ---------- welcome ---------- */
 
   function initWelcome() {
-    if (!document.documentElement.classList.contains('show-welcome')) {
-      scheduleVisit();
-      return;
-    }
+    if (!document.documentElement.classList.contains('show-welcome')) return;
     welcomeOpen = true;
     lastFocus = null;
     setPageInert(true);
@@ -1020,7 +1019,6 @@
       dom.welcome.classList.add('is-leaving');
       setTimeout(finish, 240);
     }
-    scheduleVisit();
   }
 
   /* ---------- keyboard ---------- */
@@ -1077,50 +1075,6 @@
       node.classList.remove('is-in');
       setTimeout(() => node.remove(), 300);
     }, 3200);
-  }
-
-  function scheduleVisit() {
-    const run = () => startVisit('kitchen');
-    if ('requestIdleCallback' in window) window.requestIdleCallback(run, { timeout: 5000 });
-    else setTimeout(run, 3000);
-  }
-
-  /** Guest visit counter for the admin analytics; never blocks or surfaces errors. */
-  function startVisit(choice) {
-    const VISIT_KEY = 'fm_visit_id';
-    try {
-      if (sessionStorage.getItem(VISIT_KEY)) return;
-    } catch (_) {
-      return;
-    }
-    const t0 = Date.now();
-    const ctrl = typeof AbortController === 'function' ? new AbortController() : null;
-    const timer = ctrl ? setTimeout(() => ctrl.abort(), 15000) : 0;
-    fetch(`${API_BASE}/api/visits/start`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ path: location.pathname || '/', choice }),
-      keepalive: true,
-      signal: ctrl ? ctrl.signal : undefined,
-    })
-      .then((r) => (r.ok ? r.json() : null))
-      .then((data) => {
-        if (!data || !data.id) return;
-        sessionStorage.setItem(VISIT_KEY, data.id);
-        const ping = () => {
-          const body = JSON.stringify({ id: data.id, durationSec: Math.max(0, Math.floor((Date.now() - t0) / 1000)) });
-          const url = `${API_BASE}/api/visits/ping`;
-          if (navigator.sendBeacon) navigator.sendBeacon(url, new Blob([body], { type: 'application/json' }));
-          else fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body, keepalive: true }).catch(() => {});
-        };
-        setInterval(ping, 30000);
-        window.addEventListener('pagehide', ping);
-        document.addEventListener('visibilitychange', () => {
-          if (document.visibilityState === 'hidden') ping();
-        });
-      })
-      .catch(() => {})
-      .finally(() => clearTimeout(timer));
   }
 
   function registerServiceWorker() {
