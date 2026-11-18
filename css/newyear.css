@@ -1,0 +1,289 @@
+/* ==========================================================================
+   Friendly — новогодняя тема.  Подключается отдельно от menu.css.
+   Отключить: убрать из index.html <link ... newyear.css> и <script ... newyear.js>.
+   ========================================================================== */
+
+/* ---------- 1. Палитра ---------- */
+:root {
+  --bg: #0a1330;
+  --surface: #12204a;
+  --surface-2: #1a2b5e;
+  --line: rgba(236, 244, 255, 0.16);
+  --text: #f7faff;
+  --muted: #c9d5ee;
+  --muted-2: #a9b9dc;
+  --wine: #b3162c;
+  --ny-red: #d62839;
+  --ny-green: #1f7a46;
+  --ny-snow: #ffffff;
+  --ny-panel: #0f1b40;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0, rgba(212, 168, 90, 0.14), transparent 70%) no-repeat,
+    radial-gradient(ellipse 60% 30% at 100% 0, rgba(214, 40, 57, 0.12), transparent 70%) no-repeat,
+    var(--bg);
+}
+
+.hdr,
+.subtabs { background: rgba(9, 17, 44, 0.97); }
+.hdr { border-bottom-color: rgba(212, 168, 90, 0.35); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); }
+.sheet__panel,
+.sheet__foot { background: var(--ny-panel); }
+.welcome { background: rgba(5, 9, 26, 0.9); }
+.welcome__box { background: linear-gradient(180deg, rgba(214, 40, 57, 0.14), transparent 45%), #101c44; }
+.icon-btn--float { background: rgba(9, 17, 44, 0.78); }
+.totop { background: rgba(15, 27, 64, 0.95); }
+.toast { background: #1a2a5c; }
+.foot__alert { background: rgba(214, 40, 57, 0.1); border-color: rgba(212, 168, 90, 0.4); border-left-color: var(--ny-red); }
+.skel__title, .skel__media, .skel__line { background: var(--surface-2); }
+
+/* ---------- 2. Кнопки, заголовки, карточки ---------- */
+.tab.is-active,
+.lang-switch__btn.is-active,
+.btn-gold,
+.orderbar__btn,
+.add {
+  background-image: linear-gradient(135deg, #f1d38e 0%, #d4a85a 55%, #bb8a3a 100%);
+}
+.btn-gold,
+.orderbar__btn,
+.add { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 238, 190, 0.35) inset; }
+
+.welcome__go {
+  background: linear-gradient(135deg, #c21c33, #6f0f20);
+  border-color: rgba(241, 211, 142, 0.7);
+  box-shadow: 0 8px 22px rgba(179, 22, 44, 0.35);
+}
+
+.card {
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    linear-gradient(135deg, rgba(241, 211, 142, 0.8), rgba(212, 168, 90, 0.25) 40%, rgba(214, 40, 57, 0.35) 62%, rgba(241, 211, 142, 0.75)) border-box;
+  box-shadow: 0 6px 18px rgba(2, 6, 22, 0.45);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s ease;
+}
+
+.hero__title,
+.sec__title { text-shadow: 0 2px 12px rgba(212, 168, 90, 0.3); }
+.hero__title::before { content: "✦ "; color: var(--ny-red); }
+.hero__title::after { content: " ✦"; color: var(--ny-red); }
+.sec__title::before { background: linear-gradient(90deg, transparent, var(--ny-red), var(--gold)); }
+.sec__title::after { background: linear-gradient(90deg, var(--gold), var(--ny-red), transparent); }
+
+/* ---------- 3. Снежные шапки на карточках ---------- */
+.card::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 10px;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M0 0H100V4Q96 9 92 5Q88 3 84 6Q80 10 75 5Q70 2 64 6Q60 9 55 5Q50 3 45 7Q40 10 36 5Q31 2 26 6Q21 9 16 5Q11 3 7 6Q3 9 0 5Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 40, 0.25));
+}
+.row::before { height: 7px; }
+
+/* ---------- 4. Логотип: шапка Деда Мороза ---------- */
+.logo { position: relative; z-index: 2; overflow: visible; }
+.logo::after {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: -13px;
+  width: 30px;
+  height: 27px;
+  pointer-events: none;
+  transform: rotate(-14deg);
+  transform-origin: 60% 90%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 36'%3E%3Cpath fill='%23d62839' stroke='%239c1424' stroke-width='1' d='M5 27C6 13 15 4 27 5c4 .4 7 3 6 7-3-2-7-2-10 0-5 3-6 9-5 15z'/%3E%3Crect x='2' y='24' width='30' height='9' rx='4.5' fill='%23fff' stroke='%23d9e2f2' stroke-width='.8'/%3E%3Ccircle cx='33' cy='12' r='4.6' fill='%23fff' stroke='%23d9e2f2' stroke-width='.8'/%3E%3C/svg%3E") center / contain no-repeat;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.4));
+}
+
+/* ---------- 5. Гирлянда (создаётся в newyear.js внутри #hdr) ---------- */
+.hdr__brand { padding-top: 14px; } /* место под гирлянду; общая высота не меняется (min-height) */
+.ny-garland {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: env(safe-area-inset-top, 0);
+  height: 22px;
+  overflow: hidden;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='16'%3E%3Cpath d='M0 2Q22 14 44 2' fill='none' stroke='%23253a2c' stroke-width='1.6'/%3E%3C/svg%3E") 0 0 / 44px 16px repeat-x;
+}
+.ny-garland--tight { background-size: 38px 16px; }
+.ny-bulb {
+  --c: #ff3b4e;
+  position: absolute;
+  top: 7px;
+  width: 9px;
+  height: 13px;
+  margin-left: -4.5px;
+  border-radius: 50% 50% 46% 46%;
+  background: var(--c);
+}
+.ny-bulb::before { /* цоколь */
+  content: "";
+  position: absolute;
+  left: 1.5px;
+  top: -3px;
+  width: 6px;
+  height: 4px;
+  border-radius: 1px;
+  background: #3a4a3f;
+}
+.ny-bulb::after { /* свечение: анимируем только opacity — дёшево */
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c) 0, transparent 65%);
+  opacity: 0.35;
+  animation: ny-twinkle 2.4s ease-in-out infinite alternate;
+  animation-delay: var(--d, 0s);
+}
+.ny-bulb:nth-child(4n+1) { --c: #ff3b4e; }
+.ny-bulb:nth-child(4n+2) { --c: #ffc83d; }
+.ny-bulb:nth-child(4n+3) { --c: #2fd36b; }
+.ny-bulb:nth-child(4n)   { --c: #3aa0ff; }
+@keyframes ny-twinkle {
+  from { opacity: 0.25; transform: scale(0.85); }
+  to   { opacity: 0.85; transform: scale(1.1); }
+}
+
+/* ---------- 6. Снег (canvas) ---------- */
+.ny-snow {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 40;           /* выше контента и панели заказа, ниже модальных окон */
+  pointer-events: none;
+}
+
+/* ---------- 7. Футер: поздравление, ёлка, сугроб ---------- */
+.foot { position: relative; }
+.foot::before,
+.foot::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 64px;
+  height: 64px;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M0 4Q24 14 52 30' fill='none' stroke='%236b4423' stroke-width='2'/%3E%3Cg stroke='%231f7a46' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M8 7L4 19M18 11L15 25M28 16L27 31M38 22L39 36M47 27L49 40M18 11L24 2M28 16L35 6M38 22L46 12M47 27L57 19'/%3E%3C/g%3E%3Ccircle cx='22' cy='27' r='5' fill='%23d62839'/%3E%3Ccircle cx='20.5' cy='25.2' r='1.4' fill='%23fff' opacity='.7'/%3E%3Ccircle cx='42' cy='42' r='2.4' fill='%23f1d38e'/%3E%3C/svg%3E") 0 0 / contain no-repeat;
+}
+.foot::before { left: 0; }
+.foot::after { right: 0; transform: scaleX(-1); }
+
+.ny-greet { margin: 0 0 18px; text-align: center; }
+.ny-greet__title {
+  font: 600 2rem/1.1 var(--serif);
+  letter-spacing: 0.04em;
+  color: var(--gold-soft);
+  text-shadow: 0 0 18px rgba(212, 168, 90, 0.45);
+}
+.ny-greet__title::before,
+.ny-greet__title::after { content: "★"; margin: 0 0.4em; font-size: 0.6em; color: var(--gold); vertical-align: 0.25em; }
+.ny-greet__timer {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 14px;
+  border: 1px solid rgba(212, 168, 90, 0.45);
+  border-radius: 999px;
+  background: rgba(214, 40, 57, 0.16);
+  color: var(--text);
+  font: 600 0.85rem/1.2 var(--sans);
+  font-variant-numeric: tabular-nums;
+}
+.ny-greet__timer[hidden] { display: none !important; }
+
+.ny-drift {
+  height: 44px;
+  margin-top: -2px;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 44' preserveAspectRatio='none'%3E%3Cpath fill='%23b9cdf2' d='M0 44V26Q60 8 130 22T270 18 420 22 560 14 700 22 800 16V44Z'/%3E%3Cpath fill='%23fff' d='M0 44V30Q50 14 120 28T260 24 400 30 540 20 680 28 800 22V44Z'/%3E%3C/svg%3E") 0 100% / 100% 100% no-repeat;
+}
+
+/* ---------- 8. Блеск на кнопках ---------- */
+.btn-gold,
+.orderbar__btn,
+.welcome__go { position: relative; overflow: hidden; }
+.btn-gold::after,
+.orderbar__btn::after,
+.welcome__go::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: translateX(-160%) skewX(-18deg);
+  animation: ny-shine 5.5s ease-in-out infinite;
+}
+@keyframes ny-shine {
+  0%, 70% { transform: translateX(-160%) skewX(-18deg); }
+  100%    { transform: translateX(380%) skewX(-18deg); }
+}
+
+/* ---------- 9. Переключатель эффектов ---------- */
+.ny-toggle {
+  position: fixed;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 45;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(212, 168, 90, 0.55);
+  border-radius: 50%;
+  background: rgba(15, 27, 64, 0.94);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+.has-order .ny-toggle { bottom: calc(82px + env(safe-area-inset-bottom)); }
+.ny-toggle[aria-pressed="false"] { color: var(--muted-2); }
+.ny-toggle[aria-pressed="false"]::after {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 2px;
+  background: var(--ny-red);
+  transform: rotate(-45deg);
+}
+
+/* Режим «эффекты выключены» (кнопка) */
+.ny-fx-off .ny-garland,
+.ny-fx-off .ny-snow,
+.ny-fx-off .ny-drift { display: none; }
+.ny-fx-off .btn-gold::after,
+.ny-fx-off .orderbar__btn::after,
+.ny-fx-off .welcome__go::after { animation: none; display: none; }
+
+/* ---------- 10. Hover (только для мыши) ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(2, 6, 22, 0.6), 0 0 18px rgba(212, 168, 90, 0.18); }
+  .tab:hover { border-color: var(--gold-soft); }
+}
+
+/* ---------- 11. Адаптив и доступность ---------- */
+@media (max-width: 359px) {
+  .ny-greet__title { font-size: 1.7rem; }
+  .foot::before, .foot::after { width: 48px; height: 48px; }
+}
+@media (min-width: 768px) {
+  .ny-drift { height: 60px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ny-bulb::after, .btn-gold::after, .orderbar__btn::after, .welcome__go::after { animation: none; }
+}

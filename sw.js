@@ -10,7 +10,9 @@ const scoped = (path) => new URL(path, SCOPE).href;
 const PRECACHE = [
   './',
   `css/menu.css?v=${VERSION}`,
+  `css/newyear.css?v=${VERSION}`,
   `js/app.js?v=${VERSION}`,
+  `js/newyear.js?v=${VERSION}`,
   `js/i18n.js?v=${VERSION}`,
   'menu.json',
   'manifest.webmanifest',

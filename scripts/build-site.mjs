@@ -60,7 +60,7 @@ async function main() {
   if (!FAST) run('optimize-images.mjs');
   run('build-i18n-menu.mjs');
 
-  const sources = ['index.html', 'css/menu.css', 'js/app.js', 'js/i18n.js', 'js/i18n-menu.js', 'sw.js', 'admin.html', 'css/admin.css', 'js/admin.js', 'js/config.js'];
+  const sources = ['index.html', 'css/menu.css', 'css/newyear.css', 'js/app.js', 'js/newyear.js', 'js/i18n.js', 'js/i18n-menu.js', 'sw.js', 'admin.html', 'css/admin.css', 'js/admin.js', 'js/config.js'];
   const build = crypto
     .createHash('sha1')
     .update(sources.map(read).join('\n'))
@@ -79,8 +79,8 @@ async function main() {
   write('admin.html', stamp(read('admin.html')));
   write('sw.js', await minJs(stamp(read('sw.js'))));
   write('menu.json', guestMenu());
-  for (const f of ['css/menu.css', 'css/admin.css']) write(f, await minCss(read(f)));
-  for (const f of ['js/app.js', 'js/i18n.js', 'js/i18n-menu.js', 'js/admin.js', 'js/config.js']) write(f, await minJs(read(f)));
+  for (const f of ['css/menu.css', 'css/newyear.css', 'css/admin.css']) write(f, await minCss(read(f)));
+  for (const f of ['js/app.js', 'js/newyear.js', 'js/i18n.js', 'js/i18n-menu.js', 'js/admin.js', 'js/config.js']) write(f, await minJs(read(f)));
   for (const f of ['manifest.webmanifest', 'robots.txt', 'sitemap.xml']) write(f, read(f));
   write('.nojekyll', '');
   copyDir(path.join(root, 'fonts'), path.join(out, 'fonts'));
